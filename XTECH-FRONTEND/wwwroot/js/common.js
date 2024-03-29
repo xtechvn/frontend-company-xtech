@@ -196,6 +196,26 @@
                 disableOnInteraction: false,
             },
         });
+        var swiperService = new Swiper(".list-service .swiper-container", {
+            slidesPerView: 3,
+            spaceBetween: 0,
+            simulateTouch: false,
+            navigation: {
+                nextEl: ".list-service .swiper-service-next",
+                prevEl: ".list-service .swiper-service-prev",
+            },
+            breakpoints: {
+                991: {
+                    slidesPerView: 2,
+                    spaceBetween: 24
+                },
+                414: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 16,
+                }
+            }
+        });
+
 
 
     }
