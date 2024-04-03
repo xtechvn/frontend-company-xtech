@@ -10,15 +10,16 @@
     <meta name="apple-mobile-web-app-title" content="" />
     <meta name="description" content="content">
     <meta name="keywords" content="Việt Nam">
-    <title>
+  @*   <title>
         X-Technology
-    </title>
-
+    </title> *@
+    <title> @ViewData["Title"] </title>
+    <link rel="stylesheet" href="~/css/fontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
     <link type="image/x-icon" href="http://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
         rel="shortcut icon" />
-    <link rel="stylesheet" href="css/fontAwesome/css/font-awesome.min.css" media="all" />
-    <link rel="stylesheet" href="css/bootstrap.css" media="all" />
-    <link rel="stylesheet" href="css/style.css" media="all" />
+   
     <!-- build:head2 -->
     <!-- build:head -->
 </head>
@@ -47,7 +48,7 @@
         <div class="container">
             <div class="flex flex_row">
                 <h1 class="logo" title="new-ca">
-                    <a href="#"><img src="images/graphics/logo.svg" alt=""></a>
+                    <a href="#"><img src="~/images/graphics/logo.svg" alt=""></a>
                 </h1>
                 <div class="right_menu">
                     <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
@@ -55,40 +56,40 @@
                         <div class="main-menu">
                             <ul class="nav">
                                 <li class="active">
-                                    <a href='/x-technology/html-pc/home'>Trang chủ</a>
+                                    <a href='/Home/Index'>Trang chủ</a>
                                 </li>
                                 <li class="default">
-                                    <a href="#">Giá cả</a>
+                                    <a href="/Pricing/Index">Giá cả</a>
                                     <span class="sub_menu">+</span>
                                     <div class="level2">
-                                        <a href="#">Giới thiệu</a>
-                                        <a href="#">FAQ</a>
-                                        <a href="#">Tin tức</a>
+                                        <a href="/AboutUs/Index">Giới thiệu</a>
+                                        <a href="/FAQ/Index">FAQ</a>
+                                        <a href="/News/Index">Tin tức</a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#">Dịch vụ</a>
+                                    <a href="/FAQ/Index">Dịch vụ</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tin tức</a>
+                                    <a href="/News/Index">Tin tức</a>
                                 </li>
                                 <li>
-                                    <a href="#">Liên hệ</a>
+                                    <a href="/Contact/Index">Liên hệ</a>
                                 </li>
                                 <div class="search-btn">
                                     <a href="javarscript:;" class="auto_search_button">
                                         <svg class="icon-svg">
-                                            <use xlink:href="images/icons/icon.svg#search"></use>
+                                            <use xlink:href="~/images/icons/icon.svg#search"></use>
                                         </svg>
                                         <svg class="icon-svg close">
-                                            <use xlink:href="images/icons/icon.svg#close"></use>
+                                            <use xlink:href="~/images/icons/icon.svg#close"></use>
                                         </svg>
                                     </a>
                                     <div class="search-wrap">
                                         <input type="text" class="search-wrap-input" placeholder="Nhập nội dung...">
                                         <button type="submit" value="">
                                             <svg class="icon-svg">
-                                                <use xlink:href="images/icons/icon.svg#search"></use>
+                                                <use xlink:href="~/images/icons/icon.svg#search"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -116,7 +117,7 @@
             <div class="container">
                 <div class="grid grid__4">
                     <div class="col gap">
-                        <a class="logo" href="#" title="#"><img src="images/graphics/logo-white.svg" alt=""></a>
+                        <a class="logo" href="#" title="#"><img src="~/images/graphics/logo-white.svg" alt=""></a>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. 
                         </div>
