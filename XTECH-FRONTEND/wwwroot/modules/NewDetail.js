@@ -7,7 +7,7 @@ function getNewsCategory() {
     var requestObj = {
         page: 1,
         size: 5,
-        category_id: 40,
+        category_id: 2,
     }
     var rows = "";
     $.ajax({
@@ -50,7 +50,7 @@ function getRelatednews() {
     var requestObj = {
         page: 1,
         size: 3,
-        category_id: 40,
+        category_id: 2,
     }
     var rows = "";
     $.ajax({

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="~/css/fontAwesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/modules/shared/timeUtils.js" />
+  
     <link type="image/x-icon" href="http://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
         rel="shortcut icon" />
    
@@ -52,14 +52,14 @@
                     <a href="#"><img src="~/images/graphics/logo.svg" alt=""></a>
                 </h1>
                 <div class="right_menu">
-                    <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
+                 
                     <div class="flex flex_right">
                         <div class="main-menu">
                             <ul class="nav">
-                                <li class="active">
+                                <li class="menu-tab-button menu-tab-button-Home active" data-tab-id="0">
                                     <a href='/Home/Index'>Trang chủ</a>
                                 </li>
-                                <li class="default">
+                                <li class="menu-tab-button menu-tab-button-Pricing default"data-tab-id="1">
                                     <a href="/Pricing/Index">Giá cả</a>
                                     <span class="sub_menu">+</span>
                                     <div class="level2">
@@ -68,13 +68,13 @@
                                         <a href="/News/Index">Tin tức</a>
                                     </div>
                                 </li>
-                                <li>
+                                <li class="menu-tab-button menu-tab-button-FAQ"data-tab-id="2">
                                     <a href="/FAQ/Index">Dịch vụ</a>
                                 </li>
-                                <li>
+                                <li class="menu-tab-button menu-tab-button-new"data-tab-id="3">
                                     <a href="/News/Index">Tin tức</a>
                                 </li>
-                                <li>
+                                <li class="menu-tab-button menu-tab-button-Contact"data-tab-id="4">
                                     <a href="/Contact/Index">Liên hệ</a>
                                 </li>
                                 <div class="search-btn">
@@ -188,6 +188,7 @@
     <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/js/aos.js"></script>
     <script type="text/javascript" src="~/js/common.js"></script>
+    <script type="text/javascript" src="~/modules/common.js"></script>
     <!-- build:script -->
     @await RenderSectionAsync("Scripts", required: false)
 

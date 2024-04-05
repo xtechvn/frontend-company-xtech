@@ -18,7 +18,7 @@ function getNewsCategory(page) {
     var requestObj = {
         page: page == null ? 1 : page,
         size: size =  20 ,
-        category_id: 40,
+        category_id: 2,
     }
     var rows = "";
     $.ajax({

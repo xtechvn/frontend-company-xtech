@@ -17,9 +17,9 @@ namespace XTECH_FRONTEND.Controllers
             var requestObj =new GetListByCategoryIdRequest();
             requestObj.page = 1;
             requestObj.size = 10;
-            requestObj.category_id = 40;
+            requestObj.category_id = 2;
             var result = await apiService.GetNewsCategory(requestObj);
-            if (result.status == 0)
+            if (result != null && result.status == 0)
             {
                 ViewBag.data = result.data;
             }
@@ -39,10 +39,7 @@ namespace XTECH_FRONTEND.Controllers
         public async Task<IActionResult> GetlistNews(GetListByCategoryIdRequest requestObj)
         {
             ApiService apiService = new ApiService(_configuration);
-           
-            //requestObj.page = 1;
-            //requestObj.size = 20;
-            //requestObj.category_id = 40;
+  
             var result =await apiService.GetNewsCategory(requestObj);
            
             return Ok(result);
