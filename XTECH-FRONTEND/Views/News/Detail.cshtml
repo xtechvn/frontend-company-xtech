@@ -1,10 +1,15 @@
-﻿<section class="container clearfix">
+﻿@using XTECH_FRONTEND.Models.News.GetDetail;
+@{
+    var data = (GetNewDetailResponse)ViewBag.data;
+}
+<section class="container clearfix">
     <div class="flex">
-        <div class="box_stream mb30">
+        <!-- body -->
+        <div class="box_stream mb30" id>
             <div class="detail_tin bg-white radius-10 pd-24">
                 <div class="flex-date">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/Home/Index">Trang chủ</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
                     </ol>
                     <div class="date">
@@ -14,55 +19,12 @@
                         <span>August 31, 2024</span>
                     </div>
                 </div>
-                <h1 class="title_detail">Trải nghiệm Galaxy S24: Tò mò vì AI, ở lại vì tính năng</h1>
-                <p class="lead">
-                    Theo JLL Việt Nam, các doanh nghiệp “phi bán lẻ” không đứng ngoài “làn sóng” săn tìm tòa nhà
-                    cũ. Các tòa nhà cũ tại Sài Gòn hiện khá bận rộn với sự hiện diện của các công ty khởi nghiệp
-                    và nhu cầu tìm về những quán ăn hoài cổ của thế hệ millennials.
-                </p>
-                <p>
-                    There is no way you can pack everything in Luang Prabang in just 50 hours. The best-preserved
-                    city in Southeast Asia attracts travelers of all ages by it hill tribes, cooking class,
-                    fabulous night market, dense forests, dozens of gold temples, and the amazing Kuang Si
-                    waterfall. You would better to divide and choose the best things you want to conquer.
-                </p>
-                <p>
-                    Here is a guide which I’ve ‘stolen’ from our best travel expert, Ms. Mai Phuong, for you to
-                    spend 3 days, 2 nights in Laos tour. She did make it on her recent trip to the city last
-                    month. You can use it for your next trip or design your own one with the help of Mai Phuong
-                    – EV Travel Expert.
-                </p>
-                <p class="Images">
-                    <img src="/images/graphics/detail1.jpg" alt="this">
-                    <span class="caption">
-                        This is Mai Phuong. She is wearing a handmade ‘crown’. We will follow
-                        her 3-day, 2-night itinerariy in Luang Prabang.
-                    </span>
-                </p>
-                <p>
-                    Once you arrive in Luang Prabang, head to colonial style buildings Satri House, located in
-                    the heart of the city. If you are interested in superior crafted wood furniture, oversized
-                    balconies, spacious bathrooms, beautiful spa room, and fine dining overlooking the garden,
-                    you come to the right place. All the rooms and suites are a blend of Lao traditional
-                    architecture with colonial style. Here you can enjoy your private moments and watch the
-                    everyday life of local people from your balcony.
-                </p>
-                <p class="Images">
-                    <img src="/images/graphics/detail2.jpg" alt="this">
-                    <span class="caption">
-                        Satri House is located in the heart of the city, has a colonial
-                        style.
-                    </span>
-                </p>
-                <p>
-                    Spend a half day with the elephants at Elephant Village Sanctuary &amp; Resort. An English
-                    speaking guide will pick you up from your hotel to the Elephant Camp. If you have any doubt
-                    about riding an elephant for ethical reasons, you will change your mind when you see the
-                    elephant’s treatment here. They are genuinely well cared for and the guides are very
-                    knowledgeable, not only about their animals but their country in general.
-                </p>
-                <p class="author" style="text-align:right"><strong>Theo Báo Chính Phủ/VGP News</strong></p>
-                <div class="flex social">
+                @if (data != null)
+                {
+                    <h1 class="title_detail">@data.title</h1>
+                    @Html.Raw(@data.body)
+                }
+                <div class="social-flex">
                     <span>Chia sẻ</span>
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -72,10 +34,11 @@
                 </div>
             </div>
         </div>
+        <!-- TIn mới nhất -->
         <div class="box_300 mb30">
             <div class="bg-white radius-10 pd-24">
                 <h2 class="title-box">Mới nhất</h2>
-                <div class="list-small-article">
+                <div class="list-small-article" id="Detai_news_new">
                     <div class="article-itemt">
                         <div class="article-thumb">
                             <a class="thumb_img thumb_5x5" href="#">
@@ -94,67 +57,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article-itemt">
-                        <div class="article-thumb">
-                            <a class="thumb_img thumb_5x5" href="#">
-                                <img src="/images/graphics/thumb2.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="title_new">
-                                <a href="#">Mark Zuckerberg lại chê Apple Vision Pro</a>
-                            </h3>
-                            <div class="date">
-                                <svg class="icon-svg">
-                                    <use xlink:href="/images/icons/icon.svg#date"></use>
-                                </svg>
-                                <span>August 31, 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="article-itemt">
-                        <div class="article-thumb">
-                            <a class="thumb_img thumb_5x5" href="#">
-                                <img src="/images/graphics/thumb3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="title_new">
-                                <a href="#">Mark Zuckerberg lại chê Apple Vision Pro</a>
-                            </h3>
-                            <div class="date">
-                                <svg class="icon-svg">
-                                    <use xlink:href="/images/icons/icon.svg#date"></use>
-                                </svg>
-                                <span>August 31, 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="article-itemt">
-                        <div class="article-thumb">
-                            <a class="thumb_img thumb_5x5" href="#">
-                                <img src="/images/graphics/thumb1.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="title_new">
-                                <a href="#">Mark Zuckerberg lại chê Apple Vision Pro</a>
-                            </h3>
-                            <div class="date">
-                                <svg class="icon-svg">
-                                    <use xlink:href="/images/icons/icon.svg#date"></use>
-                                </svg>
-                                <span>August 31, 2024</span>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
     </div>
     <!-- TIn liên quan -->
     <h2 class="title-box">Tin liên quan</h2>
-    <div class="list-article grid grid__3">
+    <div class="list-article grid grid__3" id="Related_news">
         <div class="article-itemt full">
             <div class="article-thumb">
                 <a class="thumb_img thumb_5x3" href="#">
@@ -175,45 +85,9 @@
                 <div><a class="read-more" href="#">Đọc thêm</a></div>
             </div>
         </div>
-        <div class="article-itemt full">
-            <div class="article-thumb">
-                <a class="thumb_img thumb_5x3" href="#">
-                    <img src="/images/graphics/thumb2.jpg" alt="">
-                </a>
-            </div>
-            <div class="article-content">
-                <div class="date">
-                    <svg class="icon-svg">
-                        <use xlink:href="/images/icons/icon.svg#date"></use>
-                    </svg>
-                    <span>August 31, 2024</span>
-                </div>
-                <h3 class="title_new">
-                    <a href="#">Mark Zuckerberg lại chê Apple Vision Pro</a>
-                </h3>
-                <p class="des">Mark Zuckerberg tin tưởng kính Quest 3 của Meta có những lợi thế đặc biệt khi so sánh với Vision Pro của Apple.</p>
-                <div><a class="read-more" href="#">Đọc thêm</a></div>
-            </div>
-        </div>
-        <div class="article-itemt full">
-            <div class="article-thumb">
-                <a class="thumb_img thumb_5x3" href="#">
-                    <img src="/images/graphics/thumb3.jpg" alt="">
-                </a>
-            </div>
-            <div class="article-content">
-                <div class="date">
-                    <svg class="icon-svg">
-                        <use xlink:href="/images/icons/icon.svg#date"></use>
-                    </svg>
-                    <span>August 31, 2024</span>
-                </div>
-                <h3 class="title_new">
-                    <a href="#">Mark Zuckerberg lại chê Apple Vision Pro</a>
-                </h3>
-                <p class="des">Mark Zuckerberg tin tưởng kính Quest 3 của Meta có những lợi thế đặc biệt khi so sánh với Vision Pro của Apple.</p>
-                <div><a class="read-more" href="#">Đọc thêm</a></div>
-            </div>
-        </div>
+       
     </div>
 </section>
+@section scripts {
+    <script asp-append-version="true" src="~/modules/NewDetail.js"></script>
+}
