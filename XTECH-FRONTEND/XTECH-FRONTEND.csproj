@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\lib\**" />
+    <Compile Remove="wwwroot\modules\shared\**" />
     <Content Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\modules\shared\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\modules\shared\**" />
     <None Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\modules\shared\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,6 +90,11 @@
     <None Include="wwwroot\js\svgxuse.js" />
     <None Include="wwwroot\js\swiper.min.js" />
     <None Include="wwwroot\js\zebra_datepicker.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
