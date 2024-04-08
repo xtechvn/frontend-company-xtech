@@ -19,7 +19,7 @@ function getNewsCategory(page) {
     
     var requestObj = {
         page: page == null ? 1 : page,
-        size: size =  20 ,
+        size: size =  12 ,
         category_id: 2,
     }
     pagenum = requestObj.page;
