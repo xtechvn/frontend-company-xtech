@@ -1,0 +1,7 @@
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.exe
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\appsettings.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.deps.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.runtimeconfig.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.pdb
