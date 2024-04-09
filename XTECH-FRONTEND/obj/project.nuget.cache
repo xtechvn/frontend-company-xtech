@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "YQxDTUm3P7HC5fxnp8UHY2HKdTzr6ptyVtJ1fI+PVMm0Nkw0OjxCJ3+9PLs0vZwuyHBC078CyzwBUFv+0mPFMw==",
+  "dgSpecHash": "+tRqo5enPCKZOMZq9Pzz/qasbagTETrNAIvX88QKKwqSXHxrRRbixqK+GbCCDLQwsvV4QUZvYRTDYjwO/pKGlQ==",
   "success": true,
   "projectFilePath": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\XTECH-FRONTEND.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\cuong\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\cuong\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "C:\\Users\\cuong\\.nuget\\packages\\system.runtime.caching\\8.0.0\\system.runtime.caching.8.0.0.nupkg.sha512",
+    "C:\\Users\\cuong\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

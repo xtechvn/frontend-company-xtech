@@ -445,6 +445,18 @@
       "PackagePath": "staticwebassets\\images\\graphics\\img-gioithieu.png"
     },
     {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech02.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech02.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech2.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech2.png"
+    },
+    {
       "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-white.svg",
       "PackagePath": "staticwebassets\\images\\graphics\\logo-white.svg"
     },
@@ -671,6 +683,22 @@
     {
       "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\zebra_datepicker.min.js",
       "PackagePath": "staticwebassets\\js\\zebra_datepicker.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\Home.js",
+      "PackagePath": "staticwebassets\\modules\\Home.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\NewDetail.js",
+      "PackagePath": "staticwebassets\\modules\\NewDetail.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\News.js",
+      "PackagePath": "staticwebassets\\modules\\News.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\common.js",
+      "PackagePath": "staticwebassets\\modules\\common.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.XTECH-FRONTEND.Microsoft.AspNetCore.StaticWebAssets.props",

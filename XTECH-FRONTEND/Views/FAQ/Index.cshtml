@@ -1,0 +1,92 @@
+﻿<section class="header-main margin-banner clearfix">
+    <div class="container">
+        <div class="text-post">
+            <h1 class="title-page">Bạn cần trợ giúp?</h1>
+            <form class="form-search">
+                <button type="submit" class="icon_seach_web">
+                    <svg class="icon-svg">
+                        <use xlink:href="~/images/icons/icon.svg#search"></use>
+                    </svg>
+                </button>
+                <input type="search" class="input_search" name="keyword" autocomplete="off" value="" placeholder="Bạn cần giúp điều gì?">
+            </form>
+        </div>
+    </div>
+</section>
+<section class="container clearfix page-faq">
+    <div class="page-faq-menu">
+        <h2 class="title">Danh mục</h2>
+        <ul>
+            <li class="active"><a href="javascripts:;">Sapo pos</a></li>
+            <li><a href="javascripts:;">Sapo Web</a></li>
+            <li><a href="javascripts:;">Sapo omnichannel</a></li>
+            <li><a href="javascripts:;">Sapo fnb</a></li>
+        </ul>
+    </div>
+    <div class="page-faq-content">
+        <h2 class="title">Sapo Pos</h2>
+        <div id="accordion" class="mb24">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <a class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Tôi muốn kích hoạt tính năng trả hàng khác chi nhánh?
+                    </a>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>
+                            Để bật tính năng trả hàng khác chi nhánh bạn thao tác như sau:<br>
+                            Bước 1:&nbsp;Tại trang quản trị bạn chọn&nbsp;Cấu hình&nbsp;&gt;&nbsp;Cấu hình chung<br>
+                            Bước 2:&nbsp;Trên trang Cấu hình chung, bạn tìm đến&nbsp;Thông tin quản lý kho&nbsp;&gt; tích&nbsp;chọn&nbsp;Cho phép khách trả hàng tại chi nhánh khác chi nhánh mua&nbsp;&gt; chọn&nbsp;Lưu
+                        </p>
+                        <p><img src="~/images/graphics/faq.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <a class="btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Tôi muốn xem danh sách các lô sản phẩm đã nhập thì vào đâu?
+                    </a>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <a class="btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Tôi trả lời inbox nhưng hệ thống báo lỗi Không gửi được tin nhắn
+                    </a>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <a class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Giá đã bao gồm thuế và giá chưa bao gồm thuế khác nhau thế nào
+                    </a>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="javascripts:;" class="btn-default">Xem thêm</a>
+    </div>
+</section>
+@section scripts {
+    <script>
+        $('.menu-tab-button').removeClass('active')
+        $('.menu-tab-button-FAQ').addClass('active');
+    </script>
+}

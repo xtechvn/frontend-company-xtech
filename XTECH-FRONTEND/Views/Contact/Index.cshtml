@@ -1,0 +1,76 @@
+﻿<section class="header-main margin-banner clearfix">
+    <div class="container">
+        <div class="text-post">
+            <h1 class="title-page">Liên hệ</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascripts:;">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="container clearfix page-contact">
+
+    <div class="row mb20">
+        <div class="col-md-8 mb20">
+            <div class="form-default">
+                <div class="row min">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Họ và tên">
+                            <span class="error" style="display: none">Lỗi nhập thông tin*</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control" name="" rows="4" placeholder="Nhập nội dung" style="height: 224px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check mb16">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Chấp nhận điều khoản và chính sách
+                    </label>
+                </div>
+                <button type="submit" class="btn-default">Gửi lời nhắn</button>
+            </div>
+        </div>
+        <div class="col-md-4 mb20">
+            <div class="box-contact">
+                <h3 class="title">Liên hệ</h3>
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    Địa chỉ trụ sở chính: Tầng 11, tòa nhà Zen Tower, số 12 đường Khuất Duy Tiến, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam
+                </p>
+                <p>
+                    <i class="fa fa-phone"></i>
+                     @*039.938.3948*@
+                </p>
+                <p>
+                    <i class="fa fa-paper-plane"></i>
+                    info@x-tech.vn
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29794.401396029454!2d105.77725533955076!3d21.020672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1589798118416!5m2!1sen!2s" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+</section>
+@section scripts {
+    <script>
+        $('.menu-tab-button').removeClass('active')
+        $('.menu-tab-button-Contact').addClass('active');
+    </script>
+}

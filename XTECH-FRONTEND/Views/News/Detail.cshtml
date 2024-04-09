@@ -1,0 +1,93 @@
+﻿@using XTECH_FRONTEND.Models.News.GetDetail;
+@{
+    var data = (GetNewDetailResponse)ViewBag.data;
+}
+<section class="container clearfix">
+    <div class="flex">
+        <!-- body -->
+        <div class="box_stream mb30" id>
+            <div class="detail_tin bg-white radius-10 pd-24">
+                <div class="flex-date">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
+                    </ol>
+                    <div class="date">
+                        <svg class="icon-svg">
+                            <use xlink:href="/images/icons/icon.svg#date"></use>
+                        </svg>
+                        <span>August 31, 2024</span>
+                    </div>
+                </div>
+                @if (data != null)
+                {
+                    <h1 class="title_detail">@data.title</h1>
+                    @Html.Raw(@data.body)
+                }
+                <div class="social-flex">
+                    <span>Chia sẻ</span>
+                    <a href="javascripts:;"><i class="fa fa-facebook"></i></a>
+                    <a href="javascripts:;"><i class="fa fa-twitter"></i></a>
+                    <a href="javascripts:;"><i class="fa fa-youtube-play"></i></a>
+                    <a href="javascripts:;"><i class="fa fa-linkedin"></i></a>
+                    <a href="javascripts:;"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- TIn mới nhất -->
+        <div class="box_300 mb30">
+            <div class="bg-white radius-10 pd-24">
+                <h2 class="title-box">Mới nhất</h2>
+                <div class="list-small-article" id="Detai_news_new">
+                    <div class="article-itemt">
+                        <div class="article-thumb">
+                            <a class="thumb_img thumb_5x5" href="javascripts:;">
+                                <img src="/images/graphics/thumb1.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="title_new">
+                                <a href="javascripts:;">Mark Zuckerberg lại chê Apple Vision Pro</a>
+                            </h3>
+                            <div class="date">
+                                <svg class="icon-svg">
+                                    <use xlink:href="/images/icons/icon.svg#date"></use>
+                                </svg>
+                                <span>August 31, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIn liên quan -->
+    <h2 class="title-box">Tin liên quan</h2>
+    <div class="list-article grid grid__3" id="Related_news">
+        <div class="article-itemt full">
+            <div class="article-thumb">
+                <a class="thumb_img thumb_5x3" href="javascripts:;">
+                    <img src="/images/graphics/thumb1.jpg" alt="">
+                </a>
+            </div>
+            <div class="article-content">
+                <div class="date">
+                    <svg class="icon-svg">
+                        <use xlink:href="/images/icons/icon.svg#date"></use>
+                    </svg>
+                    <span>August 31, 2024</span>
+                </div>
+                <h3 class="title_new">
+                    <a href="javascripts:;">Mark Zuckerberg lại chê Apple Vision Pro</a>
+                </h3>
+                <p class="des">Mark Zuckerberg tin tưởng kính Quest 3 của Meta có những lợi thế đặc biệt khi so sánh với Vision Pro của Apple.</p>
+                <div><a class="read-more" href="javascripts:;">Đọc thêm</a></div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+@section scripts {
+    <script asp-append-version="true" src="~/modules/NewDetail.js"></script>
+}
