@@ -32,6 +32,7 @@ namespace XTECH_FRONTEND.Controllers
             if (result.status == 0)
             {
                 ViewBag.data = result.data;
+                ViewBag.id = id;
             }
             return View();
 

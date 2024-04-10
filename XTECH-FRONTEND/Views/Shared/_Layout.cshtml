@@ -14,13 +14,15 @@
         X-Technology
     </title> *@
     <title> @ViewData["Title"] </title>
+	 <link type="image/x-icon" href="http://be.x-tech.vn/uploads/images/logo-X-tech2.png"
+        rel="shortcut icon" />
     <link rel="stylesheet" href="~/css/fontAwesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/style.css" />
-  
-    <link type="image/x-icon" href="http://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
-        rel="shortcut icon" />
-   
+	
+	   <link rel="stylesheet" href="~/libs/jquery/juery-ui.css" media="all" />
+    <link rel="stylesheet" href="~/libs/toastr/toastr.min.css" media="all" />
+ 
     <!-- build:head2 -->
     <!-- build:head -->
 </head>
@@ -45,21 +47,21 @@
         </div>
 
     </section>
-    <section id="navbar" class="topnav">
+	<section id="navbar" class="topnav">
         <div class="container">
             <div class="flex flex_row">
                 <h1 class="logo" title="new-ca">
-                    <a href="/Home/Index"><img src="~/images/graphics/logo-X-tech.png" alt="" ></a>
+                    <a href="#"><img src="~/images/graphics/logo-X-tech3.png" alt=""></a>
                 </h1>
                 <div class="right_menu">
-                 
+                    <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
                     <div class="flex flex_right">
                         <div class="main-menu">
                             <ul class="nav">
-                                <li class="menu-tab-button menu-tab-button-Home active" data-tab-id="0">
-                                    <a href='/Home/Index'>Trang chủ</a>
+                                <li class="menu-tab-button-Home ">
+                                     <a href='/Home/Index'>Trang chủ</a>
                                 </li>
-                                <li class="menu-tab-button menu-tab-button-Pricing default"data-tab-id="1">
+                                <li class="menu-tab-button-Pricing default">
                                     <a href="/Pricing/Index">Giá cả</a>
                                     <span class="sub_menu">+</span>
                                     <div class="level2">
@@ -67,35 +69,35 @@
                                     
                                     </div>
                                 </li>
-                                <li class="menu-tab-button menu-tab-button-FAQ"data-tab-id="2">
-                                    <a href="/FAQ/Index">Dịch vụ</a>
+                                <li class="menu-tab-button-FAQ">
+                                     <a href="/FAQ/Index">Dịch vụ</a>
                                 </li>
-                                <li class="menu-tab-button menu-tab-button-new"data-tab-id="3">
+                                <li class="menu-tab-button-new">
                                     <a href="/News/Index">Tin tức</a>
                                 </li>
-                                <li class="menu-tab-button menu-tab-button-Contact"data-tab-id="4">
+                                <li class="menu-tab-button-Contact">
                                     <a href="/Contact/Index">Liên hệ</a>
                                 </li>
                                 <div class="search-btn">
                                     <a href="javarscript:;" class="auto_search_button">
                                         <svg class="icon-svg">
-                                            <use xlink:href="~/images/icons/icon.svg#search"></use>
+                                            <use xlink:href="images/icons/icon.svg#search"></use>
                                         </svg>
                                         <svg class="icon-svg close">
-                                            <use xlink:href="~/images/icons/icon.svg#close"></use>
+                                            <use xlink:href="images/icons/icon.svg#close"></use>
                                         </svg>
                                     </a>
                                     <div class="search-wrap">
                                         <input type="text" class="search-wrap-input" placeholder="Nhập nội dung...">
                                         <button type="submit" value="">
                                             <svg class="icon-svg">
-                                                <use xlink:href="~/images/icons/icon.svg#search"></use>
+                                                <use xlink:href="images/icons/icon.svg#search"></use>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="my-login">
-                                    <a class="btn-default" href="javascripts:;"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
+                                    <a class="btn-default" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
                                 </div>
                             </ul>
                         </div>
@@ -104,7 +106,7 @@
             </div>
         </div>
     </section>
-
+    
     @RenderBody()
     
 
@@ -117,7 +119,7 @@
             <div class="container">
                 <div class="grid grid__3">
                     <div class="col gap">
-					<a class="logo" href="javascripts:;" title="#"><img src="~/images/graphics/logo-X-tech2.png" style="width:39px;" alt=""><strong style="color:#332F3B;"> Công ty cổ phần công nghệ và giải pháp X-Tech</strong></a>
+					<a class="logo" href="javascripts:;" title="#"><img src="~/images/graphics/logo-X-tech.png" style="width: 150px;margin-bottom: 20px;" ><strong style="color:#332F3B;"> Công ty cổ phần công nghệ và giải pháp X-Tech</strong></a>
 						
                         
                         <div>
@@ -194,6 +196,14 @@
     <script type="text/javascript" src="~/js/aos.js"></script>
     <script type="text/javascript" src="~/js/common.js"></script>
     <script type="text/javascript" src="~/modules/common.js"></script>
+	
+	 <script src="~/libs/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/libs/jquery-validation/additional-methods.min.js"></script>
+	    <script type="text/javascript"src="~/libs/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="~/libs/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/libs/jquery/datepicker-vi.js"></script>
+    <script type="text/javascript" src="~/libs/toastr/toastr.min.js"></script>
+	<script type="text/javascript" src="~/libs/bootstrap.daterangepicker/daterangepicker.js"></script>
     <!-- build:script -->
     @await RenderSectionAsync("Scripts", required: false)
 

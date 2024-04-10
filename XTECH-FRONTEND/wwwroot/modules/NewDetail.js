@@ -52,6 +52,7 @@ function getRelatednews() {
         size: 3,
         category_id: 2,
     }
+    var id = $('#newid').val();
     var rows = "";
     $.ajax({
         url: "/News/GetlistNews",
@@ -61,10 +62,10 @@ function getRelatednews() {
             if (result.data != null) {
                 for (var i in result.data) {
                     var item = result.data[i];
-                    /* var date = TIME_UTILS.getDateStringRequest(item.publish_date)*/
+                    if (item.id != id)
                     rows += `<div class="article-itemt full">
                                 <div class="article-thumb">
-                                    <a class="thumb_img thumb_5x3" href="Detail">
+                                    <a class="thumb_img thumb_5x3" href="/Detail/${item.id}">
                                         <img src="${item.image_11}" alt="">
                                     </a>
                                 </div>
@@ -77,10 +78,10 @@ function getRelatednews() {
                                     </div>
 
                                     <h3 class="title_new" style=" width: 100%;">
-                                        <a href="Detail/${item.id}">${item.title}</a>
+                                        <a href="/Detail/${item.id}">${item.title}</a>
                                     </h3>
                                     <p style=" width: 100%;" class="des">${item.lead}</p>
-                                    <div><a class="read-more" href="Detail">Đọc thêm</a></div>
+                                    <div><a class="read-more" href="/Detail/${item.id}">Đọc thêm</a></div>
                                 </div>
                             </div>`
                 }
