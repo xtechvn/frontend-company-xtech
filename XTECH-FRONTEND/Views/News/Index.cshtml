@@ -12,7 +12,7 @@
         <div class="text-post">
             <h1 class="title-page">Tin tức</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="Detail">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
             </ol>
         </div>
@@ -21,23 +21,23 @@
 <section class="container clearfix">
     <div class="list-article grid grid__3 mb40">
         <div class="bui-top">
-            <div class="slide-article">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper" id="grid_data_slide">
-                        @if (data != null && data.Count > 0)
-                        {
-                            foreach (var item in data)
+            @if (data != null && data.Count > 0)
+            {
+                <div class="slide-article">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper" id="grid_data_slide">
+                            @foreach (var item in data)
                             {
                                 <div class="swiper-slide">
                                     <div class="article-itemt full">
                                         <div class="article-thumb">
-                                            <a class="thumb_img thumb_5x3" href="Detail/@item.id">
+                                            <a class="thumb_img thumb_5x3" href="/News/Detail/@item.id">
                                                 <img src="@item.image_11" alt="">
                                             </a>
                                         </div>
                                         <div class="article-content">
                                             <h3 class="title_new">
-                                                <a href="Detail/@item.id">@item.title</a>
+                                                <a href="/News/Detail/@item.id">@item.title</a>
                                             </h3>
                                             <div class="date">
                                                 <svg class="icon-svg">
@@ -49,21 +49,12 @@
                                     </div>
                                 </div>
                             }
-                        }
-                        else
-                        {
-                            <partial name="~/_Skeleton" />
-                            <partial name="~/_Skeleton" />
-                            <partial name="~/_Skeleton" />
-                        }
-
-
+                        </div>
                     </div>
-
+                    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
                 </div>
-                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
-                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
-            </div>
+            }
         </div>
         <div class="red-today">
             <h2 class="lbl">Đọc gì hôm nay</h2>
@@ -74,13 +65,13 @@
                     {
                         <div class="article-itemt">
                             <div class="article-thumb">
-                                <a class="thumb_img thumb_5x5" href="Detail/@item.id">
+                                <a class="thumb_img thumb_5x5" href="/News/Detail/@item.id">
                                     <img src="@item.image_11" alt="">
                                 </a>
                             </div>
                             <div class="article-content">
                                 <h3 class="title_new">
-                                    <a href="Detail/@item.id">@item.title</a>
+                                    <a href="/News/Detail/@item.id">@item.title</a>
                                 </h3>
                                 <div class="date">
                                     <svg class="icon-svg">
@@ -102,11 +93,11 @@
         <partial name="_Skeleton" />
         <partial name="_Skeleton" />
         <partial name="_Skeleton" />
-       
+
     </div>
     <div id="grid_data_pagination">
     </div>
- 
+
 </section>
 
 @section scripts {

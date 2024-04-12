@@ -37,7 +37,7 @@ function getNewsCategory(page) {
                   
                     rows += `<div class="article-itemt full">
                                 <div class="article-thumb">
-                                    <a class="thumb_img thumb_5x3" href="Detail/${item.id}">
+                                    <a class="thumb_img thumb_5x3" href="/News/Detail/${item.id}">
                                         <img src="${item.image_11}" alt="">
                                     </a>
                                 </div>
@@ -50,10 +50,10 @@ function getNewsCategory(page) {
                                     </div>
 
                                     <h3 class="title_new" style=" width: 100%;">
-                                        <a href="Detail/${item.id}">${item.title}</a>
+                                        <a href="/News/Detail/${item.id}">${item.title}</a>
                                     </h3>
                                     <p style=" width: 100%;" class="des">${item.lead}</p>
-                                    <div><a class="read-more" href="Detail/${item.id}">Đọc thêm</a></div>
+                                    <div><a class="read-more" href="/News/Detail/${item.id}">Đọc thêm</a></div>
                                 </div>
                             </div>`
                 }
@@ -76,7 +76,8 @@ function getNewsCategory(page) {
                                             </a>
                                         </li>
                                     </ul>`;
-              
+
+                if (pagination != "")
                 $('#grid_data_pagination').html(paginationHtml);
                 $('#grid_data_New').html(rows);
             }
@@ -106,13 +107,13 @@ function getNewsCategory2() {
                     rows += `<div class="swiper-slide ">
                                 <div class="article-itemt full">
                                     <div class="article-thumb">
-                                        <a class="thumb_img thumb_5x3" href="Detail/${item.id}">
+                                        <a class="thumb_img thumb_5x3" href="/News/Detail/${item.id}">
                                             <img src="${item.image_11}" alt="">
                                         </a>
                                     </div>
                                     <div class="article-content">
                                         <h3 class="title_new">
-                                              <a href="Detail/${item.id}">${item.title}</a>
+                                              <a href="/News/Detail/${item.id}">${item.title}</a>
                                         </h3>
                                         <div class="date">
                                             <svg class="icon-svg">
@@ -150,13 +151,13 @@ function getNewsCategory3() {
                     /* var date = TIME_UTILS.getDateStringRequest(item.publish_date)*/
                     rows += `<div class="article-itemt">
                                 <div class="article-thumb">
-                                    <a class="thumb_img thumb_5x5" href="Detail/${item.id}">
+                                    <a class="thumb_img thumb_5x5" href="/News/Detail/${item.id}">
                                         <img src="${item.image_11}" alt="">
                                     </a>
                                 </div>
                                 <div class="article-content">
                                     <h3 class="title_new">
-                                         <a href="Detail/${item.id}">${item.title}</a>
+                                         <a href="/News/Detail/${item.id}">${item.title}</a>
                                     </h3>
                                     <div class="date">
                                         <svg class="icon-svg">
