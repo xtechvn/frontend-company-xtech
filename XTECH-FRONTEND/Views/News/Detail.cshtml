@@ -22,8 +22,14 @@
                 </div>
                 @if (data != null)
                 {
-                    <h1 class="title_detail">@data.title</h1>
-                    @Html.Raw(@data.body)
+                    <div >
+                        <h1 class="title_detail">@data.title</h1>
+                        <p class="lead">
+                            @Html.Raw(data.lead)
+                        </p>
+                       @Html.Raw(data.body)
+                       @*  @Html.Raw(data.body) *@
+                    </div>
                 }
                 <div class="social-flex">
                     <span>Chia sẻ</span>
@@ -92,3 +98,4 @@
 @section scripts {
     <script asp-append-version="true" src="~/modules/NewDetail.js"></script>
 }
+

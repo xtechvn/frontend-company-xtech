@@ -70,8 +70,6 @@ namespace XTECH_FRONTEND.Services
                 };
                 var data = JsonConvert.SerializeObject(j_param);
                 var token = AdavigoHelper.Encode(data, PrivateKey);
-
-
                 var request = new[]
                 {
                     new KeyValuePair<string, string>("token", token)

@@ -23,7 +23,7 @@ function getNewsCategory() {
                     rows += ` <div class="article-itemt">
                                     <div class="article-thumb">
                                         <a class="thumb_img thumb_5x5" href="/News/Detail/${item.id}">
-                                            <img src="${item.image_11}" alt="">
+                                            <img src="${item.image_169}" alt="">
                                         </a>
                                     </div>
                                     <div class="article-content">
@@ -67,7 +67,7 @@ function getRelatednews() {
                     rows += `<div class="article-itemt full">
                                 <div class="article-thumb">
                                     <a class="thumb_img thumb_5x3" href="/News/Detail/${item.id}">
-                                        <img src="${item.image_11}" alt="">
+                                        <img src="${item.image_169}" alt="">
                                     </a>
                                 </div>
                                 <div class="article-content">
