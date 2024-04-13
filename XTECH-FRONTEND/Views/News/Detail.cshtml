@@ -98,4 +98,9 @@
 @section scripts {
     <script asp-append-version="true" src="~/modules/NewDetail.js"></script>
 }
-
+@section HeadMeta
+{
+    <meta id="metasocial-image" property="og:image" itemprop="thumbnailUrl" content="@data.image_169">
+    <meta id="metasocial-description"  property="og:description" content="@data.lead.Trim()">
+    <meta id="metasocial-description"  property="og:title" content="@data.title.Trim()" />
+}
