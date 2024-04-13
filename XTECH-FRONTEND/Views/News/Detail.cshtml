@@ -1,5 +1,7 @@
 ﻿@using XTECH_FRONTEND.Models.News.GetDetail;
 @{
+    ViewData["Title"] = "Chi tiết tin tức";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
     var data = (GetNewDetailResponse)ViewBag.data;
 }
 <input value="@ViewBag.id" id="newid" style="display:none;" />
