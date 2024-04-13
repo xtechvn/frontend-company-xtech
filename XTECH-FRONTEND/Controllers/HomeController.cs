@@ -5,8 +5,7 @@ using System.Xml.Linq;
 namespace XTECH_FRONTEND.Controllers
 {
     public class HomeController : Controller
-    {
-        // 
+    {       
         // GET: /home/
         public IActionResult Index()
         {
@@ -16,11 +15,7 @@ namespace XTECH_FRONTEND.Controllers
         public string Welcome(string a,int  b=1)
         {
             return HtmlEncoder.Default.Encode($"Hello {a}, NumTimes is: {b}");
-        }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        }       
 
     }
 }
