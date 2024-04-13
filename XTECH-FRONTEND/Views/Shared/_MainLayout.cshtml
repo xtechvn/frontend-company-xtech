@@ -1,17 +1,31 @@
 ﻿
 <!DOCTYPE html>
-<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="description" content="Khách sạn, khách sạn 4 sao, khách sạn 5 sao, dịch vụ 24/7, dễ dàng đặt phòng, đặt phòng sát ngày giá tốt, phòng khách sạn giá tốt, vé máy bay, nhà hàng">
+    <meta name="keywords" content="Khách sạn, khách sạn 4 sao, khách sạn 5 sao, dịch vụ 24/7, dễ dàng đặt phòng, đặt phòng sát ngày giá tốt, phòng khách sạn giá tốt, vé máy bay, nhà hàng">
+    <meta name="facebook-domain-verification" content="1qclt4wrkj17wai32sucu8jwon0tzg" />
+    <meta name="google-site-verification" content="tL3QNF52pRbSx137o_RowJcIqG7XWXsS9tGxU6JUY4U" />
 
-@*     <meta name="facebook-domain-verification" content="1qclt4wrkj17wai32sucu8jwon0tzg" />
-    <meta name="google-site-verification" content="tL3QNF52pRbSx137o_RowJcIqG7XWXsS9tGxU6JUY4U" /> *@
-
+    @if (IsSectionDefined("HeadMeta"))
+    {
         @RenderSection("HeadMeta")
+    }
+    else
+    {
+        <meta roperty="og:image" content="https://adavigo.com/images/icons/logo.png">
+        <meta property="og:description" content="Khách sạn, khách sạn 4 sao, khách sạn 5 sao, dịch vụ 24/7, dễ dàng đặt phòng, đặt phòng sát ngày giá tốt, phòng khách sạn giá tốt, vé máy bay, nhà hàng">
+        <meta property="og:title" content="@ViewData["Title"]" />
+    }
+
+    <title>@ViewData["Title"]</title>
 
     <meta id="metasocial-social" property="og:title" content="@ViewData["Title"]" />
     <link rel="stylesheet" href="~/css/fontAwesome/css/font-awesome.min.css" />
@@ -77,9 +91,9 @@
                                 <li class="menu-tab-button-aboutus">
                                     <a href="/aboutus">Về chúng tôi</a>
                                 </li>
-                              @*   <li class="menu-tab-button-Contact">
+                                <li class="menu-tab-button-Contact">
                                     <a href="/contact">Liên hệ</a>
-                                </li> *@
+                                </li>
                                 @*
                                 <div class="search-btn">
                                 <a href="javarscript:;" class="auto_search_button">
