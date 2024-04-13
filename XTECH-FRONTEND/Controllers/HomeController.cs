@@ -10,7 +10,7 @@ namespace XTECH_FRONTEND.Controllers
         // GET: /home/
         public IActionResult Index()
         {
-            return
+           return View();
             //return "This is my default action Index";
         }
         //home/welcome?a=hello&b=2
