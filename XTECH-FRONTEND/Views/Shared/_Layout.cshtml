@@ -8,18 +8,29 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="" />
 
-    <meta name="description" content="Dịch vụ Thiết kế Website - Thiết kế web X-Tech">
-    <meta name="keywords" content="Dịch vụ Thiết kế Website - Thiết kế web X-Tech">
+    <meta name="description" content="Thiết kế web giá tốt| X-tech.vn">
+    <meta name="keywords" content="Thiết kế web giá tốt| X-tech.vn">
     <meta name="facebook-domain-verification" content="1qclt4wrkj17wai32sucu8jwon0tzg" />
     <meta name="google-site-verification" content="tL3QNF52pRbSx137o_RowJcIqG7XWXsS9tGxU6JUY4U" />
-    <meta id="metasocial-image" property="og:image" itemprop="thumbnailUrl" content="http://be.x-tech.vn/uploads/images/logo-X-tech2.png">
-    <meta id="metasocial-description" property="og:description" content="Dịch vụ Thiết kế Website - Thiết kế web X-Tech">
+
+    @if (IsSectionDefined("HeadMeta"))
+    {
+        @RenderSection("HeadMeta")
+    }
+    else
+    {
+        <meta roperty="og:image" content="http://be.x-tech.vn/uploads/images/logo-X-tech2.png">
+        <meta property="og:description" content="Dịch vụ Thiết kế Website - Thiết kế web X-Tech">
+        <meta property="og:title" content="@ViewData["Title"]" />
+    }
+
+    <title>@ViewData["Title"]</title>
+    <link type="image/x-icon"
+          href="http://be.x-tech.vn/uploads/images/logo-X-tech2.png"
+          rel="shortcut icon" />
     <meta id="metasocial-social" property="og:title" content="@ViewData["Title"]" />
 
    
-    
-    <link type="image/x-icon" href="http://be.x-tech.vn/uploads/images/logo-X-tech2.png"
-          rel="shortcut icon" />
     <link rel="stylesheet" href="~/css/fontAwesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/style.css" />
