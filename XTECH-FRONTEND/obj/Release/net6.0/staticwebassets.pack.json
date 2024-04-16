@@ -1,0 +1,721 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\XTECH-FRONTEND.bundle.scp.css",
+      "PackagePath": "staticwebassets\\XTECH-FRONTEND.bundle.scp.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\detail.css",
+      "PackagePath": "staticwebassets\\css\\detail.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fontAwesome\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\css\\fontAwesome\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.woff2",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Bold.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.woff2",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Medium.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.woff2",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Regular.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.woff2",
+      "PackagePath": "staticwebassets\\css\\fonts\\SFProDisplay\\SFProDisplay-Semibold.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\icomoon.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\icomoon.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\icomoon.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\icomoon.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\icomoon.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\icomoon.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\icomoon.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\icomoon.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont.css",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\iconfont.css",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\iconfont.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\iconfont.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\iconfont.eot"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\iconfont.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\iconfont.ttf"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\iconfont.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\iconfont.woff"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\iconfont.woff2",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\iconfont.woff2"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\fonts\\iconfont\\index.html",
+      "PackagePath": "staticwebassets\\css\\fonts\\iconfont\\index.html"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-baogia.jpg",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-baogia.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-feedback.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-feedback.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-feedback0.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-feedback0.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-feedback2.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-feedback2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-head-main.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-head-main.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-info1.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-info1.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\bg-info2.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\bg-info2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\c-g.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\c-g.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\cricle1.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\cricle1.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\graphics\\cricle2.png",
+      "PackagePath": "staticwebassets\\css\\images\\graphics\\cricle2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\icons\\loading.gif",
+      "PackagePath": "staticwebassets\\css\\images\\icons\\loading.gif"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\lg\\loading.gif",
+      "PackagePath": "staticwebassets\\css\\images\\lg\\loading.gif"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\lg\\video-play.png",
+      "PackagePath": "staticwebassets\\css\\images\\lg\\video-play.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\lg\\vimeo-play.png",
+      "PackagePath": "staticwebassets\\css\\images\\lg\\vimeo-play.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\images\\lg\\youtube-play.png",
+      "PackagePath": "staticwebassets\\css\\images\\lg\\youtube-play.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\maps\\demo.css.map",
+      "PackagePath": "staticwebassets\\css\\maps\\demo.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\maps\\detail.css.map",
+      "PackagePath": "staticwebassets\\css\\maps\\detail.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\maps\\style.css.map",
+      "PackagePath": "staticwebassets\\css\\maps\\style.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_animation.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_animation.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_aos.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_aos.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_common.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_common.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_datepicker.min.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_datepicker.min.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_element.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_element.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_font.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_font.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_footer.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_footer.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_header.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_header.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_modal.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_modal.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_placeholder.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_placeholder.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_reset.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_reset.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_responsive.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_responsive.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_scrollbar.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_scrollbar.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_slider-range.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_slider-range.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_swiper.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_swiper.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\_var.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_var.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\detail.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\detail.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\scss\\style.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\style.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\css\\style.min.css",
+      "PackagePath": "staticwebassets\\css\\style.min.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\404.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\404.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\ava.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\ava.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\banner1.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\banner1.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\banner2.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\banner2.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\capcha.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\capcha.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\detail1.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\detail1.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\detail2.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\detail2.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac1.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac1.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac10.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac10.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac11.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac11.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac12.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac12.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac13.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac13.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac2.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac3.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac3.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac4.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac4.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac5.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac5.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac6.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac6.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac7.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac7.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac8.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac8.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\doitac\\doitac9.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\doitac\\doitac9.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\email.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\email.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\faq.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\faq.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\high-quality.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\high-quality.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\high-quality2.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\high-quality2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\image1.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\image1.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\image2.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\image2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\image3.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\image3.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\image4.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\image4.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\img-giaiphap.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\img-giaiphap.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\img-gioithieu.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\img-gioithieu.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech02.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech02.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-X-tech2.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-X-tech2.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo-white.svg",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo-white.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\logo.svg",
+      "PackagePath": "staticwebassets\\images\\graphics\\logo.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\success.png",
+      "PackagePath": "staticwebassets\\images\\graphics\\success.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb1.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb1.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb2.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb2.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb3.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb3.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb4.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb4.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb5.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb5.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\thumb6.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\thumb6.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\graphics\\video.jpg",
+      "PackagePath": "staticwebassets\\images\\graphics\\video.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-code.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-code.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-doanket.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-doanket.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-git.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-git.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-khatvong.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-khatvong.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-large.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-large.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-sangtao.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-sangtao.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-security.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-security.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon-trachnghiem.png",
+      "PackagePath": "staticwebassets\\images\\icons\\icon-trachnghiem.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\icon.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\icon.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\icons\\sprite.symbol.html",
+      "PackagePath": "staticwebassets\\images\\icons\\sprite.symbol.html"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\Analytics.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\Analytics.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\Development.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\Development.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\Service.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\Service.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\cancel.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\cancel.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\checkmark.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\checkmark.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\close.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\close.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\cloud.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\cloud.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\data.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\data.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\date.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\date.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\group.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\group.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\info.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\info.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\lang.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\lang.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\person.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\person.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\search.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\search.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\seo.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\seo.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\elements\\source.svg",
+      "PackagePath": "staticwebassets\\images\\symbols\\elements\\source.svg"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\iconfont-src\\iconfont.css",
+      "PackagePath": "staticwebassets\\images\\symbols\\iconfont-src\\iconfont.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\images\\symbols\\iconfont-src\\index.html",
+      "PackagePath": "staticwebassets\\images\\symbols\\iconfont-src\\index.html"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\aos.js",
+      "PackagePath": "staticwebassets\\js\\aos.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\common.js",
+      "PackagePath": "staticwebassets\\js\\common.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\daterangepicker.min.js",
+      "PackagePath": "staticwebassets\\js\\daterangepicker.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\jquery-2.1.4.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-2.1.4.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\jquery.magnific-popup.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.magnific-popup.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\jquery.scrollbar.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.scrollbar.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\lightgallery-all.min.js",
+      "PackagePath": "staticwebassets\\js\\lightgallery-all.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\moment.min.js",
+      "PackagePath": "staticwebassets\\js\\moment.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\numscroller-1.0.js",
+      "PackagePath": "staticwebassets\\js\\numscroller-1.0.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\range-holder.js",
+      "PackagePath": "staticwebassets\\js\\range-holder.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\slider-range.js",
+      "PackagePath": "staticwebassets\\js\\slider-range.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\stickyfill.min.js",
+      "PackagePath": "staticwebassets\\js\\stickyfill.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\svgxuse.js",
+      "PackagePath": "staticwebassets\\js\\svgxuse.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\swiper.min.js",
+      "PackagePath": "staticwebassets\\js\\swiper.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\js\\zebra_datepicker.min.js",
+      "PackagePath": "staticwebassets\\js\\zebra_datepicker.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\Home.js",
+      "PackagePath": "staticwebassets\\modules\\Home.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\NewDetail.js",
+      "PackagePath": "staticwebassets\\modules\\NewDetail.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\News.js",
+      "PackagePath": "staticwebassets\\modules\\News.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\XTECH\\FE-GIT\\XTECH-FRONTEND\\wwwroot\\modules\\common.js",
+      "PackagePath": "staticwebassets\\modules\\common.js"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.XTECH-FRONTEND.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.XTECH-FRONTEND.props",
+      "PackagePath": "build\\XTECH-FRONTEND.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.XTECH-FRONTEND.props",
+      "PackagePath": "buildMultiTargeting\\XTECH-FRONTEND.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.XTECH-FRONTEND.props",
+      "PackagePath": "buildTransitive\\XTECH-FRONTEND.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

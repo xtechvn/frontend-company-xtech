@@ -1,0 +1,12 @@
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.exe
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\appsettings.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.deps.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.runtimeconfig.json
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\XTECH-FRONTEND.pdb
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\System.Runtime.Caching.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
+F:\PROJECT\XTECH\FE-GIT\XTECH-FRONTEND\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Runtime.Caching.dll

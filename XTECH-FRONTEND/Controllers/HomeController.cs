@@ -5,23 +5,17 @@ using System.Xml.Linq;
 namespace XTECH_FRONTEND.Controllers
 {
     public class HomeController : Controller
-    {
-        // 
+    {       
         // GET: /home/
         public IActionResult Index()
         {
-            return View();
-            //return "This is my default action Index";
+           return View();           
         }
         //home/welcome?a=hello&b=2
         public string Welcome(string a,int  b=1)
         {
             return HtmlEncoder.Default.Encode($"Hello {a}, NumTimes is: {b}");
-        }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        }       
 
     }
 }
