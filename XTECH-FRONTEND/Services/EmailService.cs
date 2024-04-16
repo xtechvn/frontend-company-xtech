@@ -45,7 +45,7 @@ namespace XTECH_FRONTEND.Services
                         break;
                     case 2:
                         {
-                           
+                            message.To.Add(model.Email);
                         }
                         break;
                 }
