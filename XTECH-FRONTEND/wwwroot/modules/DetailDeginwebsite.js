@@ -1,5 +1,9 @@
 ﻿$(document).ready(function () {
 
+    $("body").on("click", ".send_email", function () {
+        SendEmail();
+
+    });
     $("body").on("click", "#btn_pricing1", function () {
         $('#btn_pricing1').addClass('active')
         $('#btn_pricing2').removeClass('active')
@@ -40,3 +44,21 @@
         doCalculations(menuLinkActive);
     });
 });
+function SendEmail() {
+    var model = {
+        Email: $('#Email').val(),
+        type: 2,
+    };
+    $.ajax({
+        url: "/Contact/SendEmail",
+        type: "Post",
+        data: { model },
+        success: function (result) {
+            if (result.status == 0) {
+                _msgalert.success(result.smg);
+            } else {
+                _msgalert.error(result.smg);
+            }
+        }
+    });
+}

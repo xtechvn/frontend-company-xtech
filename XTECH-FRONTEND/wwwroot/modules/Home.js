@@ -2,10 +2,10 @@
 
     getRelatednews();
 
-    openview();
-    setTimeout(function () {
-        openview();
-    }, 500);
+    $("body").on("click", ".send_email", function () {
+        SendEmail();
+
+    });
 });
 function getRelatednews() {
     var requestObj = {
@@ -53,15 +53,25 @@ function getRelatednews() {
         }
     });
 }
-function openview() {
-    
-    $("body").on("click", ".link", function () {
-        var title = "Hotline tư vấn";
-        var url = "/contact"
-        let param = {
-            id: 0
-        };
-        _magnific.OpenSmallPopup(title, url, param);
 
+function SendEmail() {
+    var model = {
+        Email: $('#Email').val(),
+        Name: null,
+        Title: null,
+        Note: null,
+        type: 2,
+    };
+    $.ajax({
+        url: "/Contact/SendEmail",
+        type: "Post",
+        data: { model},
+        success: function (result) {
+            if (result.status == 0) {
+                _msgalert.success(result.smg);
+            } else {
+                _msgalert.error(result.smg);
+            }
+        }
     });
 }

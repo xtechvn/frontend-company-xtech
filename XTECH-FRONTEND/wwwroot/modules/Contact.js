@@ -22,6 +22,7 @@
             Name: $('#Name').val(),
             Title: $('#Title').val(),
             Note: $('#Note').val(),
+            type:1,
         };
         $.ajax({
             url: "/Contact/SendEmail",

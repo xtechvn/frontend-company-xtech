@@ -22,7 +22,16 @@ namespace XTECH_FRONTEND.Controllers
         {
             try
             {
+                //Regex regexemail = new Regex(@"^(\s*)([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)(\s*)|((\.(\w){2,})+)(\s*)$");
+                //if (!regexemail.IsMatch(model.Email))
+                //{
+                //    return Ok(new
+                //    {
+                //        stt_code = (int)ResponseType.ERROR,
+                //        msg = "Email nhập không đúng định dạng",
 
+                //    });
+                //}
                 EmailService emailService = new EmailService(_configuration);
                 var SendEmail = emailService.sendMail(model);
                 if(SendEmail==true)

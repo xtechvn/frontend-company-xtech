@@ -19,7 +19,7 @@ namespace XTECH_FRONTEND.Services
             {
                 MailMessage message = new MailMessage();
                 if (string.IsNullOrEmpty(model.Title))
-                    model.Title = "Thông tin liên hệ " ;
+                    model.Title = "Cảm ơn bạn đã quan tâm đến WEBSITE chúng tôi";
                 message.Subject = model.Title;
 
                 //config send email
@@ -36,7 +36,20 @@ namespace XTECH_FRONTEND.Services
                     
                 message.IsBodyHtml = true;
                 message.From = new MailAddress(from_mail);
-                message.Body = GetTemplate(model);
+                switch (model.type)
+                {
+                    case 1:
+                        {
+                            message.Body = GetTemplate(model);
+                        }
+                        break;
+                    case 2:
+                        {
+                           
+                        }
+                        break;
+                }
+                
             
                 SmtpClient smtp = new SmtpClient(host, Convert.ToInt32(port));
                 smtp.EnableSsl = true;

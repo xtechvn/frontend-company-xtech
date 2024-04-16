@@ -15,28 +15,36 @@ if (!app.Environment.IsDevelopment())
 }
 app.MapControllerRoute(
     name: "News",
-    pattern: "/news",
+    pattern: "/tin-tuc",
     defaults: new { controller = "News", action = "Index" });
 app.MapControllerRoute(
+    name: "News",
+    pattern: "/tin-tuc/chi-tiet-bai-viet/{id}",
+    defaults: new { controller = "News", action = "Detail" });
+app.MapControllerRoute(
     name: "AboutUs",
-    pattern: "/aboutus",
+    pattern: "/ve-chung-toi",
     defaults: new { controller = "AboutUs", action = "Index" });
 app.MapControllerRoute(
     name: "pricing",
-    pattern: "/pricing",
+    pattern: "/bang-gia-thiet-ke-website",
     defaults: new { controller = "Pricing", action = "Index" });
 app.MapControllerRoute(
     name: "home",
-    pattern: "/home",
+    pattern: "/trang-chu",
     defaults: new { controller = "Home", action = "Index" });
 app.MapControllerRoute(
     name: "Contact",
-    pattern: "/contact",
+    pattern: "/lien-he",
     defaults: new { controller = "Contact", action = "Index" });
 app.MapControllerRoute(
     name: "faq",
-    pattern: "/faq",
+    pattern: "/dich-vu",
     defaults: new { controller = "FAQ", action = "Index" });
+app.MapControllerRoute(
+    name: "faq",
+    pattern: "/dich-vu/chi-tiet-du-an",
+    defaults: new { controller = "FAQ", action = "DetailDeginwebsite" });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
