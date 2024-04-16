@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using XTECH_FRONTEND.Services;
 
 namespace XTECH_FRONTEND.Controllers
 {
@@ -7,6 +8,18 @@ namespace XTECH_FRONTEND.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public async Task<IActionResult> DetailDeginwebsite()
+        {
+            
+            return View();
+
+        }
+        public async Task<IActionResult> DetailVPS()
+        {
+
+            return View();
+
         }
     }
 }

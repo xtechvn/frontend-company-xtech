@@ -1,6 +1,11 @@
 ﻿$(document).ready(function () {
 
-getRelatednews();
+    getRelatednews();
+
+    openview();
+    setTimeout(function () {
+        openview();
+    }, 500);
 });
 function getRelatednews() {
     var requestObj = {
@@ -46,5 +51,17 @@ function getRelatednews() {
             /* $('#selectPaggingOptions').val(input.PageSize).attr("selected", "selected");*/
 
         }
+    });
+}
+function openview() {
+    
+    $("body").on("click", ".link", function () {
+        var title = "Hotline tư vấn";
+        var url = "/contact"
+        let param = {
+            id: 0
+        };
+        _magnific.OpenSmallPopup(title, url, param);
+
     });
 }

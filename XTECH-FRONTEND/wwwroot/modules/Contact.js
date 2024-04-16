@@ -30,6 +30,7 @@
             success: function (result) {
                 if (result.status == 0) {
                     _msgalert.success(result.smg);
+                    document.getElementById("form_send_EmailCT").reset();
 
                 } else {
                     _msgalert.error(result.smg);
