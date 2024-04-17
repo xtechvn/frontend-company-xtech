@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
 using XTECH_FRONTEND.Models.Contact;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
@@ -22,16 +23,30 @@ namespace XTECH_FRONTEND.Controllers
         {
             try
             {
-                //Regex regexemail = new Regex(@"^(\s*)([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)(\s*)|((\.(\w){2,})+)(\s*)$");
-                //if (!regexemail.IsMatch(model.Email))
-                //{
-                //    return Ok(new
-                //    {
-                //        stt_code = (int)ResponseType.ERROR,
-                //        msg = "Email nhập không đúng định dạng",
+                if (model.Email == null)
+                {
+                    return Ok(new
+                    {
+                        status = (int)ResponseType.ERROR,
+                        msg = "Email không được bỏ trống",
 
-                //    });
-                //}
+                    });
+                }
+                // Pattern regex để bắt định dạng email
+                string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+
+                // Kiểm tra xem email có khớp với pattern không
+                //bool isValidEmail = Regex.IsMatch(email, pattern);
+                if (!Regex.IsMatch(model.Email, pattern))
+                {
+                    return Ok(new
+                    {
+                        status = (int)ResponseType.ERROR,
+                        msg = "Email nhập không đúng định dạng",
+
+                    });
+                }
+              
                 EmailService emailService = new EmailService(_configuration);
                 var SendEmail = emailService.sendMail(model);
                 if(SendEmail==true)
@@ -39,7 +54,7 @@ namespace XTECH_FRONTEND.Controllers
                     return Ok(new
                     {
                         status = (int)ResponseType.SUCCESS,
-                        smg = "Gửi thành công"
+                        msg = "Gửi thành công"
                     });
                 }
                 else
@@ -47,7 +62,7 @@ namespace XTECH_FRONTEND.Controllers
                     return Ok(new
                     {
                         status = (int)ResponseType.ERROR,
-                        smg = "Gửi không thành công"
+                        msg = "Gửi không thành công"
                     });
                 }
 

@@ -30,11 +30,11 @@
             data: { model },
             success: function (result) {
                 if (result.status == 0) {
-                    _msgalert.success(result.smg);
+                    _msgalert.success(result.msg);
                     document.getElementById("form_send_EmailCT").reset();
 
                 } else {
-                    _msgalert.error(result.smg);
+                    _msgalert.error(result.msg);
                 }
             }
         });
