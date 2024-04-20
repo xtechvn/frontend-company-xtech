@@ -80,7 +80,9 @@
 .thumb_5x4 {
     padding-bottom: 92%;
 }
-
+.thumb_2x3{
+    padding-bottom: 150%;
+}
 .thumb_img.thumb_5x5,
 .thumb_1x1 {
     padding-bottom: 100%;
@@ -301,7 +303,15 @@ input {
     background: #F2F2F5;
     padding: 80px 0;
 }
-
+.bg-success {
+    background-color: #20c997 !important;
+}
+.bg-danger {
+    background: #ff2929 !important;
+}
+.bg-info {
+    background: #62e1fb !important;
+}
 .padding_16 {
     padding: 16px;
 }
@@ -383,15 +393,16 @@ input {
 
     &.full {
         width: 100%;
-        padding: 0 5px;
+        padding: 10px 5px;
     }
 
     &.min {
         padding: 8px 20px;
-        font-size: 13px;
+        font-size: 14px;
     }
     &.bg-white{
-        color: #00234B;
+        color: #2F80ED;
+        border: 1px solid #2F80ED;
     }
     &.free{
         background: #27AE60;
@@ -1094,6 +1105,7 @@ input {
     border-bottom: 0!important;
     color:rgba(178, 179, 241, 1);
     font-size: 13px;
+    vertical-align: text-bottom;
     .tooltip-content {
         position: absolute;
         bottom: 50px;

@@ -12,5 +12,8 @@ namespace XTECH_FRONTEND.Models.News.GetCategory
         public string image_path { get; set; }
         public string url_path { get; set; }
         public int order_no { get; set; }
+        public int parentid { get; set; }
+        public List<GetCategoryResponse> ListCategoryResponse { get; set; }
+        
     }
 }
