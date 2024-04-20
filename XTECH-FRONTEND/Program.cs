@@ -19,7 +19,7 @@ app.MapControllerRoute(
     defaults: new { controller = "News", action = "Index" });
 app.MapControllerRoute(
     name: "News",
-    pattern: "/tin-tuc/chi-tiet-bai-viet/{id}",
+    pattern: "/tin-tuc/{id}",
     defaults: new { controller = "News", action = "Detail" });
 app.MapControllerRoute(
     name: "AboutUs",
@@ -45,6 +45,10 @@ app.MapControllerRoute(
     name: "faq",
     pattern: "/dich-vu/chi-tiet-du-an",
     defaults: new { controller = "FAQ", action = "DetailDeginwebsite" });
+app.MapControllerRoute(
+    name: "faq",
+    pattern: "/dich-vu/vps",
+    defaults: new { controller = "FAQ", action = "DetailVPS" });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"

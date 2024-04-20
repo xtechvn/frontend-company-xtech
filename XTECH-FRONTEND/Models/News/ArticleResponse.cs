@@ -18,5 +18,7 @@ namespace XTECH_FRONTEND.Models.News
         public string image { get; set; }
         public DateTime publish_date { get; set; }
         public int? position { get; set; }
+        public string directlink { get; set; }
+
     }
 }

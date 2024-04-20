@@ -7,7 +7,7 @@ function getNewsCategory() {
     var requestObj = {
         page: 1,
         size: 5,
-        category_id: 2,
+        category_id: 1004,
     }
     var id = $('#newid').val();
     var rows = "";
@@ -22,13 +22,13 @@ function getNewsCategory() {
                     if (item.id != id)
                     rows += ` <div class="article-itemt">
                                     <div class="article-thumb">
-                                        <a class="thumb_img thumb_5x5" href="/tin-tuc/chi-tiet-bai-viet/${item.id}">
+                                        <a class="thumb_img thumb_5x5" href="/tin-tuc/${item.id}">
                                             <img src="${item.image_169}" alt="">
                                         </a>
                                     </div>
                                     <div class="article-content">
                                         <h3 class="title_new">
-                                             <a href="/tin-tuc/chi-tiet-bai-viet/${item.id}">${item.title}</a>
+                                             <a href="/tin-tuc/${item.id}">${item.title}</a>
                                         </h3>
                                         <div class="date">
                                             <svg class="icon-svg">
@@ -51,7 +51,7 @@ function getRelatednews() {
     var requestObj = {
         page: 1,
         size: 3,
-        category_id: 2,
+        category_id: 1004,
     }
     var id = $('#newid').val();
     var rows = "";
@@ -66,7 +66,7 @@ function getRelatednews() {
                     if (item.id != id)
                     rows += `<div class="article-itemt full">
                                 <div class="article-thumb">
-                                    <a class="thumb_img thumb_5x3" href="/tin-tuc/chi-tiet-bai-viet/${item.id}">
+                                    <a class="thumb_img thumb_5x3" href="/tin-tuc/${item.id}">
                                         <img src="${item.image_169}" alt="">
                                     </a>
                                 </div>
@@ -79,10 +79,10 @@ function getRelatednews() {
                                     </div>
 
                                     <h3 class="title_new" style=" width: 100%;">
-                                        <a href="/tin-tuc/chi-tiet-bai-viet/${item.id}">${item.title}</a>
+                                        <a href="/tin-tuc/${item.id}">${item.title}</a>
                                     </h3>
                                     <p style=" width: 100%;" class="des">${item.lead}</p>
-                                    <div><a class="read-more" href="/tin-tuc/chi-tiet-bai-viet/${item.id}">Đọc thêm</a></div>
+                                    <div><a class="read-more" href="/tin-tuc/${item.id}">Đọc thêm</a></div>
                                 </div>
                             </div>`
                 }

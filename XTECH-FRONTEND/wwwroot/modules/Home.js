@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
 
+    $('.menu-tab-button-trang-chu').addClass('active');
     getRelatednews();
 
     $("body").on("click", ".send_email", function () {
@@ -11,7 +12,7 @@ function getRelatednews() {
     var requestObj = {
         page: 1,
         size: 3,
-        category_id: 2,
+        category_id: 1004,
     }
     var rows = "";
     $.ajax({
@@ -25,7 +26,7 @@ function getRelatednews() {
                     /* var date = TIME_UTILS.getDateStringRequest(item.publish_date)*/
                     rows += `<div class="article-itemt full">
                                 <div class="article-thumb">
-                                    <a class="thumb_img thumb_5x3" href="/News/Detail/${item.id}">
+                                    <a class="thumb_img thumb_5x3" href="/tin-tuc/${item.id}">
                                         <img src="${item.image_169}" alt="">
                                     </a>
                                 </div>
@@ -38,10 +39,10 @@ function getRelatednews() {
                                     </div>
 
                                     <h3 class="title_new" style=" width: 100%;">
-                                        <a href="/News/Detail/${item.id}">${item.title}</a>
+                                        <a href="/tin-tuc/${item.id}">${item.title}</a>
                                     </h3>
                                     <p style=" width: 100%;" class="des">${item.lead}</p>
-                                    <div><a class="read-more" href="/News/Detail/${item.id}">Đọc thêm</a></div>
+                                    <div><a class="read-more" href="/tin-tuc/${item.id}">Đọc thêm</a></div>
                                 </div>
                             </div>`
                 }

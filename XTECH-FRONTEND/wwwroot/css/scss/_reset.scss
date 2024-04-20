@@ -36,7 +36,23 @@ ul,
 li {
     list-style-type: none;
 }
+ul.dotted {
+    padding-left: 20px;
 
+    li {
+        margin-bottom: 5px;
+        list-style-type: disc;
+    }
+}
+
+ol.dotted {
+    padding-left: 20px;
+
+    li {
+        margin-bottom: 5px;
+        list-style-type: inherit;
+    }
+}
 
 
 .icon-svg {

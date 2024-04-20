@@ -42,90 +42,8 @@
 </head>
 
 <body class="homepage">
-    <section class="top-header">
-        <div class="container">
-            <div class="flex des">
-                <a href="javascripts:;"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;info@x-tech.vn</a>
-                <!-- <a href="javascripts:;"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Thứ 2 - CN: 8.00 sáng - 7.00 chiều</a>-->
-            </div>
-            <div class="social">
-                <div class="share-mobile">
-                    Chia sẻ: <a href="javascripts:;" class="fa fa-share-alt"></a>
-                </div>
-                <a href="javascripts:;"><i class="fa fa-facebook"></i></a>
-                <a href="javascripts:;"><i class="fa fa-twitter"></i></a>
-                <a href="javascripts:;"><i class="fa fa-youtube-play"></i></a>
-                <a href="javascripts:;"><i class="fa fa-linkedin"></i></a>
-                <a href="javascripts:;"><i class="fa fa-instagram"></i></a>
-            </div>
-        </div>
 
-    </section>
-    <section id="navbar" class="topnav">
-        <div class="container">
-            <div class="flex flex_row">
-                <h1 class="logo" title="new-ca">
-                    <a href="/home"><img src="~/images/graphics/Logo_XTech_White.svg" alt=""></a>
-                </h1>
-                <div class="right_menu">
-                    <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
-                    <div class="flex flex_right">
-                        <div class="main-menu">
-                            <ul class="nav">
-                                <li class="menu-tab-button-Home ">
-                                    <a href='/trang-chu'>Trang chủ</a>
-                                </li>
-                                <li class="menu-tab-button-Pricing default">
-                                    <a href="javascripts:;">Bảng giá</a>
-                                    <span class="sub_menu">+</span>
-                                    <div class="level2">
-                                        <a href="/bang-gia-thiet-ke-website">Bảng giá thiết kế Website</a>
-                                    </div>
-                                </li>
-                                @*<li class="menu-tab-button-FAQ">
-                                        <a href="/faq">Dịch vụ</a>
-                                    </li>*@
-                                <li class="menu-tab-button-new">
-                                    <a href="/tin-tuc">Tin tức</a>
-                                </li>
-                                <li class="menu-tab-button-aboutus">
-                                    <a href="/ve-chung-toi">Về chúng tôi</a>
-                                </li>
-                                <li class="menu-tab-button-Contact">
-                                    <a href="/lien-he">Liên hệ</a>
-                                </li>
-                                @*
-                                    <div class="search-btn">
-                                        <a href="javarscript:;" class="auto_search_button">
-                                            <svg class="icon-svg">
-                                                <use xlink:href="images/icons/icon.svg#search"></use>
-                                            </svg>
-                                            <svg class="icon-svg close">
-                                                <use xlink:href="images/icons/icon.svg#close"></use>
-                                            </svg>
-                                        </a>
-                                        <div class="search-wrap">
-                                            <input type="text" class="search-wrap-input" placeholder="Nhập nội dung...">
-                                            <button type="submit" value="">
-                                                <svg class="icon-svg">
-                                                    <use xlink:href="images/icons/icon.svg#search"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="my-login">
-                                        <a class="btn-default" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
-                                    </div>
-                                *@
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    @await Component.InvokeAsync("Menu")
     @RenderBody()
 
 
@@ -228,11 +146,11 @@
     <script type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.scrollbar.min.js"></script>
 
-    <script type="text/javascript" src="js/select2.min.js"></script>
+  
     <script type="text/javascript" src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/daterangepicker.min.js"></script>
-   
-  
+    <script asp-append-version="true" src="~/modules/Menu.js"></script>
+
     <!-- build:script -->
     @await RenderSectionAsync("Scripts", required: false)
 

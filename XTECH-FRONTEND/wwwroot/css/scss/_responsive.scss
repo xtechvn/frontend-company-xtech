@@ -1,6 +1,9 @@
 @media (min-width: 1200px) {
     .container {
         max-width: 1230px;
+        &.max{
+            max-width: 1500px;
+        }
     }
 }
 .hidden-pc{
