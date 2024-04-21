@@ -9,6 +9,7 @@ using XTECH_FRONTEND.Models.News;
 using XTECH_FRONTEND.Models.News.GetCategory;
 using XTECH_FRONTEND.Models.News.GetDetail;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
+using XTECH_FRONTEND.Models.VPS;
 using XTECH_FRONTEND.Utilities;
 
 namespace XTECH_FRONTEND.Services
@@ -182,37 +183,23 @@ namespace XTECH_FRONTEND.Services
         }
         #endregion news 
         #region galaxy
-        public async Task<BaseObjectResponse<ProductGroupViewModel>> GetPriceGalaxy(int CPU, int Memory, int SSD, int net, int nip, int nMonth ,int quantity)
+        public async Task<galaxycloudModel> GetPriceGalaxy(VPSmodel data)
         {
             try
             {
 
                 HttpClient _httpClient = new HttpClient();
-                BaseObjectResponse<ProductGroupViewModel> result = null;
-                var PrivateKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["KEY"];
-                var j_param = new Dictionary<string, long>()
-                {
-                    {"category_id",1007 },
-                };
-                var data = JsonConvert.SerializeObject(j_param);
-                var token = AdavigoHelper.Encode(data, PrivateKey);
-                var request = new[]
-                {
-                    new KeyValuePair<string, string>("token", token)
-                };
-                string a = "type = vps & cpu = "+ CPU + "& mem ="  +Memory+ " & ssd = " +SSD +"& net ="+ net+ "& nip =" +nip +"& nMonth =" +nMonth +"& quantity ="+ quantity;
-                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.getproductcategorybyparentid;
+                galaxycloudModel result = null;
 
-                HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+                //var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"]+"?type = vps & cpu = " + data.CPU + "& mem =" + data.Memory + " & ssd = " + data.SSD + "& net =" + data.net + "& nip =" + data.nip + "& nMonth =" + data.nMonth + "& quantity =" + data.quantity;
+                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"] + "?type=vps&cpu=" + data.CPU + "&mem=" + data.Memory + "&ssd="+ data.SSD + "&net="+ data.net + "&nip="+ data.nip + "&nMonth="+ data.nMonth + "&quantity="+ data.quantity +"";
+                HttpResponseMessage response = await _httpClient.GetAsync(url);
 
                 var stringResult = "";
                 if (response.IsSuccessStatusCode)
                 {
                     stringResult = await response.Content.ReadAsStringAsync();
-                    result = JsonConvert.DeserializeObject<BaseObjectResponse<ProductGroupViewModel>>(stringResult);
-
-                    // send error log
-
+                    result = JsonConvert.DeserializeObject<galaxycloudModel>(stringResult);
                 }
                 return result;
             }
