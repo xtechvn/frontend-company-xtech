@@ -99,18 +99,18 @@ function getNewsCategory(page, category_id) {
                 }
                 var total_page = Math.ceil(result.total_item / requestObj.size);
                 for (var i = 1; i <= total_page; i++) {
-                    pagination += `<li data-page="${i}" class="page-${i} page-item ${i == pagenum ? 'active' : ''}"><a onclick="getNewsCategory(${i, parent_id})" class="page-link" href="javascripts:;">${i}</a></li>`;
+                    pagination += `<li data-page="${i}" class="page-${i} page-item ${i == pagenum ? 'active' : ''}"><a onclick="getNewsCategory(${i,parent_id})" class="page-link" href="javascripts:;">${i}</a></li>`;
                 }
                 var paginationHtml = `<ul class="pagination mb40">
                                         <li class="page-item">
-                                            <a class="page-link" href="javascripts:;"onclick="getNewsCategory(${1, parent_id})" aria-label="Previous">
+                                            <a class="page-link" href="javascripts:;"onclick="getNewsCategory(${1,parent_id})" aria-label="Previous">
                                                 <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
                                         </li>
                                        ${pagination}
                                         <li class="page-item">
-                                            <a class="page-link" href="javascripts:;" onclick="getNewsCategory(${total_page, parent_id})" aria-label="Next">
+                                            <a class="page-link" href="javascripts:;" onclick="getNewsCategory(${total_page,parent_id})" aria-label="Next">
                                                 <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
                                                 <span class="sr-only">Next</span>
                                             </a>
@@ -148,14 +148,14 @@ function GetListMenuKhoSp() {
                     var item = result.categories[i];
                     rows += `<a class="swiper-slide item" href="javascript:;"  onclick="getNewsCategory(1,${item.id});" style="width: 180px; margin-right: 24px;">
                         <svg class="icon-svg">
-                            <use xlink:href="images/icons/icon.svg#cart"></use>
+                            <use xlink:href="${item.image_path}"></use>
                         </svg>
                         <h3>${item.name}</h3>
                     </a>`
                 }
-                var html = `<a class="swiper-slide item swiper-slide-active" href="javascript:;" onclick="getNewsCategory(1, 1011);"   style="width: 180px; margin-right: 24px;">
+                var html = `<a class="swiper-slide item swiper-slide-active" href="javascript:;" onclick="getNewsCategory(1,1011);"   style="width: 180px; margin-right: 24px;">
                         <svg class="icon-svg">
-                            <use xlink:href="images/icons/icon.svg#all"></use>
+                            <use xlink:href="/images/icons/icon.svg#all"></use>
                         </svg>
                         <h3>Tất cả</h3>
                     </a>
@@ -199,11 +199,11 @@ function GetFindArticle(page, category_id) {
                 }
                 var total_page = Math.ceil(result.total_item / request.size);
                 for (var i = 1; i <= total_page; i++) {
-                    pagination += `<li data-page="${i}" class="page-${i} page-item ${i == pagenum ? 'active' : ''}"><a onclick="getNewsCategory(${i, parent_id})" class="page-link" href="javascripts:;">${i}</a></li>`;
+                    pagination += `<li data-page="${i}" class="page-${i} page-item ${i == pagenum ? 'active' : ''}"><a onclick="getNewsCategory(${i,parent_id})" class="page-link" href="javascripts:;">${i}</a></li>`;
                 }
                 var paginationHtml = `<ul class="pagination mb40">
                                         <li class="page-item">
-                                            <a class="page-link" href="javascripts:;"onclick="getNewsCategory(${1, parent_id})" aria-label="Previous">
+                                            <a class="page-link" href="javascripts:;"onclick="getNewsCategory(${1,parent_id})" aria-label="Previous">
                                                 <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
