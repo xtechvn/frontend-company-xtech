@@ -224,9 +224,8 @@ namespace XTECH_FRONTEND.Services
                 HttpClient _httpClient = new HttpClient();
                 galaxycloudModel result = null;
 
-                //var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"]+"?type = vps & cpu = " + data.CPU + "& mem =" + data.Memory + " & ssd = " + data.SSD + "& net =" + data.net + "& nip =" + data.nip + "& nMonth =" + data.nMonth + "& quantity =" + data.quantity;
                 var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"] + "?type=vps&cpu=" + data.CPU + "&mem=" + data.Memory + "&ssd="+ data.SSD + "&net="+ data.net + "&nip="+ data.nip + "&nMonth="+ data.nMonth + "&quantity="+ data.quantity +"";
-                HttpResponseMessage response = await _httpClient.GetAsync(url);
+                HttpResponseMessage response =await _httpClient.GetAsync(url);
 
                 var stringResult = "";
                 if (response.IsSuccessStatusCode)
@@ -238,7 +237,7 @@ namespace XTECH_FRONTEND.Services
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("getproductcategorybyparentid - ApiService: " + ex);
+                LogHelper.InsertLogTelegram("GetPriceGalaxy - ApiService: " + ex);
                 throw new Exception(ex.Message);
             }
         }

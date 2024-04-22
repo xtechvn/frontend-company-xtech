@@ -36,8 +36,7 @@ namespace XTECH_FRONTEND.Controllers
             {
                 ApiService apiService = new ApiService(_configuration);
 
-                //galaxycloudModel result = null;
-                var result =  await apiService.GetPriceGalaxy(data);
+                var result =await apiService.GetPriceGalaxy(data);
                 
                
                 return Ok(result);
