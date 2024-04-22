@@ -4,22 +4,7 @@ $(document).ready(function () {
     getPriceCoBan2();
     getPriceCoBan3();
     getPriceCoBan4();
-    $("body").on("onchange", "#select_vps_custom_cpuco-ban", function () {
-        getPriceCoBan()
 
-    });
-    $("body").on("onchange", "#select_vps_custom_cpuco-ban2", function () {
-        getPriceCoBan2()
-
-    });
-    $("body").on("onchange", "#select_vps_custom_cpuco-ban3", function () {
-        getPriceCoBan3()
-
-    });
-    $("body").on("onchange", "#select_vps_custom_cpuco-ban4", function () {
-        getPriceCoBan4()
-
-    });
 
 }); 
 function getPriceCoBan() {
@@ -43,7 +28,7 @@ function getPriceCoBan() {
     //    quantity: 1,
     //}
    
-
+    $('#price_co_ban').html(`.....`)
     $.ajax({
         url: "/FAQ/GetPriceGalaxy",
         type: "Post",
@@ -52,6 +37,7 @@ function getPriceCoBan() {
             if (result != undefined && result.errorNumber == 0) {
 
                 $('#price_co_ban').html(result.payload)
+                $('#Chi_phi_price_co_ban').html(`chi phí ${requestObj.nMonth} tháng:${result.payload * requestObj.nMonth} K`)
             }
         }
     });
@@ -78,7 +64,7 @@ function getPriceCoBan2() {
     //    nMonth: 1,
     //    quantity: 1,
     //}
-
+    $('#price_co_ban2').html(`.....`)
 
     $.ajax({
         url: "/FAQ/GetPriceGalaxy",
@@ -88,6 +74,7 @@ function getPriceCoBan2() {
             if (result != undefined && result.errorNumber == 0) {
 
                 $('#price_co_ban2').html(result.payload)
+                $('#Chi_phi_price_co_ban2').html(`chi phí ${requestObj.nMonth} tháng:${result.payload * requestObj.nMonth} K`)
             }
         }
     });
@@ -115,7 +102,7 @@ function getPriceCoBan3() {
     //    quantity: 1,
     //}
 
-
+    $('#price_co_ban3').html(`.....`)
     $.ajax({
         url: "/FAQ/GetPriceGalaxy",
         type: "Post",
@@ -124,6 +111,7 @@ function getPriceCoBan3() {
             if (result != undefined && result.errorNumber == 0) {
 
                 $('#price_co_ban3').html(result.payload)
+                $('#Chi_phi_price_co_ban3').html(`chi phí ${requestObj.nMonth} tháng:${result.payload * requestObj.nMonth} K`)
             }
         }
     });
@@ -150,7 +138,7 @@ function getPriceCoBan4() {
     //    nMonth: 1,
     //    quantity: 1,
     //}
-
+    $('#price_co_ban4').html(`.....`)
 
     $.ajax({
         url: "/FAQ/GetPriceGalaxy",
@@ -160,6 +148,7 @@ function getPriceCoBan4() {
             if (result != undefined && result.errorNumber == 0) {
 
                 $('#price_co_ban4').html(result.payload)
+                $('#Chi_phi_price_co_ban4').html(`chi phí ${requestObj.nMonth} tháng:${result.payload * requestObj.nMonth} K`)
             }
         }
     });

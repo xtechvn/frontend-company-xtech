@@ -17,10 +17,39 @@
                     <div class="item basic">
                         <h3 class="title">Cơ bản</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban">
-                                <option value="1">1 Vcore</option>
-                                <option value="2">2 Vcore</option>
-                                <option value="3">3 Vcore</option>
+                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban" onchange="getPriceCoBan()">
+                                <option value="1" selected> 1 vCore</option>
+                                <option value="2"> 2 vCore</option>
+                                <option value="3"> 3 vCore</option>
+                                <option value="4"> 4 vCore</option>
+                                <option value="5"> 5 vCore</option>
+                                <option value="6"> 6 vCore</option>
+                                <option value="7"> 7 vCore</option>
+                                <option value="8"> 8 vCore</option>
+                                <option value="9"> 9 vCore</option>
+                                <option value="10"> 10 vCore</option>
+                                <option value="11"> 11 vCore</option>
+                                <option value="12"> 12 vCore</option>
+                                <option value="13"> 13 vCore</option>
+                                <option value="14"> 14 vCore</option>
+                                <option value="15"> 15 vCore</option>
+                                <option value="16"> 16 vCore</option>
+                                <option value="17"> 17 vCore</option>
+                                <option value="18"> 18 vCore</option>
+                                <option value="19"> 19 vCore</option>
+                                <option value="20"> 20 vCore</option>
+                                <option value="21"> 21 vCore</option>
+                                <option value="22"> 22 vCore</option>
+                                <option value="23"> 23 vCore</option>
+                                <option value="24"> 24 vCore</option>
+                                <option value="25"> 25 vCore</option>
+                                <option value="26"> 26 vCore</option>
+                                <option value="27"> 27 vCore</option>
+                                <option value="28"> 28 vCore</option>
+                                <option value="29"> 29 vCore</option>
+                                <option value="30"> 30 vCore</option>
+                                <option value="31"> 31 vCore</option>
+                                <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -28,10 +57,35 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban">
-                                <option value="1">1 GB</option>
-                                <option value="2">2 GB</option>
-                                <option value="3">3 GB</option>
+                            <select class="form-select co-ban" id="select_vps_custom_memco-ban" onchange="getPriceCoBan()">
+                                <option selected value="1"> 1 GB </option>
+                                <option value="2"> 2 GB </option>
+                                <option value="3"> 3 GB </option>
+                                <option value="4"> 4 GB </option>
+                                <option value="5"> 5 GB </option>
+                                <option value="6"> 6 GB </option>
+                                <option value="7"> 7 GB </option>
+                                <option value="8"> 8 GB </option>
+                                <option value="10"> 10 GB </option>
+                                <option value="12"> 12 GB </option>
+                                <option value="14"> 14 GB </option>
+                                <option value="16"> 16 GB </option>
+                                <option value="20"> 20 GB </option>
+                                <option value="24"> 24 GB </option>
+                                <option value="28"> 28 GB </option>
+                                <option value="32"> 32 GB </option>
+                                <option value="40"> 40 GB </option>
+                                <option value="48"> 48 GB </option>
+                                <option value="56"> 56 GB </option>
+                                <option value="64"> 64 GB </option>
+                                <option value="80"> 80 GB </option>
+                                <option value="96"> 96 GB </option>
+                                <option value="112"> 112 GB </option>
+                                <option value="128"> 128 GB </option>
+                                <option value="160"> 160 GB </option>
+                                <option value="192"> 192 GB </option>
+                                <option value="224"> 224 GB </option>
+                                <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -39,10 +93,37 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban" >
-                                <option value="20">10 GB SSD</option>
-                                <option value="30">20 GB SSD</option>
-                                <option value="40">30 GB SSD</option>
+                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban" onchange="getPriceCoBan()">
+                                <option selected value="20"> 20 GB SSD</option>
+                                <option value="30"> 30 GB SSD</option>
+                                <option value="40"> 40 GB SSD</option>
+                                <option value="50"> 50 GB SSD</option>
+                                <option value="60"> 60 GB SSD</option>
+                                <option value="70"> 70 GB SSD</option>
+                                <option value="80"> 80 GB SSD</option>
+                                <option value="90"> 90 GB SSD</option>
+                                <option value="100"> 100 GB SSD</option>
+                                <option value="150"> 150 GB SSD </option>
+                                <option value="200"> 200 GB SSD </option>
+                                <option value="250"> 250 GB SSD </option>
+                                <option value="300"> 300 GB SSD </option>
+                                <option value="400"> 400 GB SSD </option>
+                                <option value="500"> 500 GB SSD </option>
+                                <option value="600"> 600 GB SSD </option>
+                                <option value="700"> 700 GB SSD </option>
+                                <option value="800"> 800 GB SSD </option>
+                                <option value="900"> 900 GB SSD </option>
+                                <option value="1000"> 1000 GB SSD </option>
+                                <option value="1100"> 1100 GB SSD </option>
+                                <option value="1200"> 1200 GB SSD </option>
+                                <option value="1300"> 1300 GB SSD </option>
+                                <option value="1400"> 1400 GB SSD </option>
+                                <option value="1500"> 1500 GB SSD </option>
+                                <option value="1600"> 1600 GB SSD </option>
+                                <option value="1700"> 1700 GB SSD </option>
+                                <option value="1800"> 1800 GB SSD </option>
+                                <option value="1900"> 1900 GB SSD </option>
+                                <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
                                 <a class="btn minus">-</a>
@@ -50,10 +131,12 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban">
-                                <option value="100">100 Mbit</option>
-                                <option value="200">200 Mbit</option>
-                                <option value="300">300 Mbit</option>
+                            <select class="form-select co-ban" id="select_vps_custom_netco-ban" onchange="getPriceCoBan()">
+                                <option selected value="100"> 100 Mbit</option>
+                                <option value="200"> 200 Mbit</option>
+                                <option value="500"> 500 Mbit</option>
+                                <option value="1000"> 1000 Mbit</option>
+                                <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -61,10 +144,17 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban">
-                                <option value="1">1 IP Address</option>
-                                <option value="2">2 IP Address</option>
-                                <option value="3">3 IP Address</option>
+                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban" onchange="getPriceCoBan()">
+                                <option selected value="1"> 1 IP Address </option>
+                                <option value="2"> 2 IP Address </option>
+                                <option value="3"> 3 IP Address </option>
+                                <option value="4"> 4 IP Address </option>
+                                <option value="5"> 5 IP Address </option>
+                                <option value="6"> 6 IP Address </option>
+                                <option value="7"> 7 IP Address </option>
+                                <option value="8"> 8 IP Address </option>
+                                <option value="9"> 9 IP Address </option>
+                                <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -74,10 +164,20 @@
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban">
-                                <option value="1">6 tháng (Giảm 5%)</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select co-ban" id="select_vps_time0co-ban" onchange="getPriceCoBan()">
+                                <option value="1">1 tháng </option>
+                                <option value="2">2 tháng </option>
+                                <option value="3">3 tháng </option>
+                                <option value="4">4 tháng </option>
+                                <option value="5">5 tháng </option>
+                                <option selected="" value="6">6 tháng (giảm 5%) </option>
+                                <option value="7">7 tháng (giảm 5%) </option>
+                                <option value="8">8 tháng (giảm 5%) </option>
+                                <option value="9">9 tháng (giảm 5%) </option>
+                                <option value="10">10 tháng (giảm 5%) </option>
+                                <option value="11">11 tháng (giảm 5%) </option>
+                                <option value="12">12 tháng (giảm 10%) </option>
+                                <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -86,7 +186,7 @@
                         </div>
                         <div class="line-bottom mb16"></div>
                         <div><b class="price txt_32" id="price_co_ban">18.220</b> K/ Tháng</div>
-                        <p class="color-gray">Chi phí 6 Tháng: 109,320K</p>
+                        <p class="color-gray" id="Chi_phi_price_co_ban">Chi phí 6 Tháng: 950K</p>
                         <a class="btn-default dk_vps">Đăng ký</a>
                     </div>
                 </div>
@@ -94,10 +194,39 @@
                     <div class="item basic">
                         <h3 class="title">PHỔ BIẾN</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban2">
-                                <option value="1">1 Vcore</option>
-                                <option value="2">2 Vcore</option>
-                                <option value="3">3 Vcore</option>
+                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban2" onchange="getPriceCoBan2()">
+                                <option value="1" selected="1"> 1 vCore</option>
+                                <option value="2"> 2 vCore</option>
+                                <option value="3"> 3 vCore</option>
+                                <option selected value="4"> 4 vCore</option>
+                                <option value="5"> 5 vCore</option>
+                                <option value="6"> 6 vCore</option>
+                                <option value="7"> 7 vCore</option>
+                                <option value="8"> 8 vCore</option>
+                                <option value="9"> 9 vCore</option>
+                                <option value="10"> 10 vCore</option>
+                                <option value="11"> 11 vCore</option>
+                                <option value="12"> 12 vCore</option>
+                                <option value="13"> 13 vCore</option>
+                                <option value="14"> 14 vCore</option>
+                                <option value="15"> 15 vCore</option>
+                                <option value="16"> 16 vCore</option>
+                                <option value="17"> 17 vCore</option>
+                                <option value="18"> 18 vCore</option>
+                                <option value="19"> 19 vCore</option>
+                                <option value="20"> 20 vCore</option>
+                                <option value="21"> 21 vCore</option>
+                                <option value="22"> 22 vCore</option>
+                                <option value="23"> 23 vCore</option>
+                                <option value="24"> 24 vCore</option>
+                                <option value="25"> 25 vCore</option>
+                                <option value="26"> 26 vCore</option>
+                                <option value="27"> 27 vCore</option>
+                                <option value="28"> 28 vCore</option>
+                                <option value="29"> 29 vCore</option>
+                                <option value="30"> 30 vCore</option>
+                                <option value="31"> 31 vCore</option>
+                                <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -105,10 +234,35 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban2">
-                                <option value="1">1 GB</option>
-                                <option value="2">2 GB</option>
-                                <option value="3">3 GB</option>
+                            <select class="form-select co-ban" id="select_vps_custom_memco-ban2" onchange="getPriceCoBan2()">
+                                <option value="1"> 1 GB </option>
+                                <option value="2"> 2 GB </option>
+                                <option value="3"> 3 GB </option>
+                                <option selected value="4"> 4 GB </option>
+                                <option value="5"> 5 GB </option>
+                                <option value="6"> 6 GB </option>
+                                <option value="7"> 7 GB </option>
+                                <option value="8"> 8 GB </option>
+                                <option value="10"> 10 GB </option>
+                                <option value="12"> 12 GB </option>
+                                <option value="14"> 14 GB </option>
+                                <option value="16"> 16 GB </option>
+                                <option value="20"> 20 GB </option>
+                                <option value="24"> 24 GB </option>
+                                <option value="28"> 28 GB </option>
+                                <option value="32"> 32 GB </option>
+                                <option value="40"> 40 GB </option>
+                                <option value="48"> 48 GB </option>
+                                <option value="56"> 56 GB </option>
+                                <option value="64"> 64 GB </option>
+                                <option value="80"> 80 GB </option>
+                                <option value="96"> 96 GB </option>
+                                <option value="112"> 112 GB </option>
+                                <option value="128"> 128 GB </option>
+                                <option value="160"> 160 GB </option>
+                                <option value="192"> 192 GB </option>
+                                <option value="224"> 224 GB </option>
+                                <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -116,10 +270,37 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban2">
-                                <option value="20">10 GB SSD</option>
-                                <option value="30">20 GB SSD</option>
-                                <option value="40">30 GB SSD</option>
+                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban2" onchange="getPriceCoBan2()">
+                                <option value="20"> 20 GB SSD</option>
+                                <option value="30"> 30 GB SSD</option>
+                                <option selected value="40"> 40 GB SSD</option>
+                                <option value="50"> 50 GB SSD</option>
+                                <option value="60"> 60 GB SSD</option>
+                                <option value="70"> 70 GB SSD</option>
+                                <option value="80"> 80 GB SSD</option>
+                                <option value="90"> 90 GB SSD</option>
+                                <option value="100"> 100 GB SSD</option>
+                                <option value="150"> 150 GB SSD </option>
+                                <option value="200"> 200 GB SSD </option>
+                                <option value="250"> 250 GB SSD </option>
+                                <option value="300"> 300 GB SSD </option>
+                                <option value="400"> 400 GB SSD </option>
+                                <option value="500"> 500 GB SSD </option>
+                                <option value="600"> 600 GB SSD </option>
+                                <option value="700"> 700 GB SSD </option>
+                                <option value="800"> 800 GB SSD </option>
+                                <option value="900"> 900 GB SSD </option>
+                                <option value="1000"> 1000 GB SSD </option>
+                                <option value="1100"> 1100 GB SSD </option>
+                                <option value="1200"> 1200 GB SSD </option>
+                                <option value="1300"> 1300 GB SSD </option>
+                                <option value="1400"> 1400 GB SSD </option>
+                                <option value="1500"> 1500 GB SSD </option>
+                                <option value="1600"> 1600 GB SSD </option>
+                                <option value="1700"> 1700 GB SSD </option>
+                                <option value="1800"> 1800 GB SSD </option>
+                                <option value="1900"> 1900 GB SSD </option>
+                                <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
                                 <a class="btn minus">-</a>
@@ -127,10 +308,12 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban2">
-                                <option value="100">100 Mbit</option>
-                                <option value="200">200 Mbit</option>
-                                <option value="300">300 Mbit</option>
+                            <select class="form-select co-ban" id="select_vps_custom_netco-ban2" onchange="getPriceCoBan2()">
+                                <option value="100"> 100 Mbit</option>
+                                <option selected value="200"> 200 Mbit</option>
+                                <option value="500"> 500 Mbit</option>
+                                <option value="1000"> 1000 Mbit</option>
+                                <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -138,10 +321,17 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban2">
-                                <option value="1">1 IP Address</option>
-                                <option value="2">2 IP Address</option>
-                                <option value="3">3 IP Address</option>
+                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban2" onchange="getPriceCoBan2()">
+                                <option selected value="1"> 1 IP Address </option>
+                                <option value="2"> 2 IP Address </option>
+                                <option value="3"> 3 IP Address </option>
+                                <option value="4"> 4 IP Address </option>
+                                <option value="5"> 5 IP Address </option>
+                                <option value="6"> 6 IP Address </option>
+                                <option value="7"> 7 IP Address </option>
+                                <option value="8"> 8 IP Address </option>
+                                <option value="9"> 9 IP Address </option>
+                                <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -151,10 +341,20 @@
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban2">
-                                <option value="1">6 tháng (Giảm 5%)</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select co-ban" id="select_vps_time0co-ban2" onchange="getPriceCoBan2()">
+                                <option value="1">1 tháng </option>
+                                <option value="2">2 tháng </option>
+                                <option value="3">3 tháng </option>
+                                <option value="4">4 tháng </option>
+                                <option value="5">5 tháng </option>
+                                <option selected="" value="6">6 tháng (giảm 5%) </option>
+                                <option value="7">7 tháng (giảm 5%) </option>
+                                <option value="8">8 tháng (giảm 5%) </option>
+                                <option value="9">9 tháng (giảm 5%) </option>
+                                <option value="10">10 tháng (giảm 5%) </option>
+                                <option value="11">11 tháng (giảm 5%) </option>
+                                <option value="12">12 tháng (giảm 10%) </option>
+                                <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -163,7 +363,7 @@
                         </div>
                         <div class="line-bottom mb16"></div>
                         <div><b class="price txt_32" id="price_co_ban2">18.220</b> K/ Tháng</div>
-                        <p class="color-gray">Chi phí 6 Tháng: 109,320K</p>
+                        <p class="color-gray" id="Chi_phi_price_co_ban2">Chi phí 6 Tháng: 109,320K</p>
                         <a class="btn-default dk_vps">Đăng ký</a>
                     </div>
                 </div>
@@ -171,10 +371,39 @@
                     <div class="item basic">
                         <h3 class="title">CAO CẤP</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban3">
-                                <option value="1">1 Vcore</option>
-                                <option value="2">2 Vcore</option>
-                                <option value="3">3 Vcore</option>
+                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban3" onchange="getPriceCoBan3()">
+                                <option value="1" selected="1"> 1 vCore</option>
+                                <option value="2"> 2 vCore</option>
+                                <option value="3"> 3 vCore</option>
+                                <option value="4"> 4 vCore</option>
+                                <option value="5"> 5 vCore</option>
+                                <option value="6"> 6 vCore</option>
+                                <option value="7"> 7 vCore</option>
+                                <option selected value="8"> 8 vCore</option>
+                                <option value="9"> 9 vCore</option>
+                                <option value="10"> 10 vCore</option>
+                                <option value="11"> 11 vCore</option>
+                                <option value="12"> 12 vCore</option>
+                                <option value="13"> 13 vCore</option>
+                                <option value="14"> 14 vCore</option>
+                                <option value="15"> 15 vCore</option>
+                                <option value="16"> 16 vCore</option>
+                                <option value="17"> 17 vCore</option>
+                                <option value="18"> 18 vCore</option>
+                                <option value="19"> 19 vCore</option>
+                                <option value="20"> 20 vCore</option>
+                                <option value="21"> 21 vCore</option>
+                                <option value="22"> 22 vCore</option>
+                                <option value="23"> 23 vCore</option>
+                                <option value="24"> 24 vCore</option>
+                                <option value="25"> 25 vCore</option>
+                                <option value="26"> 26 vCore</option>
+                                <option value="27"> 27 vCore</option>
+                                <option value="28"> 28 vCore</option>
+                                <option value="29"> 29 vCore</option>
+                                <option value="30"> 30 vCore</option>
+                                <option value="31"> 31 vCore</option>
+                                <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -182,10 +411,35 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban3">
-                                <option value="1">1 GB</option>
-                                <option value="2">2 GB</option>
-                                <option value="3">3 GB</option>
+                            <select class="form-select co-ban" id="select_vps_custom_memco-ban3" onchange="getPriceCoBan3()">
+                                <option value="1"> 1 GB </option>
+                                <option value="2"> 2 GB </option>
+                                <option value="3"> 3 GB </option>
+                                <option value="4"> 4 GB </option>
+                                <option value="5"> 5 GB </option>
+                                <option value="6"> 6 GB </option>
+                                <option value="7"> 7 GB </option>
+                                <option selected value="8"> 8 GB </option>
+                                <option value="10"> 10 GB </option>
+                                <option value="12"> 12 GB </option>
+                                <option value="14"> 14 GB </option>
+                                <option value="16"> 16 GB </option>
+                                <option value="20"> 20 GB </option>
+                                <option value="24"> 24 GB </option>
+                                <option value="28"> 28 GB </option>
+                                <option value="32"> 32 GB </option>
+                                <option value="40"> 40 GB </option>
+                                <option value="48"> 48 GB </option>
+                                <option value="56"> 56 GB </option>
+                                <option value="64"> 64 GB </option>
+                                <option value="80"> 80 GB </option>
+                                <option value="96"> 96 GB </option>
+                                <option value="112"> 112 GB </option>
+                                <option value="128"> 128 GB </option>
+                                <option value="160"> 160 GB </option>
+                                <option value="192"> 192 GB </option>
+                                <option value="224"> 224 GB </option>
+                                <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -193,10 +447,37 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban3">
-                                <option value="20">10 GB SSD</option>
-                                <option value="30">20 GB SSD</option>
-                                <option value="40">30 GB SSD</option>
+                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban3" onchange="getPriceCoBan3()">
+                                <option value="20"> 20 GB SSD</option>
+                                <option value="30"> 30 GB SSD</option>
+                                <option value="40"> 40 GB SSD</option>
+                                <option value="50"> 50 GB SSD</option>
+                                <option value="60"> 60 GB SSD</option>
+                                <option value="70"> 70 GB SSD</option>
+                                <option selected value="80"> 80 GB SSD</option>
+                                <option value="90"> 90 GB SSD</option>
+                                <option value="100"> 100 GB SSD</option>
+                                <option value="150"> 150 GB SSD </option>
+                                <option value="200"> 200 GB SSD </option>
+                                <option value="250"> 250 GB SSD </option>
+                                <option value="300"> 300 GB SSD </option>
+                                <option value="400"> 400 GB SSD </option>
+                                <option value="500"> 500 GB SSD </option>
+                                <option value="600"> 600 GB SSD </option>
+                                <option value="700"> 700 GB SSD </option>
+                                <option value="800"> 800 GB SSD </option>
+                                <option value="900"> 900 GB SSD </option>
+                                <option value="1000"> 1000 GB SSD </option>
+                                <option value="1100"> 1100 GB SSD </option>
+                                <option value="1200"> 1200 GB SSD </option>
+                                <option value="1300"> 1300 GB SSD </option>
+                                <option value="1400"> 1400 GB SSD </option>
+                                <option value="1500"> 1500 GB SSD </option>
+                                <option value="1600"> 1600 GB SSD </option>
+                                <option value="1700"> 1700 GB SSD </option>
+                                <option value="1800"> 1800 GB SSD </option>
+                                <option value="1900"> 1900 GB SSD </option>
+                                <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
                                 <a class="btn minus">-</a>
@@ -204,10 +485,12 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban3">
-                                <option value="100">100 Mbit</option>
-                                <option value="200">200 Mbit</option>
-                                <option value="300">300 Mbit</option>
+                            <select class="form-select co-ban" id="select_vps_custom_netco-ban3" onchange="getPriceCoBan3()">
+                                <option value="100"> 100 Mbit</option>
+                                <option value="200"> 200 Mbit</option>
+                                <option selected value="500"> 500 Mbit</option>
+                                <option value="1000"> 1000 Mbit</option>
+                                <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -215,10 +498,17 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban3">
-                                <option value="1">1 IP Address</option>
-                                <option value="2">2 IP Address</option>
-                                <option value="3">3 IP Address</option>
+                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban3" onchange="getPriceCoBan3()">
+                                <option value="1"> 1 IP Address </option>
+                                <option value="2"> 2 IP Address </option>
+                                <option value="3"> 3 IP Address </option>
+                                <option value="4"> 4 IP Address </option>
+                                <option value="5"> 5 IP Address </option>
+                                <option selected value="6"> 6 IP Address </option>
+                                <option value="7"> 7 IP Address </option>
+                                <option value="8"> 8 IP Address </option>
+                                <option value="9"> 9 IP Address </option>
+                                <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -228,10 +518,20 @@
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban3">
-                                <option value="1">6 tháng (Giảm 5%)</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select co-ban" id="select_vps_time0co-ban3" onchange="getPriceCoBan3()">
+                                <option value="1">1 tháng </option>
+                                <option value="2">2 tháng </option>
+                                <option value="3">3 tháng </option>
+                                <option value="4">4 tháng </option>
+                                <option value="5">5 tháng </option>
+                                <option selected="" value="6">6 tháng (giảm 5%) </option>
+                                <option value="7">7 tháng (giảm 5%) </option>
+                                <option value="8">8 tháng (giảm 5%) </option>
+                                <option value="9">9 tháng (giảm 5%) </option>
+                                <option value="10">10 tháng (giảm 5%) </option>
+                                <option value="11">11 tháng (giảm 5%) </option>
+                                <option value="12">12 tháng (giảm 10%) </option>
+                                <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -240,7 +540,7 @@
                         </div>
                         <div class="line-bottom mb16"></div>
                         <div><b class="price txt_32" id="price_co_ban3">18.220</b> K/ Tháng</div>
-                        <p class="color-gray">Chi phí 6 Tháng: 109,320K</p>
+                        <p class="color-gray" id="Chi_phi_price_co_ban3">Chi phí 6 Tháng: 109,320K</p>
                         <a class="btn-default dk_vps">Đăng ký</a>
                     </div>
                 </div>
@@ -248,10 +548,39 @@
                     <div class="item basic">
                         <h3 class="title">TÙY CHỌN VPS</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban4" id="select_vps_custom_cpuco-ban4">
-                                <option value="1">1 Vcore</option>
-                                <option value="2">2 Vcore</option>
-                                <option value="3">3 Vcore</option>
+                            <select class="form-select cpu-co-ban4" id="select_vps_custom_cpuco-ban4" onchange="getPriceCoBan4()">
+                                <option value="1" selected="1"> 1 vCore</option>
+                                <option value="2"> 2 vCore</option>
+                                <option value="3"> 3 vCore</option>
+                                <option value="4"> 4 vCore</option>
+                                <option value="5"> 5 vCore</option>
+                                <option value="6"> 6 vCore</option>
+                                <option value="7"> 7 vCore</option>
+                                <option value="8"> 8 vCore</option>
+                                <option value="9"> 9 vCore</option>
+                                <option value="10"> 10 vCore</option>
+                                <option value="11"> 11 vCore</option>
+                                <option value="12"> 12 vCore</option>
+                                <option value="13"> 13 vCore</option>
+                                <option value="14"> 14 vCore</option>
+                                <option value="15"> 15 vCore</option>
+                                <option value="16"> 16 vCore</option>
+                                <option value="17"> 17 vCore</option>
+                                <option value="18"> 18 vCore</option>
+                                <option value="19"> 19 vCore</option>
+                                <option value="20"> 20 vCore</option>
+                                <option value="21"> 21 vCore</option>
+                                <option value="22"> 22 vCore</option>
+                                <option value="23"> 23 vCore</option>
+                                <option value="24"> 24 vCore</option>
+                                <option value="25"> 25 vCore</option>
+                                <option value="26"> 26 vCore</option>
+                                <option value="27"> 27 vCore</option>
+                                <option value="28"> 28 vCore</option>
+                                <option value="29"> 29 vCore</option>
+                                <option value="30"> 30 vCore</option>
+                                <option value="31"> 31 vCore</option>
+                                <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -259,10 +588,35 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban4">
-                                <option value="1">1 GB</option>
-                                <option value="2">2 GB</option>
-                                <option value="3">3 GB</option>
+                            <select class="form-select co-ban" id="select_vps_custom_memco-ban4" onchange="getPriceCoBan4()">
+                                <option value="1"> 1 GB </option>
+                                <option value="2"> 2 GB </option>
+                                <option value="3"> 3 GB </option>
+                                <option value="4"> 4 GB </option>
+                                <option value="5"> 5 GB </option>
+                                <option value="6"> 6 GB </option>
+                                <option value="7"> 7 GB </option>
+                                <option value="8"> 8 GB </option>
+                                <option value="10"> 10 GB </option>
+                                <option value="12"> 12 GB </option>
+                                <option value="14"> 14 GB </option>
+                                <option value="16"> 16 GB </option>
+                                <option value="20"> 20 GB </option>
+                                <option value="24"> 24 GB </option>
+                                <option value="28"> 28 GB </option>
+                                <option value="32"> 32 GB </option>
+                                <option value="40"> 40 GB </option>
+                                <option value="48"> 48 GB </option>
+                                <option value="56"> 56 GB </option>
+                                <option value="64"> 64 GB </option>
+                                <option value="80"> 80 GB </option>
+                                <option value="96"> 96 GB </option>
+                                <option value="112"> 112 GB </option>
+                                <option value="128"> 128 GB </option>
+                                <option value="160"> 160 GB </option>
+                                <option value="192"> 192 GB </option>
+                                <option value="224"> 224 GB </option>
+                                <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -270,10 +624,37 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban4">
-                                <option value="20">10 GB SSD</option>
-                                <option value="30">20 GB SSD</option>
-                                <option value="40">30 GB SSD</option>
+                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban4" onchange="getPriceCoBan4()">
+                                <option value="20"> 20 GB SSD</option>
+                                <option value="30"> 30 GB SSD</option>
+                                <option value="40"> 40 GB SSD</option>
+                                <option value="50"> 50 GB SSD</option>
+                                <option value="60"> 60 GB SSD</option>
+                                <option value="70"> 70 GB SSD</option>
+                                <option value="80"> 80 GB SSD</option>
+                                <option value="90"> 90 GB SSD</option>
+                                <option value="100"> 100 GB SSD</option>
+                                <option value="150"> 150 GB SSD </option>
+                                <option value="200"> 200 GB SSD </option>
+                                <option value="250"> 250 GB SSD </option>
+                                <option value="300"> 300 GB SSD </option>
+                                <option value="400"> 400 GB SSD </option>
+                                <option value="500"> 500 GB SSD </option>
+                                <option value="600"> 600 GB SSD </option>
+                                <option value="700"> 700 GB SSD </option>
+                                <option value="800"> 800 GB SSD </option>
+                                <option value="900"> 900 GB SSD </option>
+                                <option value="1000"> 1000 GB SSD </option>
+                                <option value="1100"> 1100 GB SSD </option>
+                                <option value="1200"> 1200 GB SSD </option>
+                                <option value="1300"> 1300 GB SSD </option>
+                                <option value="1400"> 1400 GB SSD </option>
+                                <option value="1500"> 1500 GB SSD </option>
+                                <option value="1600"> 1600 GB SSD </option>
+                                <option value="1700"> 1700 GB SSD </option>
+                                <option value="1800"> 1800 GB SSD </option>
+                                <option value="1900"> 1900 GB SSD </option>
+                                <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
                                 <a class="btn minus">-</a>
@@ -281,10 +662,12 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban4">
-                                <option value="100">100 Mbit</option>
-                                <option value="200">200 Mbit</option>
-                                <option value="300">300 Mbit</option>
+                            <select class="form-select co-ban" id="select_vps_custom_netco-ban4" onchange="getPriceCoBan4()">
+                                <option value="100"> 100 Mbit</option>
+                                <option value="200"> 200 Mbit</option>
+                                <option value="500"> 500 Mbit</option>
+                                <option value="1000"> 1000 Mbit</option>
+                                <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -292,10 +675,17 @@
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban4">
-                                <option value="1">1 IP Address</option>
-                                <option value="2">2 IP Address</option>
-                                <option value="3">3 IP Address</option>
+                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban4" onchange="getPriceCoBan4()">
+                                <option value="1"> 1 IP Address </option>
+                                <option value="2"> 2 IP Address </option>
+                                <option value="3"> 3 IP Address </option>
+                                <option value="4"> 4 IP Address </option>
+                                <option value="5"> 5 IP Address </option>
+                                <option value="6"> 6 IP Address </option>
+                                <option value="7"> 7 IP Address </option>
+                                <option value="8"> 8 IP Address </option>
+                                <option value="9"> 9 IP Address </option>
+                                <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -305,10 +695,20 @@
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban4">
-                                <option value="1">6 tháng (Giảm 5%)</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select co-ban" id="select_vps_time0co-ban4" onchange="getPriceCoBan4()">
+                                <option value="1">1 tháng </option>
+                                <option value="2">2 tháng </option>
+                                <option value="3">3 tháng </option>
+                                <option value="4">4 tháng </option>
+                                <option value="5">5 tháng </option>
+                                <option selected="" value="6">6 tháng (giảm 5%) </option>
+                                <option value="7">7 tháng (giảm 5%) </option>
+                                <option value="8">8 tháng (giảm 5%) </option>
+                                <option value="9">9 tháng (giảm 5%) </option>
+                                <option value="10">10 tháng (giảm 5%) </option>
+                                <option value="11">11 tháng (giảm 5%) </option>
+                                <option value="12">12 tháng (giảm 10%) </option>
+                                <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
                                 <a class="btn minus">-</a>
@@ -317,7 +717,7 @@
                         </div>
                         <div class="line-bottom mb16"></div>
                         <div><b class="price txt_32" id="price_co_ban4">18.220</b> K/ Tháng</div>
-                        <p class="color-gray">Chi phí 6 Tháng: 109,320K</p>
+                        <p class="color-gray" id="Chi_phi_price_co_ban4">Chi phí 6 Tháng: 109,320K</p>
                         <a class="btn-default dk_vps">Đăng ký</a>
                     </div>
                 </div>
@@ -768,6 +1168,6 @@
 </section>
 <div class="overlay"></div>
 @section scripts {
-   
+
     <script asp-append-version="true" src="~/modules/VPS.js"></script>
 }
