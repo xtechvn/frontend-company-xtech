@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using XTECH_FRONTEND.Models.News;
+using XTECH_FRONTEND.Models;
+using XTECH_FRONTEND.Models.News.FindArticle;
 using XTECH_FRONTEND.Models.News.GetCategory;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
 using XTECH_FRONTEND.Services;
@@ -77,7 +80,7 @@ namespace XTECH_FRONTEND.Controllers
                
                 ApiService apiService = new ApiService(_configuration);
 
-                var result = await apiService.GetNewsCategory(1);
+                var result = await apiService.GetNewsCategory(id);
                 if(result!=null && result.categories.Count > 0)
                 {
                     foreach(var item in result.categories)
@@ -96,6 +99,24 @@ namespace XTECH_FRONTEND.Controllers
             {
                 LogHelper.InsertLogTelegram("GetNewsCategory - NewsController: " + ex);
                
+                return null;
+            }
+        }
+        public async Task<IActionResult> GetFindArticle(FindArticleRequest request)
+        {
+            try
+            {
+
+                ApiService apiService = new ApiService(_configuration);
+
+                var result = await apiService.FindArticle(request);
+      
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetFindArticle - NewsController: " + ex);
+
                 return null;
             }
         }

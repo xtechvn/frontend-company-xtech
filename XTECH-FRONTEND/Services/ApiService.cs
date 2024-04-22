@@ -6,6 +6,7 @@ using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
 using XTECH_FRONTEND.Infrastructure.Utilities.Helpers;
 using XTECH_FRONTEND.Models;
 using XTECH_FRONTEND.Models.News;
+using XTECH_FRONTEND.Models.News.FindArticle;
 using XTECH_FRONTEND.Models.News.GetCategory;
 using XTECH_FRONTEND.Models.News.GetDetail;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
@@ -178,6 +179,38 @@ namespace XTECH_FRONTEND.Services
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegram("getproductcategorybyparentid - ApiService: " + ex);
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<BaseDataPaginationObjectResponse<List<ArticleResponse>>> FindArticle(FindArticleRequest requestObj)
+        {
+            try
+            {
+                BaseDataPaginationObjectResponse<List<ArticleResponse>> result = null;
+                HttpClient _httpClient = new HttpClient();
+                var PrivateKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["KEY"];
+                var data = JsonConvert.SerializeObject(requestObj);
+
+                var token = AdavigoHelper.Encode(data, PrivateKey);
+                var request = new[]
+                {
+                    new KeyValuePair<string, string>("token", token),
+                };
+
+                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.FindArticle;
+                HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+
+                var stringResult = "";
+                if (response.IsSuccessStatusCode)
+                {
+                    stringResult = await response.Content.ReadAsStringAsync();
+                    result = JsonConvert.DeserializeObject<BaseDataPaginationObjectResponse<List<ArticleResponse>>>(stringResult);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetNewsDetail - ApiService: " + ex);
                 throw new Exception(ex.Message);
             }
         }

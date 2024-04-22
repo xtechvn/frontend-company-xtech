@@ -68,13 +68,45 @@
 </section>
 <section class="section-padding clearfix">
     <div class="container">
-            <div id="grid_data_New" class="list-article grid grid__3 mb40">
+        <div class="min-content center mb40">
+            <h2 class="title-cate mb10">Kho giao diện website</h2>
+            <div class="mb-3">Cùng khám phá kho giao diện sáng tạo, bắt mắt và phù hợp với mọi ngành nghề của Media Findme</div>
+            <form class="form-send-mail" onsubmit="return false">
+                <input type="search" class="" id="input_khosp" name="keyword" value="" placeholder="Nhập từ khóa ">
+                <button id="btn_tk_khosp" class="btn-default btn_tk_khosp">Tìm kiếm</button>
+            </form>
+        </div>
+        <div class="slide-sevice mb40">
+            <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                <div id="menu_khosp" class="swiper-wrapper">
+                    <a class="swiper-slide item swiper-slide-active" href="javascript:;" style="width: 180px; margin-right: 24px;">
+                        <svg class="icon-svg">
+                            <use xlink:href="images/icons/icon.svg#all"></use>
+                        </svg>
+                        <h3>Tất cả</h3>
+                    </a>
+
+                    <a class="swiper-slide item" href="javascript:;" style="width: 180px; margin-right: 24px;">
+                        <svg class="icon-svg">
+                            <use xlink:href="images/icons/icon.svg#cart"></use>
+                        </svg>
+                        <h3>Bán hàng</h3>
+                    </a>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"><i class="fa fa-angle-left"></i></div>
+        </div>
+        <div id="grid_data_New" class="list-article grid grid__3 mb40">
             <partial name="_Skeleton" />
             <partial name="_Skeleton" />
             <partial name="_Skeleton" />
 
         </div>
         <div id="grid_data_pagination">
+        </div>
+        <div id="err_seach">
         </div>
     </div>
 </section>
