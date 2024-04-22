@@ -88,7 +88,7 @@ function getNewsCategory(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="thumb_img thumb_2x3" href="${item.directlink}>
+                                <a class="thumb_img thumb_2x3" href="${item.directlink}">
                                     @htm.Raw(${item.body})
                                 </a>
                                 <div class="content">
@@ -125,7 +125,7 @@ function getNewsCategory(page, category_id) {
             else {
                 rows =`<div class="min-content center mb40">
                         <h2 class="title-cate mb10">Không tìm thấy kết quả</h2>
-                        <div class="mb-3">Chúng tôi không tìm thấy thông tin mà bạn cần, vui lòng thử lại/div>
+                        <div class="mb-3">Chúng tôi không tìm thấy thông tin mà bạn cần, vui lòng thử lại
                       </div>`
                 $('#err_seach').html(rows);
                 $('#grid_data_New').html('');
@@ -188,7 +188,7 @@ function GetFindArticle(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="thumb_img thumb_2x3" href="#">
+                                <a class="thumb_img thumb_2x3" href="${item.directlink}">
                                     @htm.Raw(${item.body})
                                 </a>
                                 <div class="content">
@@ -225,7 +225,7 @@ function GetFindArticle(page, category_id) {
             else {
                 rows = `<div class="min-content center mb40">
                         <h2 class="title-cate mb10">Không tìm thấy kết quả</h2>
-                        <div class="mb-3">Chúng tôi không tìm thấy thông tin mà bạn cần, vui lòng thử lại/div>
+                        <div class="mb-3">Hiện tại chúng tôi không tìm thấy kết quả theo từ khóa này
                       </div>`
                 $('#err_seach').html(rows);
                 $('#grid_data_New').html('');
