@@ -50,6 +50,10 @@ app.MapControllerRoute(
     pattern: "/dich-vu/vps",
     defaults: new { controller = "FAQ", action = "DetailVPS" });
 app.MapControllerRoute(
+    name: "home",
+    pattern: "/",
+    defaults: new { controller = "Home", action = "Index" });
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );

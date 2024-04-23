@@ -42,7 +42,7 @@ function GetListCategory() {
                 var html = `<div class="container">
                                         <div class="flex flex_row">
                                             <h1 class="logo" title="new-ca">
-                                                <a href="/trang-chu"><img src="/images/graphics/Logo_XTech_White.svg" alt=""></a>
+                                                <a href="/"><img src="/images/graphics/Logo_XTech_White.svg" alt=""></a>
                                             </h1>
                                             <div class="right_menu">
                                                 <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
