@@ -89,7 +89,8 @@ function getNewsCategory(page, category_id) {
                     var item = result.data[i];
                     rows += `<div class="item">
                                 <a class="thumb_img thumb_2x3" href="${item.directlink}">
-                                    @htm.Raw(${item.body})
+                                    
+                                    <img src="${item.image_169}" alt="">
                                 </a>
                                 <div class="content">
                                     <h3 class="name"><a href="${item.directlink}">${item.title}</a></h3>
@@ -189,7 +190,7 @@ function GetFindArticle(page, category_id) {
                     var item = result.data[i];
                     rows += `<div class="item">
                                 <a class="thumb_img thumb_2x3" href="${item.directlink}">
-                                    @htm.Raw(${item.body})
+                                    <img src="${item.image_169}" alt="">
                                 </a>
                                 <div class="content">
                                     <h3 class="name"><a href="${item.directlink}">${item.title}</a></h3>
