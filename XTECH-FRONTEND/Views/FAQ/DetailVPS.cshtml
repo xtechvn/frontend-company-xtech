@@ -3,7 +3,7 @@
         <div class="text-post">
             <h1 class="title-page">Đăng ký Cloud VPS</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/trang-chu">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cloud VPS</li>
             </ol>
         </div>
@@ -17,7 +17,7 @@
                     <div class="item basic">
                         <h3 class="title">Cơ bản</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban" onchange="getPriceCoBan()">
+                            <select class="form-select cpu-co-ban" data-opt="co-ban" id="select_vps_custom_cpuco-ban" name="select_vps_custom_cpu" onchange="getPriceCoBan()">
                                 <option value="1" selected> 1 vCore</option>
                                 <option value="2"> 2 vCore</option>
                                 <option value="3"> 3 vCore</option>
@@ -52,12 +52,12 @@
                                 <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" class="btn_vps_opt" data-opt="co-ban" id="prev_select_vps_custom_cpuco-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Tăng thêm 1 vCore: 100K" class="btn_vps_opt" id="next_select_vps_custom_cpuco-ban">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban" onchange="getPriceCoBan()">
+                            <select class="form-select co-ban" data-opt="co-ban" id="select_vps_custom_memco-ban" name="select_vps_custom_mem" onchange="getPriceCoBan()">
                                 <option selected value="1"> 1 GB </option>
                                 <option value="2"> 2 GB </option>
                                 <option value="3"> 3 GB </option>
@@ -88,12 +88,12 @@
                                 <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn minus" type="button" data-opt="co-ban" class="btn_vps_opt" id="prev_select_vps_custom_memco-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Tăng thêm 1G Ram: 40K" class="btn_vps_opt " id="next_select_vps_custom_memco-ban">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban" onchange="getPriceCoBan()">
+                            <select class="form-select co-ban"data-opt="co-ban" id="select_vps_custom_ssdco-ban" name="select_vps_custom_ssd" onchange="getPriceCoBan()">
                                 <option selected value="20"> 20 GB SSD</option>
                                 <option value="30"> 30 GB SSD</option>
                                 <option value="40"> 40 GB SSD</option>
@@ -126,12 +126,12 @@
                                 <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="co-ban" class="btn_vps_opt" id="prev_select_vps_custom_ssdco-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Tăng thêm 10GB SSD: 20K" class="btn_vps_opt" id="next_select_vps_custom_ssdco-ban">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban" onchange="getPriceCoBan()">
+                            <select class="form-select co-ban" data-opt="co-ban" id="select_vps_custom_netco-ban" name="select_vps_custom_net"onchange="getPriceCoBan()">
                                 <option selected value="100"> 100 Mbit</option>
                                 <option value="200"> 200 Mbit</option>
                                 <option value="500"> 500 Mbit</option>
@@ -139,12 +139,12 @@
                                 <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="co-ban" class="btn_vps_opt" id="prev_select_vps_custom_netco-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Tăng thêm 100Mbit: 1100K" class="btn_vps_opt" id="next_select_vps_custom_netco-ban">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban" onchange="getPriceCoBan()">
+                            <select class="form-select co-ban" data-opt="co-ban" id="select_vps_custom_nipco-ban" name="select_vps_custom_nip"onchange="getPriceCoBan()">
                                 <option selected value="1"> 1 IP Address </option>
                                 <option value="2"> 2 IP Address </option>
                                 <option value="3"> 3 IP Address </option>
@@ -157,14 +157,14 @@
                                 <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="co-ban" class="btn_vps_opt" id="prev_select_vps_custom_nipco-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Tăng thêm 1 IP: 100K" class="btn_vps_opt" id="next_select_vps_custom_nipco-ban">+</button>
                             </div>
                         </div>
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban" onchange="getPriceCoBan()">
+                            <select class="form-select co-ban" data-opt="co-ban" id="select_vps_time0co-ban" name="select_vps_time0" onchange="getPriceCoBan()">
                                 <option value="1">1 tháng </option>
                                 <option value="2">2 tháng </option>
                                 <option value="3">3 tháng </option>
@@ -180,13 +180,13 @@
                                 <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="co-ban" class="btn_vps_opt" id="prev_select_vps_month0co-ban">-</button>
+                                <button class="btn"type="button" data-opt="co-ban" title="Trên 6 tháng giảm 5%, Trên 12 tháng giảm 10%, trên 24 tháng giảm 15%" class="btn_vps_opt" id="next_select_vps_month0co-ban">+</button>
                             </div>
                         </div>
                         <div class="line-bottom mb16"></div>
-                        <div><b class="price txt_32" id="price_co_ban">18.220</b> K/ Tháng</div>
-                        <p class="color-gray" id="Chi_phi_price_co_ban">Chi phí 6 Tháng: 950K</p>
+                        <div><b class="price txt_32" id="price_select_vpsco-ban">18.220</b> K/ Tháng</div>
+                        <p class="color-gray" id="totalPricepriceVpsCustomco-ban">Chi phí 6 Tháng: 950K</p>
                         <a class="btn-default dk_vps">Đăng ký</a>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                     <div class="item basic">
                         <h3 class="title">PHỔ BIẾN</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select cpu-co-ban" data-opt="pho-bien" id="select_vps_custom_cpupho-bien" name="select_vps_custom_cpu"onchange="getPriceCoBan2()">
                                 <option value="1" selected="1"> 1 vCore</option>
                                 <option value="2"> 2 vCore</option>
                                 <option value="3"> 3 vCore</option>
@@ -229,12 +229,12 @@
                                 <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" class="btn_vps_opt" data-opt="pho-bien" id="prev_select_vps_custom_cpupho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Tăng thêm 1 vCore: 100K" class="btn_vps_opt" id="next_select_vps_custom_cpupho-bien">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select pho-bien"data-opt="pho-bien" id="select_vps_custom_mempho-bien" name="select_vps_custom_mem"onchange="getPriceCoBan2()">
                                 <option value="1"> 1 GB </option>
                                 <option value="2"> 2 GB </option>
                                 <option value="3"> 3 GB </option>
@@ -265,12 +265,12 @@
                                 <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="pho-bien" class="btn_vps_opt" id="prev_select_vps_custom_mempho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Tăng thêm 1G Ram: 40K" class="btn_vps_opt " id="next_select_vps_custom_mempho-bien">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select co-ban" data-opt="pho-bien" id="select_vps_custom_ssdpho-bien" name="select_vps_custom_ssd" onchange="getPriceCoBan2()">
                                 <option value="20"> 20 GB SSD</option>
                                 <option value="30"> 30 GB SSD</option>
                                 <option selected value="40"> 40 GB SSD</option>
@@ -303,12 +303,12 @@
                                 <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="pho-bien" class="btn_vps_opt" id="prev_select_vps_custom_ssdpho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Tăng thêm 10GB SSD: 20K" class="btn_vps_opt" id="next_select_vps_custom_ssdpho-bien">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select co-ban" data-opt="pho-bien" id="select_vps_custom_netpho-bien" name="select_vps_custom_net" onchange="getPriceCoBan2()">
                                 <option value="100"> 100 Mbit</option>
                                 <option selected value="200"> 200 Mbit</option>
                                 <option value="500"> 500 Mbit</option>
@@ -316,12 +316,12 @@
                                 <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="pho-bien" class="btn_vps_opt" id="prev_select_vps_custom_netpho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Tăng thêm 100Mbit: 1100K" class="btn_vps_opt" id="next_select_vps_custom_netpho-bien">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select co-ban" data-opt="pho-bien" id="select_vps_custom_nippho-bien" name="select_vps_custom_nip" onchange="getPriceCoBan2()">
                                 <option selected value="1"> 1 IP Address </option>
                                 <option value="2"> 2 IP Address </option>
                                 <option value="3"> 3 IP Address </option>
@@ -334,14 +334,14 @@
                                 <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="pho-bien" class="btn_vps_opt" id="prev_select_vps_custom_nippho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Tăng thêm 1 IP: 100K" class="btn_vps_opt" id="next_select_vps_custom_nippho-bien">+</button>
                             </div>
                         </div>
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban2" onchange="getPriceCoBan2()">
+                            <select class="form-select co-ban"data-opt="pho-bien" id="select_vps_time0pho-bien" name="select_vps_time0"onchange="getPriceCoBan2()">
                                 <option value="1">1 tháng </option>
                                 <option value="2">2 tháng </option>
                                 <option value="3">3 tháng </option>
@@ -357,8 +357,8 @@
                                 <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="pho-bien" class="btn_vps_opt" id="prev_select_vps_month0pho-bien">-</button>
+                                <button class="btn"type="button" data-opt="pho-bien" title="Trên 6 tháng giảm 5%, Trên 12 tháng giảm 10%, trên 24 tháng giảm 15%" class="btn_vps_opt" id="next_select_vps_month0pho-bien">+</button>
                             </div>
                         </div>
                         <div class="line-bottom mb16"></div>
@@ -371,7 +371,7 @@
                     <div class="item basic">
                         <h3 class="title">CAO CẤP</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban" id="select_vps_custom_cpuco-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select cpu-co-ban" data-opt="cao-cap" id="select_vps_custom_cpucao-cap" name="select_vps_custom_cpu" onchange="getPriceCoBan3()">
                                 <option value="1" selected="1"> 1 vCore</option>
                                 <option value="2"> 2 vCore</option>
                                 <option value="3"> 3 vCore</option>
@@ -406,12 +406,12 @@
                                 <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" class="btn_vps_opt" data-opt="cao-cap" id="prev_select_vps_custom_cpucao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Tăng thêm 1 vCore: 100K" class="btn_vps_opt" id="next_select_vps_custom_cpucao-cap">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select co-ban" data-opt="cao-cap" class="" id="select_vps_custom_memcao-cap" name="select_vps_custom_mem" onchange="getPriceCoBan3()">
                                 <option value="1"> 1 GB </option>
                                 <option value="2"> 2 GB </option>
                                 <option value="3"> 3 GB </option>
@@ -442,12 +442,12 @@
                                 <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="cao-cap" class="btn_vps_opt" id="prev_select_vps_custom_memcao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Tăng thêm 1G Ram: 40K" class="btn_vps_opt " id="next_select_vps_custom_memcao-cap">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select co-ban" data-opt="cao-cap" id="select_vps_custom_ssdcao-cap" name="select_vps_custom_ssd" onchange="getPriceCoBan3()">
                                 <option value="20"> 20 GB SSD</option>
                                 <option value="30"> 30 GB SSD</option>
                                 <option value="40"> 40 GB SSD</option>
@@ -480,12 +480,12 @@
                                 <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="cao-cap" class="btn_vps_opt" id="prev_select_vps_custom_ssdcao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Tăng thêm 10GB SSD: 20K" class="btn_vps_opt" id="next_select_vps_custom_ssdcao-cap">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select co-ban" data-opt="cao-cap" id="select_vps_custom_netcao-cap" name="select_vps_custom_net" onchange="getPriceCoBan3()">
                                 <option value="100"> 100 Mbit</option>
                                 <option value="200"> 200 Mbit</option>
                                 <option selected value="500"> 500 Mbit</option>
@@ -493,12 +493,12 @@
                                 <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="cao-cap" class="btn_vps_opt" id="prev_select_vps_custom_netcao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Tăng thêm 100Mbit: 1100K" class="btn_vps_opt" id="next_select_vps_custom_netcao-cap">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select co-ban"data-opt="cao-cap" id="select_vps_custom_nipcao-cap" name="select_vps_custom_nip" onchange="getPriceCoBan3()">
                                 <option value="1"> 1 IP Address </option>
                                 <option value="2"> 2 IP Address </option>
                                 <option value="3"> 3 IP Address </option>
@@ -511,14 +511,15 @@
                                 <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="cao-cap" class="btn_vps_opt" id="prev_select_vps_custom_nipcao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Tăng thêm 1 IP: 100K" class="btn_vps_opt" id="next_select_vps_custom_nipcao-cap">+</button>
+
                             </div>
                         </div>
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban3" onchange="getPriceCoBan3()">
+                            <select class="form-select co-ban" data-opt="cao-cap" id="select_vps_time0cao-cap" name="select_vps_time0"onchange="getPriceCoBan3()">
                                 <option value="1">1 tháng </option>
                                 <option value="2">2 tháng </option>
                                 <option value="3">3 tháng </option>
@@ -534,8 +535,8 @@
                                 <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="cao-cap" class="btn_vps_opt" id="prev_select_vps_month0cao-cap">-</button>
+                                <button class="btn"type="button" data-opt="cao-cap" title="Trên 6 tháng giảm 5%, Trên 12 tháng giảm 10%, trên 24 tháng giảm 15%" class="btn_vps_opt" id="next_select_vps_month0cao-cap">+</button>
                             </div>
                         </div>
                         <div class="line-bottom mb16"></div>
@@ -548,7 +549,7 @@
                     <div class="item basic">
                         <h3 class="title">TÙY CHỌN VPS</h3>
                         <div class="row-option">
-                            <select class="form-select cpu-co-ban4" id="select_vps_custom_cpuco-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select cpu-co-ban4"data-opt="" id="select_vps_custom_cpu" name="select_vps_custom_cpu"onchange="getPriceCoBan4()">
                                 <option value="1" selected="1"> 1 vCore</option>
                                 <option value="2"> 2 vCore</option>
                                 <option value="3"> 3 vCore</option>
@@ -583,12 +584,12 @@
                                 <option value="32"> 32 vCore</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" class="btn_vps_opt" data-opt="" id="prev_select_vps_custom_cpu">-</button>
+                                <button class="btn"type="button" data-opt="" title="Tăng thêm 1 vCore: 100K" class="btn_vps_opt" id="next_select_vps_custom_cpu">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_memco-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select co-ban" data-opt="" class="" id="select_vps_custom_mem" name="select_vps_custom_mem" onchange="getPriceCoBan4()">
                                 <option value="1"> 1 GB </option>
                                 <option value="2"> 2 GB </option>
                                 <option value="3"> 3 GB </option>
@@ -619,12 +620,12 @@
                                 <option value="256"> 256 GB </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="" class="btn_vps_opt" id="prev_select_vps_custom_mem">-</button>
+                                <button class="btn"type="button" data-opt="" title="Tăng thêm 1G Ram: 40K" class="btn_vps_opt " id="next_select_vps_custom_mem">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_ssdco-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select co-ban" data-opt="" id="select_vps_custom_ssd" name="select_vps_custom_ssd"onchange="getPriceCoBan4()">
                                 <option value="20"> 20 GB SSD</option>
                                 <option value="30"> 30 GB SSD</option>
                                 <option value="40"> 40 GB SSD</option>
@@ -657,12 +658,12 @@
                                 <option value="2000"> 2000 GB SSD </option>
                             </select>
                             <div class="minus-plus ">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn"type="button" data-opt="" class="btn_vps_opt" id="prev_select_vps_custom_ssd">-</button>
+                                <button class="btn"type="button" data-opt="" title="Tăng thêm 10GB SSD: 20K" class="btn_vps_opt" id="next_select_vps_custom_ssd">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_netco-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select co-ban" data-opt="" id="select_vps_custom_net" name="select_vps_custom_net" onchange="getPriceCoBan4()">
                                 <option value="100"> 100 Mbit</option>
                                 <option value="200"> 200 Mbit</option>
                                 <option value="500"> 500 Mbit</option>
@@ -670,12 +671,12 @@
                                 <option value="2000"> 2000 Mbit</option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button  class="btn"type="button" data-opt="" class="btn_vps_opt" id="prev_select_vps_custom_net">-</button>
+                                <button class="btn" type="button" data-opt="" title="Tăng thêm 100Mbit: 1100K" class="btn_vps_opt" id="next_select_vps_custom_net">+</button>
                             </div>
                         </div>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_custom_nipco-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select co-ban" data-opt="" id="select_vps_custom_nip" name="select_vps_custom_nip" onchange="getPriceCoBan4()">
                                 <option value="1"> 1 IP Address </option>
                                 <option value="2"> 2 IP Address </option>
                                 <option value="3"> 3 IP Address </option>
@@ -688,14 +689,14 @@
                                 <option value="10"> 10 IP Address </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button  class="btn" class="btn" type="button" data-opt="" class="btn_vps_opt" id="prev_select_vps_custom_nip">-</button>
+                                <button  class="btn" class="btn" type="button" data-opt="" title="Tăng thêm 1 IP: 100K" class="btn_vps_opt" id="next_select_vps_custom_nip">+</button>
                             </div>
                         </div>
                         <p class="mb20"><b>Băng thông: Không giới hạn</b></p>
                         <p>Thời gian sử dụng</p>
                         <div class="row-option">
-                            <select class="form-select co-ban" id="select_vps_time0co-ban4" onchange="getPriceCoBan4()">
+                            <select class="form-select co-ban" data-opt="" id="select_vps_time0" name="select_vps_time0"onchange="getPriceCoBan4()">
                                 <option value="1">1 tháng </option>
                                 <option value="2">2 tháng </option>
                                 <option value="3">3 tháng </option>
@@ -711,8 +712,8 @@
                                 <option value="24">24 tháng (giảm 15%) </option>
                             </select>
                             <div class="minus-plus">
-                                <a class="btn minus">-</a>
-                                <a class="btn plus">+</a>
+                                <button class="btn" type="button" data-opt="" class="btn_vps_opt" id="prev_select_vps_month0">-</button>
+                                <button class="btn" type="button" data-opt="" title="Trên 6 tháng giảm 5%, Trên 12 tháng giảm 10%, trên 24 tháng giảm 15%" class="btn_vps_opt" id="next_select_vps_month0">+</button>
                             </div>
                         </div>
                         <div class="line-bottom mb16"></div>
@@ -1123,7 +1124,7 @@
                             Bước 1:&nbsp;Tại trang quản trị bạn chọn&nbsp;Cấu hình&nbsp;&gt;&nbsp;Cấu hình chung<br>
                             Bước 2:&nbsp;Trên trang Cấu hình chung, bạn tìm đến&nbsp;Thông tin quản lý kho&nbsp;&gt; tích&nbsp;chọn&nbsp;Cho phép khách trả hàng tại chi nhánh khác chi nhánh mua&nbsp;&gt; chọn&nbsp;Lưu
                         </p>
-                        <p><img src="images/graphics/faq.png" alt=""></p>
+                        <p><img src="~/images/graphics/faq.png" alt=""></p>
                     </div>
                 </div>
             </div>
