@@ -313,7 +313,7 @@ function priceCount_vps(idOption = null) {
         return;
     $("#waitting_icon").show();
     $("#price_select_vps" + idOption).html('...');
-    var urlOK = "http://galaxycloud.vn/a_p_i/public-hosting/get-price/?type=vps&cpu=" + cpu + '&mem=' + mem + '&ssd=' + ssd + '&net=' + net + '&nip=' + nip + '&nMonth=' + nMonth + '&quantity=1';
+    var urlOK = "https://galaxycloud.vn/a_p_i/public-hosting/get-price/?type=vps&cpu=" + cpu + '&mem=' + mem + '&ssd=' + ssd + '&net=' + net + '&nip=' + nip + '&nMonth=' + nMonth + '&quantity=1';
     console.log("URL : " + urlOK);
 
     $.get(urlOK, function (data, status) {
@@ -338,7 +338,6 @@ $(document).ready(function () {
     priceCount_vps("pho-bien");
     priceCount_vps("cao-cap");
     priceCount_vps("");
-
     $("[id^=select_vps_custom_]").change(function () {
         //alert("Change...delll");
         var idOptionVps = $(this).attr('data-opt');
