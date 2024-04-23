@@ -225,7 +225,7 @@ function GetFindArticle(page, category_id) {
             else {
                 rows = `<div class="min-content center mb40">
                         <h2 class="title-cate mb10">Không tìm thấy kết quả</h2>
-                        <div class="mb-3">Hiện tại chúng tôi không tìm thấy kết quả theo từ khóa này
+                        <div class="mb-3">Hiện tại chúng tôi không tìm thấy kết quả theo từ khóa nàyupdate
                       </div>`
                 $('#err_seach').html(rows);
                 $('#grid_data_New').html('');
