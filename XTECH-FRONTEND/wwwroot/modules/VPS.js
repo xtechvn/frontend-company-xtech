@@ -315,22 +315,53 @@ function priceCount_vps(idOption = null) {
     $("#price_select_vps" + idOption).html('...');
     var urlOK = "https://galaxycloud.vn/a_p_i/public-hosting/get-price/?type=vps&cpu=" + cpu + '&mem=' + mem + '&ssd=' + ssd + '&net=' + net + '&nip=' + nip + '&nMonth=' + nMonth + '&quantity=1';
     console.log("URL : " + urlOK);
+    var requestObj = {
+        CPU: cpu,
+        Memory: mem,
+        SSD: ssd,
+        net: net,
+        nip: nip,
+        nMonth: nMonth,
+        quantity: quantity == undefined ? 1 : quantity,
+    }
+        $.ajax({
+        url: "/FAQ/GetPriceGalaxy",
+        type: "Post",
+        data: { data: requestObj },
+        success: function (result) {
+            if (result != undefined && result.errorNumber == 0) {
 
-    $.get(urlOK, function (data, status) {
-        $("#waitting_icon").hide();
-        if (!ClassApi.checkReturnApi(data))
-            return;
+                $("#waitting_icon").hide();
+                //if (!ClassApi.checkReturnApi(data))
+                //    return;
 
-        console.log("RET = ", data.payload);
+                console.log("RET = ", result.payload);
 
-        $("#price_select_vps" + idOption).html(data.payload + "K /Tháng");
+                $("#price_select_vps" + idOption).html(result.payload);
 
-        var totalPrice = quantity * nMonth * data.payload;
+                var totalPrice = requestObj.quantity * parseFloat(nMonth) * result.payload;
 
-        console.log(" total price2 = " + totalPrice);
-        $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + totalPrice + "K ");
-        //alert("Data: " + data + "\nStatus: " + status);
-    });
+                console.log(" total price2 = " + totalPrice);
+                $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + totalPrice + "K ");
+            }
+        }
+        });
+
+    //$.get(urlOK, function (data, status) {
+    //    $("#waitting_icon").hide();
+    //    if (!ClassApi.checkReturnApi(data))
+    //        return;
+
+    //    console.log("RET = ", data.payload);
+
+    //    $("#price_select_vps" + idOption).html(data.payload + "K /Tháng");
+
+    //    var totalPrice = quantity * nMonth * data.payload;
+
+    //    console.log(" total price2 = " + totalPrice);
+    //    $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + totalPrice + "K ");
+    //    //alert("Data: " + data + "\nStatus: " + status);
+    //});
 }
 
 $(document).ready(function () {
