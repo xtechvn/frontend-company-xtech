@@ -202,7 +202,7 @@ function GetFindArticle(page, category_id) {
                     var item = result.data[i];
                     rows += `<div class="item">
                                 <a class="img-scroll" href="${item.directlink}">
-                                    <img src="${item.image_169}" alt="">
+                                    <img src="${item.image}" alt="">
                                 </a>
                                 <div class="content">
                                     <h3 class="name"><a href="${item.directlink}">${item.title}</a></h3>
