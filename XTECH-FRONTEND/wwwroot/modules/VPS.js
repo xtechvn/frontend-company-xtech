@@ -337,12 +337,12 @@ function priceCount_vps(idOption = null) {
 
                 console.log("RET = ", result.payload);
 
-                $("#price_select_vps" + idOption).html(result.payload);
-
+                $("#price_select_vps" + idOption).html(_global_function.Comma(result.payload));
+             
                 var totalPrice = requestObj.quantity * parseFloat(nMonth) * result.payload;
-
+               
                 console.log(" total price2 = " + totalPrice);
-                $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + totalPrice + "K ");
+                $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice) + " K ");
             }
         }
         });
