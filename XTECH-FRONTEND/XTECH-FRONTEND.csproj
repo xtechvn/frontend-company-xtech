@@ -94,6 +94,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
     <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
     <PackageReference Include="Telegram.Bot" Version="19.0.0" />
   </ItemGroup>

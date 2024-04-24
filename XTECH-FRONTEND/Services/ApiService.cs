@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Runtime.Intrinsics.X86;
 using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
@@ -18,10 +19,12 @@ namespace XTECH_FRONTEND.Services
     public class ApiService
     {
         private readonly IConfiguration _configuration;
+        private readonly RedisConn _redisService;
 
         public ApiService(IConfiguration configuration)
         {
             _configuration = configuration;
+            _redisService = new RedisConn(configuration);
         }
 
 
@@ -223,16 +226,43 @@ namespace XTECH_FRONTEND.Services
 
                 HttpClient _httpClient = new HttpClient();
                 galaxycloudModel result = null;
-
-                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"] + "?type=vps&cpu=" + data.CPU + "&mem=" + data.Memory + "&ssd="+ data.SSD + "&net="+ data.net + "&nip="+ data.nip + "&nMonth="+ data.nMonth + "&quantity="+ data.quantity +"";
-                HttpResponseMessage response =await _httpClient.GetAsync(url);
-
-                var stringResult = "";
-                if (response.IsSuccessStatusCode)
+                string cache_name = CacheName.Get_Price_Galaxy + data.CPU + "_" + data.Memory + "_" + data.SSD + "_" + data.net + "_" + data.nip + "_" + data.nMonth + "_" + data.quantity;
+                
+                try
                 {
-                    stringResult = await response.Content.ReadAsStringAsync();
-                    result = JsonConvert.DeserializeObject<galaxycloudModel>(stringResult);
+                    var data_redis = await _redisService.GetAsync(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
+                    if(data_redis!=null)
+                    result = JsonConvert.DeserializeObject < galaxycloudModel > (data_redis);
+
                 }
+                catch (Exception ex)
+                {
+                    LogHelper.InsertLogTelegram("redisService - GetPriceGalaxy - ApiService: " + ex);
+
+                }
+                if (result == null)
+                {
+                    var st2 = new Stopwatch();
+                    st2.Start();
+                    var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("galaxy")["Domain"] + "?type=vps&cpu=" + data.CPU + "&mem=" + data.Memory + "&ssd=" + data.SSD + "&net=" + data.net + "&nip=" + data.nip + "&nMonth=" + data.nMonth + "&quantity=" + data.quantity + "";
+                    HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+                    st2.Stop();
+                    if (st2.ElapsedMilliseconds > 1000)
+                    {
+                        LogHelper.InsertLogTelegram("GetPriceGalaxy - ApiService: time= " + st2.ElapsedMilliseconds+".URL="+url+"") ;
+                    }
+                    var stringResult = "";
+                    if (response.IsSuccessStatusCode)
+                    {
+                        stringResult = await response.Content.ReadAsStringAsync();
+                        result = JsonConvert.DeserializeObject<galaxycloudModel>(stringResult);
+                        _redisService.Set(cache_name, JsonConvert.SerializeObject(result), Convert.ToInt32(_configuration["Redis:Database:db_common"]));
+                    }
+                }
+                
+               
+                
                 return result;
             }
             catch (Exception ex)
