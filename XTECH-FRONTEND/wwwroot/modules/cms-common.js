@@ -745,3 +745,17 @@ var _chart = {
         chart.render();
     }
 };
+var _global_function = {
+    Comma: function (number) { //function to add commas to textboxes
+        number = ('' + number).replace(/[^0-9.,]+/g, '');
+        number += '';
+        number = number.replaceAll(',', '');
+        x = number.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1))
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        return x1 + x2;
+    },
+}
