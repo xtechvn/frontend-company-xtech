@@ -250,7 +250,7 @@ namespace XTECH_FRONTEND.Services
                     st2.Stop();
                     if (st2.ElapsedMilliseconds > 1000)
                     {
-                        LogHelper.InsertLogTelegram("GetPriceGalaxy - ApiService: time= " + st2.ElapsedMilliseconds+".URL="+url+"") ;
+                        LogHelper.InsertLogTelegram("GetPriceGalaxy - ApiService: time= " + st2.ElapsedMilliseconds+ ".URL=type=vps&cpu=" + data.CPU + "&mem=" + data.Memory + "&ssd=" + data.SSD + "&net=" + data.net + "&nip=" + data.nip + "&nMonth=" + data.nMonth + "&quantity=" + data.quantity + "") ;
                     }
                     var stringResult = "";
                     if (response.IsSuccessStatusCode)

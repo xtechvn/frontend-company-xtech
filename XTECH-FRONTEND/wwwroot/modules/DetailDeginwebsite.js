@@ -89,13 +89,13 @@ function getNewsCategory(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="img-scroll" href="${item.directlink}">
+                                <a class="img-scroll" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">
                                     
                                     <img src="${item.image_169}" alt="">
                                 </a>
                                 <div class="content">
-                                    <h3 class="name"><a href="${item.directlink}">${item.title}</a></h3>
-                                    <a class="read-more" href="${item.directlink}">Đọc thêm</a>
+                                    <h3 class="name"><a href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">${item.title}</a></h3>
+                                    <a class="read-more" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">Đọc thêm</a>
                                 </div>
                             </div>`
                 }
@@ -201,12 +201,12 @@ function GetFindArticle(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="img-scroll" href="${item.directlink}">
+                                <a class="img-scroll" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">
                                     <img src="${item.image}" alt="">
                                 </a>
                                 <div class="content">
-                                    <h3 class="name"><a href="${item.directlink}">${item.title}</a></h3>
-                                    <a class="read-more" href="${item.directlink}">Đọc thêm</a>
+                                    <h3 class="name"><a href="${item.directlink == "" ?"/tin-tuc/"+item.id:item.directlink}">${item.title}</a></h3>
+                                    <a class="read-more" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">Đọc thêm</a>
                                 </div>
                             </div>`
                 }
