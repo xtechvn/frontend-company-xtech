@@ -2,6 +2,7 @@
 $(document).ready(function () {
     getNewsCategory(1, 1011);
     GetListMenuKhoSp();
+
     $("body").on("click", ".send_email", function () {
         SendEmail();
 
@@ -147,22 +148,33 @@ function GetListMenuKhoSp() {
             if (result != undefined && result.categories != null ) {
                 for (var i in result.categories) {
                     var item = result.categories[i];
-                    rows += `<a class="swiper-slide item" href="javascript:;"  onclick="getNewsCategory(1,${item.id});" style="width: 180px; margin-right: 24px;">
+                    rows += `<a class="swiper-slide item" href="javascript:;"  onclick="getNewsCategory(1,${item.id});" style="width: 180px !important; margin-right: 24px !important;">
                         <svg class="icon-svg">
                             <use xlink:href="${item.image_path}"></use>
                         </svg>
                         <h3>${item.name}</h3>
                     </a>`
                 }
-                var html = `<a class="swiper-slide item swiper-slide-active" href="javascript:;" onclick="getNewsCategory(1,1011);"   style="width: 180px; margin-right: 24px;">
+                var html = `<a class="swiper-slide item" href="javascript:;" onclick="getNewsCategory(1,1011);"   style="width: 180px !important; margin-right: 24px !important;">
                         <svg class="icon-svg">
                             <use xlink:href="/images/icons/icon.svg#all"></use>
                         </svg>
                         <h3>Tất cả</h3>
                     </a>
-                    ${rows}
-                    `
+                    ${rows}`
                 $('#menu_khosp').html(html);
+                var swiper = new Swiper('#menu_khosp_slide .swiper-container ', {
+                    slidesPerView: 5,
+                    spaceBetween: 40,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
             }
         }
     });
