@@ -88,7 +88,7 @@ function getNewsCategory(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="thumb_img thumb_2x3" href="${item.directlink}">
+                                <a class="img-scroll" href="${item.directlink}">
                                     
                                     <img src="${item.image_169}" alt="">
                                 </a>
@@ -189,7 +189,7 @@ function GetFindArticle(page, category_id) {
                 for (var i in result.data) {
                     var item = result.data[i];
                     rows += `<div class="item">
-                                <a class="thumb_img thumb_2x3" href="${item.directlink}">
+                                <a class="img-scroll" href="${item.directlink}">
                                     <img src="${item.image_169}" alt="">
                                 </a>
                                 <div class="content">
