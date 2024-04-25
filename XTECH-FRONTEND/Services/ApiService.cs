@@ -271,6 +271,33 @@ namespace XTECH_FRONTEND.Services
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<BaseResponse> BookingGalaxy(VPSmodel requestObj)
+        {
+            try
+            {
+
+                HttpClient _httpClient = new HttpClient();
+                BaseResponse result = null;
+          
+
+                var PrivateKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["KEY"];
+                var data = JsonConvert.SerializeObject(requestObj);
+
+                var token = AdavigoHelper.Encode(data, PrivateKey);
+                var request = new[]
+                {
+                    new KeyValuePair<string, string>("token", token),
+                };
+                //var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.FindArticle;
+                //HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetPriceGalaxy - ApiService: " + ex);
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion galaxy 
     }
 }
