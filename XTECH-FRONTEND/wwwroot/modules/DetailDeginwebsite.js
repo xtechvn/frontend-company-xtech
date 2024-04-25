@@ -138,7 +138,7 @@ function getNewsCategory(page, category_id) {
 }
 function GetListMenuKhoSp() {
     var rows = "";
-    var id = 1011;
+    var id = 1022;
     $.ajax({
         url: "/News/GetNewsCategory",
         type: "Post",
