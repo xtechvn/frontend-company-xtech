@@ -232,7 +232,7 @@ namespace XTECH_FRONTEND.Services
                 {
                     var data_redis = await _redisService.GetAsync(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
                     if(data_redis!=null)
-                    result = JsonConvert.DeserializeObject < galaxycloudModel > (data_redis);
+                    result = JsonConvert.DeserializeObject <galaxycloudModel> (data_redis);
 
                 }
                 catch (Exception ex)
@@ -288,8 +288,14 @@ namespace XTECH_FRONTEND.Services
                 {
                     new KeyValuePair<string, string>("token", token),
                 };
-                //var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.FindArticle;
-                //HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.bookinggalaxy;
+                HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+                var stringResult = "";
+                if (response.IsSuccessStatusCode)
+                {
+                    stringResult = await response.Content.ReadAsStringAsync();
+                    result = JsonConvert.DeserializeObject<BaseResponse>(stringResult);
+                }
                 return result;
             }
             catch (Exception ex)

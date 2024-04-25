@@ -10,5 +10,6 @@
         public int nMonth { get; set; }
         public int quantity { get; set; }
         public int Clientid { get; set; }
+        public double Amount { get; set; }
     }
 }
