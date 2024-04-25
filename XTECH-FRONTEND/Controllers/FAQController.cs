@@ -29,21 +29,38 @@ namespace XTECH_FRONTEND.Controllers
             return View();
 
         }
+        public async Task<IActionResult> DangkyVPS()
+        {
 
+            return View();
+
+        }
+        public async Task<IActionResult> BookingVPS(VPSmodel data)
+        {
+            try
+            {
+                
+            }catch(Exception ex)
+            {
+                LogHelper.InsertLogTelegram("BookingVPS - FAQController: " + ex);
+            }
+            return View();
+
+        }
         public async Task<IActionResult> GetPriceGalaxy(VPSmodel data)
         {
             try
             {
                 ApiService apiService = new ApiService(_configuration);
 
-                var result =await apiService.GetPriceGalaxy(data);
+                var result =await apiService.BookingGalaxy(data);
                 
                
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("GetlistNews - NewsController: " + ex);
+                LogHelper.InsertLogTelegram("GetPriceGalaxy - NewsController: " + ex);
                 return null;
             }
         }
