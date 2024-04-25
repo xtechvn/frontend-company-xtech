@@ -43,7 +43,7 @@ namespace XTECH_FRONTEND.Controllers
             {
                 ApiService apiService = new ApiService(_configuration);
                 var result = await apiService.GetNewsDetail(id);
-           
+
                 if (result.status == 0)
                 {
                     ViewBag.data = result.data;
@@ -77,16 +77,16 @@ namespace XTECH_FRONTEND.Controllers
         {
             try
             {
-               
+
                 ApiService apiService = new ApiService(_configuration);
 
                 var result = await apiService.GetNewsCategory(id);
-                if(result!=null && result.categories.Count > 0)
+                if (result != null && result.categories.Count > 0)
                 {
-                    foreach(var item in result.categories)
+                    foreach (var item in result.categories)
                     {
                         var result2 = await apiService.GetNewsCategory(item.id);
-                        if(result2 != null && result2.categories.Count > 0)
+                        if (result2 != null && result2.categories.Count > 0)
                         {
                             item.ListCategoryResponse = result2.categories;
                         }
@@ -98,7 +98,7 @@ namespace XTECH_FRONTEND.Controllers
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegram("GetNewsCategory - NewsController: " + ex);
-               
+
                 return null;
             }
         }
@@ -110,7 +110,7 @@ namespace XTECH_FRONTEND.Controllers
                 ApiService apiService = new ApiService(_configuration);
 
                 var result = await apiService.FindArticle(request);
-      
+
                 return Ok(result);
             }
             catch (Exception ex)

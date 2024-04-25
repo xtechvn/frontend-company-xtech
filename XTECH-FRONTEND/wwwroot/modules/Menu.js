@@ -1,16 +1,16 @@
 ﻿$(document).ready(function () {
     GetListCategory();
-    
+
     $('body').on('click', '.menu-tab-button', function (event) {
         var element = $(this)
         $('.menu-tab-button').removeClass('active')
         element.addClass('active')
     });
-    
+
 });
 function GetListCategory() {
     var rows = "";
-    var rows2 = "";
+
     $.ajax({
         url: "/News/GetNewsCategory",
         type: "Post",
@@ -21,16 +21,17 @@ function GetListCategory() {
                 for (var i in result.categories) {
                     var item = result.categories[i];
                     if (item.listCategoryResponse != null) {
+                        var rows2 = "";
                         for (var j in item.listCategoryResponse) {
                             var item2 = item.listCategoryResponse[j];
-                            rows2 += `<div class="level2">
-                                                <a href="/${item2.url_path}">${item2.name}</a>
-                                            </div>`
+                            rows2 += `<a href="/${item2.url_path}">${item2.name}</a>`
                         }
                         rows += `<li class="menu-tab-button menu-tab-button-${item.url_path} default">
                                          <a href="/${item.url_path}">${item.name}</a>
                                          <span class="sub_menu">+</span>
+                                         <div class="level2">
                                          ${rows2}
+                                         </div>
                                     </li>`
                     } else {
                         rows += `<li class="menu-tab-button menu-tab-button-${item.url_path} ">
