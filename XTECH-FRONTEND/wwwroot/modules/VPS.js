@@ -6,7 +6,7 @@ let net = 1;
 let nip = 1;
 let nMonth = 2;
 let quantity = 2;
-var key = "vps_obj";
+let key = "vps_obj";
 function priceCount_vps(idOption = null) {
 
     if (idOption == undefined)
@@ -217,6 +217,9 @@ $(document).ready(function () {
     });
 });
 function LaodDetailVPS() {
+    $('body').on('click', '#booking_vps', function (event) {
+        dangkyvps()
+    });
     const itemStr = localStorage.getItem(key)
     var data = JSON.parse(itemStr);
 
@@ -228,4 +231,29 @@ function LaodDetailVPS() {
     $('#select_vps_time').val(parseFloat(data.nMonth)).attr("selected", "selected");
     $('#select_vps_quantity').val(parseFloat(data.quantity)).attr("selected", "selected");
     priceCount_vps('');
+}
+function dangkyvps() {
+    var requestObj = {
+        CPU: $('#select_vps_custom_cpu').val(),
+        Memory: $('#select_vps_custom_mem').val(),
+        SSD: $('#select_vps_custom_ssd').val(),
+        net: $('#select_vps_custom_net').val(),
+        nip: $('#select_vps_custom_nip').val(),
+        nMonth: $('#select_vps_time').val(),
+        quantity: $('#select_vps_quantity').val(),
+        Clientid:1,
+        Amount: $('#price_select_vps').text().replaceAll(',', ''),
+    }
+
+    $.ajax({
+        url: "/FAQ/BookingVPS",
+        type: "Post",
+        data: { data:requestObj },
+        success: function (result) {
+            if (result != undefined && result.status==0) {
+
+                console.log(result.msg)
+            }
+        }
+    });
 }

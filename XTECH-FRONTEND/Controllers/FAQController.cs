@@ -39,12 +39,19 @@ namespace XTECH_FRONTEND.Controllers
         {
             try
             {
-                
-            }catch(Exception ex)
+                ApiService apiService = new ApiService(_configuration);
+
+                var result = await apiService.BookingGalaxy(data);
+
+
+                return Ok(result);
+
+            }
+            catch(Exception ex)
             {
                 LogHelper.InsertLogTelegram("BookingVPS - FAQController: " + ex);
             }
-            return View();
+            return null;
 
         }
         public async Task<IActionResult> GetPriceGalaxy(VPSmodel data)
@@ -53,7 +60,7 @@ namespace XTECH_FRONTEND.Controllers
             {
                 ApiService apiService = new ApiService(_configuration);
 
-                var result =await apiService.BookingGalaxy(data);
+                var result =await apiService.GetPriceGalaxy(data);
                 
                
                 return Ok(result);
