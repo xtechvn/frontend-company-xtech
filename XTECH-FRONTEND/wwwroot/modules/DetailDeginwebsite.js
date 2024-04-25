@@ -1,6 +1,6 @@
-﻿let parent_id = 1011;
+﻿let parent_id = 1022;
 $(document).ready(function () {
-    getNewsCategory(1, 1011);
+    getNewsCategory(1, 1022);
     GetListMenuKhoSp();
 
     $("body").on("click", ".send_email", function () {
