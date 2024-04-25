@@ -250,9 +250,10 @@ function dangkyvps() {
         type: "Post",
         data: { data:requestObj },
         success: function (result) {
-            if (result != undefined && result.status==0) {
-
-                console.log(result.msg)
+            if (result != undefined && result.status == 0) {
+                _msgalert.success(result.msg);
+            } else {
+                _msgalert.error(result.msg);
             }
         }
     });
