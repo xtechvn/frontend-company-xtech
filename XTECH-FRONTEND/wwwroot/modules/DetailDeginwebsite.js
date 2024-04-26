@@ -155,7 +155,7 @@ function GetListMenuKhoSp() {
                         <h3>${item.name}</h3>
                     </a>`
                 }
-                var html = `<a class="swiper-slide item" href="javascript:;" onclick="getNewsCategory(1,1011);"   style="width: 180px !important; margin-right: 24px !important;">
+                var html = `<a class="swiper-slide item" href="javascript:;" onclick="getNewsCategory(1,1022);"   style="width: 180px !important; margin-right: 24px !important;">
                         <svg class="icon-svg">
                             <use xlink:href="/images/icons/icon.svg#all"></use>
                         </svg>
