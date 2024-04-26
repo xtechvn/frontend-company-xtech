@@ -1,6 +1,6 @@
 ﻿
-let mem =10;
-let cpu =10;
+let mem = 10;
+let cpu = 10;
 let ssd = 1;
 let net = 1;
 let nip = 1;
@@ -22,14 +22,14 @@ function priceCount_vps(idOption = null) {
     var quantity = $('#select_vps_quantity' + ' option:selected').attr('value');
     var affiliate_code = $('#affiliate_code').text();
 
-  
+
 
     if (!(mem > 0 && cpu > 0 && ssd > 0 && net > 0 && nip > 0))
         return;
 
     $("#price_select_vps" + idOption).html('...');
     //var urlOK = "https://galaxycloud.vn/a_p_i/public-hosting/get-price/?type=vps&cpu=" + cpu + '&mem=' + mem + '&ssd=' + ssd + '&net=' + net + '&nip=' + nip + '&nMonth=' + nMonth + '&quantity=1';
- 
+
     var requestObj = {
         CPU: cpu,
         Memory: mem,
@@ -39,7 +39,7 @@ function priceCount_vps(idOption = null) {
         nMonth: nMonth,
         quantity: quantity == undefined ? 1 : quantity,
     }
-        $.ajax({
+    $.ajax({
         url: "/FAQ/GetPriceGalaxy",
         type: "Post",
         data: { data: requestObj },
@@ -49,14 +49,14 @@ function priceCount_vps(idOption = null) {
                 console.log("RET = ", result.payload);
 
                 $("#price_select_vps" + idOption).html(_global_function.Comma(result.payload));
-             
+
                 var totalPrice = requestObj.quantity * parseFloat(nMonth) * result.payload;
-               
+
                 console.log(" total price2 = " + totalPrice);
                 $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice) + " K ");
             }
         }
-        });
+    });
 
 }
 
@@ -81,17 +81,17 @@ $(document).ready(function () {
         var nip = $('#select_vps_custom_nip' + idItem + ' option:selected').attr('value');
         var nMonth = $('#select_vps_time' + idItem + ' option:selected').attr('value');
         var quantity = $('#select_vps_quantity' + idItem + ' option:selected').attr('value');
-     
+
         var obj = {
-            mem : mem,
-            cpu : cpu,
-            ssd : ssd,
-            net : net,
-            nip : nip,
-            nMonth : nMonth,
-            quantity : quantity
+            mem: mem,
+            cpu: cpu,
+            ssd: ssd,
+            net: net,
+            nip: nip,
+            nMonth: nMonth,
+            quantity: quantity
         }
-        
+
         localStorage.setItem(key, JSON.stringify(obj))
         window.location.href = '/dich-vu/dang-ky-vps'
     });
@@ -127,7 +127,7 @@ $(document).ready(function () {
         $('#pricePack_vps' + idItem).html($('#select_vps_time' + idItem).find('option:selected').attr("name") + "K");
 
         getPriceFixVps(idItem);
-   
+
     });
 
 
@@ -176,13 +176,13 @@ $(document).ready(function () {
         var nMonth = $('#select_vps_time' + idItem).find('option:selected').attr("value");
         var priceMonth = $('#price_select_vps' + idItem).text();
         var quantity = $('#select_vps_quantity' + idItem).find('option:selected').attr("name");
-        var totalPrice = nMonth * parseFloat(priceMonth.replaceAll(',', ''))  * quantity;
-        var totalPricequantity = parseFloat(priceMonth.replaceAll(',', ''))  * quantity;
+        var totalPrice = nMonth * parseFloat(priceMonth.replaceAll(',', '')) * quantity;
+        var totalPricequantity = parseFloat(priceMonth.replaceAll(',', '')) * quantity;
 
         $("#prePayPackage" + idItem).attr("href", "/buy/hosting/item/id/" + idItem + "/month/" + nMonth + '/quantity/' + quantity);
         $("#payPackage" + idItem).attr("href", "/buy/hosting/pre-pay/id/" + idItem + "/month/" + nMonth + '/quantity/' + quantity);
-        
-        $('#totalPricepriceVpsCustom' + idItem).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice)  + "K ");
+
+        $('#totalPricepriceVpsCustom' + idItem).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice) + "K ");
 
         if (idItem == 0)
             priceCount_vps('');
@@ -217,7 +217,13 @@ $(document).ready(function () {
 });
 function LaodDetailVPS() {
     $('body').on('click', '#booking_vps', function (event) {
+        LoadThongso(1)
+    });
+    $('body').on('click', '#btn_thanh_toan', function (event) {
         dangkyvps()
+    });
+    $('body').on('click', '#btn_huy_thanh_toan', function (event) {
+        LoadThongso(2)
     });
     const itemStr = localStorage.getItem(key)
     var data = JSON.parse(itemStr);
@@ -240,14 +246,14 @@ function dangkyvps() {
         nip: $('#select_vps_custom_nip').val(),
         nMonth: $('#select_vps_time').val(),
         quantity: $('#select_vps_quantity').val(),
-        Clientid:1,
+        Clientid: 1,
         Amount: $('#price_select_vps').text().replaceAll(',', ''),
     }
 
     $.ajax({
         url: "/FAQ/BookingVPS",
         type: "Post",
-        data: { data:requestObj },
+        data: { data: requestObj },
         success: function (result) {
             if (result != undefined && result.status == 0) {
                 _msgalert.success(result.msg);
@@ -256,4 +262,24 @@ function dangkyvps() {
             }
         }
     });
+}
+function LoadThongso(type) {
+    if (type == 1) {
+        $('#Load_vps_thong_so').hide();
+        $('#cpu').html($('#select_vps_custom_cpu').val() + ' VCore')
+        $('#mem').html($('#select_vps_custom_mem').val() + ' GB')
+        $('#ssd').html($('#select_vps_custom_ssd').val() + ' GB')
+        $('#net').html($('#select_vps_custom_net' + ' Mbit').val())
+        $('#nip').html($('#select_vps_custom_nip').val())
+        $('#nMonth').html($('#select_vps_time').val() + ' tháng')
+        $('#amount').html(_global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val()))) + ' K (VND)')
+        $('#quantity').html($('#select_vps_quantity').val())
+        $('#totalPric').html($('#price_select_vps').text() + ',000 VND (' + $('#select_vps_time').val() + ' x ' + _global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val()))) + ' x ' + $('#select_vps_quantity').val() + ')' )
+        var a = _global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val())));
+        $('#thong_tin_dang_ky').show();
+    } else {
+        $('#Load_vps_thong_so').show();
+        $('#thong_tin_dang_ky').hide()
+    }
+
 }

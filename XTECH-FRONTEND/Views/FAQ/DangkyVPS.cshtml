@@ -1,4 +1,47 @@
-﻿<section class="header-main margin-banner clearfix">
+﻿<style>
+    table {
+        border-collapse: collapse;
+        border: 2px solid rgb(140 140 140);
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    caption {
+        caption-side: bottom;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    thead,
+    tfoot {
+        background-color: rgb(228 240 245);
+    }
+
+    th,
+    td {
+        border: 1px solid rgb(160 160 160);
+        padding: 8px 10px;
+    }
+
+        td:last-of-type {
+            text-align: center;
+        }
+
+    tbody > tr:nth-of-type(even) {
+        background-color: rgb(237 238 242);
+    }
+
+    tfoot th {
+        text-align: right;
+    }
+
+    tfoot td {
+        font-weight: bold;
+    }
+
+</style>
+<section class="header-main margin-banner clearfix">
     <div class="container">
         <div class="text-post">
             <h1 class="title-page">Đăng ký Cloud VPS</h1>
@@ -6,7 +49,7 @@
     </div>
 </section>
 <section class="container clearfix mb80">
-    <div class="list-vps">
+    <div id="Load_vps_thong_so" class="list-vps">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" style="width: 281.25px; margin-right: 25px;">
@@ -264,6 +307,77 @@
 
         </div>
 
+    </div>
+    <div class="row" id="thong_tin_dang_ky" style="display:none;">
+
+        <div class="col-sm-4">
+
+            <table class="glx04">
+                <tbody>
+                    <tr>
+                        
+                        <th colspan="2"> CẤU HÌNH LỰA CHỌN</th>
+                    </tr>
+                    <tr>
+                        <td> Loại server</td>
+                        <td><b>VPS</b></td>
+                    </tr>
+                    <tr>
+                        <td> Gói</td>
+                        <td><b>Tùy chọn</b></td>
+                    </tr>
+                    <tr>
+                        <td> CPU</td>
+                        <td id="cpu">1 VCore</td>
+                    </tr>
+                    <tr>
+                        <td> Memory</td>
+                        <td id="mem">1 GB</td>
+                    </tr>
+                    <tr>
+                        <td> SSD</td>
+                        <td id="ssd">20 GB</td>
+                    </tr>
+                    <tr>
+                        <td> Network</td>
+                        <td id="net">100 Mbit</td>
+                    </tr>
+                    <tr>
+                        <td> IP address</td>
+                        <td id="nip">1 </td>
+                    </tr>
+                    <tr>
+                        <td> Thời gian sử dụng</td>
+                        <td id="nMonth">6 tháng</td>
+                    </tr>
+                    <tr>
+                        <td> Chi phí 1 tháng</td>
+                        <td id="amount">150 K (VND)</td>
+                    </tr>
+                    <tr>
+                        <td> Số lượng server</td>
+                        <td id="quantity">1 </td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: bold"> Tổng chi phí</td>
+                        <td style="font-weight: bold" id="totalPric">
+                            900,000 VND (6 x 150 K x 1)<br>Chín trăm ngàn đồng
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <button id="btn_huy_thanh_toan" class="btn-default bg-white"> Hủy</button>
+
+                        </td>
+                        <td>
+                            <button id="btn_thanh_toan" class="btn-default bg-white"> Đăng ký</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </section>
