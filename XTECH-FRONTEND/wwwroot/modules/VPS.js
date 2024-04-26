@@ -183,10 +183,9 @@ $(document).ready(function () {
         $("#payPackage" + idItem).attr("href", "/buy/hosting/pre-pay/id/" + idItem + "/month/" + nMonth + '/quantity/' + quantity);
         
         $('#totalPricepriceVpsCustom' + idItem).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice)  + "K ");
-      
-        $("#price_select_vps" + idItem).html(_global_function.Comma(totalPricequantity));
-        //if (idItem == 0)
-        //    priceCount_vps('');
+
+        if (idItem == 0)
+            priceCount_vps('');
     }
 
 
