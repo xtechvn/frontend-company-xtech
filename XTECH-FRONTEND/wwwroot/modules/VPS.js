@@ -48,12 +48,12 @@ function priceCount_vps(idOption = null) {
 
                 console.log("RET = ", result.payload);
 
-                $("#price_select_vps" + idOption).html(_global_function.Comma(result.payload));
+                $("#price_select_vps" + idOption).html(_global_function.Comma(result.payload+"000"));
 
                 var totalPrice = requestObj.quantity * parseFloat(nMonth) * result.payload;
 
                 console.log(" total price2 = " + totalPrice);
-                $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice) + " K ");
+                $('#totalPricepriceVpsCustom' + idOption).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice+"000") + " đ ");
             }
         }
     });
@@ -182,7 +182,7 @@ $(document).ready(function () {
         $("#prePayPackage" + idItem).attr("href", "/buy/hosting/item/id/" + idItem + "/month/" + nMonth + '/quantity/' + quantity);
         $("#payPackage" + idItem).attr("href", "/buy/hosting/pre-pay/id/" + idItem + "/month/" + nMonth + '/quantity/' + quantity);
 
-        $('#totalPricepriceVpsCustom' + idItem).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice) + "K ");
+        $('#totalPricepriceVpsCustom' + idItem).html("Chi phí " + nMonth + " Tháng: " + _global_function.Comma(totalPrice+"000") + "đ ");
 
         if (idItem == 0)
             priceCount_vps('');
@@ -272,7 +272,7 @@ function LoadThongso(type) {
         $('#net').html($('#select_vps_custom_net' + ' Mbit').val())
         $('#nip').html($('#select_vps_custom_nip').val())
         $('#nMonth').html($('#select_vps_time').val() + ' tháng')
-        $('#amount').html(_global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val()))) + ' K (VND)')
+        $('#amount').html(_global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val()))) + ',000 đ (VND)')
         $('#quantity').html($('#select_vps_quantity').val())
         $('#totalPric').html($('#price_select_vps').text() + ',000 VND (' + $('#select_vps_time').val() + ' x ' + _global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val()))) + ' x ' + $('#select_vps_quantity').val() + ')' )
         var a = _global_function.Comma(Math.round(parseFloat($('#price_select_vps').text().replaceAll(',', '')) / parseFloat($('#select_vps_time').val())));
