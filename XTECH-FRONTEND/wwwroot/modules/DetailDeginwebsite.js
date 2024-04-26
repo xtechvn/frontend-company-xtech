@@ -91,6 +91,7 @@ function getNewsCategory(page, category_id) {
                     rows += `<div class="item">
                                 <a class="img-scroll" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">
                                     ${item.body}
+
                                 </a>
                                 <div class="content">
                                     <h3 class="name"><a href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">${item.title}</a></h3>
@@ -201,7 +202,7 @@ function GetFindArticle(page, category_id) {
                     var item = result.data[i];
                     rows += `<div class="item">
                                 <a class="img-scroll" href="${item.directlink == "" ? "/tin-tuc/" + item.id : item.directlink}">
-                                    <img src="${item.image}" alt="">
+                                      ${item.body}
                                 </a>
                                 <div class="content">
                                     <h3 class="name"><a href="${item.directlink == "" ?"/tin-tuc/"+item.id:item.directlink}">${item.title}</a></h3>
