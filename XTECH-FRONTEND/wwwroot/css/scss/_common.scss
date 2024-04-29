@@ -985,8 +985,8 @@ input {
         border-bottom: 1px solid rgba(34, 43, 69, 0.3);
         height: 58px;
         padding: 0 20px 0 60px;
-        font-size: 20px;
-        font-weight: 600;
+        color: #666;
+        font-size: 18px;
         width: 100%;
         outline: 0;
         border-radius: 4px;
@@ -1014,7 +1014,6 @@ input {
             height: 24px;
         }
     }
-
     .btn_reset {
         position: absolute;
         top: 14px;
@@ -1045,6 +1044,25 @@ input {
             display: block;
         }
     }
+    &.crawl{
+        .input_search{
+            padding: 0 140px 0 20px;
+        }
+        .btn-default{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            padding: 10px 20px;
+            &::before{
+                content: "";
+                background: #ccc;
+                position: absolute;
+                width: 1px;
+                height: 28px;
+                left: -10px;
+            }
+        }
+    }
 
     @media (max-width: 991px) {
         .input_search{
@@ -1058,6 +1076,15 @@ input {
             svg{
                 width: 18px;
                 height: 18px;
+            }
+        }
+        &.crawl{
+            .input_search{
+                padding: 0 120px 0 20px;
+            }
+            .btn-default{
+                padding: 6px 15px;
+                right: 5px;
             }
         }
     }
