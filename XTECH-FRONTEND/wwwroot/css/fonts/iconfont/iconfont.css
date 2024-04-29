@@ -3,11 +3,11 @@ iconfont Webfont
 */
 @font-face {
 	font-family: 'iconfont';
-	src: url('iconfont.eot?1711599588029');
-	src: url('iconfont.eot?#iefix-1711599588029') format('embedded-opentype'),
-		url('iconfont.woff2?1711599588029') format('woff2'),
-		url('iconfont.woff?1711599588029') format('woff'),
-		url('iconfont.ttf?1711599588029') format('truetype');
+	src: url('iconfont.eot?1714100233419');
+	src: url('iconfont.eot?#iefix-1714100233419') format('embedded-opentype'),
+		url('iconfont.woff2?1714100233419') format('woff2'),
+		url('iconfont.woff?1714100233419') format('woff'),
+		url('iconfont.ttf?1714100233419') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -32,68 +32,112 @@ iconfont Webfont
 /*
 Glyphs list
 */
- .iconfont-Analytics:before {
+ .iconfont-all:before {
 			content: '\ea01';
 		}
 
-		 .iconfont-cancel:before {
+		 .iconfont-Analytics:before {
 			content: '\ea02';
 		}
 
-		 .iconfont-checkmark:before {
+		 .iconfont-batdongsan:before {
 			content: '\ea03';
 		}
 
-		 .iconfont-close:before {
+		 .iconfont-cancel:before {
 			content: '\ea04';
 		}
 
-		 .iconfont-cloud:before {
+		 .iconfont-cart:before {
 			content: '\ea05';
 		}
 
-		 .iconfont-data:before {
+		 .iconfont-checkmark:before {
 			content: '\ea06';
 		}
 
-		 .iconfont-date:before {
+		 .iconfont-close:before {
 			content: '\ea07';
 		}
 
-		 .iconfont-Development:before {
+		 .iconfont-cloud:before {
 			content: '\ea08';
 		}
 
-		 .iconfont-group:before {
+		 .iconfont-congty:before {
 			content: '\ea09';
 		}
 
-		 .iconfont-info:before {
+		 .iconfont-curl:before {
 			content: '\ea0a';
 		}
 
-		 .iconfont-lang:before {
+		 .iconfont-data:before {
 			content: '\ea0b';
 		}
 
-		 .iconfont-person:before {
+		 .iconfont-date:before {
 			content: '\ea0c';
 		}
 
-		 .iconfont-search:before {
+		 .iconfont-Development:before {
 			content: '\ea0d';
 		}
 
-		 .iconfont-seo:before {
+		 .iconfont-dichvu:before {
 			content: '\ea0e';
 		}
 
-		 .iconfont-Service:before {
+		 .iconfont-group:before {
 			content: '\ea0f';
 		}
 
-		 .iconfont-source:before {
+		 .iconfont-info:before {
 			content: '\ea10';
+		}
+
+		 .iconfont-lang:before {
+			content: '\ea11';
+		}
+
+		 .iconfont-link:before {
+			content: '\ea12';
+		}
+
+		 .iconfont-node:before {
+			content: '\ea13';
+		}
+
+		 .iconfont-person:before {
+			content: '\ea14';
+		}
+
+		 .iconfont-php:before {
+			content: '\ea15';
+		}
+
+		 .iconfont-python:before {
+			content: '\ea16';
+		}
+
+		 .iconfont-search:before {
+			content: '\ea17';
+		}
+
+		 .iconfont-seo:before {
+			content: '\ea18';
+		}
+
+		 .iconfont-Service:before {
+			content: '\ea19';
+		}
+
+		 .iconfont-source:before {
+			content: '\ea1a';
+		}
+
+		 .iconfont-spa:before {
+			content: '\ea1b';
 		}
 
 		

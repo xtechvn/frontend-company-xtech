@@ -67,6 +67,13 @@
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(232, 232, 232, 0.85);
 }
+.text-color{
+    background: -webkit-linear-gradient(322.96deg, rgba(49, 46, 205, 1) 2.62%, rgba(31, 166, 170, 1) 54.96%);
+    background: linear-gradient(127.04deg, rgba(49, 46, 205, 1) 2.62%, rgba(31, 166, 170, 1) 54.96%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 // END RESET LDP
 .top-banner {
     position: relative;
@@ -1121,6 +1128,14 @@
                     }
                 }
                 &.active{color: rgba(255, 255, 255, 0.85);}
+            }
+        }
+        .note{
+            color: rgba(255, 255, 255, .6);
+            font-style: italic;
+            font-size: 15px;
+            a{
+                font-weight: bold;
             }
         }
     }
@@ -2260,3 +2275,225 @@
     }
 }
 
+.crawl-json{
+    border: 10px solid #5886BD;
+    border-radius: 10px;
+    position: relative;
+    .head{
+        position: absolute;
+        left: 50%;
+        top: -10px;
+        transform: translateX(-50%);
+        background: #5886BD;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        border-radius: 8px;
+        padding: 12px 60px;
+        text-align: center;
+        p{
+            margin-bottom: 2px;
+        }
+        .select{
+            font-weight: bold;
+            color: #fff;
+            position: relative;
+            font-size: 15px;
+            &::before{
+                content: "";
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M9.72459 12.5122C9.72459 12.6005 9.7929 12.6729 9.87526 12.6729H13.5918C13.6741 12.6729 13.7424 12.6005 13.7424 12.5122V11.5479C13.7424 11.4595 13.6741 11.3872 13.5918 11.3872H9.87526C9.7929 11.3872 9.72459 11.4595 9.72459 11.5479V12.5122ZM5.80919 12.6347L9.66633 9.40032C9.74267 9.33604 9.74267 9.21751 9.66633 9.15323L5.80919 5.92086C5.78591 5.90106 5.75743 5.88836 5.72714 5.88426C5.69685 5.88016 5.66602 5.88484 5.63831 5.89774C5.6106 5.91065 5.58718 5.93123 5.57082 5.95705C5.55446 5.98287 5.54585 6.01284 5.54602 6.04341V7.303C5.54602 7.35122 5.56611 7.39541 5.60428 7.42555L7.81008 9.27778L5.60428 11.13C5.58632 11.145 5.57182 11.1638 5.56177 11.1849C5.55171 11.2061 5.54634 11.2291 5.54602 11.2526V12.5122C5.54602 12.6488 5.70473 12.7231 5.80919 12.6347ZM17.0371 1.24207H2.25138C1.8958 1.24207 1.60852 1.52934 1.60852 1.88492V16.6706C1.60852 17.0262 1.8958 17.3135 2.25138 17.3135H17.0371C17.3927 17.3135 17.68 17.0262 17.68 16.6706V1.88492C17.68 1.52934 17.3927 1.24207 17.0371 1.24207ZM16.2335 15.8671H3.05495V2.68849H16.2335V15.8671Z' fill='white'/%3e%3c/svg%3e");
+                width: 19px;
+                height: 19px;
+                position: absolute;
+                left: -24px;
+                top: -1px;
+            }
+            &::after{
+                content: "";
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M9.66776 10.7279L14.0535 6.44392C14.3325 6.17122 14.7771 6.17662 15.048 6.45472C15.3216 6.73282 15.3117 7.17742 15.0372 7.44922L10.1475 12.2246C9.86846 12.4982 9.42296 12.491 9.15296 12.2138L4.37666 7.32502C4.24346 7.18822 4.17596 7.01002 4.17596 6.83272C4.17596 6.65002 4.24796 6.46732 4.38836 6.32962C4.66646 6.05692 5.11106 6.06412 5.38196 6.34042L9.66776 10.7279Z' fill='white'/%3e%3c/svg%3e");
+                width: 19px;
+                height: 19px;
+                position: absolute;
+                right: -24px;
+                top: -1px;
+            }
+        }
+    }
+    .copy{
+        position: absolute;
+        background: #5886BD;
+        color: rgba(255, 255, 255, 0.6);
+        border-radius: 0px 0px 0px 10px;
+        text-align: center;
+        right: 0;
+        padding: 8px;
+        font-size: 13px;
+        top: 0;
+        span{
+            display: block;
+        }
+    }
+    .code-overflow{
+        overflow-y: auto;
+        padding: 1rem;
+        background: #000;
+        &::-webkit-scrollbar-thumb {
+            background-color: hsla(0, 0%, 100%, .1);
+        }
+        &::-webkit-scrollbar-thumb {
+            --tw-border-opacity: 1;
+            background-color: hsla(0, 0%, 89%, .8);
+            border-color: rgba(255,255,255, var(--tw-border-opacity));
+            border-radius: 9999px;
+            border-width: 1px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 9999px;
+        }
+        .hljs-comment {
+            color: hsla(0, 0%, 100%, .5);
+        }
+        .hljs-addition, .hljs-attribute, .hljs-meta-string, .hljs-regexp, .hljs-string {
+            color: #00a67d;
+        }
+        .hljs-doctag, .hljs-formula, .hljs-keyword, .hljs-literal {
+            color: #2e95d3;
+        }
+        .hljs-bullet, .hljs-link, .hljs-selector-id, .hljs-symbol, .hljs-title {
+            color: #f22c3d;
+        }
+        :not(pre)>code.hljs, :not(pre)>code[class*=language-]{
+            border-radius: .3em;
+            padding: .1em;
+            white-space: normal;
+        }
+        code.hljs, code[class*=language-], pre[class*=language-]{
+            word-wrap: normal;
+            background: none;
+            color: #fff;
+            -webkit-hyphens: none;
+            hyphens: none;
+            line-height: 1.5;
+            tab-size: 4;
+            text-align: left;
+            white-space: pre;
+            word-break: normal;
+            word-spacing: normal;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .head{
+            padding: 10px 20px;
+        }
+    }
+}
+
+.box-rainforest{
+    .tab{
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        a{
+            padding: 12px 20px 6.5px 20px;
+            border-radius: 10px 10px 0px 0px;
+            background: #FFF;
+            color: #6A6377;
+            text-align: center;
+            svg{
+                color: #5886BD;
+                width: 50px;
+                height: 50px;
+            }
+            span{
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+            &.active{
+                background: #5886BD;
+                color: #fff;
+                svg{
+                    color: #fff;
+                }
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        .tab{
+            display: block;
+            width: 100%;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    
+            a {
+                display: inline-block;
+                font-size: 13px;
+                svg{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+}
+
+.box-put-tets{
+    padding: 10px 80px;
+    border-radius: 10px;
+    display: flex;
+    gap: 60px;
+    .item{
+        background: #fff;
+        padding: 20px;
+        width: 50%;
+        border-radius: 10px;
+    }
+    .vs{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+            border-radius: 32px;
+            background: #F3F7FA;
+            font-size: 18px;
+            color: #6A6377;
+            font-weight: bold;
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    a{
+        color: rgba(29, 77, 123, 0.75);
+    }
+    @media (max-width: 991px) {
+        gap: 20px;
+        padding:0;
+    }
+    @media (max-width: 767px) {
+        gap: 10px;
+        .item{
+            padding: 10px;
+            font-size: 14px;
+        }
+        .vs{
+            span{
+                font-size: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .txt_18{
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+}

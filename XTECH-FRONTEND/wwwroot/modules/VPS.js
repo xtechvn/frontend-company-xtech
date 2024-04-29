@@ -238,30 +238,47 @@ function LaodDetailVPS() {
     priceCount_vps('');
 }
 function dangkyvps() {
-    var requestObj = {
-        CPU: $('#select_vps_custom_cpu').val(),
-        Memory: $('#select_vps_custom_mem').val(),
-        SSD: $('#select_vps_custom_ssd').val(),
-        net: $('#select_vps_custom_net').val(),
-        nip: $('#select_vps_custom_nip').val(),
-        nMonth: $('#select_vps_time').val(),
-        quantity: $('#select_vps_quantity').val(),
-        Clientid: 1,
-        Amount: $('#price_select_vps').text().replaceAll(',', ''),
-    }
-
-    $.ajax({
-        url: "/FAQ/BookingVPS",
-        type: "Post",
-        data: { data: requestObj },
-        success: function (result) {
-            if (result != undefined && result.status == 0) {
-                _msgalert.success(result.msg);
-            } else {
-                _msgalert.error(result.msg);
-            }
+    let FromCreate = $('#dang_ky_vps');
+    FromCreate.validate({
+        rules: {
+            "name": "required",
+            "sdt": "required",
+            "email": "required",
+        },
+        messages: {
+            "name": "Họ tên không được bỏ trống",
+            "sdt": "Số điện thoại không được bỏ trống",
+            "email": "Email không được bỏ trống",
+         
         }
     });
+    if (FromCreate.valid()) {
+        var requestObj = {
+            CPU: $('#select_vps_custom_cpu').val(),
+            Memory: $('#select_vps_custom_mem').val(),
+            SSD: $('#select_vps_custom_ssd').val(),
+            net: $('#select_vps_custom_net').val(),
+            nip: $('#select_vps_custom_nip').val(),
+            nMonth: $('#select_vps_time').val(),
+            quantity: $('#select_vps_quantity').val(),
+            Clientid: 1,
+            Amount: $('#price_select_vps').text().replaceAll(',', ''),
+        }
+
+        $.ajax({
+            url: "/FAQ/BookingVPS",
+            type: "Post",
+            data: { data: requestObj },
+            success: function (result) {
+                if (result != undefined && result.status == 0) {
+                    _msgalert.success(result.msg);
+                } else {
+                    _msgalert.error(result.msg);
+                }
+            }
+        });
+    }
+
 }
 function LoadThongso(type) {
     if (type == 1) {

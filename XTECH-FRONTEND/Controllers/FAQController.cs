@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using XTECH_FRONTEND.Models.VPS;
 using XTECH_FRONTEND.Services;
 using XTECH_FRONTEND.Utilities;
@@ -71,5 +72,12 @@ namespace XTECH_FRONTEND.Controllers
                 return null;
             }
         }
+        public async Task<IActionResult> CrawlAPIindex()
+        {
+
+            return View();
+
+        }
+       
     }
 }

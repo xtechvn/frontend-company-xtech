@@ -54,6 +54,10 @@ app.MapControllerRoute(
     pattern: "/dich-vu/dang-ky-vps",
     defaults: new { controller = "FAQ", action = "DangkyVPS" });
 app.MapControllerRoute(
+    name: "faq",
+    pattern: "/dich-vu/crawl-api",
+    defaults: new { controller = "FAQ", action = "CrawlAPIindex" });
+app.MapControllerRoute(
     name: "home",
     pattern: "/",
     defaults: new { controller = "Home", action = "Index" });
