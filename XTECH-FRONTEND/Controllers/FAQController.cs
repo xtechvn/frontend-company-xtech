@@ -68,7 +68,7 @@ namespace XTECH_FRONTEND.Controllers
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("GetPriceGalaxy - NewsController: " + ex);
+                LogHelper.InsertLogTelegram("GetPriceGalaxy - FAQController: " + ex);
                 return null;
             }
         }
@@ -78,6 +78,21 @@ namespace XTECH_FRONTEND.Controllers
             return View();
 
         }
-       
+        public async Task<IActionResult> GetCrawlAPI(string url)
+        {
+            try
+            {
+                ApiService apiService = new ApiService(_configuration);
+
+                var result = await apiService.CrawlApi(url);
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("GetCrawlAPI - FAQController: " + ex);
+                return null;
+            }
+        }
     }
 }

@@ -264,125 +264,107 @@
                         <a class="btn-default booking_vps" id="booking_vps" data-opt="">Đăng ký</a>
                     </div>
                 </div>
-                <div class="col-sm-8 col-lg-8">
-
-                    <div style="border: 1px solid #ccc; margin: 0px; padding: 20px; background: lavenderblush">
-
-                        <table class="glx04">
-                            <tbody>
-                                <tr>
-                                    <th> Dịch vụ bổ xung </th>
-                                    <th> Chi phí </th>
-                                </tr>
-                                <tr>
-                                    <td> 01 VCore CPU </td>
-                                    <td> 70 K </td>
-                                </tr>
-                                <tr>
-                                    <td> 01 GB memory </td>
-                                    <td> 40 K </td>
-                                </tr>
-                                <tr>
-                                    <td> 100 GB SSD </td>
-                                    <td> 120 K </td>
-                                </tr>
-                                <tr>
-                                    <td> 100 Mbit network</td>
-                                    <td> 1000 K </td>
-                                </tr>
-                                <tr>
-                                    <td> 01 IP address</td>
-                                    <td> 50k </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <br>
-                        <span style="font-style: italic; font-size: small">Giảm <b>10%</b> khi thanh toán <b>12</b> tháng<br> Giảm <b>5%</b> khi thanh toán <b>6</b> tháng </span>
-
-                    </div>
-
-                </div>
             </div>
 
         </div>
 
     </div>
     <div class="row" id="thong_tin_dang_ky" style="display:none;">
+        <div class="row mb20">
+            
+            <div class="col-md-6 mb20">
+                <table class="glx04">
+                    <tbody>
+                       
+                        <tr>
+                            <th colspan="2" style="text-align: center;"> Cấu hình đã lựu chọn</th>
+                        </tr>
+                        <tr>
+                            <td> Loại server</td>
+                            <td><b>VPS</b></td>
+                        </tr>
+                        <tr>
+                            <td> Gói</td>
+                            <td><b>Tùy chọn</b></td>
+                        </tr>
+                        <tr>
+                            <td> CPU</td>
+                            <td id="cpu">1 VCore</td>
+                        </tr>
+                        <tr>
+                            <td> Memory</td>
+                            <td id="mem">1 GB</td>
+                        </tr>
+                        <tr>
+                            <td> SSD</td>
+                            <td id="ssd">20 GB</td>
+                        </tr>
+                        <tr>
+                            <td> Network</td>
+                            <td id="net">100 Mbit</td>
+                        </tr>
+                        <tr>
+                            <td> IP address</td>
+                            <td id="nip">1 </td>
+                        </tr>
+                        <tr>
+                            <td> Thời gian sử dụng</td>
+                            <td id="nMonth">6 tháng</td>
+                        </tr>
+                        <tr>
+                            <td> Chi phí 1 tháng</td>
+                            <td id="amount">150 K (VND)</td>
+                        </tr>
+                        <tr>
+                            <td> Số lượng server</td>
+                            <td id="quantity">1 </td>
+                        </tr>
 
-        <div class="col-sm-4">
+                        <tr>
+                            <td style="font-weight: bold"> Tổng chi phí</td>
+                            <td style="font-weight: bold" id="totalPric">
+                                900,000 VND (6 x 150 K x 1)<br>Chín trăm ngàn đồng
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <form id="dang_ky_vps" onsubmit="return false" class="col-md-6 mb20">
+                <div class="form-default">
+                    <div class="row min">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control error" id="name" name="name" placeholder="Họ và tên" aria-invalid="true"><label id="Name-error" class="error" for="Name"></label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control error" id="sdt" name="sdt" placeholder="Số điện thoại" aria-invalid="true"><label id="Email-error" class="error" for="Email"></label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control error" id="email" name="email" placeholder="Email"><label id="Title-error" class="error" for="Title"></label>
+                            </div>
+                        </div>
 
-            <table class="glx04">
-                <tbody>
-                    <tr>
-                        
-                        <th colspan="2" style="text-align: center;"> Cấu hình lựu chọn</th>
-                    </tr>
-                    <tr>
-                        <td> Loại server</td>
-                        <td><b>VPS</b></td>
-                    </tr>
-                    <tr>
-                        <td> Gói</td>
-                        <td><b>Tùy chọn</b></td>
-                    </tr>
-                    <tr>
-                        <td> CPU</td>
-                        <td id="cpu">1 VCore</td>
-                    </tr>
-                    <tr>
-                        <td> Memory</td>
-                        <td id="mem">1 GB</td>
-                    </tr>
-                    <tr>
-                        <td> SSD</td>
-                        <td id="ssd">20 GB</td>
-                    </tr>
-                    <tr>
-                        <td> Network</td>
-                        <td id="net">100 Mbit</td>
-                    </tr>
-                    <tr>
-                        <td> IP address</td>
-                        <td id="nip">1 </td>
-                    </tr>
-                    <tr>
-                        <td> Thời gian sử dụng</td>
-                        <td id="nMonth">6 tháng</td>
-                    </tr>
-                    <tr>
-                        <td> Chi phí 1 tháng</td>
-                        <td id="amount">150 K (VND)</td>
-                    </tr>
-                    <tr>
-                        <td> Số lượng server</td>
-                        <td id="quantity">1 </td>
-                    </tr>
+                    </div>
 
-                    <tr>
-                        <td style="font-weight: bold"> Tổng chi phí</td>
-                        <td style="font-weight: bold" id="totalPric">
-                            900,000 VND (6 x 150 K x 1)<br>Chín trăm ngàn đồng
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                    <div class="container" style="text-align:center">
+                        <button id="btn_huy_thanh_toan" class="btn-default bg-white"> Hủy</button>
+                        <button id="btn_thanh_toan" class="btn-default bg-white"> Đăng ký</button>
+                    </div>
+                </div>
 
-                            <button id="btn_huy_thanh_toan" class="btn-default bg-white"> Hủy</button>
-
-                        </td>
-                        <td>
-                            <button id="btn_thanh_toan" class="btn-default bg-white"> Đăng ký</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            </form>
         </div>
+      
     </div>
 
 </section>
 @section scripts {
     <script asp-append-version="true" src="~/modules/VPS.js"></script>
+    <script asp-append-version="true" src="~/libs/jquery.validate.js"></script>
     <script>LaodDetailVPS()</script>
 
 }

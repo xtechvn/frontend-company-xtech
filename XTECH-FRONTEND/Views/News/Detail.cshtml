@@ -5,22 +5,17 @@
     var data = (GetNewDetailResponse)ViewBag.data;
 }
 <input value="@ViewBag.id" id="newid" style="display:none;" />
-<section class="container clearfix">
+<section class="header-main min margin-banner clearfix"></section>
+<section class="container page-detail clearfix">
     <div class="flex">
-        <!-- body -->
-        <div class="box_stream mb30" >
+        <div class="box_stream mb30">
             <div class="detail_tin bg-white radius-10 pd-24">
                 <div class="flex-date">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/Home/Index">Trang chủ</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
                     </ol>
-                    <div class="date">
-                        <svg class="icon-svg">
-                            <use xlink:href="/images/icons/icon.svg#date"></use>
-                        </svg>
-                        <span>August 31, 2024</span>
-                    </div>
+                   
                 </div>
                 @if (data != null)
                 {
