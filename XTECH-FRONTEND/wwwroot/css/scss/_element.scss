@@ -1139,6 +1139,13 @@
             }
         }
     }
+    &.min{
+        height: 180px;
+        background: url(images/graphics/bg-head-main2.png) center bottom;
+        &::before,&::after{
+            display: none;
+        }
+    }
     @media (max-width: 991px) {
         .container{
             height: 260px;
@@ -1148,6 +1155,9 @@
             .title-page{
                 font-size: 26px;
             }
+        }
+        &.min{
+            height: 100px;
         }
     }
     @media (max-width: 576px) {
@@ -1165,6 +1175,15 @@
         .container{
             height: 200px;
         }
+        &.min{
+           display: none;
+        }
+    }
+}
+.page-detail{
+    margin-top: -100px;
+    @media (max-width: 576px) {
+        margin-top: 20px;
     }
 }
 

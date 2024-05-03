@@ -13,6 +13,7 @@ using XTECH_FRONTEND.Models.News.GetDetail;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
 using XTECH_FRONTEND.Models.VPS;
 using XTECH_FRONTEND.Utilities;
+using XTECH_FRONTEND.Views.Crawl;
 
 namespace XTECH_FRONTEND.Services
 {
@@ -305,5 +306,46 @@ namespace XTECH_FRONTEND.Services
             }
         }
         #endregion galaxy 
+        #region crawlapi
+        public async Task<ProductViewModel> CrawlApi(string url )
+        {
+            try
+            {
+
+                HttpClient _httpClient = new HttpClient();
+                ProductViewModel result = null;
+
+
+                var PrivateKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["KEY"];
+
+                var j_param = new Dictionary<string, string>()
+                {
+                    {"product_code","B003CEWPHC" },
+                    {"url", url},
+                    {"shop_id", "app_crawl_page"},
+                };
+                var data = JsonConvert.SerializeObject(j_param);
+                var token = AdavigoHelper.Encode(data, PrivateKey);
+                var request = new[]
+                {
+                    new KeyValuePair<string, string>("token", token),
+                };
+                var url_api = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain_craw_api"] + SystemConstants.AdavigoApiRoutes.CrawlApi;
+                HttpResponseMessage response = await _httpClient.PostAsync(url_api, new FormUrlEncodedContent(request));
+                var stringResult = "";
+                if (response.IsSuccessStatusCode)
+                {
+                    stringResult = await response.Content.ReadAsStringAsync();
+                    result = JsonConvert.DeserializeObject<ProductViewModel>(stringResult);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("CrawlApi - ApiService: " + ex);
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion crawlapi 
     }
 }

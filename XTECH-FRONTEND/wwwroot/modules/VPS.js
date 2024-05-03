@@ -263,6 +263,9 @@ function dangkyvps() {
             quantity: $('#select_vps_quantity').val(),
             Clientid: 1,
             Amount: $('#price_select_vps').text().replaceAll(',', ''),
+            Name: $('#name').val(),
+            Sdt: $('#sdt').val(),
+            Email: $('#email').val(),
         }
 
         $.ajax({

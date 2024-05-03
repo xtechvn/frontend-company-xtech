@@ -11,5 +11,8 @@
         public int quantity { get; set; }
         public int Clientid { get; set; }
         public double Amount { get; set; }
+        public string Name { get; set; }
+        public string Sdt { get; set; }
+        public string Email { get; set; }
     }
 }
