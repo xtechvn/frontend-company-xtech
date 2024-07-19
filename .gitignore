@@ -6,3 +6,6 @@
 /.vs
 
 /.vs
+/XTECH-FRONTEND/obj
+/XTECH-FRONTEND/bin
+/XTECH-FRONTEND/Properties
