@@ -93,6 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.27.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
     <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
