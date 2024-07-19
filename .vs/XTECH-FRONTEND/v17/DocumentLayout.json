@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Mirrors\\Desktop\\Xtech\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\mirrors\\desktop\\xtech\\xtech-frontend\\imagesstatic\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\imagesstatic\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\mirrors\\desktop\\xtech\\xtech-frontend\\imagesstatic\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\imagesstatic\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\mirrors\\desktop\\xtech\\xtech-frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\mirrors\\desktop\\xtech\\xtech-frontend\\properties\\folderprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\properties\\folderprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\mirrors\\desktop\\xtech\\xtech-frontend\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ImagesController.cs",
+              "DocumentMoniker": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\ImagesStatic\\ImagesController.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\ImagesStatic\\ImagesController.cs",
+              "ToolTip": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\ImagesStatic\\ImagesController.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\ImagesStatic\\ImagesController.cs",
+              "ViewState": "AQIAADwBAAAAAAAAAAAIwEgBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:59:12.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\appsettings.json",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\appsettings.json",
+              "ToolTip": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\appsettings.json",
+              "RelativeToolTip": "XTECH-FRONTEND\\appsettings.json",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAADoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-19T07:58:37.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileController.cs",
+              "DocumentMoniker": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\ImagesStatic\\FileController.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\ImagesStatic\\FileController.cs",
+              "ToolTip": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\ImagesStatic\\FileController.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\ImagesStatic\\FileController.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAowFEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:58:32.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FolderProfile.pubxml",
+              "DocumentMoniker": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\Properties\\FolderProfile.pubxml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Properties\\FolderProfile.pubxml",
+              "ToolTip": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\Properties\\FolderProfile.pubxml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Properties\\FolderProfile.pubxml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2024-07-19T07:58:05.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "ToolTip": "C:\\Users\\Mirrors\\Desktop\\Xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:58:05.131Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
