@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XTECH-FRONTEND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9190a75857af41cfaabfb134e1bdf67d38e2dd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("XTECH-FRONTEND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XTECH-FRONTEND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
