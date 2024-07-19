@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\XTECH-FRONTEND.props" />
-</Project>

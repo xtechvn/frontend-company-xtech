@@ -28,7 +28,6 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("UploadFile - FileService: " + ex);
             }
             return null;
         }
@@ -58,7 +57,6 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("CheckAndCreateFolder - FileService: " + ex);
             }
             return root;
         }

@@ -1,7 +1,4 @@
 ﻿using Entities.ViewModels.Static;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Jpeg;
-using SixLabors.ImageSharp.Processing;
 
 namespace Utilities
 {
@@ -86,37 +83,7 @@ namespace Utilities
             }
             return url;
         }
-        /// <summary>
-        /// Resize image with maximum 1000px width
-        /// </summary>
-        /// <param name="ImageBase64"></param>
-        /// <returns></returns>
-        public static string ResizeBase64ImageToWidth(string ImageBase64, out string FileType, int width = 250)
-        {
-            FileType = null;
-            try
-            {
-                var IsValid = TryGetFromBase64String(ImageBase64, out byte[] ImageByte);
-                if (IsValid)
-                {
-                    using (Image image = Image.Load(ImageByte))
-                    {
-                        int height = (int) (image.Height * ((double)width / image.Width));
-                        image.Mutate(x => x.Resize(width, height));
-                        FileType = "jpeg";
-                        return image.ToBase64String(JpegFormat.Instance).Split(",")[1];
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+       
         public static bool TryGetFromBase64String(string input, out byte[] output)
         {
             output = null;

@@ -46,7 +46,6 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("ConvertBase64StringToByte - MFAService" + ex);
             }
             return new byte[0];
         }
@@ -58,7 +57,6 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("ConvertBase64StringToByte - MFAService" + ex);
             }
             return null;
         }
@@ -154,7 +152,6 @@ namespace Utilities
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("FormatKey - AccountController" + ex);
                 return null;
             }
         }
