@@ -102,7 +102,7 @@ namespace Utilities
                     string urlPath_full = FileService.BuildURLFromPath(imgPath_full);
 
                     //Trả kết quả
-                    return Ok(new { status = (int)ResponseType.SUCCESS, message = "Images Received", url_path = urlPath_full});
+                    return Ok(new { status = (int)ResponseType.SUCCESS, message = "Images Received", url_path = urlPath_full,url_path_full= imgPath_full });
                 }
                 //Thông tin không được encode với key trong file .config hoặc thông tin convert ra null:
                 else
