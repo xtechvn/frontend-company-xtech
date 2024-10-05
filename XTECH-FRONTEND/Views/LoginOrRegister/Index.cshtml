@@ -1,0 +1,98 @@
+﻿<style>
+    .Hide-form
+    {
+        display:none;
+    }
+</style>
+<section class="header-main margin-banner clearfix">
+    <div class="container">
+        <div class="text-post">
+            <h1 class="title-page">Đăng nhập</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" id="title-page" aria-current="page">Đăng nhập</li>
+            </ol>
+        </div>
+    </div>
+</section> 
+<section class="container clearfix page-login">
+
+    <div class="row mb20">
+        <div class="col-md-7 m-auto" style="background:#FFF;padding:48px">
+            <div class="box-login">
+                <h2 class="title-cate center">Đăng nhập để khám phá</h2>
+                <p class="text-center">
+                    Bắt đầu trải nghiệm dịch vụ đẳng cấp của chúng tôi ngay bây giờ bằng cách đăng
+                    nhập vào tài khoản của bạn.
+                </p>
+                <div class="form-default">
+                    <div class="form-group">
+                        <input type="text" id="user-name" class="form-control" placeholder="Email">
+                        <span class="error" id="user-name-span" style="display:none">Tài khoản không được để trống*</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Password">
+                        <span class="error" id="password-span" style="display:none">Mật khẩu không được để trống*</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb16">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="remember-me">
+                            <label class="form-check-label" for="remember-me">
+                                Luôn giữ đăng nhập
+                            </label>
+                        </div>
+                        <a href="" class="forgot-pass">Quên tài khoản?</a>
+                    </div>
+                    <button type="submit" onclick="_login.Login()" class="btn-default btn-login w-100">Đăng nhập</button>
+                    <div class="box-social d-flex justify-content-center" style="margin: 24px 0px 24px 0px">
+                        <a href="" class="m-1"><img src="images/graphics/icon-fb.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-tw.png" alt=""></a>
+                        <a href="" class="mt-1"><img src="images/graphics/icon-yt.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-in.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-insta.png" alt=""></a>
+                    </div>
+                    <p class="question d-flex justify-content-center" style="margin-top:20px">Bạn chưa có tài khoản <a href="#" onclick="_LoginOrRegister.ShowForm()" class="text-link ml-1" style="color:#6610F2;text-decoration:underline">Tạo tài khoản</a></p>
+                </div>
+            </div>
+            <div class="box-register Hide-form">
+                <h2 class="title-cate center">Tạo Tài Khoản Mới</h2>
+                <p class="text-center">Quy trình nhanh chóng và dễ dàng, mở ra cánh cửa để truy cập vào các dịch vụ, hỗ trợ, và cập nhật mới nhất từ chúng tôi. Đừng bỏ lỡ cơ hội kết nối và phát triển cùng chúng tôi.</p>
+                <form class="form-default" id="registerForm" onsubmit="return false">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="fullname_create" placeholder="Enter name">
+                        <span class="error" id="username-create-span" style="display:none">*</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email_create" placeholder="Enter Email">
+                        <span class="error" id="email-create-span" style="display:none">*</span>
+                    </div> 
+                    <div class="form-group">
+                        <input type="Phone" class="form-control" id="phone_create" placeholder="Enter PhoneNumber">
+                        <span class="error" id="Phone-create-span" style="display:none">*</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password_create" placeholder="Enter Password">
+                        <span class="error" id="password-create-span" style="display:none">*</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="confirmPW_create" placeholder="Confirm Password">
+                        <span class="error" id="confirmPW-create-span" style="display:none">*</span>
+                    </div>
+
+                    <button type="submit" onclick="_register.Register()" class="btn-default btn-register w-100">Đăng ký</button>
+                    <div class="box-social d-flex justify-content-center" style="margin: 24px 0px 24px 0px">
+                        <a href="" class="m-1"><img src="images/graphics/icon-fb.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-tw.png" alt=""></a>
+                        <a href="" class="mt-1"><img src="images/graphics/icon-yt.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-in.png" alt=""></a>
+                        <a href="" class="m-1"><img src="images/graphics/icon-insta.png" alt=""></a>
+                    </div>
+                    <p class="question d-flex justify-content-center" style="margin-top:20px">Bạn đã có tài khoản <a href="#" onclick="_LoginOrRegister.ShowForm()" class="text-link ml-1" style="color:#6610F2;text-decoration:underline">Đăng nhập</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script asp-append-version="true" src="~/modules/LoginOrRegister.js"></script>
+}

@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     GetListCategory();
-
     $('body').on('click', '.menu-tab-button', function (event) {
         var element = $(this)
         $('.menu-tab-button').removeClass('active')
@@ -10,7 +9,20 @@
 });
 function GetListCategory() {
     var rows = "";
-
+    var userName = '';
+    $.ajax({
+        url: "LoginOrRegister/GetUserNameClaims",
+        type: "post",
+        success: function (result) {
+            if (result) {
+                userName = result
+            }
+            else
+            {
+                userName = sessionStorage.getItem("userName");
+            }
+        }
+    });
     $.ajax({
         url: "/News/GetNewsCategory",
         type: "Post",
@@ -36,9 +48,22 @@ function GetListCategory() {
                     } else {
                         rows += `<li class="menu-tab-button menu-tab-button-${item.url_path} ">
                                         <a href="/${item.url_path}">${item.name}</a>
-                                    </li>`
+                                    </li>`;
                     }
-
+                }
+                if (userName) {
+                    rows += `<div class="my-login">
+                                    <a class="" id="client-btn" onclick="_LoginOrRegister.ClientDashBoard()">Xin chào ${userName}</a>
+                                    <ul class="list-group" id="client-dashboard" style="position:absolute;right:10px;top:65px;display:none">
+                                        <li onclick="_logout.logout()" class="list-group-item btn">Đăng xuất</li>
+                                    </ul>
+                                </div>
+                                `
+                }
+                else {
+                    rows += `<div class="my-login">
+                                    <a class="btn-default" href="/dang-ky-dang-nhap"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
+                                </div>`
                 }
                 var html = `<div class="container">
                                         <div class="flex flex_row">
@@ -61,5 +86,4 @@ function GetListCategory() {
             }
         }
     });
-
 }

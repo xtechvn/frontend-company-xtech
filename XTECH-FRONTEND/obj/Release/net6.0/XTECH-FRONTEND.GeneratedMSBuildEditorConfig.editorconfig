@@ -1,0 +1,87 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = XTECH_FRONTEND
+build_property.RootNamespace = XTECH_FRONTEND
+build_property.ProjectDir = C:\Users\84385\source\Repos\frontend-company-xtech\XTECH-FRONTEND\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\84385\source\Repos\frontend-company-xtech\XTECH-FRONTEND
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/AboutUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/FAQ/CrawlAPIindex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkFRXENyYXdsQVBJaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/FAQ/DangkyVPS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkFRXERhbmdreVZQUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/FAQ/DetailDeginwebsite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkFRXERldGFpbERlZ2lud2Vic2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/FAQ/DetailVPS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkFRXERldGFpbFZQUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/FAQ/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkFRXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/LoginOrRegister/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5PclJlZ2lzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/News/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/News/GetListNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xHZXRMaXN0TmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Pricing/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpY2luZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Shared/Components/Menu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Shared/_Skeleton.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ta2VsZXRvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/84385/source/Repos/frontend-company-xtech/XTECH-FRONTEND/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qyoi47hswd

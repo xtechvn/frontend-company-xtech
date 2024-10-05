@@ -42,6 +42,24 @@
 </head>
 
 <body class="homepage">
+    <style>
+        #client-btn
+        {
+            color: white;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #client-btn:hover {
+            text-decoration: underline;
+        }
+
+        #client-dashboard:hover
+        {
+            color: #210E41;
+            text-decoration: underline;
+        }
+    </style>
 
     @await Component.InvokeAsync("Menu")
 
@@ -146,8 +164,8 @@
     <script type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.scrollbar.min.js"></script>
 
-  
 
+    <script asp-append-version="true" src="~/modules/LoginOrRegister.js"></script>
     <script asp-append-version="true" src="~/modules/Menu.js"></script>
 
     <!-- build:script -->
