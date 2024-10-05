@@ -10,12 +10,14 @@
         {
             public const string GetNewsCategory = "/api/news/get-category.json";
             public const string GetNewsByCategoryId = "/api/news/get-list-by-categoryid-order.json";//get list bài viết
+            public const string Login = "/api/login/ConfirmLogin.json";
             public const string GetNewsDetail = "/api/news/get-detail.json";//get detail bài viết
             public const string FindArticle = "/api/news/find-article.json";//tìm kiếm bài viết theo tiêu đề 
             public const string GetNewsByTag = "/api/news/get-list-by-tag-order.json";
             public const string getproductcategorybyparentid = "/api/news/get-product-category-by-parent-id.json"; /// Lấy ra các chuyên mục hình ảnh
             public const string getpricegalaxy = "/api/news/get-price-galaxy.json"; /// Lấy ra các chuyên mục hình ảnh
             public const string bookinggalaxy = "/api/galaxy/booking-galaxy.json"; /// 
+            public const string Register = "/api/Register/Register.json";
 
             public const string CrawlApi = "/api/Product/detail-public.json"; /// 
 

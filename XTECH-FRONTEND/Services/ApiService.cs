@@ -1,11 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Runtime.Intrinsics.X86;
+using System.Text;
+using Telegram.Bot.Requests.Abstractions;
 using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
 using XTECH_FRONTEND.Infrastructure.Utilities.Helpers;
 using XTECH_FRONTEND.Models;
+using XTECH_FRONTEND.Models.Account;
 using XTECH_FRONTEND.Models.News;
 using XTECH_FRONTEND.Models.News.FindArticle;
 using XTECH_FRONTEND.Models.News.GetCategory;
@@ -102,6 +106,69 @@ namespace XTECH_FRONTEND.Services
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegram("GetNewsByCategoryId - ApiService: " + ex);
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<BaseObjectResponse2<DataClientReturnViewModel>> Login(AccountModel model) 
+        {
+            try
+            {
+                var jsonRequest = JsonConvert.SerializeObject(model);
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+                HttpClient _httpClient = new HttpClient();
+                BaseObjectResponse2<DataClientReturnViewModel> datareturn = new();
+
+                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.Login;
+
+                HttpResponseMessage response = await _httpClient.PostAsync(url, content);
+
+                var stringResult = "";
+                if (response.IsSuccessStatusCode)
+                {
+                    stringResult = await response.Content.ReadAsStringAsync();
+                    datareturn = JsonConvert.DeserializeObject<BaseObjectResponse2<DataClientReturnViewModel>>(stringResult);
+                }
+                return datareturn;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("Login - ApiService: " + ex);
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<BaseObjectResponse2<DataClientReturnViewModel>> Register(RegisterSubmitModel model) 
+        {
+            try
+            {
+                var data = JsonConvert.SerializeObject(model);
+                HttpClient _httpClient = new HttpClient();
+                BaseObjectResponse2<DataClientReturnViewModel> result = null;
+                var PrivateKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["KEY"];
+                var token = AdavigoHelper.Encode(data, PrivateKey);
+
+
+                var request = new[]
+                {
+                    new KeyValuePair<string, string>("token", token)
+                };
+
+                var url = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Domain"] + SystemConstants.AdavigoApiRoutes.Register;
+
+                HttpResponseMessage response = await _httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+
+                var stringResult = "";
+                if (response.IsSuccessStatusCode)
+                {
+                    stringResult = await response.Content.ReadAsStringAsync();
+                    result = JsonConvert.DeserializeObject<BaseObjectResponse2<DataClientReturnViewModel>>(stringResult);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("Register - ApiService: " + ex);
                 throw new Exception(ex.Message);
             }
         }
