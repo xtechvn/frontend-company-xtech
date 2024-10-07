@@ -84,15 +84,21 @@ var _register =
             $("#Phone-create-span").css("display", "none");
         }
 
-
+        const PasswordRegex = /\s+/g;
         if (model.Password == undefined || model.Password.trim() == '') {
-            $("#password-create-span").text("Mật khẩu dùng không được để trống")
+            $("#password-create-span").text("Mật khẩu không được để trống")
+            $("#password-create-span").show();
+            return;
+        }
+        else if (PasswordRegex.test(model.Password))
+        {
+            $("#password-create-span").text("Mật khẩu không được chứa dấu cách")
             $("#password-create-span").show();
             return;
         }
         else if (model.Password.length < 8)
         {
-            $("#password-create-span").text("Mật khẩu dùng không được ít hơn 8 kí tự")
+            $("#password-create-span").text("Mật khẩu không được ít hơn 8 kí tự")
             $("#password-create-span").show();
         }
         else {
@@ -105,9 +111,14 @@ var _register =
             $("#confirmPW-create-span").show();
             return;
         }
+        else if (PasswordRegex.test(model.ConfirmPassword)) {
+            $("#confirmPW-create-span").text("Mật khẩu không được chứa dấu cách")
+            $("#confirmPW-create-span").show();
+            return;
+        }
         else if (model.ConfirmPassword.length < 8) {
-            $("#password-create-span").text("Mật khẩu xác nhận không được ít hơn 8 kí tự")
-            $("#password-create-span").show();
+            $("#confirmPW-create-span").text("Mật khẩu xác nhận không được ít hơn 8 kí tự")
+            $("#confirmPW-create-span").show();
         }
         else {
             $("#confirmPW-create-span").hide();

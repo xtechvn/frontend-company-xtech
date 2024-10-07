@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Net.Http;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
-using Telegram.Bot.Requests.Abstractions;
 using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
 using XTECH_FRONTEND.Infrastructure.Utilities.Helpers;
 using XTECH_FRONTEND.Models;
