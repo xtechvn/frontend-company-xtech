@@ -10,6 +10,7 @@ using XTECH_FRONTEND.Models;
 using XTECH_FRONTEND.Models.Account;
 using XTECH_FRONTEND.Services;
 using System.Text.RegularExpressions;
+using XTECH_FRONTEND.Utilities;
 
 namespace XTECH_FRONTEND.Controllers
 {
@@ -62,6 +63,7 @@ namespace XTECH_FRONTEND.Controllers
             }
             catch (Exception ex) 
             {
+                LogHelper.InsertLogTelegram("Login - ApiService: " + ex);
                 return Ok(new
                 {
                     status = (int)ResponseType.ERROR,
