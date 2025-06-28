@@ -1,5 +1,8 @@
 ﻿//https://learn.microsoft.com/vi-vn/aspnet/core/tutorials/first-mvc-app/adding-controller?view=aspnetcore-6.0&tabs=visual-studio
+using HuloToys_Service.IRepositories;
+using HuloToys_Service.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,22 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             // Cấu hình các tùy chọn khác cho cookie, ví dụ:
             options.LoginPath = "/login";
         });
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<IGoogleSheetsService, GoogleSheetsService>();
+builder.Services.AddSingleton<IGoogleFormsService, GoogleFormsService>();
+builder.Services.AddSingleton<IValidationService, ValidationService>();
+builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -77,7 +96,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
 
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
