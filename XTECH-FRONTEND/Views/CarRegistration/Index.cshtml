@@ -324,11 +324,12 @@
 
     <script>
         // API Configuration
-        const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
+        const API_BASE_URL = 'https://localhost:62988/api'; // Change to your API URL
         const ENDPOINTS = {
             REGISTER: '/carregistration/register',
             CHECK_RESTRICTION: '/carregistration/check-restriction',
-            QUEUE_STATUS: '/carregistration/queue-status'
+            QUEUE_STATUS: '/carregistration/queue-status',
+            CHECK_ZALO: '/carregistration/check-zalo-user'
         };
 
         // Global variables
@@ -400,15 +401,18 @@
             }
         }
 
-        async function registerCar(plateNumber, phoneNumber) {
+        async function registerCar(plateNumber, phoneNumber, name, referee, GPLX) {
             return await makeAPICall(ENDPOINTS.REGISTER, 'POST', {
                 plateNumber: plateNumber,
-                phoneNumber: phoneNumber
+                phoneNumber: phoneNumber,
+                Name: name,
+                Referee: referee,
+                GPLX: GPLX,
             });
         }
 
-        async function checkTimeRestriction(phoneNumber) {
-            return await makeAPICall(`${ENDPOINTS.CHECK_RESTRICTION}/${phoneNumber}`);
+        async function checkTimeRestriction(plateNumber) {
+            return await makeAPICall(`${ENDPOINTS.CHECK_RESTRICTION}/${plateNumber}`);
         }
 
         async function getQueueStatus() {
@@ -494,7 +498,7 @@
                 showLoading(true);
 
                 // Call API to register car
-                const response = await registerCar(plateNumber, phoneNumber);
+                const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX);
 
                 if (response.success) {
                     showSuccess(response.message);
@@ -545,9 +549,9 @@
             if (!phoneNumber) return;
 
             try {
-                const restriction = await checkTimeRestriction(phoneNumber);
+                const restriction = await checkTimeRestriction(plateNumber);
                 if (!restriction.canSubmit && restriction.remainingMinutes > 0) {
-                    showError(`Số điện thoại này cần đợi ${restriction.remainingMinutes} phút nữa`);
+                    showError(`Biển số xe này cần đợi ${restriction.remainingMinutes} phút nữa`);
                     startCountdown(restriction.remainingMinutes);
                 } else {
                     clearCountdown();

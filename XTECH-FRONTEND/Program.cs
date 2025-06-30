@@ -3,6 +3,8 @@ using HuloToys_Service.IRepositories;
 using HuloToys_Service.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Caching.Memory;
+using XTECH_FRONTEND.Controllers.API.CarRegistration.IRepositories;
+using XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,7 @@ builder.Services.AddSingleton<IGoogleSheetsService, GoogleSheetsService>();
 builder.Services.AddSingleton<IGoogleFormsService, GoogleFormsService>();
 builder.Services.AddSingleton<IValidationService, ValidationService>();
 builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
+builder.Services.AddSingleton<IZaloService, ZaloOfficialAccountService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

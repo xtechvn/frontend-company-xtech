@@ -46,9 +46,9 @@ namespace HuloToys_Service.Repositories
             return result;
         }
 
-        public TimeRestrictionResult CheckTimeRestriction(string phoneNumber)
+        public TimeRestrictionResult CheckTimeRestriction(string PlateNumber)
         {
-            var cacheKey = $"last_submission_{phoneNumber}";
+            var cacheKey = $"last_submission_{PlateNumber.Replace("-","")}";
 
             if (_cache.TryGetValue(cacheKey, out DateTime lastSubmission))
             {
