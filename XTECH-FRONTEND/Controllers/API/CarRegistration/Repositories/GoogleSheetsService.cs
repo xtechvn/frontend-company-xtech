@@ -107,7 +107,7 @@ namespace HuloToys_Service.Repositories
                 for (int i = 1; i < values.Count; i++)
                 {
                     var row = values[i];
-                    if (row.Count >= 4 && !string.IsNullOrEmpty(row[3]?.ToString()))
+                    if (row.Count >= 6 && !string.IsNullOrEmpty(row[6]?.ToString()))
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
@@ -228,11 +228,11 @@ namespace HuloToys_Service.Repositories
                 {
                     var row = values[i];
 
-                    if (row.Count >= 4 &&
+                    if (row.Count >= 6 &&
                         row[0]?.ToString() == phoneNumber &&
-                        !string.IsNullOrEmpty(row[3]?.ToString()))
+                        !string.IsNullOrEmpty(row[6]?.ToString()))
                     {
-                        if (DateTime.TryParse(row[3].ToString(), out DateTime submissionTime))
+                        if (DateTime.TryParse(row[6].ToString(), out DateTime submissionTime))
                         {
                             lastSubmission = submissionTime;
                             break;
