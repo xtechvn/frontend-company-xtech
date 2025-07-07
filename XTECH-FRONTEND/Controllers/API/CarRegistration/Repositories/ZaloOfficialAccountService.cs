@@ -194,8 +194,8 @@ namespace XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories
                          $" Tên khách hàng: {record.Name}\n" +
                          $"📱 Số điện thoại: {record.PhoneNumber}\n" +
                          $"🚗 Biển số xe: {record.PlateNumber}\n" +
-                         $"🚗 Trọng tải xe: {record.Referee}\n" +
-                         $"🎫 Số GPLX(3 số cuối giấy phép lái xe): {record.GPLX}\n" +
+                         $"🚗 Khối lượng hàng chuyên chở cho phép: { record.Referee}\n" +
+                         $"🎫 Tên lái xe: {record.GPLX}\n" +
                          $"🎫 Số thứ tự của bạn: {record.QueueNumber:D3}\n" +
                          $"⏰ Thời gian đăng ký: {record.RegistrationTime:dd/MM/yyyy HH:mm}\n\n" +
                          $"📍 VUI LÒNG:\n" +
