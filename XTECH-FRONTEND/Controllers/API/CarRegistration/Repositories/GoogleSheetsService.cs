@@ -113,7 +113,7 @@ namespace HuloToys_Service.Repositories
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            if (registrationDate.Date == todayStart.Date )
+                            if (registrationDate.Date == todayStart.Date && DateTime.Now < cutoffTime)
                             {
                                 // Bản ghi của ngày hôm nay
                                 if (registrationDate < cutoffTime)
