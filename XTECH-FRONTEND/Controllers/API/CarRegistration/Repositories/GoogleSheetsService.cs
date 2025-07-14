@@ -113,7 +113,7 @@ namespace HuloToys_Service.Repositories
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            if (registrationDate.Date == todayStart.Date && DateTime.Now < cutoffTime)
+                            if (registrationDate.Date.AddDays(1) >= todayStart.Date && DateTime.Now < cutoffTime)
                             {
                                 // Bản ghi của ngày hôm nay
                                 if (registrationDate < cutoffTime)
@@ -123,10 +123,11 @@ namespace HuloToys_Service.Repositories
                                 }
                                 // (Các bản ghi hôm nay sau 16:00 sẽ không được đếm vào countTodayBefore16)
                             }
-                            else if (registrationDate.Date >= tomorrowStart.Date)
+                            else if (registrationDate.Date.AddDays(1) >= tomorrowStart.Date && DateTime.Now > cutoffTime)
                             {
                                 // Bản ghi từ ngày mai trở đi ("sang hôm sau")
-                                count++;
+                                if (registrationDate > cutoffTime)
+                                    count++;
                             }
                         }
                     }
