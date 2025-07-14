@@ -197,6 +197,7 @@ namespace XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories
                          $"🚗 Khối lượng hàng chuyên chở cho phép: { record.Referee}\n" +
                          $"🎫 Tên lái xe: {record.GPLX}\n" +
                          $"🎫 Số thứ tự của bạn: {record.QueueNumber:D3}\n" +
+                         $"🎫 Hoàn hảo/Trại: {record.Camp}\n" +
                          $"⏰ Thời gian đăng ký: {record.RegistrationTime:dd/MM/yyyy HH:mm}\n\n" +
                          $"📍 VUI LÒNG:\n" +
                          $"• Chuẩn bị đầy đủ giấy tờ xe\n" +

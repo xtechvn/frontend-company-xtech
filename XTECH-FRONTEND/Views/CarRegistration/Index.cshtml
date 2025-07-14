@@ -47,6 +47,12 @@
                            placeholder="VD: 0987654321"
                            pattern="[0-9]{10,11}"
                            required>
+                </div> 
+                <div class="form-group">
+                    <label for="phoneNumber">Hoàn hảo/Trại <span style="color:red">*</span></label>
+                    <input type="tel" id="Camp" name="Camp"
+                          placeholder="Nhập câu trả lời của bạn"
+                           required>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -180,13 +186,14 @@
             }
         }
 
-        async function registerCar(plateNumber, phoneNumber, name, referee, GPLX) {
+        async function registerCar(plateNumber, phoneNumber, name, referee, GPLX, Camp) {
             return await makeAPICall(ENDPOINTS.REGISTER, 'POST', {
                 plateNumber: plateNumber,
                 phoneNumber: phoneNumber,
                 Name: name,
                 Referee: referee,
                 GPLX: GPLX,
+                Camp: Camp,
             });
         }
 
@@ -265,9 +272,10 @@
             const referee = document.getElementById('referee').value.trim();
             const GPLX = document.getElementById('GPLX').value.trim();
             const name = document.getElementById('name').value.trim();
+            const Camp = document.getElementById('Camp').value.trim();
 
             // Basic validation
-            if (!plateNumber || !phoneNumber|| !referee|| !GPLX|| !name) {
+            if (!plateNumber || !phoneNumber || !referee || !GPLX || !name || !Camp) {
                 showError('Vui lòng nhập đầy đủ thông tin!');
                 return;
             }
@@ -276,7 +284,7 @@
                 showLoading(true);
 
                 // Call API to register car
-                const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX);
+                const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX, Camp);
 
                 if (response.success) {
                     showSuccess(response.message);

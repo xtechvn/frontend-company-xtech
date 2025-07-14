@@ -89,7 +89,9 @@ namespace HuloToys_Service.Repositories
                     return cachedCount;
                 }
 
-                var todayStart = DateTime.Today;
+                var todayStart =  DateTime.Today;
+                var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
+                var tomorrowStart = todayStart.AddDays(1);
                 var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
@@ -111,8 +113,19 @@ namespace HuloToys_Service.Repositories
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            if (registrationDate.Date == todayStart.Date)
+                            if (registrationDate.Date == todayStart.Date )
                             {
+                                // Bản ghi của ngày hôm nay
+                                if (registrationDate < cutoffTime)
+                                {
+                                    // Đếm bản ghi hôm nay trước 16:00
+                                    count++;
+                                }
+                                // (Các bản ghi hôm nay sau 16:00 sẽ không được đếm vào countTodayBefore16)
+                            }
+                            else if (registrationDate.Date >= tomorrowStart.Date)
+                            {
+                                // Bản ghi từ ngày mai trở đi ("sang hôm sau")
                                 count++;
                             }
                         }
@@ -157,7 +170,8 @@ namespace HuloToys_Service.Repositories
                         record.PhoneNumber,
                         record.QueueNumber,
                         record.RegistrationTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                        record.ZaloStatus
+                        record.ZaloStatus,
+                        record.Camp
                     }
                 };
 
@@ -178,7 +192,7 @@ namespace HuloToys_Service.Repositories
 
                 if (appendResponse.Updates.UpdatedRows.HasValue && appendResponse.Updates.UpdatedRows.Value > 0)
                 {
-                    _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber} - Zalo: {record.ZaloStatus}");
+                    _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber} - Zalo: {record.ZaloStatus}- Camp: {record.Camp}");
 
                     var today = DateTime.Today.ToString("yyyy-MM-dd");
                     var cacheKey = $"daily_count_{today}";
@@ -285,7 +299,7 @@ namespace HuloToys_Service.Repositories
                 {
                     var headers = new List<IList<object>>
                     {
-                        new List<object> { "Tên khách hàng(Trại hoặc đại lý)", "Biển số xe đăng ký", "Số GPLX(3 số cuối giấy phép lái xe)", "Trọng tải xe", "Số điện thoại tài xế", "Số thứ tự", "Ngày giờ đăng ký", "Trạng thái gửi Zalo" }
+                        new List<object> { "Tên khách hàng(Trại hoặc đại lý)", "Biển số xe đăng ký", "Số GPLX(3 số cuối giấy phép lái xe)", "Trọng tải xe", "Số điện thoại tài xế", "Số thứ tự", "Ngày giờ đăng ký", "Trạng thái gửi Zalo", "Hoàn hảo/Trại" }
                     };
 
                     var valueRange = new ValueRange { Values = headers };

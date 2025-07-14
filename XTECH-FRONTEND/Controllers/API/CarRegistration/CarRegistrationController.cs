@@ -74,7 +74,8 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                     GPLX = request.GPLX.ToUpper(),
                     QueueNumber = queueNumber,
                     RegistrationTime = DateTime.Now,
-                    ZaloStatus = "Đang xử lý..."
+                    ZaloStatus = "Đang xử lý...",
+                    Camp= request.Camp
                 };
 
                 // Step 5: Submit to Google Form
@@ -113,7 +114,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                     RegistrationTime = registrationRecord.RegistrationTime,
                     PlateNumber = registrationRecord.PlateNumber,
                     PhoneNumber = registrationRecord.PhoneNumber,
-                    ZaloStatus = zaloStatus
+                    ZaloStatus = zaloStatus,
                 });
             }
             catch (Exception ex)
