@@ -80,7 +80,7 @@ namespace HuloToys_Service.Repositories
         {
             try
             {
-                var today = DateTime.Today.ToString("yyyy-MM-dd");
+                var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
                 var todayStart = DateTime.Today;
                 var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
