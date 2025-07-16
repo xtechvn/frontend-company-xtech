@@ -82,16 +82,19 @@ namespace HuloToys_Service.Repositories
             {
                 var today = DateTime.Today.ToString("yyyy-MM-dd");
                 var cacheKey = $"daily_count_{today}";
-
+                var todayStart = DateTime.Today;
+                var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
+                var tomorrowStart = todayStart.AddDays(1);
+            
+                if (DateTime.Now >= cutoffTime)
+                {
+                    _cache.Remove(cacheKey);
+                }
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
                     return cachedCount;
                 }
-
-                var todayStart =  DateTime.Today;
-                var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
-                var tomorrowStart = todayStart.AddDays(1);
                 var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
@@ -113,7 +116,7 @@ namespace HuloToys_Service.Repositories
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            if (registrationDate.Date == todayStart.Date )
+                            if (registrationDate.Date.AddDays(1) >= todayStart.Date )
                             {
                                 count++;
                             }                           
