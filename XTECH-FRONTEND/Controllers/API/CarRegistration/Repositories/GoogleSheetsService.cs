@@ -89,12 +89,6 @@ namespace HuloToys_Service.Repositories
                 {
                     _cache.Remove(cacheKey);
                 }
-                if (_cache.TryGetValue(cacheKey, out int cachedCount))
-                {
-                    _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
-                    _cache.Set(cacheKey, cachedCount+1);
-                    return cachedCount;
-                }
                 var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
@@ -104,10 +98,17 @@ namespace HuloToys_Service.Repositories
                 if (values == null || values.Count <= 1)
                 {
                     _logger.LogInformation("No registration data found for today");
-                    _cache.Set(cacheKey, 0, TimeSpan.FromHours(1));
+                    _cache.Set(cacheKey, 1, TimeSpan.FromHours(1));
                     return 0;
                 }
 
+                if (_cache.TryGetValue(cacheKey, out int cachedCount))
+                {
+                    _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
+                    _cache.Set(cacheKey, cachedCount+1);
+                    return cachedCount;
+                }
+                
                 var count = 0;
                 for (int i = 1; i < values.Count; i++)
                 {
