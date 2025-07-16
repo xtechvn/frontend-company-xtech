@@ -33,6 +33,7 @@ builder.Services.AddSingleton<IGoogleFormsService, GoogleFormsService>();
 builder.Services.AddSingleton<IValidationService, ValidationService>();
 builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
 builder.Services.AddSingleton<IZaloService, ZaloOfficialAccountService>();
+builder.Services.AddSingleton<IMongoService, MongoService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

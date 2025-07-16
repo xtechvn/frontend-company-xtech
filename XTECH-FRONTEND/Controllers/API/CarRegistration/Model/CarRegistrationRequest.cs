@@ -25,6 +25,7 @@
 
     public class RegistrationRecord
     {
+        public string _id { get; set; }
         public string PhoneNumber { get; set; } = string.Empty;
         public string PlateNumber { get; set; } = string.Empty;
         public string Referee { get; set; } = string.Empty;

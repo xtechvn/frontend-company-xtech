@@ -3,6 +3,7 @@ using HuloToys_Service.Controllers.CarRegistration.Model;
 using HuloToys_Service.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using XTECH_FRONTEND.Controllers.API.CarRegistration.IRepositories;
+using XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories;
 
 
 namespace XTECH_FRONTEND.Controllers.CarRegistration
@@ -16,19 +17,22 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
         private readonly IGoogleFormsService _googleFormsService;
         private readonly IZaloService _zaloService;
         private readonly ILogger<CarRegistrationController> _logger;
+        private readonly IMongoService _mongoService;
 
         public CarRegistrationController(
             IValidationService validationService,
             IGoogleSheetsService googleSheetsService,
             IGoogleFormsService googleFormsService,
             IZaloService zaloService,
-            ILogger<CarRegistrationController> logger)
+            ILogger<CarRegistrationController> logger,
+            IMongoService mongoService)
         {
             _validationService = validationService;
             _googleSheetsService = googleSheetsService;
             _googleFormsService = googleFormsService;
             _zaloService = zaloService;
             _logger = logger;
+            _mongoService = mongoService;
         }
         [HttpPost("register")]
         public async Task<ActionResult<CarRegistrationResponse>> RegisterCar([FromBody] CarRegistrationRequest request)
@@ -91,6 +95,8 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 // Update registration record with Zalo status
                 registrationRecord.ZaloStatus = zaloStatus;
 
+                // Step 7: Save to mogoDB
+                await _mongoService.Insert(registrationRecord);
                 // Step 7: Save to Google Sheets with Zalo status
                 var sheetsSuccess = await _googleSheetsService.SaveRegistrationAsync(registrationRecord);
                 if (!sheetsSuccess)
