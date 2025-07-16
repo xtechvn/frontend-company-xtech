@@ -83,9 +83,8 @@ namespace HuloToys_Service.Repositories
                 var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
                 var todayStart = DateTime.Today;
-                var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
+                var cutoffTime = todayStart.AddHours(11); // 18:00 hôm nay
                 var tomorrowStart = todayStart.AddDays(1);
-            
                 if (DateTime.Now >= cutoffTime)
                 {
                     _cache.Remove(cacheKey);
@@ -93,6 +92,7 @@ namespace HuloToys_Service.Repositories
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
+                    _cache.Set(cacheKey, cachedCount+1);
                     return cachedCount;
                 }
                 var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
