@@ -5,6 +5,7 @@ using Google.Apis.Sheets.v4.Data;
 using HuloToys_Service.Controllers.CarRegistration.Model;
 using HuloToys_Service.IRepositories;
 using Microsoft.Extensions.Caching.Memory;
+using System.Text.RegularExpressions;
 
 
 namespace HuloToys_Service.Repositories
@@ -105,10 +106,10 @@ namespace HuloToys_Service.Repositories
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
-                    _cache.Set(cacheKey, cachedCount+1);
+                    _cache.Set(cacheKey, cachedCount + 1);
                     return cachedCount;
                 }
-                
+
                 var count = 0;
                 for (int i = 1; i < values.Count; i++)
                 {
@@ -117,10 +118,10 @@ namespace HuloToys_Service.Repositories
                     {
                         if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            if (registrationDate.Date.AddDays(1) >= todayStart.Date )
+                            if (registrationDate.Date.AddDays(1) >= todayStart.Date)
                             {
                                 count++;
-                            }                           
+                            }
                         }
                     }
                 }
@@ -183,6 +184,63 @@ namespace HuloToys_Service.Repositories
 
                 var appendResponse = await appendRequest.ExecuteAsync();
 
+               
+                // 2. Lấy dòng vừa chèn
+                var updatedRange = appendResponse.Updates.UpdatedRange; // ví dụ: "Sheet1!A10:E10"
+                var startRow = int.Parse(Regex.Match(updatedRange, @"[A-Z]+(\d+)").Groups[1].Value) - 1;
+
+                // 3. Lấy SheetId (không phải tên)
+                var spreadsheet = await _sheetsService.Spreadsheets.Get(_spreadsheetId).ExecuteAsync();
+                var sheet = spreadsheet.Sheets.FirstOrDefault(s => s.Properties.Title == _sheetName);
+                var sheetId = sheet?.Properties.SheetId;
+
+                if (sheetId == null)
+                {
+                    throw new Exception("Không tìm thấy SheetId.");
+                }
+                // 4. Gửi BatchUpdate để định dạng dòng
+                var formatRequest = new BatchUpdateSpreadsheetRequest
+                {
+                    Requests = new List<Request>
+                    {
+                        new Request
+                        {
+                            RepeatCell = new RepeatCellRequest
+                            {
+                                Range = new GridRange
+                                {
+                                    SheetId = sheetId,
+                                    StartRowIndex = startRow,
+                                    EndRowIndex = startRow + 1,
+                                    StartColumnIndex = 0,
+                                    EndColumnIndex = 9 // Cột A đến I (0 đến 8)
+                                },
+                                Cell = new CellData
+                                {
+                                    UserEnteredFormat = new CellFormat
+                                    {
+                                        BackgroundColor = new Color
+                                        {
+                                            Red = 1.0f, Green = 1.0f, Blue = 1.0f // Trắng
+                                        },
+                                        TextFormat = new TextFormat
+                                        {
+                                            ForegroundColor = new Color
+                                            {
+                                               Red = 0.0f, Green = 0.0f, Blue = 0.0f // Đen
+                                            },
+                                            Bold = true
+                                        }
+                                    }
+                                },
+                                Fields = "userEnteredFormat(backgroundColor,textFormat)"
+                            }
+                        }
+                    }
+                };
+
+                var batchRequest = _sheetsService.Spreadsheets.BatchUpdate(formatRequest, _spreadsheetId);
+                await batchRequest.ExecuteAsync();
                 if (appendResponse.Updates.UpdatedRows.HasValue && appendResponse.Updates.UpdatedRows.Value > 0)
                 {
                     _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber} - Zalo: {record.ZaloStatus}- Camp: {record.Camp}");
@@ -196,7 +254,6 @@ namespace HuloToys_Service.Repositories
 
                     return true;
                 }
-
                 _logger.LogWarning("No rows were updated when saving to Google Sheets");
                 return false;
             }
