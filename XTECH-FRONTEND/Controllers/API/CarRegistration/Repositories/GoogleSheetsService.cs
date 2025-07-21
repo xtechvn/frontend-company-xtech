@@ -102,7 +102,10 @@ namespace HuloToys_Service.Repositories
                     _cache.Set(cacheKey, 1);
                     return 0;
                 }
-
+                if (values.Count == 2)
+                {
+                    _cache.Remove(cacheKey);
+                }
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
@@ -133,9 +136,9 @@ namespace HuloToys_Service.Repositories
                 }
                 else
                 {
-                    _cache.Set(cacheKey, count);
+                    _cache.Set(cacheKey, count + 1 );
                 }
-               
+
 
                 return count;
             }
@@ -149,7 +152,6 @@ namespace HuloToys_Service.Repositories
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogWarning("Returning cached value due to error");
-                    _cache.Set(cacheKey, cachedCount + 1);
                     return cachedCount;
                 }
 
@@ -172,7 +174,7 @@ namespace HuloToys_Service.Repositories
                         record.Referee,
                         record.PhoneNumber,
                         record.QueueNumber,
-                        record.RegistrationTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                        record.RegistrationTime.ToString("yyyy-MM-dd HH:mm:ss").ToString(),
                         record.ZaloStatus,
                         record.Camp
                     }
@@ -193,7 +195,7 @@ namespace HuloToys_Service.Repositories
 
                 var appendResponse = await appendRequest.ExecuteAsync();
 
-               
+
                 // 2. Lấy dòng vừa chèn
                 var updatedRange = appendResponse.Updates.UpdatedRange; // ví dụ: "Sheet1!A10:E10"
                 var startRow = int.Parse(Regex.Match(updatedRange, @"[A-Z]+(\d+)").Groups[1].Value) - 1;
@@ -254,12 +256,12 @@ namespace HuloToys_Service.Repositories
                 {
                     _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber} - Zalo: {record.ZaloStatus}- Camp: {record.Camp}");
 
-                    var today = DateTime.Today.ToString("yyyy-MM-dd");
-                    var cacheKey = $"daily_count_{today}";
-                    if (_cache.TryGetValue(cacheKey, out int currentCount))
-                    {
-                        _cache.Set(cacheKey, currentCount + 1, TimeSpan.FromMinutes(5));
-                    }
+                    //var today = DateTime.Today.ToString("yyyy-MM");
+                    //var cacheKey = $"daily_count_{today}";
+                    //if (_cache.TryGetValue(cacheKey, out int currentCount))
+                    //{
+                    //    _cache.Set(cacheKey, currentCount + 1);
+                    //}
 
                     return true;
                 }
