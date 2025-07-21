@@ -99,7 +99,7 @@ namespace HuloToys_Service.Repositories
                 if (values == null || values.Count <= 1)
                 {
                     _logger.LogInformation("No registration data found for today");
-                    _cache.Set(cacheKey, 1, TimeSpan.FromHours(1));
+                    _cache.Set(cacheKey, 1);
                     return 0;
                 }
 
@@ -127,7 +127,15 @@ namespace HuloToys_Service.Repositories
                 }
 
                 _logger.LogInformation($"Retrieved daily queue count from Google Sheets: {count}");
-                _cache.Set(cacheKey, count, TimeSpan.FromMinutes(5));
+                if (count == 0)
+                {
+                    _cache.Set(cacheKey, 1);
+                }
+                else
+                {
+                    _cache.Set(cacheKey, count);
+                }
+               
 
                 return count;
             }
@@ -135,12 +143,13 @@ namespace HuloToys_Service.Repositories
             {
                 _logger.LogError(ex, "Error getting daily queue count from Google Sheets");
 
-                var today = DateTime.Today.ToString("yyyy-MM-dd");
+                var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
 
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
                 {
                     _logger.LogWarning("Returning cached value due to error");
+                    _cache.Set(cacheKey, cachedCount + 1);
                     return cachedCount;
                 }
 
