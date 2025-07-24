@@ -96,7 +96,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 registrationRecord.ZaloStatus = zaloStatus;
 
                 // Step 7: Save to mogoDB
-               // await _mongoService.Insert(registrationRecord);
+                await _mongoService.Insert(registrationRecord);
                 // Step 7: Save to Google Sheets with Zalo status
                 var sheetsSuccess = await _googleSheetsService.SaveRegistrationAsync(registrationRecord);
                 if (!sheetsSuccess)
