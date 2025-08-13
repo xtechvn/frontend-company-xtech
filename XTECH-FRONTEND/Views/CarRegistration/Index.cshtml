@@ -281,8 +281,22 @@
             }
 
             try {
+               
+               
                 showLoading(true);
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
 
+                // Kiểm tra khoảng 17:55 đến 18:00
+                if (hours === 17 && minutes >= 55 || (hours === 18 && minutes === 0)) {
+                    e.preventDefault(); // Ngăn hành động mặc định
+                    e.stopPropagation(); // Ngăn sự kiện lan truyền
+                    errorMessage = 'Bạn vui lòng đợi 5 phút!'; 
+                    startCountdown(5);
+                    showError(errorMessage);
+                    return;
+                }
                 // Call API to register car
                 const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX, Camp);
 
