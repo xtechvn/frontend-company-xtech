@@ -1,5 +1,5 @@
 ﻿@{
-    Layout=null;
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -28,7 +28,6 @@
                     <label for="plateNumber">Biển số xe đăng ký <span style="color:red">*</span></label>
                     <input type="text" id="plateNumber" name="plateNumber"
                            placeholder="VD: 30A-12345"
-                         
                            required>
                 </div>
                 <div class="form-group">
@@ -47,12 +46,11 @@
                            placeholder="VD: 0987654321"
                            pattern="[0-9]{10,11}"
                            required>
-                </div> 
+                </div>
                 <div class="form-group">
                     <label for="phoneNumber">Hoàn hảo/Trại </label>
                     <input type="text" id="Camp" name="Camp"
-                          placeholder="Nhập câu trả lời của bạn"
-                          >
+                           placeholder="Nhập câu trả lời của bạn">
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -106,7 +104,7 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="~/libs/jquery/jquery-3.6.0.min.js"></script>
     <script>
         // API Configuration
         const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
@@ -246,7 +244,7 @@
                 }
 
                 countdown.textContent = formatTime(remaining);
-                remaining -= 1/60; // Decrease by 1 second (1/60 minute)
+                remaining -= 1 / 60; // Decrease by 1 second (1/60 minute)
             };
 
             updateCountdown(); // Initial call
@@ -275,14 +273,14 @@
             const Camp = document.getElementById('Camp').value.trim();
 
             // Basic validation
-            if (!plateNumber || !phoneNumber || !referee || !GPLX || !name ) {
+            if (!plateNumber || !phoneNumber || !referee || !GPLX || !name) {
                 showError('Vui lòng nhập đầy đủ thông tin!');
                 return;
             }
 
             try {
-               
-               
+
+
                 showLoading(true);
                 const now = new Date();
                 const hours = now.getHours();
@@ -382,7 +380,7 @@
         }
 
         // Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize app
             initializeApp();
 
@@ -393,7 +391,7 @@
             document.getElementById('phoneNumber').addEventListener('blur', handlePhoneBlur);
 
             // Format input as user types
-            document.getElementById('plateNumber').addEventListener('input', function() {
+            document.getElementById('plateNumber').addEventListener('input', function () {
                 // Auto format plate number: 30a12345 -> 30A-12345
                 let value = this.value.replace(/[^0-9A-Za-z\-]/g, '').toUpperCase(); // <-- Đã thêm '\-' vào regex
 
@@ -401,18 +399,18 @@
                 if (value.length > 3 && value[3] !== '-' && value.includes('-') == false) {
                     // Tự động thêm '-' nếu nó chưa có ở vị trí thứ 3 và độ dài lớn hơn 3
                     value = value.substring(0, 3) + '-' + value.substring(3);
-                } 
+                }
                 this.value = value;
             });
 
-            document.getElementById('phoneNumber').addEventListener('input', function() {
+            document.getElementById('phoneNumber').addEventListener('input', function () {
                 // Only allow numbers
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
         });
 
         // Handle page visibility change to refresh countdown
-        document.addEventListener('visibilitychange', function() {
+        document.addEventListener('visibilitychange', function () {
             if (!document.hidden && countdownTimer) {
                 // Page became visible, refresh countdown status
                 const phoneNumber = document.getElementById('phoneNumber').value.trim();
@@ -451,7 +449,7 @@
                 }
 
                 countdown.textContent = formatTime2(remaining);
-                remaining -= 1 ; // Decrease by 1 second (1/60 minute)
+                remaining -= 1; // Decrease by 1 second (1/60 minute)
             };
 
             updateCountdown(); // Initial call
@@ -460,8 +458,28 @@
         function formatTime2(diff) {
             const mins = Math.floor(diff / 60);
             const secs = diff % 60;
+            console.log(diff)
+            console.log(mins)
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
+        $(document).ready(function () {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+
+            // Kiểm tra khoảng 17:55 đến 18:00
+            if (hours === 17 && minutes >= 55 || (hours === 18 && minutes === 0)) {
+
+                var time_load = 60 - minutes;
+                errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
+                setTimeout(() => {
+                    startCountdown17_18();
+                }, 1000);
+                showError(errorMessage);
+                return;
+            }
+        });
     </script>
+
 </body>
 </html>
