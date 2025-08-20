@@ -292,8 +292,11 @@
                 if (hours === 17 && minutes >= 55 || (hours === 18 && minutes === 0)) {
                     e.preventDefault(); // Ngăn hành động mặc định
                     e.stopPropagation(); // Ngăn sự kiện lan truyền
-                    errorMessage = 'Bạn vui lòng đợi 5 phút!'; 
-                    startCountdown(5);
+                    var time_load = 60 - minutes;
+                    errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
+                    setTimeout(() => {
+                        startCountdown17_18();
+                    }, 1000);
                     showError(errorMessage);
                     return;
                 }
@@ -425,6 +428,40 @@
                 }
             }
         });
+        function startCountdown17_18() {
+            const timerSection = document.getElementById('timerSection');
+            const countdown = document.getElementById('countdown');
+            const submitBtn = document.getElementById('submitBtn');
+
+            timerSection.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'VUI LÒNG ĐỢI...';
+            const now = new Date();
+            let target = new Date();
+            target.setHours(18, 0, 0, 0);
+            let remaining = Math.floor((target - now) / 1000);
+
+            const updateCountdown = () => {
+                if (remaining <= 0) {
+                    clearInterval(countdownTimer);
+                    timerSection.style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'GỬI ĐĂNG KÝ';
+                    return;
+                }
+
+                countdown.textContent = formatTime2(remaining);
+                remaining -= 1 ; // Decrease by 1 second (1/60 minute)
+            };
+
+            updateCountdown(); // Initial call
+            countdownTimer = setInterval(updateCountdown, 1000);
+        }
+        function formatTime2(diff) {
+            const mins = Math.floor(diff / 60);
+            const secs = diff % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
     </script>
 </body>
 </html>
