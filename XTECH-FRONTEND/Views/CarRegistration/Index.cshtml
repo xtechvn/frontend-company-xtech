@@ -287,7 +287,7 @@
                 const minutes = now.getMinutes();
 
                 // Kiểm tra khoảng 17:55 đến 18:00
-                if (hours === 17 && minutes >= 55 ) {
+                if ((hours === 17 && minutes >= 55 )|| (hours === 18 && minutes === 0)) {
                     e.preventDefault(); // Ngăn hành động mặc định
                     e.stopPropagation(); // Ngăn sự kiện lan truyền
                     var time_load = 60 - minutes;
@@ -466,9 +466,9 @@
             const now = new Date();
             const hours = now.getHours();
             const minutes = now.getMinutes();
-
+            console.log('Current time:', hours, minutes);
             // Kiểm tra khoảng 17:55 đến 18:00
-            if (hours === 17 && minutes >= 55 ) {
+            if ((hours === 17 && minutes >= 55 )|| (hours === 18 && minutes === 0)) {
 
                 var time_load = 60 - minutes;
                 errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
