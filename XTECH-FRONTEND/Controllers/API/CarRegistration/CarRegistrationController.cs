@@ -2,6 +2,7 @@
 using HuloToys_Service.Controllers.CarRegistration.Model;
 using HuloToys_Service.IRepositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using XTECH_FRONTEND.Controllers.API.CarRegistration.IRepositories;
 using XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories;
 
@@ -39,7 +40,20 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
         {
             try
             {
-                _logger.LogInformation($"Car registration request received: {request.PhoneNumber} - {request.PlateNumber}");
+                var now =  DateTime.Now;
+                var hours = now.Hour;
+                var minutes = now.Minute;
+
+                // Kiểm tra khoảng 17:55 đến 18:00
+                if (hours == 17 && minutes >= 55)
+                {
+                    return StatusCode(500, new CarRegistrationResponse
+                    {
+                        Success = false,
+                        Message = "Vui lòng đợi đến 18 giờ đăng lý lại "
+                    });
+                }
+                    _logger.LogInformation($"Car registration request received: {request.PhoneNumber} - {request.PlateNumber}");
 
                 // Step 1: Validate input data
                 var validationResult = _validationService.ValidateCarRegistration(request);
