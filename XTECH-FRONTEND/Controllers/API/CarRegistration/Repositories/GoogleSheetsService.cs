@@ -421,7 +421,17 @@ namespace HuloToys_Service.Repositories
                 // Đặt TTL nếu là lần đầu tăng
                 if (nextNumber == 1)
                 {
-                    db.KeyExpire(key, TimeSpan.FromHours(18));
+                    // Mục tiêu: 18 hôm nay
+                    DateTime expireAt = now.Date.AddHours(18);
+
+                    // Nếu đã quá 18 hôm nay → chuyển sang 18 ngày mai
+                    if (now > expireAt)
+                    {
+                        expireAt = expireAt.AddDays(1);
+                    }
+
+                    TimeSpan ttl = expireAt - now;
+                    db.KeyExpire(key, ttl);
                 }
 
                 Console.WriteLine($"Số thứ tự tiếp theo: {nextNumber}");
