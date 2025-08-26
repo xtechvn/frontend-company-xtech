@@ -79,8 +79,8 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 }
 
                 // Step 3: Get current daily queue count
-                var dailyCount = await _googleSheetsService.GetDailyQueueCountAsync();
-                var queueNumber = dailyCount + 1;
+                var dailyCount = await _googleSheetsService.GetDailyQueueCountRedis();
+                var queueNumber = dailyCount ;
 
                 // Step 4: Create registration record with initial Zalo status
                 var registrationRecord = new RegistrationRecord

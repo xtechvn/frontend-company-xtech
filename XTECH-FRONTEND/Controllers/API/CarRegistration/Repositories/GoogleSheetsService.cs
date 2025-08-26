@@ -5,6 +5,7 @@ using Google.Apis.Sheets.v4.Data;
 using HuloToys_Service.Controllers.CarRegistration.Model;
 using HuloToys_Service.IRepositories;
 using Microsoft.Extensions.Caching.Memory;
+using StackExchange.Redis;
 using System.Text.RegularExpressions;
 
 
@@ -138,8 +139,14 @@ namespace HuloToys_Service.Repositories
                 {
                     _cache.Set(cacheKey, count + 1 );
                 }
+                var redis = ConnectionMultiplexer.Connect(_configuration["Redis:Host"] + ":" + _configuration["Redis:Port"]);
+                var db = redis.GetDatabase();
+                // Tính effective date dựa trên giờ địa phương (UTC+7)
+                DateTime now = DateTime.Now; // Sử dụng giờ hệ thống (giả định đã cấu hình đúng timezone)
+                DateTime effectiveDate = now.Hour < 18 ? now.Date.AddDays(-1) : now.Date;
 
-
+                string key = $"counter:daily_count_:{effectiveDate:yyyyMMdd}";
+                db.StringSet(key, count);
                 return count;
             }
             catch (Exception ex)
@@ -397,6 +404,35 @@ namespace HuloToys_Service.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+        public async Task<int> GetDailyQueueCountRedis()
+        {
+            try
+            {
+                var redis = ConnectionMultiplexer.Connect(_configuration["Redis:Host"] + ":" + _configuration["Redis:Port"]);
+                var db = redis.GetDatabase();
+                // Tính effective date dựa trên giờ địa phương (UTC+7)
+                DateTime now = DateTime.Now; // Sử dụng giờ hệ thống (giả định đã cấu hình đúng timezone)
+                DateTime effectiveDate = now.Hour < 18 ? now.Date.AddDays(-1) : now.Date;
+
+                string key = $"counter:daily_count_:{effectiveDate:yyyyMMdd}";
+                long nextNumber = db.StringIncrement(key);
+
+                // Đặt TTL nếu là lần đầu tăng
+                if (nextNumber == 1)
+                {
+                    db.KeyExpire(key, TimeSpan.FromHours(18));
+                }
+
+                Console.WriteLine($"Số thứ tự tiếp theo: {nextNumber}");
+                return (int)nextNumber;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting daily queue count from Google Sheets");
+
+                throw;
+            }
         }
     }
 }
