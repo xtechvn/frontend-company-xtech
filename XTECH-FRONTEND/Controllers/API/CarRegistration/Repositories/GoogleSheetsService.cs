@@ -85,7 +85,7 @@ namespace HuloToys_Service.Repositories
                 var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
                 var todayStart = DateTime.Today;
-                var cutoffTime = todayStart.AddHours(18); // 18:00 hôm nay
+                var cutoffTime = todayStart.AddHours(20); // 18:00 hôm nay
                 var tomorrowStart = todayStart.AddDays(1);
                 if (DateTime.Now >= cutoffTime)
                 {
