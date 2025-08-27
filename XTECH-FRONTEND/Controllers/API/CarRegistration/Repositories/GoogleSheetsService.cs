@@ -94,6 +94,7 @@ namespace HuloToys_Service.Repositories
                 var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
+
                 var response = await request.ExecuteAsync();
                 var values = response.Values;
 
