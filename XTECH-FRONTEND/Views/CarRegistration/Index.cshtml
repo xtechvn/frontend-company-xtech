@@ -110,7 +110,6 @@
         const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
         const ENDPOINTS = {
             REGISTER: '/carregistration/register',
-            CHECK_RESTRICTION: '/carregistration/check-restriction',
             QUEUE_STATUS: '/carregistration/queue-status',
             CHECK_ZALO: '/carregistration/check-zalo-user'
         };
@@ -195,9 +194,6 @@
             });
         }
 
-        async function checkTimeRestriction(plateNumber) {
-            return await makeAPICall(`${ENDPOINTS.CHECK_RESTRICTION}/${plateNumber}`);
-        }
 
         async function getQueueStatus() {
             //return await makeAPICall(ENDPOINTS.QUEUE_STATUS);
@@ -287,7 +283,7 @@
                 const minutes = now.getMinutes();
 
                 // Kiểm tra khoảng 17:55 đến 18:00
-                if ((hours === 17 && minutes >= 55 )|| (hours === 18 && minutes === 0)) {
+                if ((hours === 17 && minutes >= 55 )) {
                     e.preventDefault(); // Ngăn hành động mặc định
                     e.stopPropagation(); // Ngăn sự kiện lan truyền
                     var time_load = 60 - minutes;
@@ -345,23 +341,6 @@
             }
         }
 
-        async function handlePhoneBlur() {
-            const phoneNumber = this.value.trim();
-            if (!phoneNumber) return;
-
-            try {
-                const restriction = await checkTimeRestriction(plateNumber);
-                if (!restriction.canSubmit && restriction.remainingMinutes > 0) {
-                    showError(`Biển số xe này cần đợi ${restriction.remainingMinutes} phút nữa`);
-                    startCountdown(restriction.remainingMinutes);
-                } else {
-                    clearCountdown();
-                }
-            } catch (error) {
-                console.error('Error checking time restriction:', error);
-                // Don't show error to user for this background check
-            }
-        }
 
         // Initialize app
         async function initializeApp() {
@@ -468,7 +447,7 @@
             const minutes = now.getMinutes();
             console.log('Current time:', hours, minutes);
             // Kiểm tra khoảng 17:55 đến 18:00
-            if ((hours === 17 && minutes >= 55 )|| (hours === 18 && minutes === 0)) {
+            if ((hours === 17 && minutes >= 55 )) {
 
                 var time_load = 60 - minutes;
                 errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
