@@ -415,7 +415,7 @@
             submitBtn.textContent = 'VUI LÒNG ĐỢI...';
             const now = new Date();
             let target = new Date();
-            target.setHours(18, 0, 0, 0);
+            target.setHours(20, 0, 0, 0);
             let remaining = Math.floor((target - now) / 1000);
 
             const updateCountdown = () => {
@@ -447,7 +447,7 @@
             const minutes = now.getMinutes();
             console.log('Current time:', hours, minutes);
             // Kiểm tra khoảng 17:55 đến 18:00
-            if ((hours === 17 && minutes >= 55 )) {
+            if ((hours === 19  )) {
 
                 var time_load = 60 - minutes;
                 errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
