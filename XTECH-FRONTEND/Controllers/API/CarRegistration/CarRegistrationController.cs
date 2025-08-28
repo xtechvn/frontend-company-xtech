@@ -258,10 +258,12 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 var data = redisService.Get(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
                 if (data != null && data.Trim() != "")
                 {
+                   
+                        var data_detail = JsonConvert.DeserializeObject<RegistrationRecord>(data);
                     return BadRequest(new CarRegistrationResponse
                     {
                         Success = false,
-                        Message = $"Biển số xe đã đăng ký, Vui lòng đợi 15 phút trước khi gửi lại",
+                        Message = data_detail.PlateNumber+$" đã đăng ký số "+ data_detail.QueueNumber+ ", Vui lòng đợi 15 phút trước khi gửi lại",
                         RemainingTimeMinutes = 15
                     });
                 }
