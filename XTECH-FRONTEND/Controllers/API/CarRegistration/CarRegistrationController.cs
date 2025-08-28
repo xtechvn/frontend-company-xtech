@@ -43,7 +43,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
             _configuration = configuration;
             _workQueueClient = new WorkQueueClient(configuration);
         }
-        [HttpPost("register")]
+        [HttpPost("register-V1")]
         public async Task<ActionResult<CarRegistrationResponse>> RegisterCar([FromBody] CarRegistrationRequest request)
         {
             try
