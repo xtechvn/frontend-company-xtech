@@ -246,7 +246,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                         Message = string.Join(", ", validationResult.Errors)
                     });
                 }
-
+                
                 string cache_name = "PlateNumber_" + request.PlateNumber.Replace("-", "_");
                 //var data = redisService.Get(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
                 //if (data != null && data.Trim() != "")
@@ -278,18 +278,18 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                     ZaloStatus = "Đang xử lý...",
                     Camp = request.Camp
                 };
+                _workQueueClient.SyncQueue(registrationRecord);
 
- 
 
                 // Step 6: Send Zalo notification and get status
-                var (zaloSuccess, zaloStatus) = await _zaloService.SendRegistrationNotificationAsync(registrationRecord);
+                //var (zaloSuccess, zaloStatus) = await _zaloService.SendRegistrationNotificationAsync(registrationRecord);
 
-                // Update registration record with Zalo status
-                registrationRecord.ZaloStatus = zaloStatus;
+                //// Update registration record with Zalo status
+                //registrationRecord.ZaloStatus = "Đang xử lý...";
 
 
 
-                _workQueueClient.SyncQueue(registrationRecord);
+
 
                 while (queueNumber <= 0)
                 {
@@ -320,7 +320,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                     RegistrationTime = registrationRecord.RegistrationTime,
                     PlateNumber = registrationRecord.PlateNumber,
                     PhoneNumber = registrationRecord.PhoneNumber,
-                    ZaloStatus = zaloStatus,
+                    ZaloStatus = "Đang xử lý...",
                 });
             }
             catch (Exception ex)

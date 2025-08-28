@@ -109,7 +109,7 @@
         // API Configuration
         const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
         const ENDPOINTS = {
-            REGISTER: '/carregistration/register',
+            REGISTER: '/carregistration/registerV2',
             QUEUE_STATUS: '/carregistration/queue-status',
             CHECK_ZALO: '/carregistration/check-zalo-user'
         };
@@ -283,17 +283,17 @@
                 const minutes = now.getMinutes();
 
                 // Kiểm tra khoảng 17:55 đến 18:00
-                if ((hours === 17 && minutes >= 55 )) {
-                    e.preventDefault(); // Ngăn hành động mặc định
-                    e.stopPropagation(); // Ngăn sự kiện lan truyền
-                    var time_load = 60 - minutes;
-                    errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
-                    setTimeout(() => {
-                        startCountdown17_18();
-                    }, 1000);
-           
-                    return;
-                }
+                //if ((hours === 17 && minutes >= 55)) {
+                //    e.preventDefault(); // Ngăn hành động mặc định
+                //    e.stopPropagation(); // Ngăn sự kiện lan truyền
+                //    var time_load = 60 - minutes;
+                //    errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
+                //    setTimeout(() => {
+                //        startCountdown17_18();
+                //    }, 1000);
+
+                //    return;
+                //}
                 // Call API to register car
                 const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX, Camp);
 
@@ -441,23 +441,23 @@
             console.log(mins)
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
-        $(document).ready(function () {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            console.log('Current time:', hours, minutes);
-            // Kiểm tra khoảng 17:55 đến 18:00
-            if ((hours === 19  )) {
+        //$(document).ready(function () {
+        //    const now = new Date();
+        //    const hours = now.getHours();
+        //    const minutes = now.getMinutes();
+        //    console.log('Current time:', hours, minutes);
+        //    // Kiểm tra khoảng 17:55 đến 18:00
+        //    if ((hours === 17 && minutes >= 55)) {
 
-                var time_load = 60 - minutes;
-                errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
-                setTimeout(() => {
-                    startCountdown17_18();
-                }, 1000);
-               
-                return;
-            }
-        });
+        //        var time_load = 60 - minutes;
+        //        errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
+        //        setTimeout(() => {
+        //            startCountdown17_18();
+        //        }, 1000);
+
+        //        return;
+        //    }
+        //});
     </script>
 
 </body>
