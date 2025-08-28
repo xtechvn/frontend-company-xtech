@@ -233,14 +233,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 var minutes = now.Minute;
 
                 // Kiểm tra khoảng 17:55 đến 18:00
-                if (hours == 17 && minutes >= 55)
-                {
-                    return StatusCode(500, new CarRegistrationResponse
-                    {
-                        Success = false,
-                        Message = "Vui lòng đợi đến 18 giờ đăng lý lại "
-                    });
-                }
+            
                 _logger.LogInformation($"Car registration request received: {request.PhoneNumber} - {request.PlateNumber}");
 
                 // Step 1: Validate input data
