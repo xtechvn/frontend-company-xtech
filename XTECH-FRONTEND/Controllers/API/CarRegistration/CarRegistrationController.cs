@@ -248,18 +248,18 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 }
 
                 string cache_name = "PlateNumber_" + request.PlateNumber.Replace("-", "_");
-                var data = redisService.Get(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
-                if (data != null && data.Trim() != "")
-                {
+                //var data = redisService.Get(cache_name, Convert.ToInt32(_configuration["Redis:Database:db_common"]));
+                //if (data != null && data.Trim() != "")
+                //{
                    
-                        var data_detail = JsonConvert.DeserializeObject<RegistrationRecord>(data);
-                    return BadRequest(new CarRegistrationResponse
-                    {
-                        Success = false,
-                        Message = data_detail.PlateNumber+$" đã đăng ký số "+ data_detail.QueueNumber+ ", Vui lòng đợi 15 phút trước khi gửi lại",
-                        RemainingTimeMinutes = 15
-                    });
-                }
+                //        var data_detail = JsonConvert.DeserializeObject<RegistrationRecord>(data);
+                //    return BadRequest(new CarRegistrationResponse
+                //    {
+                //        Success = false,
+                //        Message = data_detail.PlateNumber+$" đã đăng ký số "+ data_detail.QueueNumber+ ", Vui lòng đợi 15 phút trước khi gửi lại",
+                //        RemainingTimeMinutes = 15
+                //    });
+                //}
                 redisService.Set(cache_name, JsonConvert.SerializeObject(request), DateTime.Now.AddMinutes(15), Convert.ToInt32(_configuration["Redis:Database:db_common"]));
                 // Step 3: Get current daily queue count
           
