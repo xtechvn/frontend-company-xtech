@@ -1,4 +1,7 @@
-﻿namespace HuloToys_Service.Controllers.CarRegistration.Model
+﻿using MongoDB.Bson.Serialization.Attributes;
+using XTECH_FRONTEND.Utilities;
+
+namespace HuloToys_Service.Controllers.CarRegistration.Model
 {
     public class CarRegistrationRequest
     {
@@ -49,4 +52,33 @@
         public int RemainingMinutes { get; set; }
         public DateTime? LastSubmission { get; set; }
     }
+    public class RegistrationRecordMongo
+    {
+        public string _id { get; set; }
+        public string PhoneNumber { get; set; }
+        public string PlateNumber { get; set; }
+        public string Referee { get; set; }
+        public string GPLX { get; set; }
+        public string Name { get; set; }
+        public int QueueNumber { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)] public DateTime? RegistrationTime { get; set; }
+        [BsonIgnore]
+        public string CreatedTime
+        {
+            get
+            {
+                return DateUtil.DateTimeToString(RegistrationTime);
+            }
+            set
+            {
+                RegistrationTime = DateUtil.StringToDateTime(value);
+            }
+        }
+        public string ZaloStatus { get; set; }
+        public string Camp { get; set; }
+    }
+
 }
+
+
