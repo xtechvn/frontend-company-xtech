@@ -52,15 +52,6 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 var hours = now.Hour;
                 var minutes = now.Minute;
 
-                // Kiểm tra khoảng 17:55 đến 18:00
-                if (hours == 17 && minutes >= 55)
-                {
-                    return StatusCode(500, new CarRegistrationResponse
-                    {
-                        Success = false,
-                        Message = "Vui lòng đợi đến 18 giờ đăng lý lại "
-                    });
-                }
                     _logger.LogInformation($"Car registration request received: {request.PhoneNumber} - {request.PlateNumber}");
 
                 // Step 1: Validate input data
@@ -290,6 +281,87 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
 
 
 
+
+                while (queueNumber <= 0)
+                {
+                    var data_Redis = redisService.Get(
+                        cache_name,
+                        Convert.ToInt32(_configuration["Redis:Database:db_common"])
+                    );
+
+                    if (!string.IsNullOrEmpty(data_Redis))
+                    {
+                        var data_detail = JsonConvert.DeserializeObject<RegistrationRecord>(data_Redis);
+
+                        if (data_detail?.QueueNumber > 0)
+                        {
+                            queueNumber = data_detail.QueueNumber;
+                            break; // đã có, thoát loop
+                        }
+                    }
+                    Thread.Sleep(2000); // nghỉ 200ms rồi thử lại
+                }
+
+                // Return success response
+                return Ok(new CarRegistrationResponse
+                {
+                    Success = true,
+                    Message = "Đăng ký thành công!",
+                    QueueNumber = queueNumber,
+                    RegistrationTime = registrationRecord.RegistrationTime,
+                    PlateNumber = registrationRecord.PlateNumber,
+                    PhoneNumber = registrationRecord.PhoneNumber,
+                    ZaloStatus = "Đang xử lý...",
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error processing car registration");
+                return StatusCode(500, new CarRegistrationResponse
+                {
+                    Success = false,
+                    Message = "Lỗi hệ thống, vui lòng thử lại sau"
+                });
+            }
+        }
+        [HttpPost("register-test")]
+        public async Task<ActionResult<CarRegistrationResponse>> RegisterCarV3([FromBody] CarRegistrationRequest request)
+        {
+            try
+            {
+                var now = DateTime.Now;
+                var hours = now.Hour;
+                var minutes = now.Minute;
+
+                // Kiểm tra khoảng 17:55 đến 18:00
+
+                _logger.LogInformation($"Car registration request received: {request.PhoneNumber} - {request.PlateNumber}");
+
+
+                string cache_name = "PlateNumber_" + request.PlateNumber.Replace("-", "_");
+             
+                redisService.Set(cache_name, JsonConvert.SerializeObject(request), DateTime.Now.AddMinutes(15), Convert.ToInt32(_configuration["Redis:Database:db_common"]));
+                // Step 3: Get current daily queue count
+
+                var queueNumber = 0;
+
+                // Step 4: Create registration record with initial Zalo status
+                var registrationRecord = new RegistrationRecord
+                {
+                    PhoneNumber = request.PhoneNumber,
+                    PlateNumber = request.PlateNumber.ToUpper(),
+                    Name = request.Name.ToUpper(),
+                    Referee = request.Referee.ToUpper(),
+                    GPLX = request.GPLX.ToUpper(),
+                    QueueNumber = queueNumber,
+                    RegistrationTime = DateTime.Now,
+                    ZaloStatus = "Đang xử lý...",
+                    Camp = request.Camp
+                };
+                _workQueueClient.SyncQueueTest(registrationRecord);
+
+
+            
 
                 while (queueNumber <= 0)
                 {

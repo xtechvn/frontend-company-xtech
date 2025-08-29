@@ -110,5 +110,23 @@ namespace XTECH_FRONTEND.Services
                 }
             }
         }
+        public bool SyncQueueTest(RegistrationRecord model)
+        {
+            try
+            {
+                //var j_param = model;
+                var _data_push = JsonConvert.SerializeObject(model);
+                // Push message vào queue
+                var response_queue = InsertQueueSimpleDurable(_data_push, _configuration["Queue:QueueSyncTest"]);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            return false;
+        }
     }
 }
