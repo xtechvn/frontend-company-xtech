@@ -95,6 +95,7 @@ namespace XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories
                 if (now.Hour >= 20)
                 {
                     expireAt = new DateTime(now.Year, now.Month, now.Day, 19, 55, 0);
+
                 }
                 var db = GetDatabase();
                 var collection = db.GetCollection<RegistrationRecordMongo>(_configuration["MongoServer:Data_Car"]);
