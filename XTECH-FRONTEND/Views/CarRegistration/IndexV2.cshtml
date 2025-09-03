@@ -102,6 +102,9 @@
                 <h5 style="margin-bottom: 15px; color: #333;">Quét Qr code để nhận tin nhắn Zalo</h5>
                 <img src="~/images/graphics/qrcode.jpg" />
             </div>
+            <div id="current-time" style="font-weight:bold; color:#333; margin-top:10px;">
+                Thời gian hiện tại: --
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="~/libs/jquery/jquery-3.6.0.min.js"></script>
@@ -283,17 +286,17 @@
                 const minutes = now.getMinutes();
 
                 // Kiểm tra khoảng 17:55 đến 18:00
-                if ((hours === 17 && minutes >= 55 )) {
-                    e.preventDefault(); // Ngăn hành động mặc định
-                    e.stopPropagation(); // Ngăn sự kiện lan truyền
-                    var time_load = 60 - minutes;
-                    errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
-                    setTimeout(() => {
-                        startCountdown17_18();
-                    }, 1000);
+                //if ((hours === 17 && minutes >= 55 )) {
+                //    e.preventDefault(); // Ngăn hành động mặc định
+                //    e.stopPropagation(); // Ngăn sự kiện lan truyền
+                //    var time_load = 60 - minutes;
+                //    errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
+                //    setTimeout(() => {
+                //        startCountdown17_18();
+                //    }, 1000);
 
-                    return;
-                }
+                //    return;
+                //}
                 // Call API to register car
                 const response = await registerCar(plateNumber, phoneNumber, name, referee, GPLX, Camp);
 
@@ -415,7 +418,7 @@
             submitBtn.textContent = 'VUI LÒNG ĐỢI...';
             const now = new Date();
             let target = new Date();
-            target.setHours(20, 0, 0, 0);
+            target.setHours(17, 0, 0, 0);
             let remaining = Math.floor((target - now) / 1000);
 
             const updateCountdown = () => {
@@ -447,7 +450,7 @@
             const minutes = now.getMinutes();
             console.log('Current time:', hours, minutes);
             // Kiểm tra khoảng 17:55 đến 18:00
-            if ((hours === 19  )) {
+            if ((hours === 16  )) {
 
                 var time_load = 60 - minutes;
                 errorMessage = 'Bạn vui lòng đợi ' + time_load + ' phút!';
@@ -458,6 +461,22 @@
                 return;
             }
         });
+        function updateClock() {
+            var now = new Date();
+            var timeString = now.toLocaleString("vi-VN", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+            document.getElementById("current-time").innerText = "Thời gian hiện tại: " + timeString;
+        }
+
+        // Cập nhật mỗi giây
+        setInterval(updateClock, 1000);
+        updateClock(); // chạy ngay khi load trang
     </script>
 
 </body>
