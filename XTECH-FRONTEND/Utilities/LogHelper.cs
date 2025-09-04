@@ -7,7 +7,7 @@ namespace XTECH_FRONTEND.Utilities
     {
         public static string botToken = "6804654183:AAFqaLKWkyDidWsw2QFPtHt1oISI020jhyY";
         public static string group_Id = " -2067724008";
-        public static string enviromment = "DEV";
+        public static string enviromment = "DEV-CAR";
         public static string CompanyType = " ";
         public static int CompanyTypeInt = 0;
 

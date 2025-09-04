@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 using XTECH_FRONTEND.Models;
+using XTECH_FRONTEND.Utilities;
 
 namespace XTECH_FRONTEND.Services
 {
@@ -40,11 +41,11 @@ namespace XTECH_FRONTEND.Services
                 // Push message vào queue
                 var response_queue = InsertQueueSimpleDurable(_data_push, _configuration["Queue:QueueSyncES"]);
 
-                return true;
+                return response_queue;
             }
             catch (Exception ex)
             {
-
+                LogHelper.InsertLogTelegram("WorkQueueClient-SyncQueue CAR:" + ex);
 
             }
             return false;
@@ -74,7 +75,7 @@ namespace XTECH_FRONTEND.Services
                 }
                 catch (Exception ex)
                 {
-
+                    LogHelper.InsertLogTelegram("WorkQueueClient-InsertQueueSimple CAR:" + ex);
 
                     return false;
                 }
@@ -105,7 +106,7 @@ namespace XTECH_FRONTEND.Services
                 }
                 catch (Exception ex)
                 {
-
+                    LogHelper.InsertLogTelegram("WorkQueueClient-InsertQueueSimpleDurable CAR:" + ex);
                     return false;
                 }
             }
@@ -123,7 +124,7 @@ namespace XTECH_FRONTEND.Services
             }
             catch (Exception ex)
             {
-
+                LogHelper.InsertLogTelegram("WorkQueueClient-SyncQueueTest CAR:" + ex);
 
             }
             return false;
