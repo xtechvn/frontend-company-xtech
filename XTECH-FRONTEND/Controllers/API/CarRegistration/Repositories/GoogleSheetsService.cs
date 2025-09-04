@@ -414,13 +414,9 @@ namespace HuloToys_Service.Repositories
                 var db = redis.GetDatabase();
                 // Tính effective date dựa trên giờ địa phương (UTC+7)
                 DateTime now = DateTime.Now; // Sử dụng giờ hệ thống (giả định đã cấu hình đúng timezone)
-                DateTime effectiveDate = now.Hour < 18 ? now.Date.AddDays(-1) : now.Date;
-
-                string key = $"counter:daily_car_count_:{effectiveDate:yyyyMMdd}";
-                if((now.Hour==17 &&now.Minute>=59) ||now.Hour >= 18)
-                {
-                    key=$"counter:daily_car_count";
-                }
+               
+                string key = $"counter:daily_car_count";
+               
                 long nextNumber = db.StringIncrement(key);
 
                 // Đặt TTL nếu là lần đầu tăng
