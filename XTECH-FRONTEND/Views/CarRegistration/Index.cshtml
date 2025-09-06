@@ -460,29 +460,45 @@
         //        return;
         //    }
         //});
-        function updateClock() {
-            var now = new Date();
-            var datePart = now.toLocaleDateString("vi-VN", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric"
-            });
+        async function fetchServerTime() {
+            try {
 
-            var timePart = now.toLocaleTimeString("vi-VN", {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
+                const response = await makeAPICall("/carregistration/get-time");
+
+                const data =  response.date;
+                updateClock(data);
+            } catch (error) {
+                console.error("Lỗi khi lấy thời gian từ server:", error);
+            }
+        }
+        function updateClock(data) {
+            // Lấy giờ local của trình duyệt
+            const nowLocal = new Date();
+            const localTime = nowLocal.toLocaleString("vi-VN", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
                 hour12: false
             });
 
-            var timeString = datePart + " " + timePart;
-            document.getElementById("current-time").innerText = "Thời gian hiện tại: " + timeString;
-            console.log(timeString)
+
+
+
+            const serverTime = data;
+
+            // Hiển thị lên DOM
+            const element = document.getElementById("current-time");
+            element.innerHTML = `🕒 Giờ local: ${localTime} <br> 🖥️ Giờ server: ${serverTime}`;
+
+            // Nếu muốn log so sánh
+            console.log("Local time:", nowLocal.toString());
+            console.log("Server time:", serverTime);
         }
 
         // Cập nhật mỗi giây
-        setInterval(updateClock, 1000);
-        updateClock(); // chạy ngay khi load trang
+
+        setInterval(fetchServerTime, 1000);
+
     </script>
 
 </body>

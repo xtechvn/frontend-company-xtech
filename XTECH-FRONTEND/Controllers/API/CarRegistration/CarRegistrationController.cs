@@ -381,7 +381,25 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 });
             }
         }
-
+        [HttpGet("get-time")]
+        public async Task<ActionResult<object>> GetTime()
+        {
+            try
+            {
+                var Time = DateTime.Now.ToString("HH:mm:ss");
+                return Ok(new
+                {
+                    CurrentQueueNumber = 0,
+                    NextQueueNumber = 0,
+                    Date = Time,
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting queue status");
+                return StatusCode(500, "Lỗi hệ thống");
+            }
+        }
 
     }
 }
