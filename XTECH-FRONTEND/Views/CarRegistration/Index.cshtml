@@ -52,7 +52,9 @@
                     <input type="text" id="Camp" name="Camp"
                            placeholder="Nhập câu trả lời của bạn">
                 </div>
-
+                <div id="current-time" style="font-weight:bold; color:#333; margin-top:10px;">
+                    Thời gian hiện tại: --
+                </div>
                 <button type="submit" class="submit-btn" id="submitBtn">
                     GỬI ĐĂNG KÝ
                 </button>
@@ -458,6 +460,29 @@
         //        return;
         //    }
         //});
+        function updateClock() {
+            var now = new Date();
+            var datePart = now.toLocaleDateString("vi-VN", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+
+            var timePart = now.toLocaleTimeString("vi-VN", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false
+            });
+
+            var timeString = datePart + " " + timePart;
+            document.getElementById("current-time").innerText = "Thời gian hiện tại: " + timeString;
+            console.log(timeString)
+        }
+
+        // Cập nhật mỗi giây
+        setInterval(updateClock, 1000);
+        updateClock(); // chạy ngay khi load trang
     </script>
 
 </body>
