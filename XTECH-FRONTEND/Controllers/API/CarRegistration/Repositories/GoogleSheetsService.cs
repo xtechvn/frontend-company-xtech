@@ -423,7 +423,7 @@ namespace HuloToys_Service.Repositories
                 if (nextNumber == 1)
                 {
                     // Mục tiêu: 18 hôm nay
-                    DateTime expireAt = new DateTime(now.Year, now.Month, now.Day, 17, 59, 0);
+                    DateTime expireAt = new DateTime(now.Year, now.Month, now.Day, 17, 58, 30);
 
                     // Nếu đã quá 18 hôm nay → chuyển sang 18 ngày mai
                     if (now > expireAt)
