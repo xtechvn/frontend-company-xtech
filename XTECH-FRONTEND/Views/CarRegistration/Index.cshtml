@@ -477,42 +477,42 @@
         }
         let isFetching = false;
         let fetchIntervalId = null;
-        setInterval(() => {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
+        // setInterval(() => {
+        //     const now = new Date();
+        //     const hours = now.getHours();
+        //     const minutes = now.getMinutes();
 
-            console.log('Current time:', hours, minutes);
+        //     console.log('Current time:', hours, minutes);
 
-            // Kiểm tra khoảng 17:55 đến 17:59
-            if (!isFetching && (hours === 17 && minutes >= 55)||(hours === 18 && minutes <= 30) ) {
-                isFetching = true;
-                // Bắt đầu gọi fetchServerTime mỗi giây
-              fetchIntervalId =  setInterval(fetchServerTime, 1000);
+        //     // Kiểm tra khoảng 17:55 đến 17:59
+        //     if (!isFetching && (hours === 17 && minutes >= 55)||(hours === 18 && minutes <= 30) ) {
+        //         isFetching = true;
+        //         // Bắt đầu gọi fetchServerTime mỗi giây
+        //       fetchIntervalId =  setInterval(fetchServerTime, 1000);
 
-            }
-             if (isFetching && (hours > 18 || (hours === 18 && minutes > 30))) {
-                clearInterval(fetchIntervalId);  // Dừng gọi fetch
-                isFetching = false;
-            }
-        }, 10000); // Kiểm tra mỗi 10 giây
-         $(document).ready(function () {
-           const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
+        //     }
+        //      if (isFetching && (hours > 18 || (hours === 18 && minutes > 30))) {
+        //         clearInterval(fetchIntervalId);  // Dừng gọi fetch
+        //         isFetching = false;
+        //     }
+        // }, 10000); // Kiểm tra mỗi 10 giây
+        //  $(document).ready(function () {
+        //    const now = new Date();
+        //     const hours = now.getHours();
+        //     const minutes = now.getMinutes();
 
-            // Kiểm tra khoảng 17:55 đến 17:59
-            if (!isFetching && (hours === 17 && minutes >= 55)||(hours === 18 && minutes <= 30)) {
+        //     // Kiểm tra khoảng 17:55 đến 17:59
+        //     if (!isFetching && (hours === 17 && minutes >= 55)||(hours === 18 && minutes <= 30)) {
 
-                // Bắt đầu gọi fetchServerTime mỗi giây
-               fetchIntervalId = setInterval(fetchServerTime, 1000);
+        //         // Bắt đầu gọi fetchServerTime mỗi giây
+        //        fetchIntervalId = setInterval(fetchServerTime, 1000);
 
-            }
-            if (isFetching && (hours > 18 || (hours === 18 && minutes > 30))) {
-                clearInterval(fetchIntervalId);  // Dừng gọi fetch
-                isFetching = false;
-            }
-        });
+        //     }
+        //     if (isFetching && (hours > 18 || (hours === 18 && minutes > 30))) {
+        //         clearInterval(fetchIntervalId);  // Dừng gọi fetch
+        //         isFetching = false;
+        //     }
+        // });
     </script>
 
 </body>
