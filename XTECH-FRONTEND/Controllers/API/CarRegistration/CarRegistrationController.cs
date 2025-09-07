@@ -258,6 +258,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                     Camp = request.Camp
                 };
 
+
                 if ((hours == 18 && minutes < 30)|| (hours == 17 && minutes >= 59))
                 {
                     var Insert = await _mongoService.Insert(registrationRecord);
