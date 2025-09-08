@@ -259,7 +259,7 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 };
 
 
-                if ((hours == 20 && minutes < 30)|| (hours == 19 && minutes >= 58))
+                if ((hours == 18 && minutes < 30)|| (hours == 17 && minutes >= 58))
                 {
                     var Insert = await _mongoService.Insert(registrationRecord);
                     if (Insert <= 0)
