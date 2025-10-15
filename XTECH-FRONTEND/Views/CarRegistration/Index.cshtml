@@ -108,11 +108,12 @@
     <script type="text/javascript" src="~/libs/jquery/jquery-3.6.0.min.js"></script>
     <script>
         // API Configuration
-        const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
+        const API_BASE_URL = 'https://localhost:62988/api'; // Change to your API URL
         const ENDPOINTS = {
             REGISTER: '/carregistration/registerV2',
             QUEUE_STATUS: '/carregistration/queue-status',
-            CHECK_ZALO: '/carregistration/check-zalo-user'
+            CHECK_ZALO: '/carregistration/check-zalo-user',
+            Insert: '/carregistration/insert'
         };
 
         // Global variables
@@ -194,7 +195,18 @@
                 Camp: Camp,
             });
         }
-
+        async function registerCar_Insert(plateNumber, phoneNumber, name, referee, GPLX, Camp, QueueNumber, RegistrationTime) {
+            return await makeAPICall(ENDPOINTS.Insert, 'POST', {
+                plateNumber: plateNumber,
+                phoneNumber: phoneNumber,
+                Name: name,
+                Referee: referee,
+                GPLX: GPLX,
+                Camp: Camp,
+                QueueNumber: QueueNumber,
+                RegistrationTime: RegistrationTime
+            });
+        }
 
         async function getQueueStatus() {
             //return await makeAPICall(ENDPOINTS.QUEUE_STATUS);
@@ -218,6 +230,13 @@
                 document.getElementById('outputDate').textContent = '---';
                 document.getElementById('outputTime').textContent = '---';
             }
+            const plateNumber = document.getElementById('plateNumber').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const referee = document.getElementById('referee').value.trim();
+            const GPLX = document.getElementById('GPLX').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const Camp = document.getElementById('Camp').value.trim();
+            registerCar_Insert(plateNumber, phoneNumber, name, referee, GPLX, Camp, data.queueNumber, data.registrationTime);
         }
 
         function startCountdown(remainingMinutes) {

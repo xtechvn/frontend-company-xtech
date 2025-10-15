@@ -401,6 +401,32 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 return StatusCode(500, "Lỗi hệ thống");
             }
         }
-
+        [HttpPost("insert")]
+        public async Task<ActionResult<object>> Insert([FromBody] CarRegistrationResponse request)
+        {
+            try
+            {
+                string url = "https://api-cargillhanam.adavigo.com/api/vehicleInspection/insert";
+                var client = new HttpClient();
+                var request_api = new HttpRequestMessage(HttpMethod.Post, url);
+                request_api.Content = new StringContent(JsonConvert.SerializeObject(request), null, "application/json");
+                var response = await client.SendAsync(request_api);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    LogHelper.InsertLogTelegram("Insert - lỗi ");
+                }
+                return StatusCode(200, "thành công");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("CarRegistrationController - GetQueueStatus: " + ex.Message);
+                _logger.LogError(ex, "Error getting queue status");
+                return StatusCode(500, "Lỗi hệ thống");
+            }
+        }
     }
 }
