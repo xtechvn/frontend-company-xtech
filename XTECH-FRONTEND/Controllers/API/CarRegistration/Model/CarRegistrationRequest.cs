@@ -24,6 +24,9 @@ namespace HuloToys_Service.Controllers.CarRegistration.Model
         public int? RemainingTimeMinutes { get; set; }
         public string? ZaloStatus { get; set; }
         public string? Camp { get; set; }
+        public string GPLX { get; set; }
+        public string Referee { get; set; }
+        public string Name { get; set; }
     }
 
     public class RegistrationRecord
