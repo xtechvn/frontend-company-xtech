@@ -107,6 +107,27 @@
     </div>
     <script type="text/javascript" src="~/libs/jquery/jquery-3.6.0.min.js"></script>
     <script>
+        window.addEventListener('load', function () {
+            // Kiểm tra xem trang đã reload trong phiên này chưa
+            if (!sessionStorage.getItem('hasReloaded')) {
+                // Đánh dấu là đã reload rồi
+                sessionStorage.setItem('hasReloaded', 'true');
+                // Reload lại trang
+                location.reload();
+            }
+        });
+
+        // Chỉ xóa cờ khi người dùng thật sự đóng tab, KHÔNG khi reload
+        window.addEventListener('beforeunload', function (event) {
+            // Nếu người dùng reload trang (F5, Ctrl+R, location.reload)
+            // thì event.persisted = false, nhưng navigationType = 1 => reload
+            if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                // Không xóa gì cả
+                return;
+            }
+            // Nếu đóng tab hoặc rời khỏi site → xóa cờ
+            sessionStorage.removeItem('hasReloaded');
+        });
         // API Configuration
         const API_BASE_URL = 'https://x-tech.vn/api'; // Change to your API URL
         const ENDPOINTS = {
