@@ -15,11 +15,7 @@ namespace XTECH_FRONTEND.Controllers.Demo
 
             return View();
         }
-        public IActionResult IndexV2()
-        {
-
-            return View();
-        }
+      
         public IActionResult ListData()
         {
 
