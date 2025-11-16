@@ -406,11 +406,25 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
         {
             try
             {
+                var registrationRecord = new RegistrationRecord
+                {
+                    PhoneNumber = request.PhoneNumber,
+                    PlateNumber = request.PlateNumber.ToUpper(),
+                    Name = request.Name.ToUpper(),
+                    Referee = request.Referee.ToUpper(),
+                    GPLX = request.GPLX.ToUpper(),
+                    QueueNumber = (int)request.QueueNumber,
+                    RegistrationTime = (DateTime)request.RegistrationTime,
+                    ZaloStatus = "Đang xử lý...",
+                    Camp = request.Camp
+                };
                 string url = "https://api-cargillhanam.adavigo.com/api/vehicleInspection/insert";
                 var client = new HttpClient();
                 var request_api = new HttpRequestMessage(HttpMethod.Post, url);
                 request_api.Content = new StringContent(JsonConvert.SerializeObject(request), null, "application/json");
                 var response = await client.SendAsync(request_api);
+                await _mongoService.Insert116(registrationRecord);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
