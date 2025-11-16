@@ -144,7 +144,7 @@ namespace XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories
 
 
                 await affCollection.InsertOneAsync(log);
-
+                LogHelper.InsertLogTelegram("PushLog - LogActionMongoService-116: ");
 
                 return model.QueueNumber;
             }
