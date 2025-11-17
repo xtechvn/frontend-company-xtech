@@ -122,7 +122,7 @@ namespace XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories
             try
             {
                 
-                string url = "mongodb://" + _configuration["MongoServer116:user"] + ":" + _configuration["MongoServer116:pwd"] + "@" + _configuration["MongoServer116:Host"] + ":" + _configuration["MongoServer116:Port"] + "/" + _configuration["MongoServer116:catalog_log"];
+                string url = "mongodb://" + _configuration["MongoServer116:user"] + ":" + _configuration["MongoServer116:pwd"] + "@" + _configuration["MongoServer116:Host"] + ":" + _configuration["MongoServer116:Port"] ;
                 var client = new MongoClient(url);
 
                 IMongoDatabase db = client.GetDatabase(_configuration["MongoServer116:catalog_log"]);
