@@ -423,6 +423,8 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 var request_api = new HttpRequestMessage(HttpMethod.Post, url);
                 request_api.Content = new StringContent(JsonConvert.SerializeObject(request), null, "application/json");
                 var response = await client.SendAsync(request_api);
+
+                LogHelper.InsertLogTelegram("Insert MongoService-116: ");
                 await _mongoService.Insert116(registrationRecord);
 
                 if (response.IsSuccessStatusCode)
