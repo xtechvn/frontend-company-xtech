@@ -422,18 +422,37 @@ namespace XTECH_FRONTEND.Controllers.CarRegistration
                 var client = new HttpClient();
                 var request_api = new HttpRequestMessage(HttpMethod.Post, url);
                 request_api.Content = new StringContent(JsonConvert.SerializeObject(request), null, "application/json");
-                var response = await client.SendAsync(request_api);
+                //var response = await client.SendAsync(request_api);
 
                 
                 await _mongoService.Insert116(registrationRecord);
 
-                if (response.IsSuccessStatusCode)
+                int retry = 0;
+                int maxRetry = 3;
+
+                while (retry < maxRetry)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    LogHelper.InsertLogTelegram("Insert - lỗi ");
+                    try
+                    {
+                       var response = await client.SendAsync(request_api);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                           var responseContent = await response.Content.ReadAsStringAsync();
+                            break; // Thành công -> thoát vòng lặp
+                        }
+                        else
+                        {
+                            LogHelper.InsertLogTelegram($"Insert - lỗi ({retry + 1}): {request.PlateNumber}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogHelper.InsertLogTelegram($"Exception khi gọi API ({retry + 1}): {ex.Message}");
+                    }
+
+                    retry++;
+                    await Task.Delay(500); // delay giữa các lần retry (tùy chỉnh)
                 }
                 return StatusCode(200, "thành công");
             }
