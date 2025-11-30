@@ -96,6 +96,11 @@ app.MapControllerRoute(
     pattern: "/",
     defaults: new { controller = "Home", action = "Index" });
 app.MapControllerRoute(
+    name: "carregistration",
+    pattern: "CarRegistration/index",
+    defaults: new { controller = "Home", action = "Index" }
+);
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
