@@ -10,11 +10,11 @@ namespace XTECH_FRONTEND.Controllers.Demo
         {
             _mongoService = mongoService;
         }
-        public IActionResult Index()
-        {
+        //public IActionResult Index()
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
       
         public IActionResult ListData()
         {
