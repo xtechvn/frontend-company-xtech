@@ -15,7 +15,12 @@ namespace XTECH_FRONTEND.Controllers
         public string Welcome(string a,int  b=1)
         {
             return HtmlEncoder.Default.Encode($"Hello {a}, NumTimes is: {b}");
-        }       
+        }
+        [Route("vong-quay")]
+        public IActionResult vongquay()
+        {
+            return View();
+        }
 
     }
 }

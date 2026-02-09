@@ -75,7 +75,11 @@ function GetListCategory() {
                                                 <div class="flex flex_right">
                                                     <div class="main-menu">
                                                         <ul class="nav">
+                                                         <li class="menu-tab-button menu-tab-button- ">
+                                        <a href="/vong-quay">Vòng quay X-tech</a>
+                                    </li>
                                                             ${rows}
+                                                           
                                                         </ul>
                                                     </div>
                                                 </div>
