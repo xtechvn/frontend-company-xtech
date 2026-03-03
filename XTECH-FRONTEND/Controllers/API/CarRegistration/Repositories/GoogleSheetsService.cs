@@ -5,6 +5,8 @@ using Google.Apis.Sheets.v4.Data;
 using HuloToys_Service.Controllers.CarRegistration.Model;
 using HuloToys_Service.IRepositories;
 using Microsoft.Extensions.Caching.Memory;
+using StackExchange.Redis;
+using System.Text.RegularExpressions;
 
 
 namespace HuloToys_Service.Repositories
@@ -15,9 +17,14 @@ namespace HuloToys_Service.Repositories
         private readonly ILogger<GoogleSheetsService> _logger;
         private readonly IConfiguration _configuration;
         private readonly SheetsService _sheetsService;
+
         private readonly string _spreadsheetId;
         private readonly string _sheetName;
-        public GoogleSheetsService(IMemoryCache cache, ILogger<GoogleSheetsService> logger, IConfiguration configuration)
+
+        public GoogleSheetsService(
+            IMemoryCache cache,
+            ILogger<GoogleSheetsService> logger,
+            IConfiguration configuration)
         {
             _cache = cache;
             _logger = logger;
@@ -25,17 +32,17 @@ namespace HuloToys_Service.Repositories
 
             // Get configuration
             _spreadsheetId = _configuration["GoogleSheets:SpreadsheetId"]
-                ?? throw new ArgumentNullException("GoogleSheets:SpreadsheetId not configured");
-            _sheetName = _configuration["GoogleSheets:SheetName"] ?? "CarRegistrations";
+                ?? "1mocqFI7Gue7E47K3LjhPTCYbEt7Rl-Gw1MrchDHk_dA";
+            _sheetName = _configuration["GoogleSheets:SheetName"] ?? "Sheet1";
 
             // Initialize Google Sheets service
             _sheetsService = InitializeSheetsService();
         }
+
         private SheetsService InitializeSheetsService()
         {
             try
             {
-                // Method 1: Using Service Account (Recommended for server applications)
                 var serviceAccountFile = _configuration["GoogleSheets:ServiceAccountFile"];
                 if (!string.IsNullOrEmpty(serviceAccountFile) && File.Exists(serviceAccountFile))
                 {
@@ -49,7 +56,6 @@ namespace HuloToys_Service.Repositories
                     });
                 }
 
-                // Method 2: Using JSON key directly from configuration
                 var serviceAccountJson = _configuration["GoogleSheets:ServiceAccountJson"];
                 if (!string.IsNullOrEmpty(serviceAccountJson))
                 {
@@ -71,77 +77,84 @@ namespace HuloToys_Service.Repositories
                 throw;
             }
         }
+
         public async Task<int> GetDailyQueueCountAsync()
         {
             try
             {
-                var today = DateTime.Today.ToString("yyyy-MM-dd");
+                var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
-
-                // Check cache first
-                if (_cache.TryGetValue(cacheKey, out int cachedCount))
-                {
-                    _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
-                    return cachedCount;
-                }
-
-                // Get today's date range for filtering
                 var todayStart = DateTime.Today;
-                var todayEnd = DateTime.Today.AddDays(1);
-
-                // Read all data from the sheet
-                var range = $"{_sheetName}!A2:D2"; // Assuming columns: A=Phone, B=Plate, C=Queue, D=DateTime
+                var cutoffTime = todayStart.AddHours(20); // 18:00 hôm nay
+                var tomorrowStart = todayStart.AddDays(1);
+                if (DateTime.Now >= cutoffTime)
+                {
+                    _cache.Remove(cacheKey);
+                }
+                var range = $"{_sheetName}!A:H"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
+
 
                 var response = await request.ExecuteAsync();
                 var values = response.Values;
 
-                if (values == null || values.Count <= 1) // No data or only headers
+                if (values == null || values.Count <= 1)
                 {
                     _logger.LogInformation("No registration data found for today");
-                    _cache.Set(cacheKey, 0, TimeSpan.FromHours(1)); // Cache for 1 hour
+                    _cache.Set(cacheKey, 1);
                     return 0;
+                }
+                if (values.Count == 2)
+                {
+                    _cache.Remove(cacheKey);
+                }
+                if (_cache.TryGetValue(cacheKey, out int cachedCount))
+                {
+                    _logger.LogInformation($"Retrieved daily queue count from cache: {cachedCount}");
+                    _cache.Set(cacheKey, cachedCount + 1);
+                    return cachedCount;
                 }
 
                 var count = 0;
-
-                // Skip header row (index 0) and count rows with today's date
                 for (int i = 1; i < values.Count; i++)
                 {
                     var row = values[i];
-
-                    // Check if row has enough columns and datetime column is not empty
-                    if (row.Count >= 4 && !string.IsNullOrEmpty(row[3]?.ToString()))
+                    if (row.Count >= 6 && !string.IsNullOrEmpty(row[6]?.ToString()))
                     {
-                        // Try to parse the datetime from column D (index 3)
-                        if (DateTime.TryParse(row[3].ToString(), out DateTime registrationDate))
+                        if (DateTime.TryParse(row[6].ToString(), out DateTime registrationDate))
                         {
-                            // Check if registration date is today
-                            if (registrationDate.Date == todayStart.Date)
+                            if (registrationDate.Date.AddDays(1) >= todayStart.Date)
                             {
                                 count++;
                             }
-                        }
-                        else
-                        {
-                            _logger.LogWarning($"Invalid date format in row {i + 1}: {row[3]}");
                         }
                     }
                 }
 
                 _logger.LogInformation($"Retrieved daily queue count from Google Sheets: {count}");
+                if (count == 0)
+                {
+                    _cache.Set(cacheKey, 1);
+                }
+                else
+                {
+                    _cache.Set(cacheKey, count + 1 );
+                }
+                var redis = ConnectionMultiplexer.Connect(_configuration["Redis:Host"] + ":" + _configuration["Redis:Port"]);
+                var db = redis.GetDatabase();
+                // Tính effective date dựa trên giờ địa phương (UTC+7)
+                DateTime now = DateTime.Now; // Sử dụng giờ hệ thống (giả định đã cấu hình đúng timezone)
+                DateTime effectiveDate = now.Hour < 18 ? now.Date.AddDays(-1) : now.Date;
 
-                // Cache the result for 5 minutes (to balance performance and accuracy)
-                _cache.Set(cacheKey, count, TimeSpan.FromMinutes(5));
-
+                string key = $"counter:daily_count_:{effectiveDate:yyyyMMdd}";
+                db.StringSet(key, count);
                 return count;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error getting daily queue count from Google Sheets");
 
-                // Return cached value if available, otherwise throw
-                var today = DateTime.Today.ToString("yyyy-MM-dd");
+                var today = DateTime.Today.ToString("yyyy-MM");
                 var cacheKey = $"daily_count_{today}";
 
                 if (_cache.TryGetValue(cacheKey, out int cachedCount))
@@ -158,15 +171,20 @@ namespace HuloToys_Service.Repositories
         {
             try
             {
-                // Prepare the data to append
+                // Updated to include Zalo Status column
                 var values = new List<IList<object>>
                 {
                     new List<object>
                     {
-                        record.PhoneNumber,
+                        record.Name,
                         record.PlateNumber,
+                        record.GPLX,
+                        record.Referee,
+                        record.PhoneNumber,
                         record.QueueNumber,
-                        record.RegistrationTime.ToString("yyyy-MM-dd HH:mm:ss")
+                        record.RegistrationTime.ToString("yyyy-MM-dd HH:mm:ss").ToString(),
+                        record.ZaloStatus,
+                        record.Camp
                     }
                 };
 
@@ -175,32 +193,86 @@ namespace HuloToys_Service.Repositories
                     Values = values
                 };
 
-                // Append to the sheet
                 var appendRequest = _sheetsService.Spreadsheets.Values.Append(
                     valueRange,
                     _spreadsheetId,
-                    $"{_sheetName}!A:D");
+                    $"{_sheetName}!A:E");
 
                 appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
                 appendRequest.InsertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
 
                 var appendResponse = await appendRequest.ExecuteAsync();
 
+
+                // 2. Lấy dòng vừa chèn
+                var updatedRange = appendResponse.Updates.UpdatedRange; // ví dụ: "Sheet1!A10:E10"
+                var startRow = int.Parse(Regex.Match(updatedRange, @"[A-Z]+(\d+)").Groups[1].Value) - 1;
+
+                // 3. Lấy SheetId (không phải tên)
+                var spreadsheet = await _sheetsService.Spreadsheets.Get(_spreadsheetId).ExecuteAsync();
+                var sheet = spreadsheet.Sheets.FirstOrDefault(s => s.Properties.Title == _sheetName);
+                var sheetId = sheet?.Properties.SheetId;
+
+                if (sheetId == null)
+                {
+                    throw new Exception("Không tìm thấy SheetId.");
+                }
+                // 4. Gửi BatchUpdate để định dạng dòng
+                var formatRequest = new BatchUpdateSpreadsheetRequest
+                {
+                    Requests = new List<Request>
+                    {
+                        new Request
+                        {
+                            RepeatCell = new RepeatCellRequest
+                            {
+                                Range = new GridRange
+                                {
+                                    SheetId = sheetId,
+                                    StartRowIndex = startRow,
+                                    EndRowIndex = startRow + 1,
+                                    StartColumnIndex = 0,
+                                    EndColumnIndex = 9 // Cột A đến I (0 đến 8)
+                                },
+                                Cell = new CellData
+                                {
+                                    UserEnteredFormat = new CellFormat
+                                    {
+                                        BackgroundColor = new Color
+                                        {
+                                            Red = 1.0f, Green = 1.0f, Blue = 1.0f // Trắng
+                                        },
+                                        TextFormat = new TextFormat
+                                        {
+                                            ForegroundColor = new Color
+                                            {
+                                               Red = 0.0f, Green = 0.0f, Blue = 0.0f // Đen
+                                            },
+                                            Bold = true
+                                        }
+                                    }
+                                },
+                                Fields = "userEnteredFormat(backgroundColor,textFormat)"
+                            }
+                        }
+                    }
+                };
+
+                var batchRequest = _sheetsService.Spreadsheets.BatchUpdate(formatRequest, _spreadsheetId);
+                await batchRequest.ExecuteAsync();
                 if (appendResponse.Updates.UpdatedRows.HasValue && appendResponse.Updates.UpdatedRows.Value > 0)
                 {
-                    _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber}");
+                    _logger.LogInformation($"Successfully saved registration to Google Sheets: {record.PhoneNumber} - {record.PlateNumber} - Queue: {record.QueueNumber} - Zalo: {record.ZaloStatus}- Camp: {record.Camp}");
 
-                    // Update the daily count cache
-                    var today = DateTime.Today.ToString("yyyy-MM-dd");
-                    var cacheKey = $"daily_count_{today}";
-                    if (_cache.TryGetValue(cacheKey, out int currentCount))
-                    {
-                        _cache.Set(cacheKey, currentCount + 1, TimeSpan.FromMinutes(5));
-                    }
+                    //var today = DateTime.Today.ToString("yyyy-MM");
+                    //var cacheKey = $"daily_count_{today}";
+                    //if (_cache.TryGetValue(cacheKey, out int currentCount))
+                    //{
+                    //    _cache.Set(cacheKey, currentCount + 1);
+                    //}
 
                     return true;
                 }
-
                 _logger.LogWarning("No rows were updated when saving to Google Sheets");
                 return false;
             }
@@ -217,14 +289,12 @@ namespace HuloToys_Service.Repositories
             {
                 var cacheKey = $"last_submission_{phoneNumber}";
 
-                // Check memory cache first
                 if (_cache.TryGetValue(cacheKey, out DateTime cachedTime))
                 {
                     return cachedTime;
                 }
 
-                // Query Google Sheets for the most recent submission from this phone number
-                var range = $"{_sheetName}!A:D";
+                var range = $"{_sheetName}!A:E";
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
                 var response = await request.ExecuteAsync();
@@ -237,26 +307,24 @@ namespace HuloToys_Service.Repositories
 
                 DateTime? lastSubmission = null;
 
-                // Search through all rows for this phone number
-                for (int i = values.Count - 1; i >= 1; i--) // Start from the end (most recent)
+                for (int i = values.Count - 1; i >= 1; i--)
                 {
                     var row = values[i];
 
-                    if (row.Count >= 4 &&
+                    if (row.Count >= 6 &&
                         row[0]?.ToString() == phoneNumber &&
-                        !string.IsNullOrEmpty(row[3]?.ToString()))
+                        !string.IsNullOrEmpty(row[6]?.ToString()))
                     {
-                        if (DateTime.TryParse(row[3].ToString(), out DateTime submissionTime))
+                        if (DateTime.TryParse(row[6].ToString(), out DateTime submissionTime))
                         {
                             lastSubmission = submissionTime;
-                            break; // Found the most recent submission
+                            break;
                         }
                     }
                 }
 
                 if (lastSubmission.HasValue)
                 {
-                    // Cache for 15 minutes
                     _cache.Set(cacheKey, lastSubmission.Value, TimeSpan.FromMinutes(15));
                     _logger.LogInformation($"Found last submission for {phoneNumber}: {lastSubmission}");
                 }
@@ -270,44 +338,37 @@ namespace HuloToys_Service.Repositories
             }
         }
 
-        public async Task UpdateLastSubmissionTimeAsync(string phoneNumber, DateTime submissionTime)
+        public async Task UpdateLastSubmissionTimeAsync(string PlateNumber, DateTime submissionTime)
         {
             try
             {
-                var cacheKey = $"last_submission_{phoneNumber}";
-
-                // Update memory cache
+                var cacheKey = $"last_submission_{PlateNumber.Replace("-", "")}";
                 _cache.Set(cacheKey, submissionTime, TimeSpan.FromMinutes(15));
 
-                _logger.LogInformation($"Updated last submission time for {phoneNumber}: {submissionTime}");
-
-                // Note: The actual time is already saved in SaveRegistrationAsync,
-                // so we don't need to make another API call here
+                _logger.LogInformation($"Updated last submission time for {PlateNumber}: {submissionTime}");
                 await Task.CompletedTask;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error updating last submission time for {phoneNumber}");
+                _logger.LogError(ex, $"Error updating last submission time for {PlateNumber}");
                 throw;
             }
         }
 
-        // Helper method to ensure sheet has headers
         public async Task<bool> EnsureSheetHeadersAsync()
         {
             try
             {
-                var range = $"{_sheetName}!A1:D1";
+                var range = $"{_sheetName}!A1:E1"; // Updated to include Zalo Status column
                 var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
 
                 var response = await request.ExecuteAsync();
 
-                // If no headers exist, create them
                 if (response.Values == null || response.Values.Count == 0)
                 {
                     var headers = new List<IList<object>>
                     {
-                        new List<object> { "Số điện thoại", "Biển số xe", "Số thứ tự", "Ngày giờ đăng ký" }
+                        new List<object> { "Tên khách hàng(Trại hoặc đại lý)", "Biển số xe đăng ký", "Số GPLX(3 số cuối giấy phép lái xe)", "Trọng tải xe", "Số điện thoại tài xế", "Số thứ tự", "Ngày giờ đăng ký", "Trạng thái gửi Zalo", "Hoàn hảo/Trại" }
                     };
 
                     var valueRange = new ValueRange { Values = headers };
@@ -320,7 +381,7 @@ namespace HuloToys_Service.Repositories
                     updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
 
                     await updateRequest.ExecuteAsync();
-                    _logger.LogInformation("Created headers in Google Sheet");
+                    _logger.LogInformation("Created headers in Google Sheet with Zalo Status column");
                 }
 
                 return true;
@@ -344,6 +405,44 @@ namespace HuloToys_Service.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+        public async Task<int> GetDailyQueueCountRedis()
+        {
+            try
+            {
+                var redis = ConnectionMultiplexer.Connect(_configuration["Redis:Host"] + ":" + _configuration["Redis:Port"]);
+                var db = redis.GetDatabase();
+                // Tính effective date dựa trên giờ địa phương (UTC+7)
+                DateTime now = DateTime.Now; // Sử dụng giờ hệ thống (giả định đã cấu hình đúng timezone)
+               
+                string key = $"counter:daily_car_count";
+               
+                long nextNumber = db.StringIncrement(key);
+
+                // Đặt TTL nếu là lần đầu tăng
+                if (nextNumber == 1)
+                {
+                    // Mục tiêu: 18 hôm nay
+                    DateTime expireAt = new DateTime(now.Year, now.Month, now.Day, 17, 58, 30);
+
+                    // Nếu đã quá 18 hôm nay → chuyển sang 18 ngày mai
+                    if (now > expireAt)
+                    {
+                        expireAt = expireAt.AddDays(1);
+                    }
+
+                    TimeSpan ttl = expireAt - now;
+                    db.KeyExpire(key, ttl);
+                }
+                Console.WriteLine($"Số thứ tự tiếp theo: {nextNumber}");
+                return (int)nextNumber;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting daily queue count from Google Sheets");
+
+                throw;
+            }
         }
     }
 }
