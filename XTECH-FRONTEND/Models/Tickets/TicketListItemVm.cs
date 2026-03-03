@@ -8,6 +8,7 @@ namespace XTECH_FRONTEND.Models.Tickets
         public string code { get; set; }
         public int serviceId { get; set; }
         public string serviceName { get; set; }
+        public string? departmentName { get; set; }
         public string subject { get; set; }
         public int status { get; set; }
         public string assignedAgent { get; set; }
@@ -64,6 +65,7 @@ namespace XTECH_FRONTEND.Models.Tickets
         public string code { get; set; }
         public int serviceId { get; set; }
         public string serviceName { get; set; }
+        public string? departmentName { get; set; }
         public string subject { get; set; }
         public int status { get; set; }
         public string assignedAgentId { get; set; }

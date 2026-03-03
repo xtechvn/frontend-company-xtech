@@ -197,7 +197,7 @@
                                             #@t.code
                                         </td>
                                         <td class="px-4 py-3 text-secondary">
-                                            @t.serviceId
+                                            @t.serviceName
                                         </td>
                                         <td class="px-4 py-3 fw-medium">
                                             @t.subject
@@ -206,7 +206,7 @@
                                             <span class="chip @meta.chipClass">@meta.text</span>
                                         </td>
                                         <td class="px-4 py-3 text-secondary">
-                                            @(string.IsNullOrWhiteSpace(t.assignedAgent) ? "Unassigned" : t.assignedAgent)
+                                            @(string.IsNullOrWhiteSpace(t.departmentName) ? "Unassigned" : t.departmentName)
                                         </td>
                                         <td class="px-4 py-3 text-secondary">
                                             @t.lastUpdate
