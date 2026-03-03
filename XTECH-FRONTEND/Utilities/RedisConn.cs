@@ -4,6 +4,7 @@ namespace XTECH_FRONTEND.Utilities
 {
     public class RedisConn
     {
+
         private readonly string _redisHost;
         private readonly int _redisPort;
         // private readonly int _db_index;        
@@ -13,6 +14,11 @@ namespace XTECH_FRONTEND.Utilities
         {
             _redisHost = config["Redis:Host"];
             _redisPort = Convert.ToInt32(config["Redis:Port"]);
+            // _db_index = Convert.ToInt32(config["Redis:Database:db_product"]);            
+        }
+
+        public void Connect()
+        {
             try
             {
                 var configString = $"{_redisHost}:{_redisPort},connectRetry=5,allowAdmin=true";
@@ -23,14 +29,18 @@ namespace XTECH_FRONTEND.Utilities
 
                 // throw err;
             }
+            // Log.Debug("Connected to Redis");
         }
+
         public void Set(string key, string value, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             db.StringSet(key, value);
         }
         public void Set(string key, string value, DateTime expires, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             var expiryTimeSpan = expires.Subtract(DateTime.Now);
 
@@ -39,29 +49,51 @@ namespace XTECH_FRONTEND.Utilities
 
         public async Task<string> GetAsync(string key, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             return await db.StringGetAsync(key);
         }
         public string Get(string key, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             return db.StringGet(key);
         }
 
         public string GetNoAsync(string key, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             return db.StringGet(key);
         }
 
         public async void clear(string key, int db_index)
         {
+            Connect();
             var db = _redis.GetDatabase(db_index);
             await db.KeyDeleteAsync(key);
         }
         public async void FlushDatabaseByIndex(int db_index)
         {
+            Connect();
             await _redis.GetServer(_redisHost, _redisPort).FlushDatabaseAsync(db_index);
         }
+
+        public async Task DeleteCacheByKeyword(string keyword, int db_index)
+        {
+            Connect();
+            var db = _redis.GetDatabase(db_index);
+            var server = _redis.GetServer(_redisHost, _redisPort);
+            var keys = server.Keys(db_index, pattern: "*" + keyword + "*").ToList();
+            foreach (var key in keys)
+            {
+                try
+                {
+                    await db.KeyDeleteAsync(key);
+                }
+                catch { }
+            }
+        }
+
     }
 }

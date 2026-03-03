@@ -3,6 +3,8 @@ using HuloToys_Service.IRepositories;
 using HuloToys_Service.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Caching.Memory;
+using XTECH_FRONTEND.Controllers.API.CarRegistration.IRepositories;
+using XTECH_FRONTEND.Controllers.API.CarRegistration.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,8 @@ builder.Services.AddSingleton<IGoogleSheetsService, GoogleSheetsService>();
 builder.Services.AddSingleton<IGoogleFormsService, GoogleFormsService>();
 builder.Services.AddSingleton<IValidationService, ValidationService>();
 builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
+builder.Services.AddSingleton<IZaloService, ZaloOfficialAccountService>();
+builder.Services.AddSingleton<IMongoService, MongoService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,6 +95,11 @@ app.MapControllerRoute(
     name: "home",
     pattern: "/",
     defaults: new { controller = "Home", action = "Index" });
+app.MapControllerRoute(
+    name: "carregistration",
+    pattern: "CarRegistration/index",
+    defaults: new { controller = "Home", action = "Index" }
+);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"

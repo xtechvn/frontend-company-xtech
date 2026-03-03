@@ -1,0 +1,57 @@
+﻿@using HuloToys_Service.Controllers.CarRegistration.Model;
+@{
+    Layout = null;
+    var data = (List<RegistrationRecordMongo>)ViewBag.Data;
+}
+<style>
+    .table-gray table {
+        border-collapse: collapse; /* gộp viền lại, tránh bị đôi */
+        width: 100%;
+    }
+
+        .table-gray table th,
+        .table-gray table td {
+            border: 1px solid #000; /* viền đen */
+            padding: 4px 8px; /* thêm khoảng cách cho đẹp */
+            text-align: center; /* căn giữa nội dung */
+        }
+</style>
+<div class=" ">
+    <div class="table-responsive table-gray">
+        <table class="table table-nowrap" style="width:100% !important;">
+            <thead>
+                <tr style="background:#fdfddb">
+                    <th>Tên khách hàng(Trại hoặc đại lý)</th>
+                    <th>Biển số xe đăng ký </th>
+                    <th>Tên lái xe</th>
+                    <th>Tải trọng xe</th>
+                    <th>Số điện thoại tài xế</th>
+                    <th>Số thứ tự</th>
+                    <th>Ngày đăng ký</th>
+                    <th>Trạng thái gửi tin Zalo</th>
+                    <th>Hoàn hảo/Trại *</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (data != null && data.Count > 0)
+                {
+                    foreach (var item in data)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.PlateNumber </td>
+                            <td>@item.GPLX</td>
+                            <td>@item.Referee</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.QueueNumber</td>
+                            <td>@(item.CreatedTime)</td>
+                            <td>@item.ZaloStatus</td>
+                            <td>@item.Camp</td>
+                        </tr>
+                    } 
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>
