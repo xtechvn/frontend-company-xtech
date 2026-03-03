@@ -34,12 +34,13 @@ namespace XTECH_FRONTEND.Controllers
                 {
                     ApiService apiService = new ApiService(_configuration);
                     BaseObjectResponse2<DataClientReturnViewModel> RS = await apiService.Login(model);
-                    if (model.RememberMe)
-                    {
+                    //if (model.RememberMe)
+                    //{
                         var claims = new List<Claim>();
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, RS.data.IdClient.ToString()));
                         claims.Add(new Claim(ClaimTypes.Name, RS.data.UserName));
                         claims.Add(new Claim(ClaimTypes.Email, RS.data.Email));
+
                         claims.Add(new Claim("AccountId", RS.data.IdAccount.ToString()));
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var authProperties = new AuthenticationProperties
@@ -49,7 +50,7 @@ namespace XTECH_FRONTEND.Controllers
                             IsPersistent = true
                         };
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-                    }
+                    //}
                     return Ok(RS.data);
                 }
                 else 

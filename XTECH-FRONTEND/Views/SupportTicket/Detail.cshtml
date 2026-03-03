@@ -1,0 +1,641 @@
+﻿@using XTECH_FRONTEND.Models.Tickets
+@{
+    ViewData["Title"] = "Ticket Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var vm = ViewBag.data as TicketDetailVm;
+    var ticketId = (Guid)(ViewBag.ticketId ?? Guid.Empty);
+
+    string StatusText(int s) => s switch
+    {
+        0 => "Open",
+        1 => "In Progress",
+        2 => "Resolved",
+        3 => "Closed",
+        _ => "Open"
+    };
+}
+
+<style>
+    :root {
+        --primary: #004a99;
+        --page-bg: #f3f4f6;
+    }
+
+    body {
+        background: var(--page-bg);
+    }
+
+    .bg-primary-custom {
+        background: var(--primary) !important;
+    }
+
+    .text-primary-custom {
+        color: var(--primary) !important;
+    }
+
+    .card-soft {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: .75rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    .badge-urgent {
+        background: #fee2e2;
+        color: #dc2626;
+        font-weight: 800;
+        letter-spacing: .06em;
+        font-size: .7rem;
+    }
+
+    .badge-staff {
+        background: #f3f4f6;
+        color: #4b5563;
+        border: 1px solid rgba(0,0,0,.08);
+        font-size: .62rem;
+        letter-spacing: .08em;
+        font-weight: 800;
+    }
+
+    .meta-label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #9ca3af;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        margin-bottom: .25rem;
+    }
+
+    .bubble {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .bubble-cus {
+        background: rgba(0,74,153,.08);
+        border: 1px solid rgba(0,74,153,.18);
+    }
+
+    .bubble-staff {
+        background: #f9fafb;
+        border: 1px solid rgba(0,0,0,.08);
+    }
+
+    /* Reply editor placeholder */
+    #replyEditor:empty:before {
+        content: attr(data-placeholder);
+        color: #9ca3af;
+    }
+
+    /* Attachments list in messages */
+    .attachments {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .att-img {
+        display: block;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f3f4f6;
+    }
+
+        .att-img img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+    .att-file {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #fff;
+        text-decoration: none;
+        color: #111827;
+    }
+
+        .att-file .meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .att-file .ext {
+            font-weight: 800;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .att-file .name {
+            font-weight: 600;
+            font-size: 13px;
+            word-break: break-word;
+        }
+
+    /* ===== NEW: Preview attachments dưới editor ===== */
+    #replyAttachments {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 1rem 1rem 1rem; /* match p-3 */
+    }
+
+    .preview-card {
+        border: 1px solid rgba(0,0,0,.10);
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .preview-thumb {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f3f4f6;
+        overflow: hidden;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+    }
+
+        .preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .preview-meta {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .preview-name {
+        font-weight: 600;
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .preview-sub {
+        font-size: 12px;
+        color: #6b7280;
+    }
+
+    .preview-remove {
+        cursor: pointer;
+        font-weight: 800;
+        opacity: .7;
+        user-select: none;
+        line-height: 1;
+        font-size: 18px;
+    }
+
+        .preview-remove:hover {
+            opacity: 1;
+        }
+
+    /* Optional: nhỏ gọn hơn trên mobile */
+    @@media (max-width: 576px) {
+        #replyAttachments {
+            grid-template-columns: 1fr;
+        }
+
+        .attachments {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<input type="hidden" id="TicketId" value="@ticketId" />
+
+<main class="container-fluid px-3 px-md-4 px-lg-5 py-4">
+    <div class="mx-auto" style="max-width: 1200px;">
+
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb mb-0" style="font-size: 14px;">
+                <li class="breadcrumb-item">
+                    <a class="text-decoration-none" href="/support" style="color:var(--primary);">Support Tickets</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    #@(vm?.code ?? "")
+                </li>
+            </ol>
+        </nav>
+
+        @if (vm == null)
+        {
+            <div class="card-soft p-4">
+                <div class="fw-bold mb-1">Ticket not found</div>
+                <div class="text-secondary">Không lấy được dữ liệu ticket.</div>
+                <div class="mt-3">
+                    <a class="btn btn-outline-secondary" href="/support">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+                <div>
+                    <h1 class="h2 fw-bold mb-1 d-flex flex-wrap align-items-center gap-2">
+                        Ticket #@vm.code
+                        @if (vm.priority != null && vm.priority > 0)
+                        {
+                            <span class="badge badge-urgent rounded-pill px-3 py-2">URGENT</span>
+                        }
+                    </h1>
+                    <div class="text-secondary">@vm.subject</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2 px-3 py-2" href="/support">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Conversation -->
+                <div class="col-12 col-lg-8">
+                    <div class="d-flex flex-column gap-3" id="chatList">
+                        @if (vm.messages != null && vm.messages.Any())
+                        {
+                            foreach (var m in vm.messages)
+                            {
+                                var isStaff = (m.senderType ?? "").ToLower() == "agent";
+
+                                <article class="card-soft p-4 mb-4" id="msg-@m.id">
+                                    <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+                                        <div>
+                                            <div class="fw-bold">@(isStaff ? "Support" : "You")</div>
+                                            <div class="text-secondary" style="font-size:12px;">@m.createdAt</div>
+                                        </div>
+                                        @if (isStaff)
+                                        {
+                                            <span class="badge badge-staff rounded px-2 py-1">STAFF</span>
+                                        }
+                                    </div>
+
+                                    <div class="bubble @(isStaff ? "bubble-staff" : "bubble-cus")" style="line-height:1.65;">
+                                        @Html.Raw(string.IsNullOrWhiteSpace(m.contentHtml) ? m.content : m.contentHtml)
+                                    </div>
+
+                                    @if (m.AttachFiles != null && m.AttachFiles.Any())
+                                    {
+                                        <div class="attachments">
+                                            @foreach (var f in m.AttachFiles)
+                                            {
+                                                var name = f.Name ?? "";
+                                                var url = f.Url ?? "#";
+                                                var lower = (name + url).ToLower();
+
+                                                var isImg = lower.EndsWith(".jpg") || lower.EndsWith(".jpeg") || lower.EndsWith(".png") || lower.EndsWith(".gif") || lower.EndsWith(".webp");
+
+                                                if (isImg)
+                                                {
+                                                    <a class="att-img" href="@url" target="_blank" rel="noopener">
+                                                        <img src="@url" alt="@name" />
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="att-file" href="@url" download>
+                                                        <div class="meta">
+                                                            <span class="ext">@System.IO.Path.GetExtension(name).Replace(".", "").ToUpper()</span>
+                                                            <span class="name">@name</span>
+                                                        </div>
+                                                        <i class="bi bi-download"></i>
+                                                    </a>
+                                                }
+                                            }
+                                        </div>
+                                    }
+                                </article>
+                            }
+                        }
+                        else
+                        {
+                            <div class="card-soft p-4 text-secondary">No messages yet.</div>
+                        }
+                    </div>
+
+                    <!-- Reply editor -->
+                    <section class="card-soft overflow-hidden border border-2 mt-3"
+                             style="border-color: rgba(0,74,153,.55) !important;">
+
+                        <div class="px-3 py-2 border-bottom d-flex align-items-center gap-2 flex-wrap"
+                             style="background:#f9fafb;">
+
+                            <button class="btn btn-sm btn-light" type="button" title="Bold" onclick="replyEditor.cmd('bold')">
+                                <i class="bi bi-type-bold"></i>
+                            </button>
+
+                            <button class="btn btn-sm btn-light" type="button" title="Italic" onclick="replyEditor.cmd('italic')">
+                                <i class="bi bi-type-italic"></i>
+                            </button>
+
+                            <button class="btn btn-sm btn-light" type="button" title="Link" onclick="replyEditor.insertLink()">
+                                <i class="bi bi-link-45deg"></i>
+                            </button>
+
+                            <!-- Image picker -->
+                            <button class="btn btn-sm btn-light" type="button" title="Insert image (file)"
+                                    onclick="document.getElementById('replyImg').click()">
+                                <i class="bi bi-image"></i>
+                            </button>
+                            <input id="replyImg" type="file" class="d-none" accept="image/*" multiple
+                                   onchange="replyEditor.addFiles(this.files); this.value='';" />
+
+                            <div class="vr mx-1"></div>
+
+                            <!-- File picker -->
+                            <button class="btn btn-sm btn-light" type="button" title="Attach file"
+                                    onclick="document.getElementById('replyFile').click()">
+                                <i class="bi bi-paperclip"></i>
+                            </button>
+                            <input id="replyFile" type="file" class="d-none"
+                                   accept="application/pdf,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.7z,image/*"
+                                   multiple onchange="replyEditor.addFiles(this.files); this.value='';" />
+
+                            <div class="ms-auto d-flex align-items-center gap-3 small">
+                                <span class="text-secondary" id="attachStatus"></span>
+                                <span class="text-secondary" id="rtStatus"></span>
+                            </div>
+                        </div>
+
+                        <div id="replyEditor"
+                             class="p-3"
+                             contenteditable="true"
+                             style="min-height:150px; outline:none; color:#374151;"
+                             data-placeholder="Write your reply here..."></div>
+
+                        <!-- ✅ NEW: preview attachments dưới editor -->
+                        <div id="replyAttachments"></div>
+
+                        <!-- hidden textarea -->
+                        <textarea id="txtReply" class="d-none"></textarea>
+
+                        <div class="d-flex justify-content-end align-items-center gap-2 px-3 py-3 border-top"
+                             style="background:#f9fafb;">
+                            <button id="btnSendReply"
+                                    class="btn text-white fw-semibold px-4"
+                                    type="button"
+                                    style="background:var(--primary);"
+                                    onclick="replyEditor.beforeSend(); userTicket.sendReply();">
+                                Send Reply
+                            </button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right column -->
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex flex-column gap-4">
+                        <section class="card-soft p-4">
+                            <h3 class="h6 fw-bold mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-info-circle text-primary-custom"></i> Ticket Information
+                            </h3>
+
+                            <div class="d-flex flex-column gap-3">
+                                <div>
+                                    <div class="meta-label">Status</div>
+                                    <div class="fw-semibold text-primary-custom" style="font-size:14px;">
+                                        @StatusText(vm.status)
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="meta-label">Assigned Staff</div>
+                                    <div class="fw-medium" style="font-size:14px;">
+                                        @(string.IsNullOrWhiteSpace(vm.assignedAgent) ? "Unassigned" : vm.assignedAgent)
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</main>
+
+<script>
+    window.userTicketEndpoints = {
+        replyUrl: '/support/reply',
+        hubUrl: 'https://localhost:56834/ticketHub'
+    };
+</script>
+
+<script>
+    // ✅ Reply editor: không chèn chip vào editor nữa, render preview dưới editor
+    const replyEditor = {
+        _files: [],
+        _objectUrls: new Map(), // localId -> objectURL (for images)
+
+        el() { return document.getElementById('replyEditor'); },
+        previewEl() { return document.getElementById('replyAttachments'); },
+
+        focus() { this.el().focus(); },
+
+        cmd(command) {
+            this.focus();
+            document.execCommand(command, false, null);
+        },
+
+        insertLink() {
+            this.focus();
+            const selected = (window.getSelection()?.toString() || '').trim();
+            let url = prompt('Nhập link (https://...)');
+            if (!url) return;
+            if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+            if (selected) {
+                document.execCommand('createLink', false, url);
+            } else {
+                document.execCommand('insertHTML', false,
+                    `<a href="${url}" target="_blank" rel="noopener noreferrer">${this._escape(url)}</a>`
+                );
+            }
+        },
+
+        addFiles(fileList) {
+            if (!fileList || fileList.length === 0) return;
+
+            const arr = Array.from(fileList);
+
+            for (const f of arr) {
+                const id = (crypto?.randomUUID)
+                    ? crypto.randomUUID()
+                    : (Date.now() + '_' + Math.random().toString(16).slice(2));
+
+                f.__localId = id;
+                this._files.push(f);
+            }
+
+            window.__replyFiles = this._files;
+            this.renderPreviews();
+            this._updateAttachStatus();
+        },
+
+        removeFile(localId) {
+            // revoke object url if any
+            const u = this._objectUrls.get(localId);
+            if (u) {
+                URL.revokeObjectURL(u);
+                this._objectUrls.delete(localId);
+            }
+
+            this._files = this._files.filter(f => f.__localId !== localId);
+            window.__replyFiles = this._files;
+
+            this.renderPreviews();
+            this._updateAttachStatus();
+        },
+
+        renderPreviews() {
+            const el = this.previewEl();
+            if (!el) return;
+
+            if (!this._files.length) {
+                el.innerHTML = '';
+                return;
+            }
+
+            el.innerHTML = this._files.map(f => this._renderPreviewItem(f)).join('');
+        },
+
+        _renderPreviewItem(f) {
+            const id = f.__localId;
+            const name = this._escape(f.name || 'file');
+            const sizeText = this._formatBytes(f.size || 0);
+
+            const isImg = (f.type || '').toLowerCase().startsWith('image/');
+            if (isImg) {
+                let url = this._objectUrls.get(id);
+                if (!url) {
+                    url = URL.createObjectURL(f);
+                    this._objectUrls.set(id, url);
+                }
+
+                return `
+                    <div class="preview-card" data-file-id="${id}">
+                        <div class="preview-thumb">
+                            <img src="${url}" alt="${name}" />
+                        </div>
+                        <div class="preview-meta">
+                            <div class="preview-name">${name}</div>
+                            <div class="preview-sub">${sizeText}</div>
+                        </div>
+                        <div class="preview-remove" title="Remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
+                    </div>
+                `;
+            }
+
+            const iconClass = this._iconForFile(f);
+            const ext = this._getExt(f.name);
+
+            return `
+                <div class="preview-card" data-file-id="${id}">
+                    <div class="preview-thumb">
+                        <i class="bi ${iconClass}" style="font-size:24px;"></i>
+                    </div>
+                    <div class="preview-meta">
+                        <div class="preview-name">${name}</div>
+                        <div class="preview-sub">${ext} • ${sizeText}</div>
+                    </div>
+                    <div class="preview-remove" title="Remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
+                </div>
+            `;
+        },
+
+        beforeSend() {
+            // content gửi lên server: HTML từ editor
+            const cleanHtml = (this.el().innerHTML || '').trim();
+            document.getElementById('txtReply').value = cleanHtml;
+
+            // files gửi riêng
+            window.__replyFiles = this._files;
+        },
+
+        reset() {
+            // revoke all object URLs
+            for (const [id, url] of this._objectUrls.entries()) {
+                URL.revokeObjectURL(url);
+            }
+            this._objectUrls.clear();
+
+            this._files = [];
+            window.__replyFiles = [];
+
+            this.el().innerHTML = '';
+            this.previewEl().innerHTML = '';
+            document.getElementById('txtReply').value = '';
+
+            this._updateAttachStatus();
+            // ✅ không xóa rtStatus (realtime)
+        },
+
+        _updateAttachStatus() {
+            const el = document.getElementById('attachStatus');
+            if (!el) return;
+            el.textContent = this._files.length ? `Attached ${this._files.length} file(s)` : '';
+        },
+
+        _iconForFile(f) {
+            const name = (f.name || '').toLowerCase();
+            const type = (f.type || '').toLowerCase();
+
+            if (type === 'application/pdf' || name.endsWith('.pdf')) return 'bi-file-earmark-pdf';
+            if (name.endsWith('.doc') || name.endsWith('.docx')) return 'bi-file-earmark-word';
+            if (name.endsWith('.xls') || name.endsWith('.xlsx')) return 'bi-file-earmark-excel';
+            if (name.endsWith('.zip') || name.endsWith('.rar') || name.endsWith('.7z')) return 'bi-file-earmark-zip';
+            return 'bi-file-earmark';
+        },
+
+        _getExt(name) {
+            if (!name) return 'FILE';
+            const parts = name.split('.');
+            return (parts.length > 1 ? parts.pop() : 'FILE').toUpperCase();
+        },
+
+        _escape(s) {
+            return (s || '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[m]));
+        },
+
+        _formatBytes(bytes) {
+            if (!bytes) return '0 B';
+            const k = 1024;
+            const sizes = ['B','KB','MB','GB','TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            const v = bytes / Math.pow(k, i);
+            return `${v.toFixed(v >= 10 || i === 0 ? 0 : 1)} ${sizes[i]}`;
+        }
+    };
+</script>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="~/modules/support_detail.js" asp-append-version="true"></script>
+}

@@ -95,7 +95,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
-
+app.MapControllers();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseStaticFiles();

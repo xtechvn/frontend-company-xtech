@@ -10,82 +10,94 @@
 function GetListCategory() {
     var rows = "";
     var userName = '';
+
     $.ajax({
-        url: "LoginOrRegister/GetUserNameClaims",
+        url: "/LoginOrRegister/GetUserNameClaims",
         type: "post",
+        async: false, // để chắc chắn lấy userName xong mới render menu
         success: function (result) {
-            if (result) {
-                userName = result
-            }
-            else
-            {
-                userName = sessionStorage.getItem("userName");
-            }
+            if (result) userName = result;
+            else userName = sessionStorage.getItem("userName");
         }
     });
+
     $.ajax({
         url: "/News/GetNewsCategory",
-        type: "Post",
-
+        type: "POST",
         data: { id: 1 },
         success: function (result) {
+
             if (result != undefined && result.categories != null) {
                 for (var i in result.categories) {
                     var item = result.categories[i];
+
                     if (item.listCategoryResponse != null) {
                         var rows2 = "";
                         for (var j in item.listCategoryResponse) {
                             var item2 = item.listCategoryResponse[j];
-                            rows2 += `<a href="/${item2.url_path}">${item2.name}</a>`
+                            rows2 += `<a href="/${item2.url_path}">${item2.name}</a>`;
                         }
                         rows += `<li class="menu-tab-button menu-tab-button-${item.url_path} default">
-                                         <a href="/${item.url_path}">${item.name}</a>
-                                         <span class="sub_menu">+</span>
-                                         <div class="level2">
-                                         ${rows2}
-                                         </div>
-                                    </li>`
+                                    <a href="/${item.url_path}">${item.name}</a>
+                                    <span class="sub_menu">+</span>
+                                    <div class="level2">${rows2}</div>
+                                 </li>`;
                     } else {
-                        rows += `<li class="menu-tab-button menu-tab-button-${item.url_path} ">
-                                        <a href="/${item.url_path}">${item.name}</a>
-                                    </li>`;
+                        rows += `<li class="menu-tab-button menu-tab-button-${item.url_path}">
+                                    <a href="/${item.url_path}">${item.name}</a>
+                                 </li>`;
                     }
                 }
+
+                // ✅ CHỈ HIỆN KHI ĐÃ LOGIN
+                var supportMenuHtml = "";
+                if (userName) {
+                    supportMenuHtml = `
+                        <li class="menu-tab-button menu-tab-button-support">
+                            <a href="/support">Support </a>
+                        </li>
+                    `;
+                }
+
+                // login block
                 if (userName) {
                     rows += `<div class="my-login">
-                                    <a class="" id="client-btn" onclick="_LoginOrRegister.ClientDashBoard()">Xin chào ${userName}</a>
-                                    <ul class="list-group" id="client-dashboard" style="position:absolute;right:10px;top:65px;display:none">
-                                        <li onclick="_logout.logout()" class="list-group-item btn">Đăng xuất</li>
-                                    </ul>
-                                </div>
-                                `
-                }
-                else {
+                                <a class="" id="client-btn" onclick="_LoginOrRegister.ClientDashBoard()">Xin chào ${userName}</a>
+                                <ul class="list-group" id="client-dashboard" style="position:absolute;right:10px;top:65px;display:none">
+                                    <li onclick="_logout.logout()" class="list-group-item btn">Đăng xuất</li>
+                                </ul>
+                             </div>`;
+                } else {
                     rows += `<div class="my-login">
-                                    <a class="btn-default" href="/dang-ky-dang-nhap"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
-                                </div>`
+                                <a class="btn-default" href="/dang-ky-dang-nhap"><i class="fa fa-user"></i>&nbsp;&nbsp;Đăng nhập</a>
+                             </div>`;
                 }
-                var html = `<div class="container">
-                                        <div class="flex flex_row">
-                                            <h1 class="logo" title="new-ca">
-                                                <a href="/"><img src="/images/graphics/Logo_XTech_White.svg" alt=""></a>
-                                            </h1>
-                                            <div class="right_menu">
-                                                <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
-                                                <div class="flex flex_right">
-                                                    <div class="main-menu">
-                                                        <ul class="nav">
-                                                         <li class="menu-tab-button menu-tab-button- ">
-                                        <a href="/vong-quay">Vòng quay X-tech</a>
-                                    </li>
-                                                            ${rows}
-                                                           
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>`
+
+                var html = `
+                    <div class="container">
+                        <div class="flex flex_row">
+                            <h1 class="logo" title="new-ca">
+                                <a href="/"><img src="/images/graphics/Logo_XTech_White.svg" alt=""></a>
+                            </h1>
+                            <div class="right_menu">
+                                <a href="javascript:;" id="vibeji-ham" class="item"><span></span> <span></span> <span></span></a>
+                                <div class="flex flex_right">
+                                    <div class="main-menu">
+                                        <ul class="nav">
+                                            <li class="menu-tab-button menu-tab-button-vong-quay">
+                                                <a href="/vong-quay">Vòng quay</a>
+                                            </li>
+
+                                            ${supportMenuHtml}
+
+                                            ${rows}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
                 $('#grid_data_ListCategory').html(html);
             }
         }

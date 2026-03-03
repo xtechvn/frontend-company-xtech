@@ -21,7 +21,7 @@
             overflow-x: hidden;
         }
 
-       @@keyframes gradientShift {
+        @@keyframes gradientShift {
             0%, 100%
 
         {
@@ -755,7 +755,6 @@
         const deleteNameBtn = document.getElementById('deleteNameBtn');
         const skipBtn = document.getElementById('skipBtn');
 
-        let currentRotation = 0;
         let isSpinning = false;
         let names = [];
         let currentWinner = null;
@@ -946,17 +945,26 @@
             resultDiv.classList.remove('show');
             resultDiv.textContent = '';
 
-            const randomRotations = 8 + Math.random() * 4;
-            const randomAngle = Math.random() * 360;
-            const totalRotation = currentRotation + (randomRotations * 360) + randomAngle;
+            // Reset về 0 trước khi quay để mỗi lần quay đều giống nhau
+            canvas.style.transition = 'none';
+            rotateWheel(0);
 
-            canvas.style.transition = 'transform 5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            // Force reflow
+            canvas.offsetHeight;
+
+            // Số vòng quay cố định: 14 vòng
+            const fixedRotations = 14;
+            const randomAngle = Math.random() * 360;
+            const totalRotation = (fixedRotations * 360) + randomAngle;
+
+            // Thời gian quay 10s với easing curve
+            canvas.style.transition = 'transform 10s cubic-bezier(0.17, 0.67, 0.35, 0.95)';
             rotateWheel(totalRotation);
 
             setTimeout(() => {
-                currentRotation = totalRotation % 360;
+                const finalRotation = totalRotation % 360;
                 const anglePerSegment = 360 / names.length;
-                const adjustedRotation = (360 - currentRotation) % 360;
+                const adjustedRotation = (360 - finalRotation) % 360;
                 let winningIndex = Math.floor(adjustedRotation / anglePerSegment) % names.length;
 
                 const winnerName = names[winningIndex];
@@ -967,7 +975,7 @@
 
                 isSpinning = false;
                 spinBtn.disabled = false;
-            }, 5000);
+            }, 10000);
         }
 
         addBtn.addEventListener('click', addName);
