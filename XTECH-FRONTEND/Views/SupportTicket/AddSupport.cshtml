@@ -1,0 +1,417 @@
+﻿@{
+    ViewData["Title"] = "Gửi yêu cầu hỗ trợ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --radius-xl: 16px;
+        --radius-lg: 12px;
+        --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+        --shadow-md: 0 12px 28px rgba(15,23,42,.10);
+        --border: rgba(15, 23, 42, .12);
+        --muted: rgba(15, 23, 42, .60);
+    }
+
+    .bg-primary-custom {
+        background: var(--primary) !important;
+    }
+
+    .text-primary-custom {
+        color: var(--primary) !important;
+    }
+
+    .app-shell {
+        justify-content: center;
+        background: #f6f7fb;
+        min-height: 100vh;
+    }
+
+    .content {
+        overflow-y: auto;
+        background: transparent;
+    }
+
+    .fw-black {
+        font-weight: 900;
+    }
+
+    #createTicketForm .mb-4 {
+        margin-bottom: 22px !important;
+    }
+
+    #createTicketForm .row.g-3 {
+        --bs-gutter-x: 16px;
+        --bs-gutter-y: 16px;
+    }
+
+    .form-select.py-3, .form-control.py-3 {
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+        border-radius: var(--radius-lg);
+        border-color: var(--border);
+        box-shadow: none !important;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: rgba(0,74,153,.45) !important;
+        box-shadow: 0 0 0 .2rem rgba(0,74,153,.12) !important;
+    }
+
+    .card-soft {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .field-error {
+        margin-top: 6px;
+        font-size: 12px;
+        color: #dc2626;
+        display: none;
+    }
+
+    /* ===== Department cards ===== */
+    .dept-grid .dept-item {
+        position: relative;
+    }
+
+    .dept-grid input.btn-check {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0,0,0,0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    .dept-grid label.card-soft {
+        padding: 18px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-height: 112px;
+        cursor: pointer;
+        transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .dept-grid label.card-soft .fw-bold {
+            font-size: 16px;
+            margin: 0 !important;
+        }
+
+        .dept-grid label.card-soft .text-secondary {
+            font-size: 13px !important;
+            color: var(--muted) !important;
+            line-height: 1.35;
+            margin: 0 !important;
+        }
+
+        .dept-grid label.card-soft:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(0,74,153,.25);
+            background: rgba(0,74,153,.02);
+        }
+
+        .dept-grid label.card-soft::after {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 2px solid rgba(15,23,42,.25);
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #fff;
+        }
+
+    .dept-grid input.btn-check:checked + label.card-soft {
+        border-color: rgba(0,74,153,.55) !important;
+        background: rgba(0,74,153,.06) !important;
+        box-shadow: 0 14px 34px rgba(0,74,153,.14);
+    }
+
+        .dept-grid input.btn-check:checked + label.card-soft::after {
+            border-color: var(--primary);
+            background: radial-gradient(circle at center, var(--primary) 0 55%, #fff 56% 100%);
+        }
+
+    /* ===== Reply editor placeholder ===== */
+    #replyEditor:empty:before {
+        content: attr(data-placeholder);
+        color: #9ca3af;
+    }
+
+    /* ===== Preview attachments dưới editor ===== */
+    #replyAttachments {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 1rem 1rem 1rem; /* match p-3 */
+    }
+
+    .preview-card {
+        border: 1px solid rgba(0,0,0,.10);
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .preview-thumb {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f3f4f6;
+        overflow: hidden;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+    }
+
+        .preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .preview-meta {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .preview-name {
+        font-weight: 600;
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .preview-sub {
+        font-size: 12px;
+        color: #6b7280;
+    }
+
+    .preview-remove {
+        cursor: pointer;
+        font-weight: 800;
+        opacity: .7;
+        user-select: none;
+        line-height: 1;
+        font-size: 18px;
+    }
+
+        .preview-remove:hover {
+            opacity: 1;
+        }
+
+    @@media (max-width: 576px) {
+        #replyAttachments {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="app-shell d-flex">
+    <main class="content flex-grow-1 d-flex flex-column">
+        <div class="container-fluid px-3 px-lg-4 py-4">
+            <div class="mx-auto" style="max-width: 920px;">
+
+                <div class="mb-4">
+                    <h1 class="display-6 fw-black mb-2">Gửi yêu cầu hỗ trợ</h1>
+                    <p class="text-secondary mb-0">
+                        Vui lòng điền thông tin chi tiết dưới đây để chúng tôi có thể hỗ trợ bạn tốt nhất.
+                    </p>
+
+                    @if (!string.IsNullOrEmpty(ViewBag.error as string))
+                    {
+                        <div class="alert alert-danger mt-3 mb-0">@ViewBag.error</div>
+                    }
+                </div>
+
+                <form id="createTicketForm" method="post" action="/support/add" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+
+                    <!-- Service -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label fw-semibold">
+                                Dịch vụ <span class="text-danger">*</span>
+                            </label>
+
+                            <select class="form-select py-3" name="serviceId" id="serviceId" required>
+                                <option value="">Chọn dịch vụ cần hỗ trợ</option>
+                                <option value="1">Thiết kế Website</option>
+                                <option value="2">Dịch vụ Hosting/Server</option>
+                                <option value="3">Digital Marketing</option>
+                                <option value="4">Bảo trì định kỳ</option>
+                            </select>
+                            <div class="field-error" id="errService">Vui lòng chọn dịch vụ.</div>
+                        </div>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                            Lựa chọn phòng ban <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="row g-3 dept-grid">
+                            <div class="col-12 col-sm-6 col-lg-4 dept-item">
+                                <input class="btn-check" type="radio" name="departmentId" id="dep-tech" value="1" checked>
+                                <label class="card-soft w-100 h-100" for="dep-tech">
+                                    <div class="fw-bold">Kỹ thuật</div>
+                                    <div class="text-secondary">Code, lỗi website, server.</div>
+                                </label>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4 dept-item">
+                                <input class="btn-check" type="radio" name="departmentId" id="dep-sale" value="2">
+                                <label class="card-soft w-100 h-100" for="dep-sale">
+                                    <div class="fw-bold">Bán Hàng</div>
+                                    <div class="text-secondary">Tư vấn, gia hạn, nâng cấp.</div>
+                                </label>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4 dept-item">
+                                <input class="btn-check" type="radio" name="departmentId" id="dep-complaint" value="3">
+                                <label class="card-soft w-100 h-100" for="dep-complaint">
+                                    <div class="fw-bold">Than Phiền</div>
+                                    <div class="text-secondary">Phản hồi chất lượng.</div>
+                                </label>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4 dept-item">
+                                <input class="btn-check" type="radio" name="departmentId" id="dep-cskh" value="4">
+                                <label class="card-soft w-100 h-100" for="dep-cskh">
+                                    <div class="fw-bold">CSKH</div>
+                                    <div class="text-secondary">Hỏi đáp, hướng dẫn.</div>
+                                </label>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4 dept-item">
+                                <input class="btn-check" type="radio" name="departmentId" id="dep-accounting" value="5">
+                                <label class="card-soft w-100 h-100" for="dep-accounting">
+                                    <div class="fw-bold">Kế Toán</div>
+                                    <div class="text-secondary">Hóa đơn, thanh toán.</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-text mt-2">Chọn 1 phòng ban để xử lý yêu cầu.</div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                            Tiêu đề yêu cầu <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control py-3" name="subject" id="subject"
+                               placeholder="Nhập tiêu đề ngắn gọn..." required maxlength="200">
+                        <div class="field-error" id="errSubject">Vui lòng nhập tiêu đề.</div>
+                    </div>
+
+                    <!-- Content + Attach (preview dưới editor) -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">
+                            Nội dung câu hỏi <span class="text-danger">*</span>
+                        </label>
+
+                        <section class="card-soft overflow-hidden border border-2"
+                                 style="border-color: rgba(0,74,153,.55) !important;">
+
+                            <div class="px-3 py-2 border-bottom d-flex align-items-center gap-2 flex-wrap"
+                                 style="background:#f9fafb;">
+
+                                <button class="btn btn-sm btn-light" type="button" title="Bold" onclick="replyEditor.cmd('bold')">
+                                    <i class="bi bi-type-bold"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-light" type="button" title="Italic" onclick="replyEditor.cmd('italic')">
+                                    <i class="bi bi-type-italic"></i>
+                                </button>
+
+                                <button class="btn btn-sm btn-light" type="button" title="Link" onclick="replyEditor.insertLink()">
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+
+                                <!-- Image picker -->
+                                <button class="btn btn-sm btn-light" type="button" title="Image"
+                                        onclick="document.getElementById('replyImg').click()">
+                                    <i class="bi bi-image"></i>
+                                </button>
+                                <input id="replyImg" type="file" class="d-none" accept="image/*" multiple
+                                       onchange="replyEditor.addFiles(this.files); this.value='';" />
+
+                                <div class="vr mx-1"></div>
+
+                                <!-- File picker -->
+                                <button class="btn btn-sm btn-light" type="button" title="Attach file"
+                                        onclick="document.getElementById('replyFile').click()">
+                                    <i class="bi bi-paperclip"></i>
+                                </button>
+                                <input id="replyFile" type="file" class="d-none"
+                                       accept="application/pdf,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.7z,image/*"
+                                       multiple onchange="replyEditor.addFiles(this.files); this.value='';" />
+
+                                <div class="ms-auto small text-secondary" id="attachStatus"></div>
+                            </div>
+
+                            <div id="replyEditor"
+                                 class="p-3"
+                                 contenteditable="true"
+                                 style="min-height:150px; outline:none; color:#374151;"
+                                 data-placeholder="Write your question here..."></div>
+
+                            <!-- ✅ Preview dưới editor -->
+                            <div id="replyAttachments"></div>
+
+                            <!-- ✅ field thật để submit -->
+                            <textarea id="content" name="content" class="d-none"></textarea>
+                        </section>
+
+                        <div class="field-error mt-2" id="errContent">Vui lòng nhập nội dung.</div>
+
+                        <!-- ✅ input file thật để submit -->
+                        <input id="attachFiles" name="attachFiles" type="file" class="d-none"
+                               accept="application/pdf,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.7z,image/*"
+                               multiple />
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-end pt-4 border-top">
+                        <a class="btn btn-link text-secondary text-decoration-none me-3" href="/support">Hủy bỏ</a>
+                        <button class="btn text-white bg-primary-custom px-4 py-3 fw-bold d-inline-flex align-items-center gap-2" type="submit">
+                            <span>Gửi yêu cầu</span>
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="card-soft p-4 text-center" style="background: rgba(0,74,153,.05); border-color: rgba(0,74,153,.12);">
+                    <p class="mb-0 text-secondary">
+                        Cần hỗ trợ gấp? Gọi ngay Hotline:
+                        <a class="fw-bold text-primary-custom text-decoration-underline" href="tel:19001234">1900 1234</a>
+                        (Phục vụ 24/7)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script src="~/modules/support_add.js" asp-append-version="true"></script>
+}

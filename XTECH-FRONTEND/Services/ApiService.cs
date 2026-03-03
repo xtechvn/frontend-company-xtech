@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.Text;
 using XTECH_FRONTEND.Infrastructure.Utilities.Constants;
@@ -10,6 +11,7 @@ using XTECH_FRONTEND.Models.News.FindArticle;
 using XTECH_FRONTEND.Models.News.GetCategory;
 using XTECH_FRONTEND.Models.News.GetDetail;
 using XTECH_FRONTEND.Models.News.GetListByCategoryId;
+using XTECH_FRONTEND.Models.Tickets;
 using XTECH_FRONTEND.Models.VPS;
 using XTECH_FRONTEND.Utilities;
 using XTECH_FRONTEND.Views.Crawl;
@@ -25,6 +27,112 @@ namespace XTECH_FRONTEND.Services
         {
             _configuration = configuration;
             _redisService = new RedisConn(configuration);
+        }
+        private string ApiDomain => _configuration.GetSection("API")["Domain"];
+        private string PrivateKey => _configuration.GetSection("API")["KEY"];
+   
+        private async Task<T> PostTokenAsync<T>(string route, object paramObj)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var data = JsonConvert.SerializeObject(paramObj);
+            var token = AdavigoHelper.Encode(data, PrivateKey);
+
+            var request = new[]
+            {
+            new KeyValuePair<string, string>("token", token)
+            };
+
+            var url = ApiDomain + route;
+
+            var response = await httpClient.PostAsync(url, new FormUrlEncodedContent(request));
+            var stringResult = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception("API Error: " + stringResult);
+
+            return JsonConvert.DeserializeObject<T>(stringResult);
+        }
+
+        // 1) Danh sách ticket của user
+        public Task<BaseObjectResponse2<TicketListResponseDto>> GetMyTickets(
+    string userId, int status = -1, int page = 1, int size = 20)
+        {
+            return PostTokenAsync<BaseObjectResponse2<TicketListResponseDto>>(
+                SystemConstants.AdavigoApiRoutes.GetMyTickets,
+                new { user_id = userId, status, page, size }
+            );
+        }
+
+        // 2) Tạo ticket
+        public Task<BaseObjectResponse2<CreateTicketResultVm>> CreateTicket(
+    string userid, int serviceId, int departmentId, string subject, string content)
+        {
+            return PostTokenAsync<BaseObjectResponse2<CreateTicketResultVm>>(
+                SystemConstants.AdavigoApiRoutes.CreateTicket,
+                new
+                {
+                    user_id = userid,
+                    service_id = serviceId,
+                    department_id = departmentId,
+                    subject = subject,
+                    content = content
+                }
+            );
+        }
+
+        // 3) Lấy detail ticket
+        public Task<BaseObjectResponse2<TicketDetailDtoFe>> GetTicketDetail(Guid ticketId)
+        {
+            return PostTokenAsync<BaseObjectResponse2<TicketDetailDtoFe>>(
+                SystemConstants.AdavigoApiRoutes.GetTicketDetail, // "/api/ticket/get-ticket-detail.json"
+                new { ticket_id = ticketId.ToString() }
+            );
+        }
+
+        public Task<BaseObjectResponse2<object>> AddMessageAttachments(
+    long messageId, List<string> urls, List<string> names)
+        {
+            urls ??= new();
+            names ??= new();
+
+            return PostTokenAsync<BaseObjectResponse2<object>>(
+                SystemConstants.AdavigoApiRoutes.AddMessageAttachments, // bạn tạo route này ở API
+                new
+                {
+                    message_id = messageId,
+                    attach_files = urls.Zip(names, (url, name) => new { url, name })
+                }
+            );
+        }
+
+
+        // 4) Reply ticket (user chat)
+        public Task<BaseObjectResponse2<TicketMessageVm>> ReplyTicket(
+      Guid ticketId,
+      string senderType,
+      string senderId,
+      string content,
+      string contentHtml = "",
+      List<string> attachFileUrls = null,
+      List<string> attachFileNames = null
+  )
+        {
+            attachFileUrls ??= new List<string>();
+            attachFileNames ??= new List<string>();
+
+            return PostTokenAsync<BaseObjectResponse2<TicketMessageVm>>(
+                SystemConstants.AdavigoApiRoutes.ReplyTicket,
+                new
+                {
+                    ticket_id = ticketId.ToString(),
+                    sender_type = senderType, // "Customer"/"Agent"
+                    sender_id = senderId,
+                    content = content,
+                    content_html = contentHtml,
+                    attach_files = attachFileUrls.Zip(attachFileNames, (url, name) => new { url, name })
+                }
+            );
         }
 
 

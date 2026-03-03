@@ -21,6 +21,42 @@
 
             public const string CrawlApi = "/api/Product/detail-public.json"; /// 
 
+            // ===== TICKETS =====
+            // Base: /api/ticket
+
+            /// <summary>
+            /// USER: danh sách ticket của user
+            /// POST /api/ticket/get-my-tickets.json
+            /// </summary>
+            public const string GetMyTickets = "/api/ticket/get-my-tickets.json";
+
+            public const string AddMessageAttachments = "/api/ticket/add-message-attachments.json";
+
+
+            /// <summary>
+            /// USER: tạo ticket
+            /// POST /api/ticket/create-ticket.json
+            /// </summary>
+            public const string CreateTicket = "/api/ticket/create-ticket.json";
+
+            /// <summary>
+            /// USER/CMS: lấy chi tiết ticket
+            /// POST /api/ticket/get-ticket-detail.json
+            /// </summary>
+            public const string GetTicketDetail = "/api/ticket/get-ticket-detail.json";
+
+            /// <summary>
+            /// USER/CMS: reply chat ticket
+            /// POST /api/ticket/reply-ticket.json
+            /// </summary>
+            public const string ReplyTicket = "/api/ticket/reply-ticket.json";
+
+            /// <summary>
+            /// CMS: list tickets (admin)
+            /// POST /api/ticket/get-tickets.json
+            /// </summary>
+            public const string GetTickets = "/api/ticket/get-tickets.json";
+
 
 
             //public const string Domain_API = "http://be.x-tech.vn";

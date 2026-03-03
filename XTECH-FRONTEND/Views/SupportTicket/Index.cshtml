@@ -1,0 +1,269 @@
+﻿@using XTECH_FRONTEND.Models.Tickets
+@{
+    ViewData["Title"] = "Support Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // ✅ strongly typed list từ Controller
+    var tickets = ViewBag.data as List<TicketListItemVm> ?? new List<TicketListItemVm>();
+}
+
+<style>
+    :root {
+        --primary: #004a99;
+        --bg-light: #f5f7f8;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 25%, #ff6b6b 50%, #ffd93d 75%, #ff6b6b 100%);
+        background-size: 200% 200%;
+        animation: gradientShift 10s ease infinite;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    @@keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .text-primary-custom {
+        color: var(--primary) !important;
+    }
+
+    .bg-primary-custom {
+        background: var(--primary) !important;
+    }
+
+    .card-soft {
+        border: 1px solid rgba(0,0,0,.08);
+        box-shadow: 0 1px 2px rgba(0,0,0,.04);
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .chip {
+        font-size: .75rem;
+        padding: .25rem .6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        white-space: nowrap;
+    }
+
+    .chip-open {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+
+    .chip-progress {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .chip-resolved {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .chip-closed {
+        background: #e5e7eb;
+        color: #374151;
+    }
+
+    .table thead th {
+        font-size: .72rem;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #6b7280;
+        background: #f8fafc;
+        border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .table tbody tr:hover {
+        background: #f8fafc;
+    }
+
+    .row-link {
+        cursor: pointer;
+    }
+
+    .ticket-code {
+        font-weight: 800;
+    }
+</style>
+
+@functions {
+    // ✅ map status int -> text + css key (tuỳ quy ước BE)
+    private (string text, string key, string chipClass) StatusMeta(int status)
+    {
+        // giả sử: 0=Open, 1=InProgress, 2=Resolved, 3=Closed
+        return status switch
+        {
+            0 => ("Open", "open", "chip-open"),
+            1 => ("In Progress", "inprogress", "chip-progress"),
+            2 => ("Resolved", "resolved", "chip-resolved"),
+            3 => ("Closed", "closed", "chip-closed"),
+            _ => ("Open", "open", "chip-open")
+        };
+    }
+}
+
+<main class="py-4">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="mx-auto" style="max-width: 1100px;">
+
+            <!-- Title + Actions -->
+            <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-3">
+                <div>
+                    <h2 class="display-6 fw-black mb-1" style="font-weight:900;">Support Tickets</h2>
+                    <p class="text-secondary mb-0">Manage and track your support requests.</p>
+                </div>
+
+                <div class="d-flex gap-2">
+                    
+
+                    <a class="btn text-white bg-primary-custom d-inline-flex align-items-center gap-2" href="/support/add">
+                        <i class="bi bi-plus-lg"></i>
+                        <span class="fw-semibold">New Ticket</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-underline border-bottom mb-3" role="tablist" id="ticketTabs">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-bold text-primary-custom" type="button" data-status="all">All Tickets</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="open">Open</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="inprogress">In Progress</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="resolved">Resolved</button>
+                </li>
+            </ul>
+
+            <!-- Table Card -->
+            <div class="card-soft mb-4">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0" id="ticketTable">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3">Ticket ID</th>
+                                <th class="px-4 py-3">Service</th>
+                                <th class="px-4 py-3">Subject</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3">Assigned Agent</th>
+                                <th class="px-4 py-3">Last Update</th>
+                                <th class="px-4 py-3 text-end">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table-group-divider">
+                            @if (!tickets.Any())
+                            {
+                                <tr>
+                                    <td colspan="7" class="px-4 py-4 text-center text-secondary">
+                                        No tickets found.
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var t in tickets)
+                                {
+                                    var meta = StatusMeta(t.status);
+
+                                    <tr class="row-link"
+                                        data-ticket-id="@t.id"
+                                        data-status="@meta.key">
+                                        <td class="px-4 py-3 ticket-code text-primary-custom">
+                                            #@t.code
+                                        </td>
+                                        <td class="px-4 py-3 text-secondary">
+                                            @t.serviceName
+                                        </td>
+                                        <td class="px-4 py-3 fw-medium">
+                                            @t.subject
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <span class="chip @meta.chipClass">@meta.text</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-secondary">
+                                            @(string.IsNullOrWhiteSpace(t.departmentName) ? "Unassigned" : t.departmentName)
+                                        </td>
+                                        <td class="px-4 py-3 text-secondary">
+                                            @t.lastUpdate
+                                        </td>
+                                        <td class="px-4 py-3 text-end">
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown" type="button">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li>
+                                                        <a class="dropdown-item" href="/support/@t.id">
+                                                            <i class="bi bi-chat-dots me-2"></i>View / Chat
+                                                        </a>
+                                                    </li>
+                                                    <li><hr class="dropdown-divider" /></li>
+                                                    <li>
+                                                        <a class="dropdown-item text-secondary" href="javascript:void(0)">
+                                                            <i class="bi bi-printer me-2"></i>Print (todo)
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer -->
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 px-4 py-3 border-top" style="background:#f8fafc;">
+                    <div class="text-secondary" style="font-size: 14px;" id="ticketCountText">
+                        Showing <span class="fw-semibold">@tickets.Count</span> ticket(s)
+                    </div>
+
+                    <nav aria-label="Tickets pagination">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)" aria-disabled="true"><i class="bi bi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link bg-primary-custom border-0" href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)"><i class="bi bi-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="~/modules/support_index.js" asp-append-version="true"></script>
+}
