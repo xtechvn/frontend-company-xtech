@@ -1,11 +1,11 @@
 ﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+# Visual Studio
 ################################################################################
 
-/XTECH-FRONTEND/Controllers
-/.vs
+.vs/
+**/obj/
+**/bin/
 
-/.vs
-/XTECH-FRONTEND/obj
-/XTECH-FRONTEND/bin
-/XTECH-FRONTEND/Properties
+# Optional
+*.user
+*.suo
