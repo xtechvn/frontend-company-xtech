@@ -21,6 +21,7 @@
 
             public const string CrawlApi = "/api/Product/detail-public.json"; /// 
 
+
             // ===== TICKETS =====
             // Base: /api/ticket
 
@@ -28,6 +29,9 @@
             /// USER: danh sách ticket của user
             /// POST /api/ticket/get-my-tickets.json
             /// </summary>
+            /// 
+            public const string ChangeTicketStatus = "/api/ticket/change-status.json"; /// 
+
             public const string GetMyTickets = "/api/ticket/get-my-tickets.json";
 
             public const string AddMessageAttachments = "/api/ticket/add-message-attachments.json";

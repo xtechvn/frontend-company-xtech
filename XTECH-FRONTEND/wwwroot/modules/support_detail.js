@@ -1,14 +1,16 @@
 ﻿// support_detail.js - WebUser
-// Thay SignalR bằng SSE (Server-Sent Events)
-// Không còn phụ thuộc vào hubUrl, không bị Mixed Content
+// SSE thay SignalR + ReopenTicket AJAX + xử lý status_changed
 
 var userTicket = {
     eventSource: null,
     ticketId: null,
+    currentStatus: null,
 
     init: function () {
         this.ticketId = ($('#TicketId').val() || '').trim();
+        this.currentStatus = parseInt($('#CurrentStatus').val() || '0');
         this.initSSE();
+        this.renderStatusUI();
 
         // Ctrl+Enter gửi
         $('#replyEditor').on('keydown', function (e) {
@@ -21,16 +23,11 @@ var userTicket = {
     },
 
     // =========================================================================
-    // SSE: thay thế hoàn toàn SignalR
-    // Kết nối tới /support/ticket-stream?ticketId=xxx (cùng domain, cùng HTTPS)
+    // SSE
     // =========================================================================
     initSSE: function () {
-        var self = this;
-
         $('#rtStatus').text('Connecting...');
 
-        // SSE chỉ dùng HTTP GET thuần, không cần WebSocket
-        // Cùng domain x-tech.vn => không bao giờ bị Mixed Content
         this.eventSource = new EventSource(
             '/support/ticket-stream?ticketId=' + this.ticketId
         );
@@ -43,37 +40,93 @@ var userTicket = {
             try {
                 var data = JSON.parse(event.data);
 
-                // Phân biệt message thường và attachments
+                // ✅ Xử lý status_changed (CMS đóng ticket)
+                if (data.type === 'status_changed') {
+                    userTicket.handleStatusChanged(data);
+                    return;
+                }
+
+                // Attachments
                 if (data.type === 'attachments') {
-                    // Cập nhật attachments cho message đã có
-                    if (data.messageId && data.attachFiles && data.attachFiles.length) {
+                    if (data.messageId && data.attachFiles && data.attachFiles.length)
                         userTicket.updateMessageAttachments(data.messageId, data.attachFiles);
-                    }
                     return;
                 }
 
                 // Message thường
                 var msg = userTicket.normalizeMessage(data);
                 if (!msg) return;
-
-                // Chỉ xử lý message thuộc ticket này
                 if ((msg.ticketId + '').toLowerCase() !== (userTicket.ticketId + '').toLowerCase()) return;
-
                 userTicket.appendMessage(msg);
 
             } catch (e) {
-                console.error('SSE parse error:', e);
+                console.error('[SSE] parse error:', e);
             }
         };
 
         this.eventSource.onerror = function () {
-            $('#rtStatus').text('Realtime: Offline - Reconnecting...');
-            // EventSource tự reconnect sau vài giây (built-in browser behavior)
+            $('#rtStatus').text('Realtime: Reconnecting...');
         };
     },
 
     // =========================================================================
-    // Send Reply (AJAX - không đổi)
+    // Xử lý status thay đổi từ SSE (CMS gửi)
+    // =========================================================================
+    handleStatusChanged: function (data) {
+        userTicket.currentStatus = data.status;
+        userTicket.renderStatusUI();
+    },
+
+    // =========================================================================
+    // Render UI theo status
+    // =========================================================================
+    renderStatusUI: function () {
+        var isClosed = userTicket.currentStatus === 3; // TicketStatus.Closed
+
+        // Badge status
+        var badgeHtml = isClosed
+            ? '<span class="badge badge-closed">Closed</span>'
+            : '<span class="badge badge-open">Open</span>';
+        $('#statusBadge').html(badgeHtml);
+
+        if (isClosed) {
+            // Ẩn reply editor, hiện nút Reopen
+            $('#replySection').hide();
+            $('#btnReopenTicket').show();
+            $('#closedNotice').show();
+        } else {
+            $('#replySection').show();
+            $('#btnReopenTicket').hide();
+            $('#closedNotice').hide();
+        }
+    },
+
+    // =========================================================================
+    // Reopen Ticket (AJAX) - WebUser mở lại ticket
+    // =========================================================================
+    reopenTicket: function () {
+        if (!confirm('Bạn muốn mở lại ticket này để tiếp tục hỗ trợ?')) return;
+
+        $.ajax({
+            url: '/support/reopen',
+            type: 'POST',
+            data: { ticketId: userTicket.ticketId },
+            success: function (res) {
+                if (res && res.success) {
+                    userTicket.currentStatus = 0; // Open
+                    userTicket.renderStatusUI();
+                } else {
+                    alert(res?.message || 'Reopen failed');
+                }
+            },
+            error: function (xhr) {
+                alert('HTTP ' + xhr.status + ': Reopen failed');
+            }
+        });
+    },
+
+    // =========================================================================
+    // Send Reply (AJAX)
     // =========================================================================
     sendReply: function () {
         var content = ($('#txtReply').val() || '').trim();
@@ -87,12 +140,8 @@ var userTicket = {
         var fd = new FormData();
         fd.append('ticketId', userTicket.ticketId);
         fd.append('content', content);
-
-        if (files && files.length) {
-            for (var i = 0; i < files.length; i++) {
-                fd.append('attachFiles', files[i]);
-            }
-        }
+        if (files && files.length)
+            for (var i = 0; i < files.length; i++) fd.append('attachFiles', files[i]);
 
         $.ajax({
             url: window.userTicketEndpoints.replyUrl,
@@ -102,26 +151,20 @@ var userTicket = {
             contentType: false,
             success: function (res) {
                 if (res && res.success) {
-                    // Append ngay từ HTTP response (không chờ SSE để tránh duplicate)
                     if (res.data) {
                         var msg = userTicket.normalizeMessage(res.data);
                         if (msg) userTicket.appendMessage(msg);
                     }
-
                     if (window.replyEditor && replyEditor.reset) replyEditor.reset();
                     window.__replyFiles = [];
-                    $('#txtReplyContent').val('');
                 } else {
                     alert(res?.message || 'Reply failed');
                 }
             },
             error: function (xhr) {
-                var msg = xhr?.responseJSON?.message || ('HTTP ' + xhr.status + ': ' + (xhr.responseText || 'Request failed'));
-                alert(msg);
+                alert('HTTP ' + xhr.status + ': ' + (xhr.responseText || 'Request failed'));
             },
-            complete: function () {
-                $btn.prop('disabled', false);
-            }
+            complete: function () { $btn.prop('disabled', false); }
         });
     },
 
@@ -130,37 +173,40 @@ var userTicket = {
     // =========================================================================
     appendMessage: function (m) {
         if (!m) return;
-
-        // Dedup: nếu message đã có trong DOM thì bỏ qua
         if (m.id && $('#msg-' + m.id).length > 0) return;
 
         var senderType = (m.senderType || '').toLowerCase();
         var isStaff = senderType === 'agent' || senderType === 'staff';
         var who = isStaff ? 'Support' : 'You';
-        var createdAt = m.createdAt || '';
         var contentHtml = m.contentHtml ? m.contentHtml : this.escapeHtml(m.content || '');
         var bubbleClass = isStaff ? 'bubble-staff' : 'bubble-cus';
-        var staffBadge = isStaff
-            ? `<span class="badge badge-staff rounded px-2 py-1">STAFF</span>`
-            : '';
-
-        var attHtml = this.renderAttachments(m.attachFiles);
+        var staffBadge = isStaff ? `<span class="badge badge-staff rounded px-2 py-1">STAFF</span>` : '';
 
         var html = `
         <article class="card-soft p-4 mb-4" ${m.id ? `id="msg-${m.id}"` : ''}>
             <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
                 <div>
                     <div class="fw-bold">${who}</div>
-                    <div class="text-secondary" style="font-size:12px;">${createdAt}</div>
+                    <div class="text-secondary" style="font-size:12px;">${m.createdAt || ''}</div>
                 </div>
                 ${staffBadge}
             </div>
-            <div class="bubble ${bubbleClass}" style="line-height:1.65;">
-                ${contentHtml}
-            </div>
-            ${attHtml}
+            <div class="bubble ${bubbleClass}" style="line-height:1.65;">${contentHtml}</div>
+            ${this.renderAttachments(m.attachFiles)}
         </article>`;
 
+        $('#chatList').append(html);
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    },
+
+    // Thông báo hệ thống (status changed...)
+    appendSystemMessage: function (text) {
+        var html = `
+        <div class="text-center my-3">
+            <span class="badge bg-light text-secondary border px-3 py-2" style="font-size:12px;">
+                ${text}
+            </span>
+        </div>`;
         $('#chatList').append(html);
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     },
@@ -181,36 +227,19 @@ var userTicket = {
         var name = file.Name || file.name || '';
         var url = file.Url || file.url || '#';
         var lower = (name || url).toLowerCase();
-
         var isImg = lower.endsWith('.jpg') || lower.endsWith('.jpeg') ||
-            lower.endsWith('.png') || lower.endsWith('.gif') ||
-            lower.endsWith('.webp');
+            lower.endsWith('.png') || lower.endsWith('.gif') || lower.endsWith('.webp');
 
-        if (isImg) {
-            return `
-              <a class="att-img" href="${url}" target="_blank" rel="noopener">
-                <img src="${url}" alt="${this.escapeText(name)}"/>
-              </a>`;
-        }
+        if (isImg) return `<a class="att-img" href="${url}" target="_blank" rel="noopener"><img src="${url}" alt="${this.escapeText(name)}"/></a>`;
 
-        var ext = '';
-        if (name) { var parts = name.split('.'); ext = (parts.length > 1 ? parts.pop() : '').toUpperCase(); }
-
-        return `
-            <a class="att-file" href="${url}" download>
-              <div class="meta">
-                <span class="ext">${ext || 'FILE'}</span>
-                <span class="name">${this.escapeText(name || url)}</span>
-              </div>
-              <i class="bi bi-download"></i>
-            </a>`;
+        var ext = name ? (name.split('.').pop() || '').toUpperCase() : 'FILE';
+        return `<a class="att-file" href="${url}" download><div class="meta"><span class="ext">${ext}</span><span class="name">${this.escapeText(name || url)}</span></div><i class="bi bi-download"></i></a>`;
     },
 
     normalizeMessage: function (m) {
         if (!m) return null;
         var ticketId = m.ticketId || m.TicketId;
         if (!ticketId) return null;
-
         return {
             id: m.id || m.Id || null,
             ticketId: ticketId,
@@ -224,17 +253,11 @@ var userTicket = {
     },
 
     escapeText: function (s) {
-        return (s || '')
-            .replaceAll('&', '&amp;').replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;').replaceAll('"', '&quot;')
-            .replaceAll("'", '&#39;');
+        return (s || '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
     },
 
     escapeHtml: function (s) {
-        return (s || '')
-            .replaceAll('&', '&amp;').replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;').replaceAll('"', '&quot;')
-            .replaceAll("'", '&#39;').replaceAll('\n', '<br/>');
+        return (s || '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;').replaceAll('\n', '<br/>');
     }
 };
 

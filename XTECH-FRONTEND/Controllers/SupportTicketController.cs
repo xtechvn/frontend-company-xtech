@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 using System.Collections.Concurrent;
 using System.Security.Claims;
+using System.Text.Json;
 using WEB.CMS.Customize;
 using XTECH_FRONTEND.Models.Tickets;
 using XTECH_FRONTEND.Services;
@@ -19,18 +20,14 @@ namespace XTECH_FRONTEND.Controllers
         public SupportTicketController(IConfiguration configuration)
         {
             _configuration = configuration;
-
-            // Kết nối Redis (cùng server với BE và CMS)
             var redisConn = ConnectionMultiplexer.Connect(
                 _configuration["Redis:Host"] + ":" + _configuration["Redis:Port"]);
             _subscriber = redisConn.GetSubscriber();
         }
 
-        private string GetUserId()
-        {
-            return User?.FindFirst("AccountId")?.Value
-                   ?? User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        }
+        private string GetUserId() =>
+            User?.FindFirst("AccountId")?.Value
+            ?? User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         // =====================================================================
         // INDEX
@@ -53,7 +50,7 @@ namespace XTECH_FRONTEND.Controllers
 
                 if (result != null && result.status == 0 && result.data != null)
                 {
-                    var vms = (result.data.items ?? new List<TicketListItemDto>())
+                    ViewBag.data = (result.data.items ?? new List<TicketListItemDto>())
                         .Select(x => new TicketListItemVm
                         {
                             id = x.id,
@@ -65,10 +62,7 @@ namespace XTECH_FRONTEND.Controllers
                             status = x.status,
                             assignedAgent = string.IsNullOrWhiteSpace(x.assignedAgentId) ? "Unassigned" : x.assignedAgentId,
                             lastUpdate = ToTimeAgo(x.lastMessageAt)
-                        })
-                        .ToList();
-
-                    ViewBag.data = vms;
+                        }).ToList();
                     ViewBag.page = result.data.page;
                     ViewBag.total = result.data.total;
                     ViewBag.size = result.data.size;
@@ -85,7 +79,6 @@ namespace XTECH_FRONTEND.Controllers
                 ViewBag.error = "Load tickets failed";
                 ViewBag.data = new List<TicketListItemVm>();
             }
-
             return View();
         }
 
@@ -113,41 +106,19 @@ namespace XTECH_FRONTEND.Controllers
             try
             {
                 var userId = GetUserId();
-                if (string.IsNullOrWhiteSpace(userId))
-                {
-                    ViewBag.error = "Bạn chưa đăng nhập hoặc không lấy được user_id.";
-                    return View();
-                }
+                if (string.IsNullOrWhiteSpace(userId)) { ViewBag.error = "Bạn chưa đăng nhập."; return View(); }
+                if (model == null || model.serviceId <= 0 || model.departmentId <= 0 ||
+                    string.IsNullOrWhiteSpace(model.subject) || string.IsNullOrWhiteSpace(model.content))
+                { ViewBag.error = "Vui lòng nhập đầy đủ thông tin."; return View(); }
 
-                if (model == null ||
-                    model.serviceId <= 0 ||
-                    model.departmentId <= 0 ||
-                    string.IsNullOrWhiteSpace(model.subject) ||
-                    string.IsNullOrWhiteSpace(model.content))
-                {
-                    ViewBag.error = "Vui lòng nhập đầy đủ thông tin bắt buộc.";
-                    return View();
-                }
-
-                if (attachFiles != null && attachFiles.Any())
-                {
-                    long totalSize = attachFiles.Sum(f => f.Length);
-                    if (totalSize > 25 * 1024 * 1024)
-                    {
-                        ViewBag.error = "Tổng dung lượng file vượt quá 25MB.";
-                        return View();
-                    }
-                }
+                if (attachFiles != null && attachFiles.Sum(f => f.Length) > 25 * 1024 * 1024)
+                { ViewBag.error = "Tổng dung lượng file vượt quá 25MB."; return View(); }
 
                 var apiService = new ApiService(_configuration);
-                var result = await apiService.CreateTicket(
-                    userId, model.serviceId, model.departmentId, model.subject, model.content);
+                var result = await apiService.CreateTicket(userId, model.serviceId, model.departmentId, model.subject, model.content);
 
                 if (result == null || result.status != 0 || result.data == null)
-                {
-                    ViewBag.error = result?.msg ?? "Create ticket failed";
-                    return View();
-                }
+                { ViewBag.error = result?.msg ?? "Create ticket failed"; return View(); }
 
                 var ticketId = result.data.ticket_id;
                 long firstMessageId = result.data.first_message_id;
@@ -155,34 +126,20 @@ namespace XTECH_FRONTEND.Controllers
                 if (attachFiles != null && attachFiles.Any())
                 {
                     var attList = new List<AttachFileViewModel>();
-
                     foreach (var f in attachFiles)
                     {
                         var url = await UpLoadHelper.UploadFileOrImage(f, firstMessageId, 200);
-                        if (!string.IsNullOrEmpty(url))
-                            attList.Add(new AttachFileViewModel { Url = url, Name = f.FileName });
+                        if (!string.IsNullOrEmpty(url)) attList.Add(new AttachFileViewModel { Url = url, Name = f.FileName });
                     }
-
                     if (attList.Any())
-                    {
-                        var saveAtt = await apiService.AddMessageAttachments(
-                            firstMessageId,
-                            attList.Select(x => x.Url).ToList(),
-                            attList.Select(x => x.Name).ToList());
-
-                        if (saveAtt == null || saveAtt.status != 0)
-                        {
-                            ViewBag.error = saveAtt?.msg ?? "Save attachments failed";
-                            return View();
-                        }
-                    }
+                        await apiService.AddMessageAttachments(firstMessageId, attList.Select(x => x.Url).ToList(), attList.Select(x => x.Name).ToList());
                 }
 
                 return Redirect($"/support/{ticketId}");
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegram("AddSupport(Post) - SupportTicketController: " + ex);
+                LogHelper.InsertLogTelegram("AddSupport - SupportTicketController: " + ex);
                 ViewBag.error = "Create ticket failed";
                 return View();
             }
@@ -203,17 +160,14 @@ namespace XTECH_FRONTEND.Controllers
                 if (result != null && result.status == 0 && result.data?.ticket != null)
                 {
                     var dto = result.data;
-
-                    var vm = new TicketDetailVm
+                    ViewBag.data = new TicketDetailVm
                     {
                         id = dto.ticket.id,
                         code = dto.ticket.code,
                         subject = dto.ticket.subject,
                         status = dto.ticket.status,
                         priority = dto.ticket.priority,
-                        assignedAgent = string.IsNullOrWhiteSpace(dto.ticket.assignedAgentId)
-                                            ? "Unassigned"
-                                            : dto.ticket.assignedAgentId,
+                        assignedAgent = string.IsNullOrWhiteSpace(dto.ticket.assignedAgentId) ? "Unassigned" : dto.ticket.assignedAgentId,
                         messages = (dto.messages ?? new List<TicketMessageDtoFe>())
                             .Select(m => new TicketMessageVm
                             {
@@ -225,11 +179,8 @@ namespace XTECH_FRONTEND.Controllers
                                 contentHtml = m.contentHtml,
                                 createdAt = m.createdAt.ToString("dd/MM/yyyy HH:mm"),
                                 AttachFiles = m.AttachFiles
-                            })
-                            .ToList()
+                            }).ToList()
                     };
-
-                    ViewBag.data = vm;
                     ViewBag.ticketId = id;
                 }
                 else
@@ -242,7 +193,6 @@ namespace XTECH_FRONTEND.Controllers
                 LogHelper.InsertLogTelegram("Detail - SupportTicketController: " + ex);
                 ViewBag.error = "Load ticket failed";
             }
-
             return View();
         }
 
@@ -261,38 +211,24 @@ namespace XTECH_FRONTEND.Controllers
                 var userId = GetUserId();
                 if (string.IsNullOrWhiteSpace(userId))
                     return Json(new { success = false, message = "Bạn chưa đăng nhập." });
-
                 if (ticketId == Guid.Empty)
                     return Json(new { success = false, message = "TicketId không hợp lệ." });
-
                 if (string.IsNullOrWhiteSpace(content) && (attachFiles == null || !attachFiles.Any()))
                     return Json(new { success = false, message = "Vui lòng nhập nội dung hoặc đính kèm file." });
-
-                if (attachFiles != null && attachFiles.Any())
-                {
-                    long totalSize = attachFiles.Sum(f => f.Length);
-                    if (totalSize > 25 * 1024 * 1024)
-                        return Json(new { success = false, message = "Tổng dung lượng file vượt quá 25MB." });
-                }
+                if (attachFiles != null && attachFiles.Sum(f => f.Length) > 25 * 1024 * 1024)
+                    return Json(new { success = false, message = "Tổng dung lượng file vượt quá 25MB." });
 
                 var apiService = new ApiService(_configuration);
 
-                // 1) Tạo message => lấy messageId
-                //    BE TicketAPIController sẽ tự Redis PUBLISH sau khi lưu DB
+                // BE TicketAPIController sẽ tự Publish Redis sau khi lưu DB
                 var createMsg = await apiService.ReplyTicket(
-                    ticketId: ticketId,
-                    senderType: "Customer",
-                    senderId: userId,
-                    content: content,
-                    contentHtml: content
-                );
+                    ticketId: ticketId, senderType: "Customer",
+                    senderId: userId, content: content, contentHtml: content);
 
                 if (createMsg == null || createMsg.status != 0 || createMsg.data == null)
                     return Json(new { success = false, message = createMsg?.msg ?? "Reply failed" });
 
                 long messageId = createMsg.data.id;
-
-                // 2) Upload file
                 var fileUrls = new List<string>();
                 var fileNames = new List<string>();
 
@@ -301,26 +237,14 @@ namespace XTECH_FRONTEND.Controllers
                     foreach (var f in attachFiles)
                     {
                         var url = await UpLoadHelper.UploadFileOrImage(f, messageId, 200);
-                        if (!string.IsNullOrEmpty(url))
-                        {
-                            fileUrls.Add(url);
-                            fileNames.Add(f.FileName);
-                        }
+                        if (!string.IsNullOrEmpty(url)) { fileUrls.Add(url); fileNames.Add(f.FileName); }
                     }
-
-                    // 3) Lưu attachments vào DB
                     var saveAtt = await apiService.AddMessageAttachments(messageId, fileUrls, fileNames);
                     if (saveAtt == null || saveAtt.status != 0)
                         return Json(new { success = false, message = saveAtt?.msg ?? "Save attachments failed" });
                 }
 
-                // Gắn attachFiles vào response để FE append ngay
-                createMsg.data.AttachFiles = fileUrls.Zip(fileNames, (u, n) => new FileViewModel
-                {
-                    Url = u,
-                    Name = n
-                }).ToList();
-
+                createMsg.data.AttachFiles = fileUrls.Zip(fileNames, (u, n) => new FileViewModel { Url = u, Name = n }).ToList();
                 return Json(new { success = true, data = createMsg.data });
             }
             catch (Exception ex)
@@ -331,29 +255,66 @@ namespace XTECH_FRONTEND.Controllers
         }
 
         // =====================================================================
-        // SSE ENDPOINT
-        // Browser WebUser kết nối vào đây để nhận tin nhắn realtime
+        // REOPEN TICKET (AJAX) - WebUser mở lại ticket đã bị đóng bởi CMS
+        // POST /support/reopen
+        // =====================================================================
+        [HttpPost]
+        [Route("support/reopen")]
+        public async Task<IActionResult> ReopenTicket([FromForm] Guid ticketId)
+        {
+            try
+            {
+                var userId = GetUserId();
+                if (string.IsNullOrWhiteSpace(userId))
+                    return Json(new { success = false, message = "Bạn chưa đăng nhập." });
+                if (ticketId == Guid.Empty)
+                    return Json(new { success = false, message = "TicketId không hợp lệ." });
+
+                var apiService = new ApiService(_configuration);
+
+                // Gọi BE API đổi status => Open (0)
+                var result = await apiService.ChangeTicketStatus(ticketId, 0);
+                if (result == null || result.status != 0)
+                    return Json(new { success = false, message = result?.msg ?? "Reopen failed" });
+
+                // Publish Redis => CMS SSE nhận => cập nhật UI staff
+                var payload = new
+                {
+                    type = "status_changed",
+                    ticketId = ticketId,
+                    status = 0,      // TicketStatus.Open
+                    statusText = "Open"
+                };
+
+                await _subscriber.PublishAsync(
+                    $"TICKET_{ticketId}",
+                    JsonSerializer.Serialize(payload));
+
+                return Json(new { success = true, message = "Ticket đã được mở lại." });
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegram("ReopenTicket - SupportTicketController: " + ex);
+                return Json(new { success = false, message = "Reopen failed" });
+            }
+        }
+
+        // =====================================================================
+        // SSE ENDPOINT - nhận realtime từ Redis Pub/Sub
         // GET /support/ticket-stream?ticketId=xxx
         // =====================================================================
         [HttpGet]
         [Route("support/ticket-stream")]
         public async Task TicketStream(string ticketId)
         {
-            if (string.IsNullOrWhiteSpace(ticketId))
-            {
-                Response.StatusCode = 400;
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(ticketId)) { Response.StatusCode = 400; return; }
 
-            // SSE headers - dùng HTTP thông thường, không cần WebSocket
             Response.Headers.Add("Content-Type", "text/event-stream");
             Response.Headers.Add("Cache-Control", "no-cache");
-            Response.Headers.Add("X-Accel-Buffering", "no"); // tắt buffer Nginx
+            Response.Headers.Add("X-Accel-Buffering", "no");
 
             var dataQueue = new ConcurrentQueue<string>();
 
-            // Subscribe Redis channel TICKET_{ticketId}
-            // BE Publish → Redis → đây nhận → SSE stream xuống browser
             await _subscriber.SubscribeAsync($"TICKET_{ticketId}", (channel, message) =>
             {
                 dataQueue.Enqueue(message!);
@@ -365,33 +326,18 @@ namespace XTECH_FRONTEND.Controllers
                 {
                     while (dataQueue.TryDequeue(out var message))
                     {
-                        var sseData = $"data: {message}\n\n";
-                        var buffer = System.Text.Encoding.UTF8.GetBytes(sseData);
-                        await Response.Body.WriteAsync(buffer, 0, buffer.Length);
+                        var buf = System.Text.Encoding.UTF8.GetBytes($"data: {message}\n\n");
+                        await Response.Body.WriteAsync(buf, 0, buf.Length);
                         await Response.Body.FlushAsync();
                     }
-
                     await Task.Delay(20, HttpContext.RequestAborted);
                 }
             }
-            catch (OperationCanceledException)
-            {
-                // Client ngắt kết nối - bình thường
-            }
-            catch (Exception ex)
-            {
-                LogHelper.InsertLogTelegram("TicketStream - SupportTicketController: " + ex);
-            }
-            finally
-            {
-                // Unsubscribe khi client disconnect để giải phóng resource
-                await _subscriber.UnsubscribeAsync($"TICKET_{ticketId}");
-            }
+            catch (OperationCanceledException) { }
+            catch (Exception ex) { LogHelper.InsertLogTelegram("TicketStream - SupportTicketController: " + ex); }
+            finally { await _subscriber.UnsubscribeAsync($"TICKET_{ticketId}"); }
         }
 
-        // =====================================================================
-        // HELPER
-        // =====================================================================
         private static string ToTimeAgo(DateTime dt)
         {
             var span = DateTime.UtcNow - dt.ToUniversalTime();

@@ -14,6 +14,15 @@
         3 => "Closed",
         _ => "Open"
     };
+
+    string StatusBadgeClass(int s) => s switch
+    {
+        0 => "bg-success",
+        1 => "bg-primary",
+        2 => "bg-info",
+        3 => "bg-secondary",
+        _ => "bg-success"
+    };
 }
 
 <style>
@@ -82,13 +91,11 @@
         border: 1px solid rgba(0,0,0,.08);
     }
 
-    /* Reply editor placeholder */
     #replyEditor:empty:before {
         content: attr(data-placeholder);
         color: #9ca3af;
     }
 
-    /* Attachments list in messages */
     .attachments {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -141,12 +148,11 @@
             word-break: break-word;
         }
 
-    /* ===== NEW: Preview attachments dưới editor ===== */
     #replyAttachments {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
-        padding: 0 1rem 1rem 1rem; /* match p-3 */
+        padding: 0 1rem 1rem 1rem;
     }
 
     .preview-card {
@@ -207,19 +213,25 @@
             opacity: 1;
         }
 
-    /* Optional: nhỏ gọn hơn trên mobile */
-    @@media (max-width: 576px) {
-        #replyAttachments {
-            grid-template-columns: 1fr;
-        }
+    /* Closed notice */
+    .closed-notice {
+        background: #fff8e1;
+        border: 1px solid #f59e0b;
+        border-radius: 12px;
+        padding: 16px 20px;
+        color: #92400e;
+        font-weight: 600;
+    }
 
-        .attachments {
+    @@media (max-width: 576px) {
+        #replyAttachments, .attachments {
             grid-template-columns: 1fr;
         }
     }
 </style>
 
 <input type="hidden" id="TicketId" value="@ticketId" />
+<input type="hidden" id="CurrentStatus" value="@(vm?.status ?? 0)" />
 
 <main class="container-fluid px-3 px-md-4 px-lg-5 py-4">
     <div class="mx-auto" style="max-width: 1200px;">
@@ -229,9 +241,7 @@
                 <li class="breadcrumb-item">
                     <a class="text-decoration-none" href="/support" style="color:var(--primary);">Support Tickets</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    #@(vm?.code ?? "")
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">#@(vm?.code ?? "")</li>
             </ol>
         </nav>
 
@@ -257,11 +267,23 @@
                         {
                             <span class="badge badge-urgent rounded-pill px-3 py-2">URGENT</span>
                         }
+                       
+                        <span id="statusBadge">
+                            <span class="badge @StatusBadgeClass(vm.status)">@StatusText(vm.status)</span>
+                        </span>
                     </h1>
                     <div class="text-secondary">@vm.subject</div>
                 </div>
 
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 align-items-center">
+                   
+                    <button id="btnReopenTicket"
+                            class="btn btn-success fw-semibold d-inline-flex align-items-center gap-2 px-3 py-2"
+                            style="display:none !important;"
+                            onclick="userTicket.reopenTicket()">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reopen Ticket
+                    </button>
+
                     <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2 px-3 py-2" href="/support">
                         <i class="bi bi-arrow-left"></i> Back
                     </a>
@@ -272,13 +294,13 @@
 
                 <!-- Conversation -->
                 <div class="col-12 col-lg-8">
+
                     <div class="d-flex flex-column gap-3" id="chatList">
                         @if (vm.messages != null && vm.messages.Any())
                         {
                             foreach (var m in vm.messages)
                             {
                                 var isStaff = (m.senderType ?? "").ToLower() == "agent";
-
                                 <article class="card-soft p-4 mb-4" id="msg-@m.id">
                                     <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
                                         <div>
@@ -290,11 +312,9 @@
                                             <span class="badge badge-staff rounded px-2 py-1">STAFF</span>
                                         }
                                     </div>
-
                                     <div class="bubble @(isStaff ? "bubble-staff" : "bubble-cus")" style="line-height:1.65;">
                                         @Html.Raw(string.IsNullOrWhiteSpace(m.contentHtml) ? m.content : m.contentHtml)
                                     </div>
-
                                     @if (m.AttachFiles != null && m.AttachFiles.Any())
                                     {
                                         <div class="attachments">
@@ -303,9 +323,7 @@
                                                 var name = f.Name ?? "";
                                                 var url = f.Url ?? "#";
                                                 var lower = (name + url).ToLower();
-
                                                 var isImg = lower.EndsWith(".jpg") || lower.EndsWith(".jpeg") || lower.EndsWith(".png") || lower.EndsWith(".gif") || lower.EndsWith(".webp");
-
                                                 if (isImg)
                                                 {
                                                     <a class="att-img" href="@url" target="_blank" rel="noopener">
@@ -334,36 +352,35 @@
                         }
                     </div>
 
-                    <!-- Reply editor -->
-                    <section class="card-soft overflow-hidden border border-2 mt-3"
+                    
+                    <div id="closedNotice" class="closed-notice mb-3" style="display:none;">
+                        <i class="bi bi-lock-fill me-2"></i>
+                        Ticket này đã được đóng bởi Support.
+                        Bạn có thể nhấn <strong>Reopen Ticket</strong> nếu cần hỗ trợ thêm.
+                    </div>
+
+                   
+                    <section id="replySection"
+                             class="card-soft overflow-hidden border border-2 mt-3"
                              style="border-color: rgba(0,74,153,.55) !important;">
 
                         <div class="px-3 py-2 border-bottom d-flex align-items-center gap-2 flex-wrap"
                              style="background:#f9fafb;">
-
                             <button class="btn btn-sm btn-light" type="button" title="Bold" onclick="replyEditor.cmd('bold')">
                                 <i class="bi bi-type-bold"></i>
                             </button>
-
                             <button class="btn btn-sm btn-light" type="button" title="Italic" onclick="replyEditor.cmd('italic')">
                                 <i class="bi bi-type-italic"></i>
                             </button>
-
                             <button class="btn btn-sm btn-light" type="button" title="Link" onclick="replyEditor.insertLink()">
                                 <i class="bi bi-link-45deg"></i>
                             </button>
-
-                            <!-- Image picker -->
-                            <button class="btn btn-sm btn-light" type="button" title="Insert image (file)"
+                            <button class="btn btn-sm btn-light" type="button" title="Insert image"
                                     onclick="document.getElementById('replyImg').click()">
                                 <i class="bi bi-image"></i>
                             </button>
                             <input id="replyImg" type="file" class="d-none" accept="image/*" multiple
                                    onchange="replyEditor.addFiles(this.files); this.value='';" />
-
-                            <div class="vr mx-1"></div>
-
-                            <!-- File picker -->
                             <button class="btn btn-sm btn-light" type="button" title="Attach file"
                                     onclick="document.getElementById('replyFile').click()">
                                 <i class="bi bi-paperclip"></i>
@@ -371,7 +388,6 @@
                             <input id="replyFile" type="file" class="d-none"
                                    accept="application/pdf,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.7z,image/*"
                                    multiple onchange="replyEditor.addFiles(this.files); this.value='';" />
-
                             <div class="ms-auto d-flex align-items-center gap-3 small">
                                 <span class="text-secondary" id="attachStatus"></span>
                                 <span class="text-secondary" id="rtStatus"></span>
@@ -384,10 +400,7 @@
                              style="min-height:150px; outline:none; color:#374151;"
                              data-placeholder="Write your reply here..."></div>
 
-                        <!-- ✅ NEW: preview attachments dưới editor -->
                         <div id="replyAttachments"></div>
-
-                        <!-- hidden textarea -->
                         <textarea id="txtReply" class="d-none"></textarea>
 
                         <div class="d-flex justify-content-end align-items-center gap-2 px-3 py-3 border-top"
@@ -401,6 +414,7 @@
                             </button>
                         </div>
                     </section>
+
                 </div>
 
                 <!-- Right column -->
@@ -410,15 +424,13 @@
                             <h3 class="h6 fw-bold mb-3 d-flex align-items-center gap-2">
                                 <i class="bi bi-info-circle text-primary-custom"></i> Ticket Information
                             </h3>
-
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <div class="meta-label">Status</div>
-                                    <div class="fw-semibold text-primary-custom" style="font-size:14px;">
+                                    <div id="sidebarStatus" class="fw-semibold text-primary-custom" style="font-size:14px;">
                                         @StatusText(vm.status)
                                     </div>
                                 </div>
-
                                 <div>
                                     <div class="meta-label">Assigned Staff</div>
                                     <div class="fw-medium" style="font-size:14px;">
@@ -437,28 +449,20 @@
 
 <script>
     window.userTicketEndpoints = {
-        replyUrl: '/support/reply',
-         hubUrl: 'http://be.x-tech.vn/ticketHub'
-
-
+        replyUrl: '/support/reply'
+        // ✅ Không cần hubUrl nữa - dùng SSE
     };
 </script>
 
 <script>
-    // ✅ Reply editor: không chèn chip vào editor nữa, render preview dưới editor
     const replyEditor = {
         _files: [],
-        _objectUrls: new Map(), // localId -> objectURL (for images)
+        _objectUrls: new Map(),
 
         el() { return document.getElementById('replyEditor'); },
         previewEl() { return document.getElementById('replyAttachments'); },
-
         focus() { this.el().focus(); },
-
-        cmd(command) {
-            this.focus();
-            document.execCommand(command, false, null);
-        },
+        cmd(command) { this.focus(); document.execCommand(command, false, null); },
 
         insertLink() {
             this.focus();
@@ -466,46 +470,30 @@
             let url = prompt('Nhập link (https://...)');
             if (!url) return;
             if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-
             if (selected) {
                 document.execCommand('createLink', false, url);
             } else {
                 document.execCommand('insertHTML', false,
-                    `<a href="${url}" target="_blank" rel="noopener noreferrer">${this._escape(url)}</a>`
-                );
+                    `<a href="${url}" target="_blank" rel="noopener noreferrer">${this._escape(url)}</a>`);
             }
         },
 
         addFiles(fileList) {
             if (!fileList || fileList.length === 0) return;
-
-            const arr = Array.from(fileList);
-
-            for (const f of arr) {
-                const id = (crypto?.randomUUID)
-                    ? crypto.randomUUID()
-                    : (Date.now() + '_' + Math.random().toString(16).slice(2));
-
-                f.__localId = id;
+            for (const f of Array.from(fileList)) {
+                f.__localId = crypto?.randomUUID?.() ?? (Date.now() + '_' + Math.random().toString(16).slice(2));
                 this._files.push(f);
             }
-
             window.__replyFiles = this._files;
             this.renderPreviews();
             this._updateAttachStatus();
         },
 
         removeFile(localId) {
-            // revoke object url if any
             const u = this._objectUrls.get(localId);
-            if (u) {
-                URL.revokeObjectURL(u);
-                this._objectUrls.delete(localId);
-            }
-
+            if (u) { URL.revokeObjectURL(u); this._objectUrls.delete(localId); }
             this._files = this._files.filter(f => f.__localId !== localId);
             window.__replyFiles = this._files;
-
             this.renderPreviews();
             this._updateAttachStatus();
         },
@@ -513,96 +501,58 @@
         renderPreviews() {
             const el = this.previewEl();
             if (!el) return;
-
-            if (!this._files.length) {
-                el.innerHTML = '';
-                return;
-            }
-
-            el.innerHTML = this._files.map(f => this._renderPreviewItem(f)).join('');
+            el.innerHTML = this._files.length ? this._files.map(f => this._renderPreviewItem(f)).join('') : '';
         },
 
         _renderPreviewItem(f) {
             const id = f.__localId;
             const name = this._escape(f.name || 'file');
             const sizeText = this._formatBytes(f.size || 0);
-
             const isImg = (f.type || '').toLowerCase().startsWith('image/');
+
             if (isImg) {
                 let url = this._objectUrls.get(id);
-                if (!url) {
-                    url = URL.createObjectURL(f);
-                    this._objectUrls.set(id, url);
-                }
-
-                return `
-                    <div class="preview-card" data-file-id="${id}">
-                        <div class="preview-thumb">
-                            <img src="${url}" alt="${name}" />
-                        </div>
-                        <div class="preview-meta">
-                            <div class="preview-name">${name}</div>
-                            <div class="preview-sub">${sizeText}</div>
-                        </div>
-                        <div class="preview-remove" title="Remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
-                    </div>
-                `;
+                if (!url) { url = URL.createObjectURL(f); this._objectUrls.set(id, url); }
+                return `<div class="preview-card" data-file-id="${id}">
+                    <div class="preview-thumb"><img src="${url}" alt="${name}" /></div>
+                    <div class="preview-meta"><div class="preview-name">${name}</div><div class="preview-sub">${sizeText}</div></div>
+                    <div class="preview-remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
+                </div>`;
             }
 
             const iconClass = this._iconForFile(f);
             const ext = this._getExt(f.name);
-
-            return `
-                <div class="preview-card" data-file-id="${id}">
-                    <div class="preview-thumb">
-                        <i class="bi ${iconClass}" style="font-size:24px;"></i>
-                    </div>
-                    <div class="preview-meta">
-                        <div class="preview-name">${name}</div>
-                        <div class="preview-sub">${ext} • ${sizeText}</div>
-                    </div>
-                    <div class="preview-remove" title="Remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
-                </div>
-            `;
+            return `<div class="preview-card" data-file-id="${id}">
+                <div class="preview-thumb"><i class="bi ${iconClass}" style="font-size:24px;"></i></div>
+                <div class="preview-meta"><div class="preview-name">${name}</div><div class="preview-sub">${ext} • ${sizeText}</div></div>
+                <div class="preview-remove" onclick="replyEditor.removeFile('${id}')">&times;</div>
+            </div>`;
         },
 
         beforeSend() {
-            // content gửi lên server: HTML từ editor
-            const cleanHtml = (this.el().innerHTML || '').trim();
-            document.getElementById('txtReply').value = cleanHtml;
-
-            // files gửi riêng
+            document.getElementById('txtReply').value = (this.el().innerHTML || '').trim();
             window.__replyFiles = this._files;
         },
 
         reset() {
-            // revoke all object URLs
-            for (const [id, url] of this._objectUrls.entries()) {
-                URL.revokeObjectURL(url);
-            }
+            for (const [, url] of this._objectUrls.entries()) URL.revokeObjectURL(url);
             this._objectUrls.clear();
-
             this._files = [];
             window.__replyFiles = [];
-
             this.el().innerHTML = '';
             this.previewEl().innerHTML = '';
             document.getElementById('txtReply').value = '';
-
             this._updateAttachStatus();
-            // ✅ không xóa rtStatus (realtime)
         },
 
         _updateAttachStatus() {
             const el = document.getElementById('attachStatus');
-            if (!el) return;
-            el.textContent = this._files.length ? `Attached ${this._files.length} file(s)` : '';
+            if (el) el.textContent = this._files.length ? `Attached ${this._files.length} file(s)` : '';
         },
 
         _iconForFile(f) {
             const name = (f.name || '').toLowerCase();
             const type = (f.type || '').toLowerCase();
-
             if (type === 'application/pdf' || name.endsWith('.pdf')) return 'bi-file-earmark-pdf';
             if (name.endsWith('.doc') || name.endsWith('.docx')) return 'bi-file-earmark-word';
             if (name.endsWith('.xls') || name.endsWith('.xlsx')) return 'bi-file-earmark-excel';
@@ -617,19 +567,12 @@
         },
 
         _escape(s) {
-            return (s || '').replace(/[&<>"']/g, m => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;'
-            }[m]));
+            return (s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
         },
 
         _formatBytes(bytes) {
             if (!bytes) return '0 B';
-            const k = 1024;
-            const sizes = ['B','KB','MB','GB','TB'];
+            const k = 1024, sizes = ['B','KB','MB','GB','TB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             const v = bytes / Math.pow(k, i);
             return `${v.toFixed(v >= 10 || i === 0 ? 0 : 1)} ${sizes[i]}`;
@@ -638,6 +581,6 @@
 </script>
 
 @section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+        {{!-- ✅ Không cần signalr nữa --}}
     <script src="~/modules/support_detail.js" asp-append-version="true"></script>
 }

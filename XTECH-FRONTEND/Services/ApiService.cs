@@ -316,6 +316,19 @@ namespace XTECH_FRONTEND.Services
                 throw new Exception(ex.Message);
             }
         }
+        // 5) Đổi status ticket (User reopen / CMS close)
+        public Task<BaseObjectResponse2<object>> ChangeTicketStatus(Guid ticketId, int status)
+        {
+            return PostTokenAsync<BaseObjectResponse2<object>>(
+                SystemConstants.AdavigoApiRoutes.ChangeTicketStatus,
+                new
+                {
+                    ticket_id = ticketId.ToString(),
+                    status = status
+                    // status: 0=Open, 1=InProgress, 2=Resolved, 3=Closed
+                }
+            );
+        }
         public async Task<BaseObjectResponse<ProductGroupViewModel>> getproductcategorybyparentid(long id)
         {
             try
