@@ -1,41 +1,121 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\",
+  "WorkspaceRootPath": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\loginorregister.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\loginorregister.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\controllers\\supportticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\supportticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\supportticket\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\supportticket\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\controllers\\loginorregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\loginorregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\support_detail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\support_detail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\views\\loginorregister\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\loginorregister\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\supportticket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\supportticket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\detaildeginwebsite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\detaildeginwebsite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\models\\tickets\\ticketlistitemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\models\\tickets\\ticketlistitemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\customize\\antixssmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\customize\\antixssmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\support_add.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\support_add.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\supportticket\\addsupport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\supportticket\\addsupport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\controllers\\loginorregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\loginorregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\models\\tickets\\attachfileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\models\\tickets\\attachfileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\models\\tickets\\ticketdetaildtofe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\models\\tickets\\ticketdetaildtofe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\crawl\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\crawl\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\utilities\\uploadhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\utilities\\uploadhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\infrastructure\\utilities\\constants\\systemconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\infrastructure\\utilities\\constants\\systemconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|c:\\users\\84385\\source\\repos\\frontend-company-xtech\\xtech-frontend\\models\\account\\dataclientreturnviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\customize\\customauthorize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\customize\\customauthorize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\support_index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\support_index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\home\\vongquay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\home\\vongquay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\loginorregister.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\loginorregister.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\views\\loginorregister\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\views\\loginorregister\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\wwwroot\\modules\\detaildeginwebsite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\wwwroot\\modules\\detaildeginwebsite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|d:\\thuc_tap_vnxpress\\x-tech\\new\\frontend-company-xtech\\xtech-frontend\\models\\account\\dataclientreturnviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2D596DA-AB8A-4CC4-8CC0-7262A191D90D}|XTECH-FRONTEND\\XTECH-FRONTEND.csproj|solutionrelative:xtech-frontend\\models\\account\\dataclientreturnviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -46,180 +126,384 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1097,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApiService.cs",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Services\\ApiService.cs",
-              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Services\\ApiService.cs",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Services\\ApiService.cs",
-              "RelativeToolTip": "XTECH-FRONTEND\\Services\\ApiService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "SupportTicketController.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\SupportTicketController.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Controllers\\SupportTicketController.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\SupportTicketController.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Controllers\\SupportTicketController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T04:31:08.387Z",
+              "WhenOpened": "2026-03-04T02:02:06.296Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\appsettings.json",
-              "RelativeDocumentMoniker": "XTECH-FRONTEND\\appsettings.json",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\appsettings.json",
-              "RelativeToolTip": "XTECH-FRONTEND\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-05T04:27:22.906Z"
+              "DocumentIndex": 9,
+              "Title": "AntiXssMiddleware.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Customize\\AntiXssMiddleware.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Customize\\AntiXssMiddleware.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Customize\\AntiXssMiddleware.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Customize\\AntiXssMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T09:08:33.138Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAI0AAAAAAAAAAAAAAJgAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-05T04:09:09.399Z"
+              "DocumentIndex": 13,
+              "Title": "AttachFileViewModel.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\AttachFileViewModel.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Models\\Tickets\\AttachFileViewModel.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\AttachFileViewModel.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Models\\Tickets\\AttachFileViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T07:59:22.228Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 15,
+              "Title": "ProductViewModel.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Crawl\\ProductViewModel.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\Crawl\\ProductViewModel.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Crawl\\ProductViewModel.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\Crawl\\ProductViewModel.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAIA9wDkAAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T07:18:22.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UploadHelper.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Utilities\\UploadHelper.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Utilities\\UploadHelper.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Utilities\\UploadHelper.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Utilities\\UploadHelper.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwGMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T02:35:54.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TicketDetailDtoFe.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\TicketDetailDtoFe.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Models\\Tickets\\TicketDetailDtoFe.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\TicketDetailDtoFe.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Models\\Tickets\\TicketDetailDtoFe.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwAYAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T09:00:47.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CustomAuthorize.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Customize\\CustomAuthorize.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Customize\\CustomAuthorize.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Customize\\CustomAuthorize.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Customize\\CustomAuthorize.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T04:45:35.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "LoginOrRegisterController.cs",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
               "RelativeDocumentMoniker": "XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
               "RelativeToolTip": "XTECH-FRONTEND\\Controllers\\LoginOrRegisterController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAQwCoAAAAuAAAA",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-05T03:19:00.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "NewsController.cs",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
               "RelativeDocumentMoniker": "XTECH-FRONTEND\\Controllers\\NewsController.cs",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\NewsController.cs",
               "RelativeToolTip": "XTECH-FRONTEND\\Controllers\\NewsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAQwG4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T03:19:00.155Z"
+              "WhenOpened": "2024-10-05T03:19:00.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "support_detail.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_detail.js",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\support_detail.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_detail.js",
+              "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\support_detail.js",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAgwOkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-02T03:26:23.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\Detail.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\SupportTicket\\Detail.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\Detail.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\SupportTicket\\Detail.cshtml",
+              "ViewState": "AgIAAKUBAAAAAAAAAAAgwLoBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-27T09:41:14.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "support_add.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_add.js",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\support_add.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_add.js",
+              "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\support_add.js",
+              "ViewState": "AgIAALQAAAAAAAAAAAAgwNgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-02T03:25:01.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "support_index.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_index.js",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\support_index.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\support_index.js",
+              "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\support_index.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-02T03:23:00.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SystemConstants.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Infrastructure\\Utilities\\Constants\\SystemConstants.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Infrastructure\\Utilities\\Constants\\SystemConstants.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Infrastructure\\Utilities\\Constants\\SystemConstants.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Infrastructure\\Utilities\\Constants\\SystemConstants.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwB0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T02:24:11.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TicketListItemVm.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\TicketListItemVm.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Models\\Tickets\\TicketListItemVm.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Tickets\\TicketListItemVm.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Models\\Tickets\\TicketListItemVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T02:20:42.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddSupport.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\AddSupport.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\SupportTicket\\AddSupport.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\AddSupport.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\SupportTicket\\AddSupport.cshtml",
+              "ViewState": "AgIAAHwBAAAAAAAAAAAgwKABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-27T09:31:56.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\Index.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\SupportTicket\\Index.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\SupportTicket\\Index.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\SupportTicket\\Index.cshtml",
+              "ViewState": "AgIAALwAAAAAAAAAAAArwNAAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-27T08:21:27.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-05T04:09:09.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "vongquay.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Home\\vongquay.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\Home\\vongquay.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Home\\vongquay.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\Home\\vongquay.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T09:53:30.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Menu.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\Menu.js",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\Menu.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\Menu.js",
+              "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\Menu.js",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAgwDgAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-06T09:45:09.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:52:33.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Program.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Program.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Program.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Program.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAowGoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:51:53.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T09:44:39.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Services\\ApiService.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Services\\ApiService.cs",
+              "RelativeToolTip": "XTECH-FRONTEND\\Services\\ApiService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAxwGEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T04:31:08.387Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
-              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
-              "RelativeToolTip": "XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
-              "ViewState": "AQIAADUAAAAAAAAAAAAmwDsAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-05T03:06:11.046Z"
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\appsettings.json",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\appsettings.json",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\appsettings.json",
+              "RelativeToolTip": "XTECH-FRONTEND\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-05T04:27:22.906Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
+              "RelativeDocumentMoniker": "XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
+              "RelativeToolTip": "XTECH-FRONTEND\\Views\\LoginOrRegister\\Index.cshtml",
+              "ViewState": "AgIAADUAAAAAAAAAAAAmwDsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-05T03:06:11.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "LoginOrRegister.js",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
               "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
               "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\LoginOrRegister.js",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAUwHEAAAA5AAAA",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAUwHgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-10-03T04:33:23.121Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 28,
               "Title": "DataClientReturnViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
               "RelativeDocumentMoniker": "XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
               "RelativeToolTip": "XTECH-FRONTEND\\Models\\Account\\DataClientReturnViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAAqAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T02:11:25.928Z"
+              "WhenOpened": "2024-10-04T02:11:25.928Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 27,
               "Title": "DetailDeginwebsite.js",
-              "DocumentMoniker": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
+              "DocumentMoniker": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
               "RelativeDocumentMoniker": "XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
-              "ToolTip": "C:\\Users\\84385\\source\\Repos\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
+              "ToolTip": "D:\\Thuc_Tap_VnXpress\\X-Tech\\new\\frontend-company-xtech\\XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
               "RelativeToolTip": "XTECH-FRONTEND\\wwwroot\\modules\\DetailDeginwebsite.js",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAuwOoAAAAvAAAA",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAuwOoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-03T02:05:25.546Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 627,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2024-10-03T02:05:25.546Z",
+              "EditorCaption": ""
             }
           ]
         }
