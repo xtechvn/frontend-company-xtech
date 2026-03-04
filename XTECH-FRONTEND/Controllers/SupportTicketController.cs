@@ -326,7 +326,11 @@ namespace XTECH_FRONTEND.Controllers
 
                 // trả về message (SignalR phía API broadcast sẽ bắn realtime)
                 // Nếu bạn muốn FE append ngay thì gắn attachFiles vào data trả về:
-                //createMsg.data.AttachFiles = fileUrls.Zip(fileNames, (u, n) => new { url = u, name = n }).ToList();
+                createMsg.data.AttachFiles = fileUrls.Zip(fileNames, (u, n) => new FileViewModel
+                {
+                    Url = u,
+                    Name = n
+                }).ToList();
 
                 return Json(new { success = true, data = createMsg.data });
             }
