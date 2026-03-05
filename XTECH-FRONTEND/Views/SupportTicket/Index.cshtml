@@ -1,9 +1,8 @@
 ﻿@using XTECH_FRONTEND.Models.Tickets
 @{
-    ViewData["Title"] = "Support Tickets";
+    ViewData["Title"] = "Yêu cầu hỗ trợ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    // ✅ strongly typed list từ Controller
     var tickets = ViewBag.data as List<TicketListItemVm> ?? new List<TicketListItemVm>();
 }
 
@@ -107,17 +106,15 @@
 </style>
 
 @functions {
-    // ✅ map status int -> text + css key (tuỳ quy ước BE)
     private (string text, string key, string chipClass) StatusMeta(int status)
     {
-        // giả sử: 0=Open, 1=InProgress, 2=Resolved, 3=Closed
         return status switch
         {
-            0 => ("Open", "open", "chip-open"),
-            1 => ("In Progress", "inprogress", "chip-progress"),
-            2 => ("Resolved", "resolved", "chip-resolved"),
-            3 => ("Closed", "closed", "chip-closed"),
-            _ => ("Open", "open", "chip-open")
+            0 => ("Mở", "open", "chip-open"),
+            1 => ("Đang xử lý", "inprogress", "chip-progress"),
+            2 => ("Đã giải quyết", "resolved", "chip-resolved"),
+            3 => ("Đã đóng", "closed", "chip-closed"),
+            _ => ("Mở", "open", "chip-open")
         };
     }
 }
@@ -126,19 +123,17 @@
     <div class="container-fluid px-4 px-lg-5">
         <div class="mx-auto" style="max-width: 1100px;">
 
-            <!-- Title + Actions -->
+            <!-- Tiêu đề + Actions -->
             <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-3">
                 <div>
-                    <h2 class="display-6 fw-black mb-1" style="font-weight:900;">Support Tickets</h2>
-                    <p class="text-secondary mb-0">Manage and track your support requests.</p>
+                    <h2 class="display-6 fw-black mb-1" style="font-weight:900;">Yêu cầu hỗ trợ</h2>
+                    <p class="text-secondary mb-0">Quản lý và theo dõi các yêu cầu hỗ trợ của bạn.</p>
                 </div>
 
                 <div class="d-flex gap-2">
-                    
-
                     <a class="btn text-white bg-primary-custom d-inline-flex align-items-center gap-2" href="/support/add">
                         <i class="bi bi-plus-lg"></i>
-                        <span class="fw-semibold">New Ticket</span>
+                        <span class="fw-semibold">Tạo yêu cầu mới</span>
                     </a>
                 </div>
             </div>
@@ -146,16 +141,19 @@
             <!-- Tabs -->
             <ul class="nav nav-underline border-bottom mb-3" role="tablist" id="ticketTabs">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active fw-bold text-primary-custom" type="button" data-status="all">All Tickets</button>
+                    <button class="nav-link active fw-bold text-primary-custom" type="button" data-status="all">Tất cả</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link fw-bold text-secondary" type="button" data-status="open">Open</button>
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="open">Mở</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link fw-bold text-secondary" type="button" data-status="inprogress">In Progress</button>
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="inprogress">Đang xử lý</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link fw-bold text-secondary" type="button" data-status="resolved">Resolved</button>
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="resolved">Đã giải quyết</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold text-secondary" type="button" data-status="closed">Đã đóng</button>
                 </li>
             </ul>
 
@@ -165,13 +163,13 @@
                     <table class="table align-middle mb-0" id="ticketTable">
                         <thead>
                             <tr>
-                                <th class="px-4 py-3">Ticket ID</th>
-                                <th class="px-4 py-3">Service</th>
-                                <th class="px-4 py-3">Subject</th>
-                                <th class="px-4 py-3">Status</th>
-                                <th class="px-4 py-3">Assigned Agent</th>
-                                <th class="px-4 py-3">Last Update</th>
-                                <th class="px-4 py-3 text-end">Actions</th>
+                                <th class="px-4 py-3">Mã ticket</th>
+                                <th class="px-4 py-3">Dịch vụ</th>
+                                <th class="px-4 py-3">Tiêu đề</th>
+                                <th class="px-4 py-3">Trạng thái</th>
+                                <th class="px-4 py-3">Phòng ban</th>
+                                <th class="px-4 py-3">Cập nhật</th>
+                                <th class="px-4 py-3 text-end">Thao tác</th>
                             </tr>
                         </thead>
 
@@ -180,7 +178,7 @@
                             {
                                 <tr>
                                     <td colspan="7" class="px-4 py-4 text-center text-secondary">
-                                        No tickets found.
+                                        Không có yêu cầu hỗ trợ nào.
                                     </td>
                                 </tr>
                             }
@@ -189,7 +187,6 @@
                                 foreach (var t in tickets)
                                 {
                                     var meta = StatusMeta(t.status);
-
                                     <tr class="row-link"
                                         data-ticket-id="@t.id"
                                         data-status="@meta.key">
@@ -206,7 +203,7 @@
                                             <span class="chip @meta.chipClass">@meta.text</span>
                                         </td>
                                         <td class="px-4 py-3 text-secondary">
-                                            @(string.IsNullOrWhiteSpace(t.departmentName) ? "Unassigned" : t.departmentName)
+                                            @(string.IsNullOrWhiteSpace(t.departmentName) ? "Chưa phân công" : t.departmentName)
                                         </td>
                                         <td class="px-4 py-3 text-secondary">
                                             @t.lastUpdate
@@ -219,13 +216,13 @@
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li>
                                                         <a class="dropdown-item" href="/support/@t.id">
-                                                            <i class="bi bi-chat-dots me-2"></i>View / Chat
+                                                            <i class="bi bi-chat-dots me-2"></i>Xem / Chat
                                                         </a>
                                                     </li>
                                                     <li><hr class="dropdown-divider" /></li>
                                                     <li>
                                                         <a class="dropdown-item text-secondary" href="javascript:void(0)">
-                                                            <i class="bi bi-printer me-2"></i>Print (todo)
+                                                            <i class="bi bi-printer me-2"></i>In (todo)
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -239,21 +236,26 @@
                 </div>
 
                 <!-- Footer -->
-                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 px-4 py-3 border-top" style="background:#f8fafc;">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 px-4 py-3 border-top"
+                     style="background:#f8fafc;">
                     <div class="text-secondary" style="font-size: 14px;" id="ticketCountText">
-                        Showing <span class="fw-semibold">@tickets.Count</span> ticket(s)
+                        Hiển thị <span class="fw-semibold">@tickets.Count</span> yêu cầu
                     </div>
 
-                    <nav aria-label="Tickets pagination">
+                    <nav aria-label="Phân trang">
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)" aria-disabled="true"><i class="bi bi-chevron-left"></i></a>
+                                <a class="page-link" href="javascript:void(0)" aria-disabled="true">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
                             </li>
                             <li class="page-item active" aria-current="page">
                                 <a class="page-link bg-primary-custom border-0" href="javascript:void(0)">1</a>
                             </li>
                             <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)"><i class="bi bi-chevron-right"></i></a>
+                                <a class="page-link" href="javascript:void(0)">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
                             </li>
                         </ul>
                     </nav>

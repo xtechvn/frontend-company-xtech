@@ -8,11 +8,11 @@
 
     string StatusText(int s) => s switch
     {
-        0 => "Open",
-        1 => "In Progress",
-        2 => "Resolved",
-        3 => "Closed",
-        _ => "Open"
+        0 => "Mở",
+        1 => "Đang xử lý",
+        2 => "Đã giải quyết",
+        3 => "Đã đóng",
+        _ => "Mở"
     };
 
     string StatusBadgeClass(int s) => s switch
@@ -230,6 +230,7 @@
     }
 </style>
 
+
 <input type="hidden" id="TicketId" value="@ticketId" />
 <input type="hidden" id="CurrentStatus" value="@(vm?.status ?? 0)" />
 
@@ -239,7 +240,7 @@
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb mb-0" style="font-size: 14px;">
                 <li class="breadcrumb-item">
-                    <a class="text-decoration-none" href="/support" style="color:var(--primary);">Support Tickets</a>
+                    <a class="text-decoration-none" href="/support" style="color:var(--primary);">Yêu cầu hỗ trợ</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">#@(vm?.code ?? "")</li>
             </ol>
@@ -267,7 +268,7 @@
                         {
                             <span class="badge badge-urgent rounded-pill px-3 py-2">URGENT</span>
                         }
-                       
+                      
                         <span id="statusBadge">
                             <span class="badge @StatusBadgeClass(vm.status)">@StatusText(vm.status)</span>
                         </span>
@@ -281,11 +282,11 @@
                             class="btn btn-success fw-semibold d-inline-flex align-items-center gap-2 px-3 py-2"
                             style="display:none !important;"
                             onclick="userTicket.reopenTicket()">
-                        <i class="bi bi-arrow-counterclockwise"></i> Reopen Ticket
+                        <i class="bi bi-arrow-counterclockwise"></i> Mở lại ticket
                     </button>
 
                     <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2 px-3 py-2" href="/support">
-                        <i class="bi bi-arrow-left"></i> Back
+                        <i class="bi bi-arrow-left"></i> Quay lại
                     </a>
                 </div>
             </div>
@@ -348,15 +349,15 @@
                         }
                         else
                         {
-                            <div class="card-soft p-4 text-secondary">No messages yet.</div>
+                            <div class="card-soft p-4 text-secondary">Chưa có tin nhắn nào.</div>
                         }
                     </div>
 
-                    
+                   
                     <div id="closedNotice" class="closed-notice mb-3" style="display:none;">
                         <i class="bi bi-lock-fill me-2"></i>
                         Ticket này đã được đóng bởi Support.
-                        Bạn có thể nhấn <strong>Reopen Ticket</strong> nếu cần hỗ trợ thêm.
+                        Bạn có thể nhấn <strong>Mở lại ticket</strong> nếu cần hỗ trợ thêm.
                     </div>
 
                    
@@ -398,7 +399,7 @@
                              class="p-3"
                              contenteditable="true"
                              style="min-height:150px; outline:none; color:#374151;"
-                             data-placeholder="Write your reply here..."></div>
+                             data-placeholder="Nhập nội dung trả lời..."></div>
 
                         <div id="replyAttachments"></div>
                         <textarea id="txtReply" class="d-none"></textarea>
@@ -410,7 +411,7 @@
                                     type="button"
                                     style="background:var(--primary);"
                                     onclick="replyEditor.beforeSend(); userTicket.sendReply();">
-                                Send Reply
+                                Gửi trả lời
                             </button>
                         </div>
                     </section>
@@ -422,19 +423,19 @@
                     <div class="d-flex flex-column gap-4">
                         <section class="card-soft p-4">
                             <h3 class="h6 fw-bold mb-3 d-flex align-items-center gap-2">
-                                <i class="bi bi-info-circle text-primary-custom"></i> Ticket Information
+                                <i class="bi bi-info-circle text-primary-custom"></i> Thông tin ticket
                             </h3>
                             <div class="d-flex flex-column gap-3">
                                 <div>
-                                    <div class="meta-label">Status</div>
+                                    <div class="meta-label">Trạng thái</div>
                                     <div id="sidebarStatus" class="fw-semibold text-primary-custom" style="font-size:14px;">
                                         @StatusText(vm.status)
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="meta-label">Assigned Staff</div>
+                                    <div class="meta-label">Nhân viên phụ trách</div>
                                     <div class="fw-medium" style="font-size:14px;">
-                                        @(string.IsNullOrWhiteSpace(vm.assignedAgent) ? "Unassigned" : vm.assignedAgent)
+                                        @(string.IsNullOrWhiteSpace(vm.assignedAgent) ? "Chưa phân công" : vm.assignedAgent)
                                     </div>
                                 </div>
                             </div>

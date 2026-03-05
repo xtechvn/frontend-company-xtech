@@ -26,14 +26,14 @@ var userTicket = {
     // SSE
     // =========================================================================
     initSSE: function () {
-        $('#rtStatus').text('Connecting...');
+        $('#rtStatus').text('Đang kết nối...');
 
         this.eventSource = new EventSource(
             '/support/ticket-stream?ticketId=' + this.ticketId
         );
 
         this.eventSource.onopen = function () {
-            $('#rtStatus').text('Realtime: Online');
+            $('#rtStatus').text('Realtime: Trực tuyến');
         };
 
         this.eventSource.onmessage = function (event) {
@@ -65,7 +65,7 @@ var userTicket = {
         };
 
         this.eventSource.onerror = function () {
-            $('#rtStatus').text('Realtime: Reconnecting...');
+            $('#rtStatus').text('Realtime: Đang kết nối lại...');
         };
     },
 
@@ -116,7 +116,7 @@ var userTicket = {
                     userTicket.currentStatus = 0; // Open
                     userTicket.renderStatusUI();
                 } else {
-                    alert(res?.message || 'Reopen failed');
+                    alert(res?.message || 'Mở lại ticket thất bại');
                 }
             },
             error: function (xhr) {
@@ -158,11 +158,11 @@ var userTicket = {
                     if (window.replyEditor && replyEditor.reset) replyEditor.reset();
                     window.__replyFiles = [];
                 } else {
-                    alert(res?.message || 'Reply failed');
+                    alert(res?.message || 'Gửi trả lời thất bại');
                 }
             },
             error: function (xhr) {
-                alert('HTTP ' + xhr.status + ': ' + (xhr.responseText || 'Request failed'));
+                alert('HTTP ' + xhr.status + ': ' + (xhr.responseText || 'Yêu cầu thất bại'));
             },
             complete: function () { $btn.prop('disabled', false); }
         });
