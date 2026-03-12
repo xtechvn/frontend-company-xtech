@@ -5,6 +5,7 @@
 
     var vm = ViewBag.data as TicketDetailVm;
     var ticketId = (Guid)(ViewBag.ticketId ?? Guid.Empty);
+    var currentUserId = ViewBag.currentUserId as string ?? "";
 
     string StatusText(int s) => s switch
     {
@@ -268,7 +269,7 @@
                         {
                             <span class="badge badge-urgent rounded-pill px-3 py-2">URGENT</span>
                         }
-                      
+                       
                         <span id="statusBadge">
                             <span class="badge @StatusBadgeClass(vm.status)">@StatusText(vm.status)</span>
                         </span>
@@ -277,7 +278,7 @@
                 </div>
 
                 <div class="d-flex gap-2 align-items-center">
-                   
+                    
                     <button id="btnReopenTicket"
                             class="btn btn-success fw-semibold d-inline-flex align-items-center gap-2 px-3 py-2"
                             style="display:none !important;"
@@ -305,7 +306,7 @@
                                 <article class="card-soft p-4 mb-4" id="msg-@m.id">
                                     <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
                                         <div>
-                                            <div class="fw-bold">@(isStaff ? "Support" : "You")</div>
+                                            <div class="fw-bold">@(isStaff ? m.senderId : (m.senderId == currentUserId ? "currentUserName" : m.senderId))</div>
                                             <div class="text-secondary" style="font-size:12px;">@m.createdAt</div>
                                         </div>
                                         @if (isStaff)
@@ -353,7 +354,7 @@
                         }
                     </div>
 
-                   
+              
                     <div id="closedNotice" class="closed-notice mb-3" style="display:none;">
                         <i class="bi bi-lock-fill me-2"></i>
                         Ticket này đã được đóng bởi Support.
@@ -450,6 +451,7 @@
 
 <script>
     window.userTicketEndpoints = {
+        currentUserId: '@currentUserId',
         replyUrl: '/support/reply'
         // ✅ Không cần hubUrl nữa - dùng SSE
     };
@@ -582,6 +584,6 @@
 </script>
 
 @section Scripts {
-        {{!-- ✅ Không cần signalr nữa --}}
+      
     <script src="~/modules/support_detail.js" asp-append-version="true"></script>
 }

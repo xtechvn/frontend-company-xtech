@@ -60,7 +60,7 @@ namespace XTECH_FRONTEND.Controllers
                             departmentName = x.departmentName,
                             subject = x.subject,
                             status = x.status,
-                            assignedAgent = string.IsNullOrWhiteSpace(x.assignedAgentId) ? "Unassigned" : x.assignedAgentId,
+                            assignedAgent = string.IsNullOrWhiteSpace(x.assignedAgentId) ? "Chưa phân công" : x.assignedAgentId,
                             lastUpdate = ToTimeAgo(x.lastMessageAt)
                         }).ToList();
                     ViewBag.page = result.data.page;
@@ -76,7 +76,7 @@ namespace XTECH_FRONTEND.Controllers
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegram("Index - SupportTicketController: " + ex);
-                ViewBag.error = "Load tickets failed";
+                ViewBag.error = "Tải danh sách ticket thất bại";
                 ViewBag.data = new List<TicketListItemVm>();
             }
             return View();
@@ -167,7 +167,7 @@ namespace XTECH_FRONTEND.Controllers
                         subject = dto.ticket.subject,
                         status = dto.ticket.status,
                         priority = dto.ticket.priority,
-                        assignedAgent = string.IsNullOrWhiteSpace(dto.ticket.assignedAgentId) ? "Unassigned" : dto.ticket.assignedAgentId,
+                        assignedAgent = string.IsNullOrWhiteSpace(dto.ticket.assignedAgentId) ? "Chưa phân công" : dto.ticket.assignedAgentId,
                         messages = (dto.messages ?? new List<TicketMessageDtoFe>())
                             .Select(m => new TicketMessageVm
                             {
@@ -182,6 +182,12 @@ namespace XTECH_FRONTEND.Controllers
                             }).ToList()
                     };
                     ViewBag.ticketId = id;
+                    // Tên hiển thị lấy từ Claim Name (session login)
+                    ViewBag.currentUserId = GetUserId();
+                    ViewBag.currentUserName = User?.FindFirst(ClaimTypes.Name)?.Value
+                                           ?? User?.FindFirst("Name")?.Value
+                                           ?? User?.FindFirst("AccountId")?.Value
+                                           ?? "Bạn";
                 }
                 else
                 {
@@ -191,7 +197,7 @@ namespace XTECH_FRONTEND.Controllers
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegram("Detail - SupportTicketController: " + ex);
-                ViewBag.error = "Load ticket failed";
+                ViewBag.error = "Tải chi tiết ticket thất bại";
             }
             return View();
         }
@@ -221,9 +227,17 @@ namespace XTECH_FRONTEND.Controllers
                 var apiService = new ApiService(_configuration);
 
                 // BE TicketAPIController sẽ tự Publish Redis sau khi lưu DB
+                // ✅ Lưu thẳng tên (Claim Name) vào SenderId thay vì AccountId
+                var senderName = User?.FindFirst(ClaimTypes.Name)?.Value
+                              ?? User?.FindFirst("Name")?.Value
+                              ?? userId;
+
                 var createMsg = await apiService.ReplyTicket(
-                    ticketId: ticketId, senderType: "Customer",
-                    senderId: userId, content: content, contentHtml: content);
+                    ticketId: ticketId,
+                    senderType: "Customer",
+                    senderId: senderName,   // ✅ lưu tên thay vì số Id
+                    content: content,
+                    contentHtml: content);
 
                 if (createMsg == null || createMsg.status != 0 || createMsg.data == null)
                     return Json(new { success = false, message = createMsg?.msg ?? "Reply failed" });

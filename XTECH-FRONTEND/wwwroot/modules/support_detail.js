@@ -177,7 +177,12 @@ var userTicket = {
 
         var senderType = (m.senderType || '').toLowerCase();
         var isStaff = senderType === 'agent' || senderType === 'staff';
-        var who = isStaff ? 'Support' : 'You';
+        var currentUserId = window.userTicketEndpoints?.currentUserId || '';
+        var currentUserName = window.userTicketEndpoints?.currentUserName || 'Bạn';
+        // Nếu senderId == AccountId của user đang login → hiện tên thật, ngược lại hiện senderId
+        var who = isStaff
+            ? (m.senderId || 'Nhân viên')
+            : (m.senderId === currentUserId ? currentUserName : (m.senderId || currentUserName));
         var contentHtml = m.contentHtml ? m.contentHtml : this.escapeHtml(m.content || '');
         var bubbleClass = isStaff ? 'bubble-staff' : 'bubble-cus';
         var staffBadge = isStaff ? `<span class="badge badge-staff rounded px-2 py-1">STAFF</span>` : '';
