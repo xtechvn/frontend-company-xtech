@@ -115,7 +115,11 @@ namespace XTECH_FRONTEND.Controllers
                 { ViewBag.error = "Tổng dung lượng file vượt quá 25MB."; return View(); }
 
                 var apiService = new ApiService(_configuration);
-                var result = await apiService.CreateTicket(userId, model.serviceId, model.departmentId, model.subject, model.content);
+                // ✅ Lấy tên hiển thị thay vì userId số
+                var creatorName = User?.FindFirst(ClaimTypes.Name)?.Value
+                               ?? User?.FindFirst("Name")?.Value
+                               ?? userId;
+                var result = await apiService.CreateTicket(creatorName, model.serviceId, model.departmentId, model.subject, model.content);
 
                 if (result == null || result.status != 0 || result.data == null)
                 { ViewBag.error = result?.msg ?? "Create ticket failed"; return View(); }
@@ -228,8 +232,12 @@ namespace XTECH_FRONTEND.Controllers
 
                 // BE TicketAPIController sẽ tự Publish Redis sau khi lưu DB
                 // ✅ Lưu thẳng tên (Claim Name) vào SenderId thay vì AccountId
+                // Thử lần lượt các claim phổ biến để lấy tên/email hiển thị
                 var senderName = User?.FindFirst(ClaimTypes.Name)?.Value
+                              ?? User?.FindFirst(ClaimTypes.Email)?.Value
                               ?? User?.FindFirst("Name")?.Value
+                              ?? User?.FindFirst("Email")?.Value
+                              ?? User?.FindFirst("FullName")?.Value
                               ?? userId;
 
                 var createMsg = await apiService.ReplyTicket(
